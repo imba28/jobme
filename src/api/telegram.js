@@ -1,7 +1,7 @@
 const telebot = require('telebot');
-const config = require('../config');
+const config = require('../config').api.telegram;
 
-const bot = new telebot(config.telegramApiKey);
+const bot = new telebot(config.key);
 
 class Telegram {
     constructor() {
@@ -28,12 +28,18 @@ class Telegram {
         return this.contacts.get(uid);
     }
 
+    broadcast(message) {
+        for(let user of this.contacts) {
+            this.message(user[0], message); // uid = user[0], userinfo = user[1];
+        }
+    }
+
     message(uid, message) {
+        console.log(`send '${message}' to '${uid}'`);
         bot.sendMessage(uid, message).then(response => {
             console.log(`OK`, response);
         }).catch(error => {
             console.log(`Error`, error);
-            throw error;
         });
     }
 }
@@ -47,10 +53,6 @@ bot.on('*', msg => {
             user.username = msg.text.trim();
             delete user.awaitingName;
             msg.reply.text('Daten wurden gespeichert!');
-            console.log(user);
-        }
-        else {
-            msg.reply.text(`Fehler!`);
         }
     }
 });
@@ -58,11 +60,13 @@ bot.on(/^(hallo|hi|hello|hey)/i, function(msg) {
     msg.reply.text(`Hallo ${msg.chat.first_name}!\nWie kann ich dir helfen?`);
 });
 bot.on('/start', (msg) => {
-    msg.reply.text(`Wie lautet dein Benutzername?`);
-    const user = telegram.getUser(msg.from.id);
     console.log('Starte Setup!');
+
+    const user = telegram.getUser(msg.from.id);
     if(user) user.awaitingName = true;
     else msg.reply.text(`Fehler!`);
+
+    msg.reply.text(`Wie lautet dein Benutzername?`);
 });
 bot.on('/help', function(msg) {
     msg.reply.text(
@@ -71,7 +75,13 @@ bot.on('/help', function(msg) {
     );
 });
 bot.on('/info', msg => {
-    msg.reply.text();
+    const user = telegram.getUser(msg.from.id);
+    if(user) {
+        msg.reply.text(`Was ich über dich weiß:\n`+
+            `Du heißt ${user.first_name}\n`+
+            `Dein Benutzername lautet '${user.username}'.`
+        );
+    }
 });
 
 module.exports = telegram;

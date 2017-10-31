@@ -17,9 +17,12 @@
   "author": "Jonas Bücker, Moritz Lang, Lukas Gruber",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "hapi": "^16.6.2",
     "http": "0.0.0",
     "mime": "^2.0.3",
+    "mongodb": "^2.2.33",
     "telebot": "^1.2.3"
   },
   "devDependencies": {
