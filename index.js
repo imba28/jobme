@@ -4,16 +4,10 @@ const url = require('url');
 const path = require('path');
 const mime = require('mime');
 const querystring = require('querystring');
-const TeleBot = require('telebot');
-
 const httpd_port = 8080;
 
-const bot = new TeleBot('439144820:AAHcdzVd42HaFjH_Ql7v39qKdWa4GQbDZ9g');
-bot.on('text', function(msg) {
-    console.log(msg);
-    msg.reply.text(`Hallo ${msg.chat.first_name}!`);
-});
-bot.start();
+const telegramBot = require('./src/api/telegram');
+telegramBot.start();
 
 const processPost = (request, response, callback) => { // https://stackoverflow.com/questions/4295782/how-do-you-extract-post-data-in-node-js/12022746#12022746
     let queryData = "";
@@ -47,10 +41,10 @@ const httpd = http.createServer((req,res) => {
             processPost(req, res, () => {
                 if(req.post.submit && req.post.message) {
                     console.log(`Send ${req.post.message} to telegram`);
+                    telegramBot.message('259170589', req.post.message);
+
                     res.writeHead(200, "OK", {'Content-Type': 'text/plain'});
                     res.end();
-
-                    bot.sendMessage("259170589", req.post.message);
                 }
             });
         }
@@ -87,5 +81,5 @@ const httpd = http.createServer((req,res) => {
         res.end();
     }
 }).listen(httpd_port, () => {
-    console.log(`${(new Date())}: Web server is listening on port ${httpd_port}`);
+    console.log(`${(new Date())}: Web server is listening on port ${httpd_port}, http://localhost:${httpd_port}`);
 });
