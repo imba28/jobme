@@ -18,7 +18,7 @@ $ npm start
 Webserver ist dann unter http://localhost:8080 erreichbar.
 
 ### Links
-https://discord.gg/Cg3Rq4A - Discord Test Server für Webhooks
-https://t.me/homeworkmmp2_bot - Telegram Homework Bot
+- https://discord.gg/Cg3Rq4A - Discord Test Server für Webhooks
+- https://t.me/homeworkmmp2_bot - Telegram Homework Bot
 
 Der Telegram Bot speichert im Moment noch keine Gespräche, das heißt man muss ihm nach jedem Serverneustart eine Nachricht senden, damit man wieder registriert wird.
