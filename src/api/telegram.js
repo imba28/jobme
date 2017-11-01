@@ -2,11 +2,19 @@ const telebot = require('telebot');
 const config = require('../config').api.telegram;
 
 const bot = new telebot(config.key);
+const Model = require('../model');
 
 class Telegram {
     constructor() {
         this.botStarted = false;
         this.contacts = new Map();
+
+        Model.getAll('Users').then(users => {
+            for(let i = 0; i < users.length; i++) {
+                this.addUser(new Model(users[i], 'Users'));
+            }
+            console.log(this);
+        });
     }
 
     start() {
@@ -21,7 +29,7 @@ class Telegram {
     }
 
     addUser(contact) {
-        if(!this.hasUser(contact.id)) this.contacts.set(contact.id, contact);
+        if(!this.hasUser(contact.data.id)) this.contacts.set(contact.data.id, contact);
     }
 
     getUser(uid) {
@@ -46,15 +54,24 @@ class Telegram {
 const telegram = new Telegram();
 
 bot.on('*', msg => {
-    if(!telegram.hasUser(msg.from.id)) telegram.addUser(msg.from);
-    else {
-        const user = telegram.getUser(msg.from.id);
-        if(user && user.awaitingName) {
-            user.username = msg.text.trim();
-            delete user.awaitingName;
-            msg.reply.text('Daten wurden gespeichert!');
+    async function a() {
+        let user = await Model.get(msg.from.id, 'Users');
+        if(user == null) {
+            user = await Model.insert(msg.from, 'Users');
+        }
+
+        if(!telegram.hasUser(msg.from.id)) telegram.addUser(msg.from);
+        else {
+            const user = telegram.getUser(msg.from.id);
+            if(user && user.awaitingName) {
+                user.username = msg.text.trim();
+                delete user.awaitingName;
+                msg.reply.text('Daten wurden gespeichert!');
+            }
         }
     }
+
+    a();
 });
 bot.on(/^(hallo|hi|hello|hey)/i, function(msg) {
     msg.reply.text(`Hallo ${msg.chat.first_name}!\nWie kann ich dir helfen?`);
