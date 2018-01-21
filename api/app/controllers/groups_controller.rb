@@ -4,7 +4,11 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    if params[:user_id]
+      @groups = User.find(params[:user_id]).groups
+    else
+      @groups = Group.all
+    end
   end
 
   # GET /groups/1
@@ -12,7 +16,13 @@ class GroupsController < ApplicationController
   def show
     respond_to do |format|
       format.html { render :show, location: @group }
-      format.json { render json: @group.to_json(:include => :tasks) }
+      format.json { render json: @group.to_json(
+        :only => [:id, :name, :created_at, :updated_at],
+        :include => {
+          :admin => {only: [:id, :name]},
+          :tasks => {only: [:id, :name, :description, :due_date, :created_at, :updated_at]}
+        })
+      }
     end
   end
 
@@ -68,7 +78,11 @@ class GroupsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
+      params.each do |key,value|
+        Rails.logger.warn "Param #{key}: #{value}"
+      end
       @group = Group.find(params[:id])
+      Rails.logger.warn @group.users
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

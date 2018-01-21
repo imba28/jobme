@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    if params[:user_id]
+      @tasks = Task.where(:user => User.find(params[:user_id]))
+    else
+      @tasks = Task.all
+    end
   end
 
   # GET /tasks/1

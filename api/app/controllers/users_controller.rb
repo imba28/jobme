@@ -4,12 +4,37 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if params[:group_id]
+      @users = Group.find(params[:group_id]).users
+    else
+      @users = User.all
+    end
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @users.to_json(
+        :only => [:id, :name, :created_at, :updated_at]
+        #,
+        #:include => {
+        #  :groups => {only: [:id, :name, :created_at, :updated_at]}
+        #}
+      )
+      }
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    respond_to do |format|
+      format.html { render :show, location: @user }
+      format.json { render json: @user.to_json(
+        :only => [:id, :name, :created_at, :updated_at],
+        :include => {
+          :groups => {only: [:id, :name, :created_at, :updated_at]}
+        })
+      }
+    end
   end
 
   # GET /users/new
