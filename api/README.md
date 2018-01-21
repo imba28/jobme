@@ -1,24 +1,63 @@
-# README
+# task-o-mat Rails API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails API, falls Firebase nicht funktionieren sollte :-)
 
-Things you may want to cover:
+### Installation
 
-* Ruby version
+```
+bundle install
+rails db:setup
+```
 
-* System dependencies
+### Usage
 
-* Configuration
+`rails server`
 
-* Database creation
+### Api
 
-* Database initialization
+##### Benutzer Liste
 
-* How to run the test suite
+`/users.json`
+```json
+[
+    {"id":1,"name":"Jonas","created_at":"2018-01-21T21:05:39.822Z","updated_at":"2018-01-21T21:05:39.822Z"},
+    {"id":2,"name":"Moritz","created_at":"2018-01-21T21:05:39.895Z","updated_at":"2018-01-21T21:05:39.895Z"},
+    {"id":3,"name":"Lukas","created_at":"2018-01-21T21:05:39.971Z","updated_at":"2018-01-21T21:05:39.971Z"},
+    {"id":4,"name":"Dummy User","created_at":"2018-01-21T21:05:40.038Z","updated_at":"2018-01-21T21:05:40.038Z"}
+]
+```
+#### Benutzer Information
+`/users/1.json`
 
-* Services (job queues, cache servers, search engines, etc.)
+```json
+{
+    "id":1,
+    "name":"Jonas",
+    "created_at":"2018-01-21T21:05:39.822Z",
+    "updated_at":"2018-01-21T21:05:39.822Z",
+    "groups":[
+        {"id":1,"name":"Multimedia Projekt 2","created_at":"2018-01-21T21:05:40.074Z","updated_at":"2018-01-21T21:05:40.074Z"},
+        {"id":2,"name":"Content Management Systeme","created_at":"2018-01-21T21:05:40.086Z","updated_at":"2018-01-21T21:05:40.086Z"}
+    ]
+}
+```
 
-* Deployment instructions
+##### Benutzer Aufgaben
 
-* ...
+`/user/1/tasks.json`
+
+```json
+[
+    {
+        "id":1,
+        "name":"Studienwoche Projekte fertigstellen.",
+        "description":"Etwas in Javascript programmieren, muss hübsch aussehen :-)",
+        "group_id":1,
+        "user_id":1,
+        "due_date":"2018-02-02T00:00:00.000Z",
+        "created_at":"2018-01-21T21:05:40.364Z",
+        "updated_at":"2018-01-21T21:05:40.364Z",
+        "url":"http://localhost:3000/tasks/1.json"
+    }
+]
+```
