@@ -1,0 +1,18 @@
+{
+  "name": "task-o-mat",
+  "version": "1.0.0",
+  "description": "Hausaufgaben Verwaltungs Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.mediacube.at/fhs39827/mmp2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
