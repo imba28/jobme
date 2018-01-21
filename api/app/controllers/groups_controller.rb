@@ -10,6 +10,10 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    respond_to do |format|
+      format.html { render :show, location: @group }
+      format.json { render json: @group.to_json(:include => :tasks) }
+    end
   end
 
   # GET /groups/new
