@@ -9,11 +9,8 @@ const database = require('./src/db');
 const Model = require('./src/model');
 
 async function main() {
-    let u = await Model.get(1, 'Users');
-    console.log(u);
-
-    u.set('last_name', 'Gruber');
-    u.save();
+    /*let u = await Model.getAll('Users');
+    console.log(u);*/
 
     database.open().then(db => {
         function exitHandler(options, err) {
@@ -67,6 +64,11 @@ async function main() {
         app.post('/', (req, res) => {
             Notification.update(req.body.message);
 
+            res.redirect('/');
+        });
+        app.post('/add-channel', (req, res) => {
+            const channel_name = req.body.message;
+            console.log('NEW CHANNEL', channel_name);
             res.redirect('/');
         });
 

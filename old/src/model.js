@@ -27,6 +27,16 @@ class Model {
         });
     }
 
+    static remove(id, collection) {
+        return new Promise(async (resolve, reject) => {
+            const db = await database.open();
+            db.collection(collection).remove({id: id}, (err, status) => {
+                if(err) reject(err);
+                else resolve(status);
+            });
+        });
+    }
+
     static async getAll(collection) {
         const db = await database.open();
         const items = await db.collection(collection).find().toArray();

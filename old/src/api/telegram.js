@@ -94,9 +94,10 @@ bot.on('/help', function(msg) {
 bot.on('/info', msg => {
     const user = telegram.getUser(msg.from.id);
     if(user) {
+        console.log(user);
         msg.reply.text(`Was ich über dich weiß:\n`+
             `Du heißt ${user.first_name}\n`+
-            `Dein Benutzername lautet '${user.username}'.`
+            (user.username ? `Dein Benutzername lautet '${user.username}'.` : ``)
         );
     }
 });
