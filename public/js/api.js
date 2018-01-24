@@ -2,7 +2,7 @@ window.onload = () => {
     fetchUser(1);
 
     document.getElementById('loadUser').addEventListener('keypress', function(e) {
-        if(e.charCode === 13) {
+        if(e.charCode === 13 || e.keyCode == 13) {
             fetchUser(this.value);
         }
     });
