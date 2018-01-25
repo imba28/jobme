@@ -30,6 +30,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
+    @task.group = Group.find(params[:group_id]) if params[:group_id]
+    @task.user = User.find(params[:user_id]) if params[:user_id]
+
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
