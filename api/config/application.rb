@@ -11,11 +11,13 @@ module Api
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
-    # Eventuell später mal nützlich...
-    config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => 'http://localhost:8080',
-      'Access-Control-Request-Method' => %w{GET POST PUT DELETE}.join(",")
-    }
+    # Cors erlauben
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:8080'
+        resource '*', :headers => :any, :methods => [:get, :post, :patch, :options]
+      end
+    end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
