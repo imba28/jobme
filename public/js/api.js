@@ -1,10 +1,41 @@
+let currentUser = 1;
+let userData = {};
+
 window.onload = () => {
-    fetchUser(1);
+    fetchUser(currentUser);
 
     document.getElementById('loadUser').addEventListener('keypress', function(e) {
         if(e.charCode === 13 || e.keyCode == 13) {
             fetchUser(this.value);
         }
+    });
+
+    document.getElementById('addTask').addEventListener('click', function(e) {
+        addTask(document.getElementById('task').value);
+    });
+}
+
+function addTask(task) {
+    var formData  = new FormData();
+    const data = {
+        'task[group_id]': userData.groups[0].id,
+        'task[name]': task,
+        'task[description]': 'Such importance. Much deadline. So intense. Wow!'
+    };
+
+    for(var name in data) {
+        formData.append(name, data[name]);
+    }
+
+    fetch(`http://localhost:3000/users/${currentUser}/tasks.json`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+        },
+        body: formData
+    }).then((response) => response.json())
+    .then(data => {
+        console.log(data);
     });
 }
 
@@ -21,6 +52,9 @@ function fetchUser(uid) {
         });
     })).then((data) => {
         const [user, tasks] = data;
+        currentUser = user.id;
+        userData = user;
+
         document.getElementById('user').innerHTML = user.name;
 
         appendToList('tasks', tasks, (task) => {
