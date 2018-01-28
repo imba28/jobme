@@ -3,7 +3,6 @@ let userData = {};
 
 window.onload = () => {
     fetchUser(currentUser);
-
     document.getElementById('loadUser').addEventListener('keypress', function(e) {
         if(e.charCode === 13 || e.keyCode == 13) {
             fetchUser(this.value);
@@ -15,10 +14,10 @@ window.onload = () => {
     });
 }
 
-function addTask(task) {
+function addTask(task, groupId = null) {
     var formData  = new FormData();
     const data = {
-        'task[group_id]': userData.groups[0].id,
+        'task[group_id]': groupId ? groupId : userData.groups[0].id,
         'task[name]': task,
         'task[description]': 'Such importance. Much deadline. So intense. Wow!'
     };
@@ -36,6 +35,30 @@ function addTask(task) {
     }).then((response) => response.json())
     .then(data => {
         console.log(data);
+    });
+}
+
+function addGroup(name) {
+    var formData  = new FormData();
+    const data = {
+        'group[name]': name,
+        'group[admin_id]': currentUser
+    };
+
+    for(var name in data) {
+        formData.append(name, data[name]);
+    }
+
+    fetch(`http://localhost:3000/groups.json`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+        },
+        body: formData
+    }).then((response) => response.json())
+    .then(data => {
+        console.log(data);
+        fetchUser(currentUser);
     });
 }
 

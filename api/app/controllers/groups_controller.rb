@@ -39,6 +39,9 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    admin = User.find(group_params[:admin_id]);
+    @group.admin = admin
+    @group.users << admin
 
     respond_to do |format|
       if @group.save
