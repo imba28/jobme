@@ -1,0 +1,65 @@
+.header {
+  display: flex;
+  background: $blue;
+  color: $white;
+  align-items: center;
+  padding: 1em 1.5em;
+  box-shadow: 0 -3px 0 rgba($white, 0.25) inset;
+
+  .header__logo {
+    .tom-logo {
+      display: block;
+      margin: 0 auto;
+    }
+
+    font-size: 1.5em;
+  }
+
+  .header__nav {
+    flex: 1 1;
+
+    ul {
+      display: flex;
+      justify-content: flex-end;
+
+      li {
+        list-style: none;
+        margin-left: 1em;
+
+        a {
+          color: $white;
+          font-weight: 700;
+          padding-bottom: .25em;
+          position: relative;
+          display: block;
+
+          @include transition(all 300ms ease);
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: $white;
+            @include transition(inherit);
+            @include transform(scaleY(2) scaleX(0));
+            @include transform-origin(left center);
+            opacity: 0;
+          }
+
+          &:hover {
+            color: $black-lighter;
+            @include transform(translateY(-2px));
+
+            &::after {
+              opacity: 1;
+              @include transform(scaleY(1) scaleX(1));
+            }
+          }
+        }
+      }
+    }
+  }
+}

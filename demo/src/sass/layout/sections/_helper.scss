@@ -1,0 +1,38 @@
+#helper {
+  .box {
+    background: rgba($black, 0.1);
+    padding: .5em;
+    margin-bottom: .5em;
+  }
+
+  .box--transparent {
+    background: initial;
+  }
+
+  .exampletext {
+    font-size: 1em;
+  }
+
+  #text-effects {
+    .exampletext {
+      padding-top: 2em;
+    }
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  #grid {
+    .row {
+      margin-bottom: .5em;
+
+      [class^="row__col--"] {
+        font-size: 0.8em;
+
+        .box {
+          margin: 0 .5em;
+        }
+      }
+    }
+  }
+}

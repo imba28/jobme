@@ -1,0 +1,118 @@
+.input__container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  margin-bottom: 1em;
+
+  .input {
+    font-family: $font-main;
+    padding: 1em;
+    border: 2px solid $grey;
+    @include border-radius(0 $input-border-radius $input-border-radius 0);
+    @include transition(border 300ms ease);
+    position: relative;
+
+    &:focus {
+      border-color: $blue;
+      box-shadow: 0 0 0.25em rgba($black, 0.15) inset;
+    }
+
+    &:focus + label {
+      background: $blue;
+      border-color: $blue;
+      color: $white;
+    }
+  }
+
+  .btn:last-child,
+  .input__label:last-child {
+    @include border-radius($input-border-radius 0 0 $input-border-radius);
+  }
+
+  .input__label {
+    border: 2px solid $grey;
+    border-right: none;
+    font-weight: 700;
+    font-family: $font-special;
+    @include transition(all 300ms ease);
+    display: block;
+    padding: 1em 1.3em;
+    cursor: pointer;
+    color: $black-light;
+  }
+}
+
+.input__container.input__container--has-button {
+  .input {
+    border-left-width: 0;
+  }
+}
+
+.input__container--reverse {
+  flex-direction: row;
+  justify-content: flex-start;
+
+  &.input__container--has-button .input {
+    border-left-width: 2px;
+    border-right-width: 0;
+    @include border-radius($input-border-radius 0 0 $input-border-radius);
+  }
+
+  .btn {
+    border-right-width: 2px;
+  }
+
+  .btn:last-child,
+  .input__label:last-child {
+    @include border-radius(0 $input-border-radius $input-border-radius 0);
+  }
+}
+
+.input__container--checkbox,
+.input__container--radio {
+  display: inline;
+  position: relative;
+
+  span {
+    position: absolute;
+    left: -1px;
+    top: 1px;
+    cursor: pointer;
+    pointer-events: none;
+    top: 3px;
+    left: 0;
+    color: $grey-darker;
+  }
+
+  .input__radio, .input__checkbox {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+
+    + label {
+      padding-left: 0.25em;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      span.icon-radio-checked, span.icon-checkbox-checked {
+        opacity: 0;
+      }
+    }
+
+    &:checked + label {
+      .icon-radio-checked, .icon-checkbox-checked {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.input__container--radio + .input__container--radio {
+  margin-left: 1em;
+}

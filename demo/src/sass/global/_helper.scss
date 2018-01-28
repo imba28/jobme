@@ -1,0 +1,115 @@
+// margin
+@for $i from 1 through 10 {
+  .mt-#{$i} {
+      margin-top: #{$i}em;
+  }
+}
+@for $i from 1 through 10 {
+  .ml-#{$i} {
+      margin-left: #{$i}em;
+  }
+}
+@for $i from 1 through 10 {
+  .mr-#{$i} {
+      margin-right: #{$i}em;
+  }
+}
+@for $i from 1 through 10 {
+  .mb-#{$i} {
+      margin-bottom: #{$i}em;
+  }
+}
+
+//padding
+@for $i from 1 through 10 {
+  .pt-#{$i} {
+      padding-top: #{$i}em;
+  }
+}
+
+@for $i from 1 through 10 {
+  .pl-#{$i} {
+      padding-left: #{$i}em;
+  }
+}
+
+@for $i from 1 through 10 {
+  .pr-#{$i} {
+      padding-right: #{$i}em;
+  }
+}
+
+@for $i from 1 through 10 {
+  .pb-#{$i} {
+      padding-bottom: #{$i}em;
+  }
+}
+
+.text--center {
+  text-align: center;
+}
+.text--left {
+  text-align: left;
+}
+.text--right {
+  text-align: right;
+}
+
+.text--black {
+  font-weight: 900;
+}
+.text--bold {
+  font-weight: 700;
+}
+.text--thin {
+  font-weight: 300;
+}
+.text--regular {
+  font-weight: 400;
+}
+.text--italic {
+  font-style: italic;
+}
+.text--underline {
+  text-decoration: underline;
+}
+.text--overline {
+  text-decoration: overline;
+}
+.text--cancel {
+  text-decoration: line-through;
+}
+.display--block {
+  display: block;
+}
+.display--none {
+  display: none;
+}
+.display--inline {
+  display: inline;
+}
+.display--iblock {
+  display: inline-block;
+}
+.display--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blockquote {
+  background: #f9f9f9;
+  border-left: .75em solid $blue-light;
+  margin: 0 1em;
+  padding: 1em;
+
+  .blockquote__author {
+    color: $grey-dark;
+    margin-top: 1em;
+    font-style: italic;
+    font-size: 0.9em;
+
+    &::before {
+      content: "— "
+    }
+  }
+}
