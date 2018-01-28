@@ -35,6 +35,15 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        if(params[:share]) then
+          @task.group.users.each do |user|
+            next if user.id == @task.user.id
+            Rails.logger.warn user.name
+            task_clone = @task.dup
+            task_clone.user = user
+            task_clone.save
+          end
+        end
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else

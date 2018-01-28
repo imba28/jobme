@@ -14,11 +14,12 @@ window.onload = () => {
     });
 }
 
-function addTask(task, groupId = null) {
+function addTask(task, groupId = null, share = false) {
     var formData  = new FormData();
     const data = {
         'task[group_id]': groupId ? groupId : userData.groups[0].id,
         'task[name]': task,
+        'share': share,
         'task[description]': 'Such importance. Much deadline. So intense. Wow!'
     };
 
