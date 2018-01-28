@@ -32,6 +32,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :done %><br>
+    <%= form.select :done, Task.dones.keys %>
+  </div>
+
+  <div class="field">
     <%= form.label :due_date %>
     <%= form.datetime_select :due_date, id: :task_due_date %>
   </div>

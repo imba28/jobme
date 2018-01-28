@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
         :only => [:id, :name, :created_at, :updated_at],
         :include => {
           :admin => {only: [:id, :name]},
-          :tasks => {only: [:id, :name, :description, :due_date, :created_at, :updated_at]}
+          :tasks => {only: [:id, :name, :description, :due_date, :created_at, :updated_at, :done]}
         })
       }
     end

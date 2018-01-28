@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180128195246) do
     t.datetime "due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status", default: "todo", null: false
+    t.integer "done", default: 0, null: false
     t.index ["group_id"], name: "index_tasks_on_group_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
