@@ -63,6 +63,50 @@ function addGroup(name) {
     });
 }
 
+function removeUserFromGroup(userId, groupId) {
+    var formData  = new FormData();
+    const data = {
+        '_method': 'delete'
+    };
+
+    for(var name in data) {
+        formData.append(name, data[name]);
+    }
+
+    fetch(`http://localhost:3000/groups/${groupId}/users/${userId}.json`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+        },
+        body: formData
+    }).then((response) => response.json())
+    .then(data => {
+        fetchUser(userId);
+    });
+}
+
+function addUsertoGroup(userId, groupId) {
+    var formData  = new FormData();
+    const data = {
+        'id': userId
+    };
+
+    for(var name in data) {
+        formData.append(name, data[name]);
+    }
+
+    fetch(`http://localhost:3000/groups/${groupId}/users.json`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+        },
+        body: formData
+    }).then((response) => response.json())
+    .then(data => {
+        fetchUser(userId);
+    });
+}
+
 function fetchUser(uid) {
     const requestsArray = [
         `http://localhost:3000/users/${uid}.json`,

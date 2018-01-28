@@ -16,7 +16,7 @@ module Api
       allow do
         #origins 'http://localhost:8080'
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :patch, :options]
+        resource '*', :headers => :any, :methods => [:get, :post, :patch, :options, :delete]
       end
     end
 

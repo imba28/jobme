@@ -49,16 +49,34 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    if params[:group_id] then
+      @user = User.find(params[:id])
+      group = Group.find(params[:group_id])
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user.to_json(:only => [:id, :name, :created_at, :updated_at]) }
-
+      if group.users.include?(@user) then
+        respond_to do |format|
+          format.html { redirect_to group_url, notice: 'User was successfully added to group.' }
+          format.json { render json: group, status: :no_content }
+        end
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        group.users << @user
+        respond_to do |format|
+          format.html { redirect_to group_url, notice: 'User was successfully added to group.' }
+          format.json { render json: group, status: :created }
+        end
+      end
+    else
+      @user = User.new(user_params)
+
+      respond_to do |format|
+        if @user.save
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          format.json { render json: @user.to_json(:only => [:id, :name, :created_at, :updated_at]) }
+
+        else
+          format.html { render :new }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -82,10 +100,27 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    if params[:group_id] then
+      group = Group.find(params[:group_id]);
+
+      if(group.admin_id != @user.id) then
+        group.users.delete(@user)
+        respond_to do |format|
+          format.html { redirect_to groups_url, notice: 'User was successfully remove from Group.' }
+          format.json { head :no_content }
+        end
+      else
+        respond_to do |format|
+          format.html { render  }
+          format.json { render json: '{"error": "Cannot remove admin from group"}', status: :unprocessable_entity }
+        end
+      end
+    else
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
