@@ -6,16 +6,19 @@
         <router-view class="view"></router-view>
       </transition>
     </div>
+    <bottommenu/>
   </div>
 </template>
 
 <script>
 import mainmenu from './components/MainMenu'
+import bottommenu from './components/BottomMenu'
 
 export default {
   name: 'App',
   components: {
-    mainmenu
+    mainmenu,
+    bottommenu
   }
 }
 </script>
