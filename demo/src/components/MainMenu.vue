@@ -80,9 +80,12 @@
     }
   }
 
-  .header__title{
-    flex-flow: row;
-    justify-content: space-between;
+  .header__title {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+
     margin: 0;
     padding-left: 10%;
   }
