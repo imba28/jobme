@@ -5,8 +5,6 @@ import App from './App'
 import router from './router'
 import TaskComponent from './components/Task'
 
-import './sass/template.scss'
-
 Vue.config.productionTip = true
 
 Vue.component('task-component', TaskComponent);
