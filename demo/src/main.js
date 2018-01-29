@@ -5,11 +5,11 @@ import App from './App'
 import TaskComponent from './components/Task'
 import router from './router'
 
+import '@/sass/template.scss'
+
 Vue.config.productionTip = true
-
-import './sass/template.scss'
-
 Vue.component('task-component', TaskComponent);
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
