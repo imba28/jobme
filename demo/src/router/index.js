@@ -7,8 +7,11 @@ Vue.use(Router)
 import HomePage from '@/pages/Home'
 import TasksPage from '@/pages/Tasks'
 import TaskAddPage from '@/pages/TaskAdd'
+import TestPage from '@/pages/Test'
 
 export default new Router({
+    linkActiveClass: "active", // active class for non-exact links.
+    linkExactActiveClass: "active", // active class for *exact* links.
     routes: [
         {
             path: '/',

@@ -15,7 +15,7 @@
     <nav v-if="show" id="side__nav">
       <ul>
         <li v-for="(option, index) in options">
-          <a :href="option.path" v-on:click.prevent="goto(index)"> {{ option.name }}</a>
+          <router-link active-class="active" :to="option.path" @click.native="triggerBurger">{{ option.name }}</router-link>
         </li>
       </ul>
     </nav>
@@ -24,40 +24,50 @@
 </template>
 
 <script>
-  import router from '@/router'
+import router from '@/router'
 
-  export default {
-    name: 'mainmenu',
-    data(){
-      return {
-        show: false,
-        page: "Startseite",
-        options: [
-          {name: "Jonas", path:"/"},
-          {name: "Home", path:"/"},
-          {name: "Tasks", path:"/tasks"},
-          {name: "Gruppen", path:"/groups"}
-        ]
-      }
+export default {
+  name: 'mainmenu',
+  data() {
+    return {
+      show: false,
+      page: "Startseite",
+      options: [{
+          name: "Jonas",
+          path: "/"
+        },
+        {
+          name: "Home",
+          path: "/"
+        },
+        {
+          name: "Tasks",
+          path: "/tasks"
+        },
+        {
+          name: "Gruppen",
+          path: "/groups"
+        },
+        {
+          name: "Test",
+          path: "/test"
+        }
+      ]
+    }
 
-    },
-    methods: {
-      triggerBurger: function(event) {
-        if (document.getElementById("menu-burger").className == "hamburger hamburger--collapse") {
-          document.getElementById("menu-burger").className += " is-active"
-          this.show = !this.show
-        }
-        else {
-          document.getElementById("menu-burger").className = "hamburger hamburger--collapse"
-          this.show = !this.show
-        }
-      },
-      goto: function(idx) {
-        this.triggerBurger();
-        router.push(this.options[idx].path);
+  },
+  methods: {
+    triggerBurger: function(event) {
+      if (document.getElementById("menu-burger").className == "hamburger hamburger--collapse") {
+        document.getElementById("menu-burger").className += " is-active"
+        this.show = !this.show
+      } else {
+        document.getElementById("menu-burger").className = "hamburger hamburger--collapse"
+        this.show = !this.show
       }
     }
   }
+}
 </script>
 
 
