@@ -6,26 +6,25 @@
         <router-view class="view"></router-view>
       </transition>
     </div>
-    <bottommenu/>
+    <!--<bottommenu/>-->
   </div>
 </template>
 
 <script>
 import mainmenu from './components/MainMenu'
-import bottommenu from './components/BottomMenu'
+//import bottommenu from './components/BottomMenu'
 
 export default {
   name: 'App',
   components: {
     mainmenu,
-    bottommenu
+    //bottommenu
   }
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

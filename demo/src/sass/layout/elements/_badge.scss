@@ -1,0 +1,19 @@
+.badge {
+  border-radius: 2em;
+  height: 2em;
+  font-size: 0.8em;
+  line-height: 2em;
+  padding: 0 1em;
+  border: 1px solid $blue;
+  color: $blue;
+  display: inline-block;
+
+  &:hover, &:focus {
+    background: $blue;
+    color: $white;
+  }
+
+  &:active {
+    @include linearGradientVertical($blue-dark, $blue);
+  }
+}
