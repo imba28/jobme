@@ -1,15 +1,13 @@
 <template>
-<li>
+<li v-bind:class="{ 'task--done': task.status }" class="task">
   <h4>{{ task.name }}</h4>
-  <p>
+  <p class="task__description">
     {{ task.description }}
   </p>
 
   <label>
       Erledigt: <input type="checkbox" v-model="task.status">
-      {{ task.status }}
       </label>
-
   <span v-if="task.duedate">{{ task.duedate }}</span>
 </li>
 </template>
@@ -42,3 +40,31 @@ export default {
   }
 }
 </script>
+
+
+<style lang="scss">
+.task {
+  margin-bottom: 2em;
+
+  h4 {
+    margin: 0;
+    margin-bottom: .5em;
+  }
+
+  .task__description {
+    margin: 0;
+  }
+}
+
+.badge {
+  margin-bottom: .5em;
+}
+
+.task--done {
+  color: #aaa;
+
+  .task__description {
+    display: none;
+  }
+}
+</style>
