@@ -14,6 +14,9 @@ Vue.component('task-component', TaskComponent);
 new Vue({
     el: '#app',
     router,
+    data: {
+        show: ''
+    },
     components: {
         App
     },
