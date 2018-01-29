@@ -36,6 +36,7 @@ export default {
 
 #page {
   position: relative;
+  padding: 0 1em;
   h1 {
     margin-top: 0;
   }
