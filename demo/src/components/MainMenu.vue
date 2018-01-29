@@ -1,13 +1,13 @@
 <template>
 <ul class="mainmenu">
   <li>
-    <a href="#">Home</a>
+    <router-link to="/">Home</router-link>
   </li>
   <li>
-    <a href="#">Tasks</a>
+   <router-link to="/tasks">Tasks</router-link>
   </li>
   <li>
-    <a href="#">Groups</a>
+    <router-link to="/groups">Gruppen</router-link>
   </li>
 </ul>
 </template>

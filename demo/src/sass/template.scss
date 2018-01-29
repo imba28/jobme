@@ -22,3 +22,25 @@
 @import 'layout/elements/form';
 @import 'layout/elements/mediablock';
 @import 'layout/responsive';
+
+.page-enter-active, .page-leave-active {
+  transition: transform 1s;
+}
+
+.page-enter-active {
+  transform: translateX(0%);
+}
+.page-leave-active {
+  transform: translateX(100%);
+}
+
+.page-enter{
+  transform: translateX(-100%);
+}
+
+.page-enter, .page-leave-to {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
