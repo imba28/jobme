@@ -2,20 +2,20 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
 import TaskComponent from './components/Task'
+import router from './router'
 
 Vue.config.productionTip = true
 
-Vue.component('task-component', TaskComponent);
+import './sass/template.scss'
 
+Vue.component('task-component', TaskComponent);
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
     components: {
-        App,
-        TaskComponent
+        App
     },
     template: '<App/>'
 })
