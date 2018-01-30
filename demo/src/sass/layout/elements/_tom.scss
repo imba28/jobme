@@ -1,0 +1,38 @@
+.tom-logo {
+  height: 100px;
+  width: 130px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.tom-logo--blue {
+  background-image: url("/assets/tom-logo-blue.svg");
+}
+
+.tom-logo--grey {
+  background-image: url("/assets/tom-logo-grey.svg");
+}
+
+.tom-logo--s {
+  height: 40px;
+  width: 52px;
+}
+
+.tom-logo--l {
+  height: 170px;
+  width: 222px;
+}
+
+.logo__sizes {
+  display: flex;
+  align-items: baseline;
+
+  .tom-logo {
+    margin-right: 2em;
+    margin-bottom: 3em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
