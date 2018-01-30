@@ -6,11 +6,10 @@
 @import 'global/iconmoon';
 @import 'global/var';
 @import 'mixin';
+@import 'global/vue';
 @import 'global/icons';
 @import 'global/helper';
 @import 'global/global';
-@import 'layout/grid';
-@import 'layout/menu';
 /*@import 'layout/sections/typeface';
 @import 'layout/sections/helper';
 @import 'layout/sections/logo';
@@ -20,6 +19,8 @@
 @import 'layout/sections/button';
 @import 'layout/sections/link';
 @import 'layout/sections/spelling';*/
+@import 'layout/grid';
+@import 'layout/menu';
 @import 'layout/elements/badge';
 @import 'layout/elements/button';
 @import 'layout/elements/form';
@@ -27,25 +28,3 @@
 @import 'layout/elements/nav';
 @import 'layout/elements/tom';
 @import 'layout/responsive';
-
-.page-enter-active, .page-leave-active {
-  transition: transform 1s;
-}
-
-.page-enter-active {
-  transform: translateX(0%);
-}
-.page-leave-active {
-  transform: translateX(100%);
-}
-
-.page-enter{
-  transform: translateX(-100%);
-}
-
-.page-enter, .page-leave-to {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
