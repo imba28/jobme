@@ -2,6 +2,7 @@
   <div id="app">
     <mainmenu/>
     <div id="page">
+      <notification ref="notification"/>
       <transition name="page">
         <router-view class="view"></router-view>
       </transition>
@@ -13,12 +14,14 @@
 <script>
 import mainmenu from './components/MainMenu'
 import bottommenu from './components/BottomMenu'
+import notification from './components/Notifications'
 
 export default {
   name: 'App',
   components: {
     mainmenu,
-    bottommenu
+    bottommenu,
+    notification
   }
 }
 </script>
