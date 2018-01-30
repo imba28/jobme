@@ -20,7 +20,7 @@
         </label>
       </div>
       <div class="input__container">
-        <input id="password" class="input" type="text" placeholder="Dein Password"/>
+        <input id="password" class="input" type="password" placeholder="Dein Password"/>
         <label class="input__label" id="password__label" for="password">
           <span class="icon-key"></span>
         </label>
