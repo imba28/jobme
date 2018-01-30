@@ -16,6 +16,7 @@ import mainmenu from './components/MainMenu'
 import bottommenu from './components/BottomMenu'
 import notification from './components/Notifications'
 
+
 export default {
   name: 'App',
   components: {

@@ -16,8 +16,7 @@
       <ul>
         <li v-for="(option, index) in options">
           <router-link active-class="active" :to="option.path" @click.native="triggerBurger">
-            <i v-bind:class="[`icon-${option.icon}`]"></i>
-            {{ option.name }}
+            <i v-bind:class="[`icon-${option.icon}`]"></i> {{ option.name }}
           </router-link>
         </li>
       </ul>
@@ -99,9 +98,8 @@ export default {
     }
 }
 
-
 .header {
-  position: relative;
+    position: relative;
 }
 
 .header__title {
@@ -122,12 +120,12 @@ h1 {
 
 #side__nav {
     background-color: #0091EA;
-    box-shadow: 0.25em 0 .5em rgba(0,0,0,0.2);
+    box-shadow: 0.25em 0 0.5em rgba(0,0,0,0.2);
 
     position: absolute;
     z-index: 101;
     height: 100%;
-    width: 40%;
+    width: 75%;
 
     ul {
         padding: 0;
@@ -149,10 +147,11 @@ h1 {
                 display: block;
                 font-size: 1.75em;
 
-                [class^="icon-"], [class*=" icon-"] {
-                  color: #FFFFFF;
-                  margin-right: .75em;
-                  font-size: 0.9em;
+                [class^="icon-"],
+                [class*=" icon-"] {
+                    color: #FFFFFF;
+                    margin-right: 0.75em;
+                    font-size: 0.9em;
                 }
 
                 &::after {

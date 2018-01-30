@@ -7,6 +7,7 @@ import auth from '@/auth'
 // Pages
 import HomePage from '@/pages/Home'
 import TasksPage from '@/pages/Tasks'
+import RegisterPage from '@/pages/Register'
 import TaskAddPage from '@/pages/TaskAdd'
 import LoginPage from '@/pages/Login'
 import TestPage from '@/pages/Test'
@@ -29,11 +30,12 @@ const router = new Router({
             }]
         },
         { path: '/login', name: 'login', component: LoginPage},
-        { path: '/test', component: TestPage}
+        { path: '/test', component: TestPage},
+        { path: '/register', component: RegisterPage}
     ]
 })
 
-router.beforeEach(function(to, from, next) {
+/*router.beforeEach(function(to, from, next) {
     if (to.name === undefined) { //TODO Routen markieren, die keinen Login benötigen.
         if (!auth.isSignedIn()) {
             router.push({ path: 'login' })
@@ -45,6 +47,6 @@ router.beforeEach(function(to, from, next) {
 
 
     next()
-})
+}) */
 
 export default router
