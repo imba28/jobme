@@ -18,7 +18,6 @@ export default {
   name: 'App',
   components: {
     mainmenu,
-    //bottommenu
   }
 }
 </script>

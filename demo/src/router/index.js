@@ -9,8 +9,7 @@ auth.signIn('aaa', 'asdasd')
 import HomePage from '@/pages/Home'
 import TasksPage from '@/pages/Tasks'
 import TaskAddPage from '@/pages/TaskAdd'
-import TestPage from '@/pages/Test'
-
+import LoginPage from '@/pages/Login'
 const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
     linkExactActiveClass: "active", // active class for *exact* links.
@@ -28,10 +27,7 @@ const router = new Router({
                 props: true
             }]
         },
-        {
-            path: '/test',
-            component: TestPage
-        }
+        { path: '/login', component: LoginPage}
     ]
 })
 
