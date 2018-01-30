@@ -39,7 +39,14 @@ export default {
 
 #page {
   position: relative;
-  padding: 0 1em;
+  margin: 0 auto;
+  margin-top: 2em;
+  width: 85%;
+
+  .view > h2 {
+    margin-top: 0;
+  }
+
   h1 {
     margin-top: 0;
   }

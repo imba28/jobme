@@ -9,6 +9,9 @@ import HomePage from '@/pages/Home'
 import TasksPage from '@/pages/Tasks'
 import RegisterPage from '@/pages/Register'
 import TaskAddPage from '@/pages/TaskAdd'
+import GroupsPage from '@/pages/Groups'
+import GroupPage from '@/pages/Group'
+import GroupAddPage from '@/pages/GroupAdd'
 import LoginPage from '@/pages/Login'
 import TestPage from '@/pages/Test'
 import WelcomePage from "@/pages/Welcome"
@@ -25,8 +28,17 @@ const router = new Router({
             }
         },
         {
+            name: 'tasks',
             path: '/tasks',
             component: TasksPage,
+            children: [
+                { path: '/tasks/add', component: TaskAddPage, props: true }
+            ]
+        },
+        {
+            name: 'groups',
+            path: '/groups',
+            component: GroupsPage,
             children: [{
                 path: '/tasks/add',
                 component: TaskAddPage,
@@ -35,6 +47,12 @@ const router = new Router({
             meta: {
                 pageHeader: 'Aufgaben'
             }
+        },
+        {
+            name: 'group_id',
+            path: '/groups/:id',
+            component: GroupPage,
+            props: true
         },
         { path: '/login', name: 'login', component: LoginPage},
         { path: '/test', component: TestPage},

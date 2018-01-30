@@ -1,14 +1,84 @@
-.btn__type {
-  text-transform: uppercase;
-  margin-bottom: 1em;
+.btn {
+  cursor: pointer;
+  @include border-radius($input-border-radius);
+  margin-top: 1em;
   font-size: 0.8em;
-  align-self: center;
+  font-size: 20px;
+  text-align: center;
+  font-family: $font-special;
+  font-weight: 500;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 0.6em;
+  -o-text-overflow: clip;
+     text-overflow: clip;
+  border: 1.5px solid $blue;
+}
 
-  .btn {
-    font-size: 1.5em;
+.btn--left {
+  float: left;
+}
+
+.btn--right {
+  float: right;
+}
+
+.btn--default {
+  color: $blue;
+  background-color: transparent;
+
+  &:focus {
+    @include linearGradientVertical(rgba($blue-dark,0.15), rgba($blue, 0.1));
+  }
+
+  &:hover {
+    color: $white;
+    background-color: $blue;
+  }
+
+  &:active {
+    @include linearGradientVertical($blue-dark, $blue);
+  }
+
+  [class^='icon-'] {
+    font-size: 0.8em;
   }
 }
 
-.code__container {
-  align-self: center;
+.btn--secondary {
+  border-color: $grey-dark;
+  color: $grey-dark;
+
+  &:focus {
+    @include linearGradientVertical(rgba($grey-darker,0.15), rgba($grey-dark, 0.1));
+  }
+
+  &:hover {
+    color: $white;
+    background: $grey-dark;
+  }
+
+  &:active {
+    @include linearGradientVertical($grey-darker, $grey-dark);
+  }
+}
+
+.btn--red {
+  border-color: $red;
+  color: $red;
+  background-color: inherit;
+
+  &:focus {
+    @include linearGradientVertical(rgba($red-dark,0.15), rgba($red, 0.1));
+  }
+
+  &:hover {
+    color: $white;
+    background: $red;
+  }
+
+  &:active {
+    @include linearGradientVertical($red-dark, $red);
+  }
 }
