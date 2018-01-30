@@ -1,58 +1,77 @@
 <template>
-  <div>
-    <div class="title__container">
-      <h1 class="login__title">Login</h1>
-    </div>
-    <div class="logo__container">
-      <img src="../assets/tom-logo-blue.svg" alt="Unser Robomaskottchen">
-    </div>
-    <div class="form__container">
-      <div class="input__container">
-        <input id="email" class="input" type="text" placeholder="Deine Email"/>
-        <label class="input__label" id="email__label" for="email">
-          <span class="icon-mail"></span>
-        </label>
-      </div>
-      <div class="input__container">
-        <input id="password" class="input" type="text" placeholder="Dein Password"/>
-        <label class="input__label" id="password__label" for="password">
-          <span class="icon-key"></span>
-        </label>
-      </div>
-      </div>
-    <a href="#" class="link--more" id="forgot_password">Passwort vergessen?</a>
-    <div>
-      <button class="btn">Login</button>
-     </div>
-    <div class="registertext__container">
-     <p>Noch kein Konto?</p>
-     <a href="#/register">Registrieren</a>
-    </div>
+<div>
+  <div class="title__container">
+    <h1 class="login__title">Login</h1>
   </div>
+  <div class="logo__container">
+    <img src="../assets/tom-logo-blue.svg" alt="Unser Robomaskottchen">
+  </div>
+  <div class="form__container">
+    <form v-on:submit.prevent="signIn">
+      <div class="input__container">
+        <input ref="email" id="email" class="input" type="text" placeholder="Deine Email" />
+        <label class="input__label" id="email__label" for="email">
+            <span class="icon-mail"></span>
+          </label>
+      </div>
+      <div class="input__container">
+        <input ref="password" id="password" class="input" type="text" placeholder="Dein Password" />
+        <label class="input__label" id="password__label" for="password">
+            <span class="icon-key"></span>
+          </label>
+      </div>
+      <a href="#" class="link--more" id="forgot_password">Passwort vergessen?</a>
+      <div>
+        <button class="btn">Login</button>
+      </div>
+    </form>
+  </div>
+  <div class="registertext__container">
+    <p>Noch kein Konto?</p>
+    <a href="">Registrieren</a>
+  </div>
+</div>
 </template>
 
 <script>
+import auth from '@/auth'
+import router from '@/router'
 
+export default {
+  name: 'login-page',
+  data() {
+    return {
+      show: false,
+      page: "Login",
+      options: [{
+          name: "Menüpunkt 1",
+          path: ""
+        },
+        {
+          name: "Menüpunkt 10",
+          path: ""
+        }
+      ]
+    }
+  },
+  methods: {
+    signIn() {
+      const email = this.$refs['email'].value
+      const password = this.$refs['password'].value
 
-  export default {
-    name: 'login-page',
-    data(){
-      return {
-        show: false,
-        page: "Login",
-        options: [
-          {name: "Menüpunkt 1", path:""},
-          {name: "Menüpunkt 10", path:""}
-        ]
-      }
-
+      auth.signIn(email, password)
+      .then((user) => {
+        router.push({
+          path: '/tasks'
+        })
+      })
     }
   }
+}
 </script>
 
 <style lang="scss">
-
-  .view{
+.view{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -76,10 +95,22 @@
     margin-bottom: 1.2em;
   }
 
-  .form__container{
-    display: flex;
+  .form__container form {
     flex-flow: row wrap;
     justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+
+    .input__container {
+      display: inline-flex;
+
+      &::after {
+        display: block;
+        content: "";
+      }
+    }
 
     margin-top: 1em;
   }
@@ -106,7 +137,6 @@
 
   #forgot_password{
     align-self: flex-start;
-    margin-left: 1.4em;
     margin-bottom: 2em;
   }
 
@@ -126,6 +156,5 @@
    // color: $blue;
     font-size: 1.2em;
   }
-
 
 </style>

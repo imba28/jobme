@@ -29,9 +29,15 @@ export default {
     }
   },
   created() {
-    this.$root.addNotification = (message, type) => {
+    this.$root.addNotification = (message, type, duration = 2500) => {
       const note = { type, message }
       this.notes.push(note)
+
+      if(duration && duration > 0) {
+        setTimeout(() => {
+          this.removeNote(this.notes.indexOf(note));
+        }, duration)
+      }
     }
   }
 }
