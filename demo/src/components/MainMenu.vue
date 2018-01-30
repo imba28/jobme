@@ -115,9 +115,11 @@ export default {
     }
 }
 
-.header {
+  .header{
+    height: 3.5em;
     position: relative;
-}
+
+  }
 
 .header__title {
     position: absolute;

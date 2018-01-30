@@ -117,7 +117,6 @@ export default {
 
   .login__title{
     margin-left: 0.5em;
-    padding-top: 0.4em;
   }
 
 
