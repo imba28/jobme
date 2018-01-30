@@ -3,7 +3,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import auth from '@/auth'
-auth.signIn('aaa', 'asdasd')
 
 // Pages
 import HomePage from '@/pages/Home'
