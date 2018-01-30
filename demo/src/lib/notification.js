@@ -1,14 +1,16 @@
+import router from '@/router'
+
 export default {
     error(message) {
-        console.error(message)
+        router.app.addNotification(message, 'error')
     },
     note(message) {
-        console.log(message)
+        router.app.addNotification(message, 'note')
     },
     warn(message) {
-        console.warn(message)
+        router.app.addNotification(message, 'warn')
     },
     success(message) {
-        console.log(message);
+        router.app.addNotification(message, 'success');
     }
 }
