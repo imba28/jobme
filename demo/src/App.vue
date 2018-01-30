@@ -6,19 +6,19 @@
         <router-view class="view"></router-view>
       </transition>
     </div>
-    <!--<bottommenu/>-->
+    <bottommenu/>
   </div>
 </template>
 
 <script>
 import mainmenu from './components/MainMenu'
-//import bottommenu from './components/BottomMenu'
+import bottommenu from './components/BottomMenu'
 
 export default {
   name: 'App',
   components: {
     mainmenu,
-    //bottommenu
+    bottommenu
   }
 }
 </script>
@@ -35,7 +35,14 @@ export default {
 
 #page {
   position: relative;
-  padding: 0 1em;
+  margin: 0 auto;
+  margin-top: 2em;
+  width: 85%;
+
+  .view > h2 {
+    margin-top: 0;
+  }
+
   h1 {
     margin-top: 0;
   }
