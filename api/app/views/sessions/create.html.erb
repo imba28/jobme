@@ -1,0 +1,8 @@
+<h1>Sign up</h1>
+<%= form_tag login_path do |f| %>
+    Email: <%= text_field_tag     :email %> <br>
+    Password: <%= password_field_tag :password %> <br>
+    Password Confirmation: <%= password_field_tag :password_confirmation %> <br>
+
+    <%= submit_tag 'Sign up' %>
+<% end %>
