@@ -1,38 +1,31 @@
-.btn__type {
-  text-transform: uppercase;
-  margin-bottom: 1em;
-  font-size: 0.8em;
-  align-self: center;
-
-  .btn {
-    font-size: 1.5em;
-  }
-}
-
-.code__container {
-  align-self: center;
-}
-
-.btn__container {
-  display: flex;
-  flex-direction: column;
-}
-
 .btn {
-  font-family: $font-special;
-  font-weight: 700;
-  text-align: center;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  padding: 1em 2.8em;
   cursor: pointer;
   @include border-radius($input-border-radius);
-  color: $blue;
+  margin-top: 1em;
+  font-size: 0.8em;
+  font-size: 20px;
+  text-align: center;
+  font-family: $font-special;
+  font-weight: 500;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 0.6em;
   -o-text-overflow: clip;
-  text-overflow: clip;
-  letter-spacing: 1px;
-  border: 2px solid $blue;
+     text-overflow: clip;
+  border: 1.5px solid $blue;
+}
+
+.btn--left {
+  float: left;
+}
+
+.btn--right {
+  float: right;
+}
+
+.btn--default {
+  color: $blue;
   background-color: transparent;
 
   &:focus {
@@ -74,7 +67,7 @@
 .btn--red {
   border-color: $red;
   color: $red;
-  background-color: $white-dark;
+  background-color: inherit;
 
   &:focus {
     @include linearGradientVertical(rgba($red-dark,0.15), rgba($red, 0.1));
