@@ -1,12 +1,18 @@
 <template>
   <div>
     <div class="title__container">
-      <h1 class="login__title">Login</h1>
+      <h1 class="new--account__title">Konto erstellen</h1>
     </div>
     <div class="logo__container">
       <img src="../assets/tom-logo-blue.svg" alt="Unser Robomaskottchen">
     </div>
     <div class="form__container">
+      <div class="input__container">
+        <input id="username" class="input" type="text" placeholder="Dein Username"/>
+        <label class="input__label" id="username__label" for="username">
+          <span class="icon-user"></span>
+        </label>
+      </div>
       <div class="input__container">
         <input id="email" class="input" type="text" placeholder="Deine Email"/>
         <label class="input__label" id="email__label" for="email">
@@ -19,14 +25,13 @@
           <span class="icon-key"></span>
         </label>
       </div>
-      </div>
-    <a href="#" class="link--more" id="forgot_password">Passwort vergessen?</a>
+    </div>
     <div>
-      <button class="btn">Login</button>
-     </div>
+      <button class="btn">Konto erstellen</button>
+    </div>
     <div class="registertext__container">
-     <p>Noch kein Konto?</p>
-     <a href="">Registrieren</a>
+      <p>Du hast schon ein Konto?</p>
+      <a href="">Hier geht's zum Login</a>
     </div>
   </div>
 </template>
@@ -64,7 +69,8 @@
     flex-direction: row;
     justify-content: flex-start;
     height: 3em;
-    margin-top: 0.7em;
+    margin-left: 1.2em;
+    margin-top: 1.75em;
     margin-bottom: 1.8em;
   }
 
@@ -83,7 +89,9 @@
 
 
     margin-top: 1em;
+    margin-bottom: 2em;
   }
+
 
   .login__title{
     margin-left: 0.5em;
@@ -91,25 +99,19 @@
   }
 
 
-  #email__label, #password__label, #email, #password{
+  #email__label, #password__label, #email, #password , #username, #username__label{
     height: 3em;
     border: 1.5px solid $blue;
   }
 
-  #password__label, #email__label{
+  #password__label, #email__label, #username__label{
     border-right: none;
   }
 
-  #password__label{
+  #password__label, #username__label{
     padding-left: 23px;
     padding-right: 23px;
 
-  }
-
-  #forgot_password{
-    align-self: flex-start;
-    margin-left: 1.4em;
-    margin-bottom: 2em;
   }
 
   .registertext__container{
@@ -125,9 +127,12 @@
   }
 
   .icon-key::before, .icon-mail::before{
-   // color: $blue;
+    // color: $blue;
     font-size: 1.2em;
   }
 
+  .icon-user::before{
+    font-size: 1.3em;
+  }
 
 </style>

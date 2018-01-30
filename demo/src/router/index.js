@@ -6,9 +6,10 @@ Vue.use(Router)
 // Pages
 import HomePage from '@/pages/Home'
 import TasksPage from '@/pages/Tasks'
-<<<<<<< HEAD
 import LoginPage from '@/pages/Login'
 import TaskAddPage from '@/pages/TaskAdd'
+import RegisterPage from '@/pages/Register'
+
 
 export default new Router({
   routes: [
@@ -20,6 +21,7 @@ export default new Router({
               { path: '/tasks/add', component: TaskAddPage, props: true }
           ]
       },
-      { path: '/login', component: LoginPage}
-  ]
+      { path: '/login', component: LoginPage},
+      { path: '/register', component: RegisterPage}
+]
 })

@@ -80,6 +80,11 @@
     }
   }
 
+  .header{
+    height: 3.5em;
+    padding-left: 0.5em;
+  }
+
   .header__title{
     flex-flow: row;
     justify-content: space-between;
@@ -97,7 +102,7 @@
     position: absolute;
     z-index: 99;
     height: 100%;
-    width: 40%;
+    width: 75%;
 
     ul {
       padding: 0;
