@@ -1,14 +1,23 @@
 <template>
   <div class="bottom-menu">
     <ul class="bottom-menu__list">
-      <li class="bottom-menu__list__item">
-        <span class="icon-group-light"></span>
-      </li>
+
+      <router-link :to="{ name: 'groups' }">
+        <li class="bottom-menu__list__item">
+          <span class="icon-group-light"></span>
+        </li>
+      </router-link>
+
       <span class="line"></span>
-      <li class="bottom-menu__list__item">
-        <span class="icon-task"></span>
-      </li>
+
+      <router-link :to="{ name: 'tasks' }">
+        <li class="bottom-menu__list__item">
+          <span class="icon-task"></span>
+        </li>
+      </router-link>
+
       <span class="line"></span>
+
       <li class="bottom-menu__list__item">
         <span class="icon-calendar"></span>
       </li>
@@ -33,6 +42,7 @@ export default {
 }
 
 .bottom-menu__list {
+  float: none;
   height: 100%;
   margin: 0;
   display: flex;
@@ -47,7 +57,7 @@ export default {
     list-style: none;
   }
 
-  .bottom-menu__list__item.bottom-menu__list__item--active {
+  .bottom-menu__list.bottom-menu__list__item--active {
     color: $blue;
   }
 
