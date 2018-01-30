@@ -31,8 +31,8 @@
         show: false,
         page: "Startseite",
         options: [
-          {name: "Jonas", path:""},
-          {name: "Gut gemacht!", path:""}
+          {name: "Menüpunkt 1", path:""},
+          {name: "Menüpunkt 2", path:""}
         ]
       }
 
