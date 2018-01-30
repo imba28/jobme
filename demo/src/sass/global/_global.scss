@@ -8,7 +8,6 @@ a, button, input, textarea {
 
 body {
     font-family: 'Nunito', sans-serif;
-    background: $white-dark;
     color: $white;
     font-size: 1em;
 
@@ -64,6 +63,48 @@ code {
   pre {
     margin: 0;
   }
+}
+
+.list__item__wrapper {
+  list-style: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-align: left;
+  overflow: hidden;
+
+  &:before, &:last-child:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #CCCCCC;
+    height: 1px;
+  }
+
+  .list__item {
+    color: $black;
+    height: 1.2em; /* exactly one line */
+    margin-top: 1em;
+    margin-bottom: 1em;
+    overflow: hidden;
+  }
+}
+
+// for fading out a capped line of text
+.fade-out {
+  position: relative;
+}
+
+.fade-out:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 80%);
 }
 
 .code--inline {
