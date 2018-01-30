@@ -9,13 +9,13 @@
   <div class="form__container">
     <form v-on:submit.prevent="signIn">
       <div class="input__container">
-        <input id="email" class="input" type="text" placeholder="Deine Email" />
+        <input ref="email" id="email" class="input" type="text" placeholder="Deine Email" />
         <label class="input__label" id="email__label" for="email">
             <span class="icon-mail"></span>
           </label>
       </div>
       <div class="input__container">
-        <input id="password" class="input" type="text" placeholder="Dein Password" />
+        <input ref="password" id="password" class="input" type="text" placeholder="Dein Password" />
         <label class="input__label" id="password__label" for="password">
             <span class="icon-key"></span>
           </label>
@@ -35,6 +35,7 @@
 
 <script>
 import auth from '@/auth'
+import router from '@/router'
 
 export default {
   name: 'login-page',
@@ -58,8 +59,11 @@ export default {
       const email = this.$refs['email'].value
       const password = this.$refs['password'].value
 
-      auth.signIn(email, password).then((user) => {
-        console.log(user)
+      auth.signIn(email, password)
+      .then((user) => {
+        router.push({
+          path: '/tasks'
+        })
       })
     }
   }
