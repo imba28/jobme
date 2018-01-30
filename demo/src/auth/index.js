@@ -45,8 +45,8 @@ export default {
                 resolve(user)
             })
             .catch(err => {
-                notification.error(status.message);
-                reject(status.message);
+                notification.error(err.message);
+                reject(err.message);
             })
         })
     }
