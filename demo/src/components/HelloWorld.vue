@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import request from '@/lib/request'
+
 export default {
   name: 'HelloWorld',
   data() {
@@ -25,15 +27,13 @@ export default {
     }
   },
   created() {
-    fetch(`http://localhost:3000/users/2/tasks.json`)
-      .then((response) => response.json())
-      .then(tasks => {
-        this.tasks = tasks;
-      });
+    reqeust.fetch(`http://localhost:3000/users/2/tasks.json`)
+    .then(tasks => {
+      this.tasks = tasks;
+    });
 
-    fetch(`http://localhost:3000/users/2.json`)
-      .then((response) => response.json())
-      .then(user => {
+    request.fetch(`http://localhost:3000/users/2.json`)
+    .then(user => {
         this.user = user;
         this.groups = user.groups
       });

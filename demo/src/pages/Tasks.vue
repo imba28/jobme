@@ -25,6 +25,9 @@
   import router from '@/router'
   import TaskComponent from '@/components/Task'
 
+  import auth from '@/auth'
+  import request from '@/lib/request'
+
   export default {
     name: 'task-page',
     components: {
@@ -32,7 +35,6 @@
     },
     methods: {
       createTask: function() {
-        alert("asdasd");
         router.push({
           path: 'add',
           props: {
@@ -54,19 +56,17 @@
       }
     },
     created() {
-      fetch(`http://localhost:3000/users/2/tasks.json`)
-        .then((response) => response.json())
-        .then(tasks => {
-          this.tasks = tasks;
-          this.tasks_all = tasks;
-        });
+      request.fetch(`http://localhost:3000/users/${auth.getUID()}/tasks.json`)
+      .then(tasks => {
+        this.tasks = tasks;
+        this.tasks_all = tasks;
+      });
 
-      fetch(`http://localhost:3000/users/2.json`)
-        .then((response) => response.json())
-        .then(user => {
-          this.user = user;
-          this.groups = user.groups
-        });
+      request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`)
+      .then(user => {
+        this.user = user;
+        this.groups = user.groups
+      });
     }
   }
 </script>
