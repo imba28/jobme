@@ -37,11 +37,14 @@ export default {
                 password
             })
             .then(res => {
-                notification.success(res);
                 user = res.user
                 auth_token = res.auth_token
+
+                notification.success(`Willkommen zurück ${user.name}!`);
+
                 sessionStorage.setItem('auth_token', auth_token)
                 sessionStorage.setItem('user', JSON.stringify(user))
+
                 resolve(user)
             })
             .catch(err => {
