@@ -26,6 +26,10 @@ $font_path: '~@/assets/fonts/';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-group-light:before {
+  content: "\e903";
+  font-size: 0.9em;
+}
 .icon-calendar:before {
   content: "\e900";
 }
@@ -34,4 +38,14 @@ $font_path: '~@/assets/fonts/';
 }
 .icon-task:before {
   content: "\e902";
+  font-size: 1.2em;
+}
+.icon-key:before {
+  content: "\e904";
+}
+.icon-mail:before {
+  content: "\e905";
+}
+.icon-user:before {
+  content: "\e906";
 }

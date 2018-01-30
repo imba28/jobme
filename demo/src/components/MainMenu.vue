@@ -12,10 +12,10 @@
   </h1>
 </header>
   <transition name="fade">
-    <nav v-if="show"  id="side__nav">
+    <nav v-if="show" id="side__nav">
       <ul>
-        <li v-for="(option) in options">
-          <a href="javascript:void(0)"> {{ option.name }} </a>
+        <li v-for="(option, index) in options">
+          <a :href="option.path" v-on:click.prevent="goto(index)"> {{ option.name }}</a>
         </li>
       </ul>
     </nav>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+  import router from '@/router'
+
   export default {
     name: 'mainmenu',
     data(){
@@ -31,8 +33,10 @@
         show: false,
         page: "Startseite",
         options: [
-          {name: "Menüpunkt 1", path:""},
-          {name: "Menüpunkt 2", path:""}
+          {name: "Jonas", path:"/"},
+          {name: "Home", path:"/"},
+          {name: "Tasks", path:"/tasks"},
+          {name: "Gruppen", path:"/groups"}
         ]
       }
 
@@ -47,6 +51,10 @@
           document.getElementById("menu-burger").className = "hamburger hamburger--collapse"
           this.show = !this.show
         }
+      },
+      goto: function(idx) {
+        this.triggerBurger();
+        router.push(this.options[idx].path);
       }
     }
   }
@@ -87,6 +95,7 @@
   #side__nav{
     background-color: #0091EA ;
     position: absolute;
+    z-index: 99;
     height: 100%;
     width: 40%;
 
@@ -136,4 +145,3 @@
   }
 
 </style>
-
