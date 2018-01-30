@@ -13,7 +13,8 @@
 </template>
 
 <script>
-  import router from '@/router'
+  import auth from '@/auth'
+  import request from '@/lib/request'
 
   export default {
     name: 'groups-page',
@@ -24,8 +25,7 @@
       }
     },
     created() {
-      fetch(`http://localhost:3000/users/2.json`)
-        .then((response) => response.json())
+      request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`)
         .then(user => {
           this.user = user;
           this.groups = user.groups

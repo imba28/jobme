@@ -14,6 +14,9 @@
 </template>
 
 <script>
+  import auth from '@/auth'
+  import request from '@/lib/request'
+
   export default {
     name: 'group',
     data() {
@@ -24,19 +27,16 @@
     },
     methods: {
       leaveGroup: function() {
-        removeUserFromGroup(this.user.id, this.$route.params.id);
-        console.log(this.user.groups);
+        request.fetch(`http://localhost:3000/groups/${this.$route.params.id}/users/${auth.getUID()}.json`, method = 'DELETE', params = {})
       }
     },
     created() {
-        fetch(`http://localhost:3000/users/2.json`)
-          .then((response) => response.json())
+        request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`)
           .then(user => {
             this.user = user;
           });
 
-        fetch(`http://localhost:3000/groups/${this.$route.params.id}/users.json`)
-          .then((response) => response.json())
+        request.fetch(`http://localhost:3000/groups/${this.$route.params.id}/users.json`)
           .then(members => {
             this.group_members = members;
           });
