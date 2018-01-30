@@ -7,6 +7,7 @@
       </p>
       <button class="btn">Jetzt registrieren</button>
     </div>
+    <div class="arrow-down"></div>
    <div class="tom__container">
       <img src="../assets/tom-full-body.svg">
    </div>
@@ -45,13 +46,12 @@
   }
 
   .welcome--text__container{
-    margin-bottom: 2.5em;
     margin-top: 1.5em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     background-color: $grey;
-    padding: 0.5em;
+    padding: 0.8em;
     border-radius: 5%;
     align-self: center;
 
@@ -87,6 +87,17 @@
 
   p{
     margin: 0 0 0.3em 0;
+  }
+
+  .arrow-down {
+    align-self: center;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-top: 20px solid $grey;
+    margin-bottom: 1em;
   }
 
 </style>
