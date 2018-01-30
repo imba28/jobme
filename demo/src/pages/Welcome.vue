@@ -5,7 +5,7 @@
       <p>Wie ich sehe bist du neu hier.<br>
       Erstelle ein Konto um  den <br> task-o-mat nutzen zu können.
       </p>
-      <button class="btn">Jetzt registrieren</button>
+      <button class="btn" >Jetzt registrieren</button>
     </div>
     <div class="arrow-down"></div>
    <div class="tom__container">
@@ -57,7 +57,7 @@
 
 
     h1{
-      margin-bottom: 0.5em;
+      margin-bottom: 0.3em;
     }
 
     p{
@@ -67,6 +67,7 @@
 
     button{
     align-self: center;
+    margin: 0.5em 0 0.5em 0em;
     }
   }
 
@@ -89,6 +90,10 @@
     margin: 0 0 0.3em 0;
   }
 
+  a{
+    text-decoration: underline;
+  }
+
   .arrow-down {
     align-self: center;
     width: 0;
@@ -99,5 +104,6 @@
     border-top: 20px solid $grey;
     margin-bottom: 1em;
   }
+
 
 </style>
