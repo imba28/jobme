@@ -36,7 +36,7 @@ const router = new Router({
     ]
 })
 
-router.beforeEach(function(to, from, next) {
+/*router.beforeEach(function(to, from, next) {
     if (to.name === undefined) { //TODO Routen markieren, die keinen Login benötigen.
         if (!auth.isSignedIn()) {
             router.push({ path: 'login' })
@@ -48,6 +48,6 @@ router.beforeEach(function(to, from, next) {
 
 
     next()
-})
+}) */
 
 export default router

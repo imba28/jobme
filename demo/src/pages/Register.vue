@@ -40,11 +40,11 @@
 
 
   export default {
-    name: 'login-page',
+    name: 'register-page',
     data(){
       return {
         show: false,
-        page: "Login",
+        page: "Register",
         options: [
           {name: "Menüpunkt 1", path:""},
           {name: "Menüpunkt 10", path:""}
@@ -91,13 +91,7 @@
     margin-top: 1em;
     margin-bottom: 2em;
   }
-
-
-  .login__title{
-    margin-left: 0.5em;
-    padding-top: 0.4em;
-  }
-
+  
 
   #email__label, #password__label, #email, #password , #username, #username__label{
     height: 3em;
