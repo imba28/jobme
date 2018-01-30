@@ -8,7 +8,7 @@
     </span>
   </button>
     <h1 class="header__title">
-    {{ page }}
+    {{ this.pageHeader }}
   </h1>
   </header>
   <transition name="fade">
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       show: false,
-      page: "Startseite",
+      page: 'task-o-mat',
       options: [{
           icon: 'calendar',
           name: "Jonas",
@@ -72,6 +72,23 @@ export default {
         document.getElementById("menu-burger").className = "hamburger hamburger--collapse"
         this.show = !this.show
       }
+    }
+  },
+  computed: {
+    pageHeader: {
+      get: function() {
+        return this.page
+      },
+      set: function(header) {
+        this.page = header
+      }
+    }
+  },
+  created() {
+    console.log("mainmenu")
+    this.$root.setPageHeader = (header) => {
+      console.log(header);
+      this.pageHeader = header
     }
   }
 }

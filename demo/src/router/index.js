@@ -22,7 +22,10 @@ const router = new Router({
     routes: [{
             path: '/',
             name: 'home',
-            component: HomePage
+            component: HomePage,
+            meta: {
+                pageHeader: 'task-o-mat'
+            }
         },
         {
             name: 'tasks',
@@ -40,7 +43,10 @@ const router = new Router({
                 path: '/tasks/add',
                 component: TaskAddPage,
                 props: true
-            }]
+            }],
+            meta: {
+                pageHeader: 'Aufgaben'
+            }
         },
         {
             name: 'group_id',
@@ -55,7 +61,7 @@ const router = new Router({
     ]
 })
 
-/*router.beforeEach(function(to, from, next) {
+router.beforeEach(function(to, from, next) {
     if (to.name === undefined) { //TODO Routen markieren, die keinen Login benötigen.
         if (!auth.isSignedIn()) {
             router.push({ path: 'login' })
@@ -65,8 +71,11 @@ const router = new Router({
         }
     }
 
+    if(typeof router.app.setPageHeader === 'function') {
+        router.app.setPageHeader(to.meta.pageHeader || 'task-o-mat')
+    }
 
     next()
-}) */
+})
 
 export default router

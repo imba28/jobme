@@ -15,7 +15,7 @@
           </label>
       </div>
       <div class="input__container">
-        <input ref="password" id="password" class="input" type="text" placeholder="Dein Password" />
+        <input ref="password" id="password" class="input" type="password" placeholder="Dein Password" />
         <label class="input__label" id="password__label" for="password">
             <span class="icon-key"></span>
           </label>
@@ -28,7 +28,7 @@
   </div>
   <div class="registertext__container">
     <p>Noch kein Konto?</p>
-    <a href="">Registrieren</a>
+    <a href="#/register">Registrieren</a>
   </div>
 </div>
 </template>
