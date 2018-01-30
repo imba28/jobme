@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'Logged in!' }
-        format.json { render json: user.to_json(:only => [:id, :name, :created_at, :updated_at], status: :ok )}
+        format.json { render json: { user: user, auth_token: JsonWebToken.encode(user_id: user.id) }, status: :ok }
       end
     else
       respond_to do |format|
