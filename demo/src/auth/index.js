@@ -5,11 +5,11 @@ let user = null;
 let auth_token = null;
 
 const local_token = sessionStorage.getItem('auth_token')
-const local_user = sessionStorage.getItem('auth_token')
+const local_user = sessionStorage.getItem('user')
 
-if(local_token) {
+if(local_token && local_user) {
     auth_token = local_token
-    user = local_user
+    user = JSON.parse(local_user)
 }
 
 export default {
@@ -41,7 +41,7 @@ export default {
                 user = res.user
                 auth_token = res.auth_token
                 sessionStorage.setItem('auth_token', auth_token)
-                sessionStorage.setItem('user', user)
+                sessionStorage.setItem('user', JSON.stringify(user))
                 resolve(user)
             })
             .catch(err => {
