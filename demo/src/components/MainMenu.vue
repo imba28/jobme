@@ -90,6 +90,9 @@ export default {
     }
   }
 
+  .header{
+    height: 3.5em;
+  }
 
   .header__title {
     position: absolute;

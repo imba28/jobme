@@ -12,6 +12,7 @@ import RegisterPage from '@/pages/Register'
 import TaskAddPage from '@/pages/TaskAdd'
 import LoginPage from '@/pages/Login'
 import TestPage from '@/pages/Test'
+import WelcomePage from "@/pages/Welcome"
 
 const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
@@ -32,7 +33,8 @@ const router = new Router({
         },
         { path: '/login', name: 'login', component: LoginPage},
         { path: '/test', component: TestPage},
-        { path: '/register', component: RegisterPage}
+        { path: '/register', component: RegisterPage},
+        { path: '/welcome', component: WelcomePage}
     ]
 })
 

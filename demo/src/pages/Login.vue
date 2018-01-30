@@ -26,7 +26,7 @@
      </div>
     <div class="registertext__container">
      <p>Noch kein Konto?</p>
-     <a href="">Registrieren</a>
+     <a href="#/register">Registrieren</a>
     </div>
   </div>
 </template>
@@ -86,7 +86,6 @@
 
   .login__title{
     margin-left: 0.5em;
-    padding-top: 0.4em;
   }
 
 

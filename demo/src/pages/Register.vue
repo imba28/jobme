@@ -31,7 +31,7 @@
     </div>
     <div class="registertext__container">
       <p>Du hast schon ein Konto?</p>
-      <a href="">Hier geht's zum Login</a>
+      <a href="#/login">Hier geht's zum Login</a>
     </div>
   </div>
 </template>
@@ -91,7 +91,7 @@
     margin-top: 1em;
     margin-bottom: 2em;
   }
-  
+
 
   #email__label, #password__label, #email, #password , #username, #username__label{
     height: 3em;
