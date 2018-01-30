@@ -1,16 +1,16 @@
 import router from '@/router'
 
 export default {
-    error(message) {
-        router.app.addNotification(message, 'error')
+    error(message, duration = 2500) {
+        router.app.addNotification(message, 'error', duration)
     },
-    note(message) {
-        router.app.addNotification(message, 'note')
+    note(message, duration = 2500) {
+        router.app.addNotification(message, 'note', duration)
     },
-    warn(message) {
-        router.app.addNotification(message, 'warn')
+    warn(message, duration = 2500) {
+        router.app.addNotification(message, 'warn', duration)
     },
-    success(message) {
-        router.app.addNotification(message, 'success');
+    success(message, duration = 2500) {
+        router.app.addNotification(message, 'success', duration);
     }
 }
