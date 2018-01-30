@@ -33,7 +33,10 @@ const router = new Router({
 
 router.beforeEach(function(to, from, next) {
     if (to.name === undefined) { //TODO Routen markieren, die keinen Login benötigen.
-        if (!auth.isSignedIn()) router.push({ path: 'login' });
+        if (!auth.isSignedIn()) {
+            router.push({ path: 'login' });
+            return false;
+        }
     }
 
     next()
