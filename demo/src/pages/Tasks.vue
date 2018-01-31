@@ -2,13 +2,10 @@
   <div>
     <div class="input__container input__container--has-button input__container--reverse add-task">
         <input ref="task_name" id="add_task" class="input" type="text" placeholder="Neue Aufgabe hinzufügen..."/>
-        <button class="btn btn--default" v-on:click.native="createTask">
+        <button class="btn btn--default" @click="createTask">
           <i class="icon-plus"></i>
         </button>
     </div>
-    <button @click.native="createTask">
-      Submit
-    </button>
     <ul class="groups">
       <button v-for="group in groups" class="badge" v-on:click="changeGroup" :data-id="group.id">
         {{ group.name }}
@@ -36,9 +33,9 @@
     methods: {
       createTask: function() {
         router.push({
-          path: 'add',
-          props: {
-            task_name: this.$refs.task_name.value
+          name: 'task-add',
+          params: {
+            'task_name': this.$refs.task_name.value
           }
         });
       },
