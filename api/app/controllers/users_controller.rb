@@ -108,7 +108,7 @@ class UsersController < ApplicationController
         group.users.delete(@user)
         respond_to do |format|
           format.html { redirect_to groups_url, notice: 'User was successfully remove from Group.' }
-          format.json { head :no_content }
+          format.json { render json: {message: 'ok'}, status :ok }
         end
       else
         respond_to do |format|
