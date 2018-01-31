@@ -20,7 +20,13 @@ const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
     linkExactActiveClass: "active", // active class for *exact* links.
     routes: [
-        { path: '/', component: WelcomePage},
+        {
+            path: '/',
+            component: WelcomePage,
+            meta: {
+                ifLoginRedirectTo: '/tasks'
+            }
+        },
         {
             name: 'tasks',
             path: '/tasks',
@@ -29,7 +35,7 @@ const router = new Router({
                 { path: '/tasks/add', component: TaskAddPage, props: true }
             ],
             meta: {
-                requiresLogin: true
+                requiresLogin: true,
             }
         },
         {
@@ -59,18 +65,27 @@ const router = new Router({
                 requiresLogin: true
             }
         },
-        { path: '/login', name: 'login', component: LoginPage},
+        { path: '/login', name: 'login', component: LoginPage, meta: { ifLoginRedirectTo: '/tasks' }},
         { path: '/register', component: RegisterPage},
     ]
 })
 
 router.beforeEach(function(to, from, next) {
-    if (to.meta && to.meta.requiresLogin) {
-        if (!auth.isSignedIn()) {
-            router.push({ path: 'login' })
-            router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
+    if (to.meta) {
+        if(to.meta.requiresLogin) {
+            if (!auth.isSignedIn()) {
+                router.push({ path: 'login' })
+                router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
 
-            return false;
+                return;
+            }
+        }
+        if(to.meta.ifLoginRedirectTo) {
+            if (auth.isSignedIn()) {
+                console.log("REDIRECT TO " + to.meta.ifLoginRedirectTo)
+                router.push({path: to.meta.ifLoginRedirectTo})
+                return;
+            }
         }
     }
 
