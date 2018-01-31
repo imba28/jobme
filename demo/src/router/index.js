@@ -19,50 +19,53 @@ import WelcomePage from "@/pages/Welcome"
 const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
     linkExactActiveClass: "active", // active class for *exact* links.
-    routes: [{
-            path: '/',
-            name: 'home',
-            component: HomePage,
-            meta: {
-                pageHeader: 'task-o-mat'
-            }
-        },
+    routes: [
+        { path: '/', component: WelcomePage},
         {
             name: 'tasks',
             path: '/tasks',
             component: TasksPage,
             children: [
                 { path: '/tasks/add', component: TaskAddPage, props: true }
-            ]
+            ],
+            meta: {
+                requiresLogin: true
+            }
         },
         {
             name: 'groups',
             path: '/groups',
             component: GroupsPage,
-            children: [{
-                path: '/tasks/add',
-                component: TaskAddPage,
-                props: true
-            }],
+            children: [
+                {
+                    name: 'group_id',
+                    path: '/groups/:id',
+                    component: GroupPage,
+                    props: true,
+                    meta: {
+                        requiresLogin: true
+                    }
+                }
+            ],
             meta: {
-                pageHeader: 'Aufgaben'
+                pageHeader: 'Gruppen',
+                requiresLogin: true
             }
         },
         {
-            name: 'group_id',
-            path: '/groups/:id',
-            component: GroupPage,
-            props: true
+            path: '/test',
+            component: TestPage,
+            meta: {
+                requiresLogin: true
+            }
         },
         { path: '/login', name: 'login', component: LoginPage},
-        { path: '/test', component: TestPage},
         { path: '/register', component: RegisterPage},
-        { path: '/welcome', component: WelcomePage}
     ]
 })
 
 router.beforeEach(function(to, from, next) {
-    if (to.name === undefined) { //TODO Routen markieren, die keinen Login benötigen.
+    if (to.meta && to.meta.requiresLogin) {
         if (!auth.isSignedIn()) {
             router.push({ path: 'login' })
             router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
