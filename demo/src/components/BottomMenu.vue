@@ -17,9 +17,10 @@
       </li>
 
       <li class="vertical-line"></li>
-
       <li class="bottom-menu__list__item">
-        <span class="icon-calendar"></span>
+        <router-link :to="{ name: 'calendar' }">
+          <span class="icon-calendar"></span>
+        </router-link>
       </li>
     </ul>
   </div>
