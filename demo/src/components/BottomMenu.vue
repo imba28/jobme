@@ -2,21 +2,21 @@
   <div class="bottom-menu">
     <ul class="bottom-menu__list">
 
-      <router-link :to="{ name: 'groups' }">
         <li class="bottom-menu__list__item">
+          <router-link :to="{ name: 'groups' }">
           <span class="icon-group-light"></span>
+        </router-link>
         </li>
-      </router-link>
 
-      <span class="vertical-line"></span>
+      <li class="vertical-line"></li>
 
-      <router-link :to="{ name: 'tasks' }">
-        <li class="bottom-menu__list__item">
+      <li class="bottom-menu__list__item">
+        <router-link :to="{ name: 'tasks' }">
           <span class="icon-task"></span>
-        </li>
-      </router-link>
+        </router-link>
+      </li>
 
-      <span class="vertical-line"></span>
+      <li class="vertical-line"></li>
 
       <li class="bottom-menu__list__item">
         <span class="icon-calendar"></span>
@@ -53,12 +53,17 @@ export default {
   .bottom-menu__list__item {
     display: flex;
     font-size: 2.4em;
-    color: $grey-darker;
-    list-style: none;
-  }
 
-  .bottom-menu__list.bottom-menu__list__item--active {
-    color: $blue;
+    list-style: none;
+
+    a {
+      color: $grey-darker;
+      @include transition(color 500ms ease);
+    }
+
+    a.active {
+      color: $blue;
+    }
   }
 
   .vertical-line {
