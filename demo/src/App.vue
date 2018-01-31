@@ -47,7 +47,7 @@ export default {
 #page {
   position: relative;
   margin: 0 auto;
-  padding: 0 2em;
+  margin: 0 2em;
 
   .view > h2:first-child {
     margin-top: 0;
