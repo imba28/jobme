@@ -31,28 +31,42 @@ const router = new Router({
             name: 'tasks',
             path: '/tasks',
             component: TasksPage,
-            children: [
-                { path: '/tasks/add', component: TaskAddPage, props: true }
-            ],
             meta: {
                 requiresLogin: true,
+            }
+        },
+        {
+            name: 'task-add',
+            path: '/tasks/add',
+            component: TaskAddPage,
+            props: true,
+            meta: {
+                requiresLogin: true
             }
         },
         {
             name: 'groups',
             path: '/groups',
             component: GroupsPage,
-            children: [
-                {
-                    name: 'group_id',
-                    path: '/groups/:id',
-                    component: GroupPage,
-                    props: true,
-                    meta: {
-                        requiresLogin: true
-                    }
-                }
-            ],
+            meta: {
+                pageHeader: 'Gruppen',
+                requiresLogin: true
+            }
+        },
+        {
+            name: 'group-add',
+            path: '/groups/add',
+            component: GroupAddPage,
+            meta: {
+                pageHeader: 'Gruppen',
+                requiresLogin: true
+            }
+        },
+        {
+            name: 'group_id',
+            path: '/groups/:id',
+            component: GroupPage,
+            props: true,
             meta: {
                 pageHeader: 'Gruppen',
                 requiresLogin: true
