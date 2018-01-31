@@ -29,6 +29,9 @@ export default {
     signOut() {
         user = null
         auth_token = null
+
+        sessionStorage.removeItem('auth_token')
+        sessionStorage.removeItem('user')
     },
     signIn(email, password) {
         return new Promise((resolve, reject) => {
