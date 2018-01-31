@@ -82,3 +82,56 @@
     @include linearGradientVertical($red-dark, $red);
   }
 }
+
+// switch
+.switch-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-bottom: 1.5em;
+
+  p {
+    margin: 0;
+    margin-left: 1em;
+    font-weight: 500;
+    font-size: 1.1em;
+  }
+}
+
+.switch {
+    position: relative;
+    width: 60px;
+}
+.switch__checkbox {
+    display: none;
+}
+.switch__label {
+    display: block;
+    cursor: pointer;
+    height: 27px;
+    border-radius: 20px;
+    background-color: rgba($blue, 0.4);
+    transition: background-color 0.3s ease;
+}
+.switch__label:before {
+    content: "";
+    display: block;
+    width: 27px;
+    margin: 0px;
+    background: $white;
+    position: absolute; top: 0;
+    bottom: 0;
+    right: 33px;
+    border: 3px solid rgba($blue, 0.4);
+    border-radius: 100%;
+    transition: all 0.3s ease 0s;
+}
+.switch__checkbox:checked + .switch__label {
+    background-color: $blue;
+}
+.switch__checkbox:checked + .switch__label, .switch__checkbox:checked + .switch__label:before {
+   border-color: $blue;
+}
+.switch__checkbox:checked + .switch__label:before {
+    right: 0px;
+}

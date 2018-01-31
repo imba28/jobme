@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <mainmenu/>
+    <mainmenu></mainmenu>
+    <div class="placeholders"></div>
     <div id="page">
       <notification ref="notification"/>
-      <transition name="page">
+      <transition :name="$root.transitionName">
         <router-view class="view"></router-view>
       </transition>
     </div>
-    <bottommenu/>
+    <div class="placeholders"></div>
+    <bottommenu v-if="$root.isSignedIn"></bottommenu>
   </div>
 </template>
 
@@ -15,7 +17,6 @@
 import mainmenu from './components/MainMenu'
 import bottommenu from './components/BottomMenu'
 import notification from './components/Notifications'
-
 
 export default {
   name: 'App',
@@ -31,19 +32,24 @@ export default {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 
   width: 100%;
+
+  .placeholders {
+    height: $bottom-menu-height;
+  }
+  .wrapper + .placeholders {
+    margin-bottom: 1em;
+  }
 }
 
 #page {
   position: relative;
   margin: 0 auto;
-  margin-top: 2em;
-  width: 85%;
+  padding: 0 2em;
 
-  .view > h2 {
+  .view > h2:first-child {
     margin-top: 0;
   }
 

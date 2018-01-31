@@ -1,7 +1,7 @@
 <template>
 <div class="wrapper">
   <header class="header">
-    <button id="menu-burger" class="hamburger hamburger--collapse" type="button" v-on:click="triggerBurger">
+    <button v-if="$root.isSignedIn" id="menu-burger" class="hamburger hamburger--collapse" type="button" v-on:click="triggerBurger">
     <span class="hamburger-box">
       <span class="hamburger-inner">
       </span>
@@ -11,13 +11,20 @@
     {{ this.pageHeader }}
   </h1>
   </header>
-  <transition name="fade">
+  <transition name="fade" v-if="$root.isSignedIn">
     <nav v-if="show" id="side__nav">
       <ul>
+        <li v-if="$root.isSignedIn">
+          Hallo {{ $root.user.name }}!
+          <button class="btn btn--red" @click="signOut">Logout</button>
+        </li>
         <li v-for="(option, index) in options">
-          <router-link active-class="active" :to="option.path" @click.native="triggerBurger">
+          <router-link v-if="option.path" active-class="active" :to="option.path" @click.native="triggerBurger">
             <i v-bind:class="[`icon-${option.icon}`]"></i> {{ option.name }}
           </router-link>
+          <div v-else @click="option.onClick">
+            <i v-bind:class="[`icon-${option.icon}`]"></i> {{ option.name }}
+          </div>
         </li>
       </ul>
     </nav>
@@ -27,18 +34,16 @@
 
 <script>
 import router from '@/router'
+import auth from '@/auth'
 
 export default {
   name: 'mainmenu',
   data() {
     return {
       show: false,
+      user: null,
       page: 'task-o-mat',
-      options: [{
-          icon: 'calendar',
-          name: "Jonas",
-          path: "/"
-        },
+      options: [
         {
           icon: 'calendar',
           name: "Home",
@@ -58,10 +63,14 @@ export default {
           icon: 'calendar',
           name: "Test",
           path: "/test"
+        },
+        {
+          icon: 'calendar',
+          name: 'Login',
+          path: '/login'
         }
       ]
     }
-
   },
   methods: {
     triggerBurger: function(event) {
@@ -72,6 +81,10 @@ export default {
         document.getElementById("menu-burger").className = "hamburger hamburger--collapse"
         this.show = !this.show
       }
+    },
+    signOut: () => {
+      auth.signOut()
+      router.push( {path: "/login"} )
     }
   },
   computed: {
@@ -82,12 +95,13 @@ export default {
       set: function(header) {
         this.page = header
       }
+    },
+    isSignedIn: {
+      get: () => this.$root.isSignedIn
     }
   },
   created() {
-    console.log("mainmenu")
     this.$root.setPageHeader = (header) => {
-      console.log(header);
       this.pageHeader = header
     }
   }
@@ -116,9 +130,11 @@ export default {
 }
 
   .header{
-    height: 3.5em;
-    position: relative;
-
+    height: $top-menu-height;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
   }
 
 .header__title {
@@ -145,6 +161,7 @@ h1 {
     z-index: 101;
     height: 100%;
     width: 75%;
+    top: $top-menu-height;
 
     ul {
         padding: 0;
