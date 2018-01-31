@@ -50,19 +50,16 @@ article, section {
     margin-bottom: 2em;
 }*/
 
-code {
-  padding: 2px 4px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  display: inline;
-
-  font-size: .8em;
-  color: #c0341d;
-  background-color: #fcedea;
-
-  pre {
-    margin: 0;
-  }
+.horizontal-line {
+  float: left;
+  display: block;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #CCCCCC;
+  height: 1px;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
 }
 
 .list__item__wrapper {
