@@ -38,6 +38,7 @@
 
 <script>
   import auth from '@/auth'
+  import router from '@/router'
   import request from '@/lib/request'
 
   export default {
@@ -50,9 +51,11 @@
     },
     methods: {
       leaveGroup: function() {
-        console.log("exec leaveGroup");
-        console.log(`http://localhost:3000/groups/${this.$route.params.id}/users/${auth.getUID()}.json`);
-        request.fetch(`http://localhost:3000/groups/${this.$route.params.id}/users/${auth.getUID()}.json`, 'DELETE', params = {});
+            request.fetch(`http://localhost:3000/groups/${this.$route.params.id}/users/${auth.getUID()}.json`, 'DELETE', { })
+                   .then(this.user = this.user.groups.filter(x => x.id === this.$route.params.id))
+                   .then(router.push({
+                      name: 'groups',
+                    }));
       }
     },
     created() {
