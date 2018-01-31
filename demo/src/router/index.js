@@ -16,6 +16,7 @@ import LoginPage from '@/pages/Login'
 import TestPage from '@/pages/Test'
 import WelcomePage from "@/pages/Welcome"
 import ErrorPage from "@/pages/Error"
+import CalendarPage from "@/pages/Calendar"
 
 const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
@@ -81,22 +82,10 @@ const router = new Router({
                 requiresLogin: true
             }
         },
-        {
-            path: '/login',
-            name: 'login',
-            component: LoginPage,
-            meta: {
-                ifLoginRedirectTo: '/tasks'
-            }
-        },
-        {
-            path: '/register',
-            component: RegisterPage
-        },
-        {
-            path: '*',
-            component: ErrorPage
-        }
+        { path: '/login', name: 'login', component: LoginPage, meta: { ifLoginRedirectTo: '/tasks' }},
+        { path: '/register', component: RegisterPage },
+        { path: '/calendar', component: CalendarPage },
+        { path: '*', component: ErrorPage }
     ]
 })
 
