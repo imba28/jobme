@@ -38,12 +38,15 @@ export default {
 }
 
 #page {
+  width: 85%;
   position: relative;
   margin: 0 auto;
-  margin-top: 2em;
-  width: 85%;
+  margin-top: $top-menu-height;
+  margin-bottom: $bottom-menu-height;
+  padding-top: 2.2em;
+  padding-bottom: 2em;
 
-  .view > h2 {
+  .view > h2:first-child {
     margin-top: 0;
   }
 

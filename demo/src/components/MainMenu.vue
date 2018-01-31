@@ -116,9 +116,11 @@ export default {
 }
 
   .header{
-    height: 3.5em;
-    position: relative;
-
+    height: $top-menu-height;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
   }
 
 .header__title {
@@ -145,6 +147,7 @@ h1 {
     z-index: 101;
     height: 100%;
     width: 75%;
+    top: $top-menu-height;
 
     ul {
         padding: 0;

@@ -8,7 +8,7 @@
         </li>
       </router-link>
 
-      <span class="line"></span>
+      <span class="vertical-line"></span>
 
       <router-link :to="{ name: 'tasks' }">
         <li class="bottom-menu__list__item">
@@ -16,7 +16,7 @@
         </li>
       </router-link>
 
-      <span class="line"></span>
+      <span class="vertical-line"></span>
 
       <li class="bottom-menu__list__item">
         <span class="icon-calendar"></span>
@@ -36,7 +36,7 @@ export default {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 80px;
+  height: $bottom-menu-height;
   padding: 0 12% 0 12%;
   background-color: $grey;
 }
@@ -61,7 +61,7 @@ export default {
     color: $blue;
   }
 
-  .line {
+  .vertical-line {
     display: block;
     width: 1px;
     background-color: #CCCCCC;
