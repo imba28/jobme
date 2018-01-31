@@ -19,55 +19,87 @@ import WelcomePage from "@/pages/Welcome"
 const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
     linkExactActiveClass: "active", // active class for *exact* links.
-    routes: [{
+    routes: [
+        {
             path: '/',
-            name: 'home',
-            component: HomePage,
+            component: WelcomePage,
             meta: {
-                pageHeader: 'task-o-mat'
+                ifLoginRedirectTo: '/tasks'
             }
         },
         {
             name: 'tasks',
             path: '/tasks',
             component: TasksPage,
-            children: [
-                { path: '/tasks/add', component: TaskAddPage, props: true }
-            ]
+            meta: {
+                requiresLogin: true,
+            }
+        },
+        {
+            name: 'task-add',
+            path: '/tasks/add',
+            component: TaskAddPage,
+            props: true,
+            meta: {
+                requiresLogin: true
+            }
         },
         {
             name: 'groups',
             path: '/groups',
             component: GroupsPage,
-            children: [{
-                path: '/tasks/add',
-                component: TaskAddPage,
-                props: true
-            }],
             meta: {
-                pageHeader: 'Aufgaben'
+                pageHeader: 'Gruppen',
+                requiresLogin: true
+            }
+        },
+        {
+            name: 'group-add',
+            path: '/groups/add',
+            component: GroupAddPage,
+            meta: {
+                pageHeader: 'Gruppen',
+                requiresLogin: true
             }
         },
         {
             name: 'group_id',
             path: '/groups/:id',
             component: GroupPage,
-            props: true
+            props: true,
+            meta: {
+                pageHeader: 'Gruppen',
+                requiresLogin: true
+            }
         },
-        { path: '/login', name: 'login', component: LoginPage},
-        { path: '/test', component: TestPage},
+        {
+            path: '/test',
+            component: TestPage,
+            meta: {
+                requiresLogin: true
+            }
+        },
+        { path: '/login', name: 'login', component: LoginPage, meta: { ifLoginRedirectTo: '/tasks' }},
         { path: '/register', component: RegisterPage},
-        { path: '/welcome', component: WelcomePage}
     ]
 })
 
 router.beforeEach(function(to, from, next) {
-    if (to.name === undefined) { //TODO Routen markieren, die keinen Login benötigen.
-        if (!auth.isSignedIn()) {
-            router.push({ path: 'login' })
-            router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
+    if (to.meta) {
+        if(to.meta.requiresLogin) {
+            if (!auth.isSignedIn()) {
+                router.push({ path: 'login' })
+                router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
 
-            return false;
+                return;
+            }
+        }
+        if(to.meta.ifLoginRedirectTo) {
+            if (auth.isSignedIn()) {
+                console.log("REDIRECT TO " + to.meta.ifLoginRedirectTo)
+                router.push({path: to.meta.ifLoginRedirectTo})
+                return;
+            }
         }
     }
 

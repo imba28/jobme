@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <mainmenu/>
+    <mainmenu></mainmenu>
     <div id="page">
       <notification ref="notification"/>
       <transition name="page">
         <router-view class="view"></router-view>
       </transition>
     </div>
-    <bottommenu/>
+    <bottommenu v-if="$root.isSignedIn"></bottommenu>
   </div>
 </template>
 
@@ -15,7 +15,6 @@
 import mainmenu from './components/MainMenu'
 import bottommenu from './components/BottomMenu'
 import notification from './components/Notifications'
-
 
 export default {
   name: 'App',

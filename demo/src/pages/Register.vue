@@ -37,8 +37,6 @@
 </template>
 
 <script>
-
-
   export default {
     name: 'register-page',
     data(){
@@ -85,8 +83,10 @@
   .form__container{
     display: flex;
     flex-flow: row wrap;
+    flex-direction: column;
     justify-content: space-around;
-
+    align-items: center;
+    align-content: center;
 
     margin-top: 1em;
     margin-bottom: 2em;
