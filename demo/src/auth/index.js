@@ -1,5 +1,6 @@
 import notification from '@/lib/notification'
 import request from '@/lib/request'
+import router from '@/router'
 
 let user = null;
 let auth_token = null;
@@ -32,6 +33,9 @@ export default {
 
         sessionStorage.removeItem('auth_token')
         sessionStorage.removeItem('user')
+
+        router.app.$root.isSignedIn = false
+        router.app.$root.user = null
     },
     signIn(email, password) {
         return new Promise((resolve, reject) => {
@@ -47,6 +51,9 @@ export default {
 
                 sessionStorage.setItem('auth_token', auth_token)
                 sessionStorage.setItem('user', JSON.stringify(user))
+
+                router.app.$root.isSignedIn = true
+                router.app.$root.user = user
 
                 resolve(user)
             })
