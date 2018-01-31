@@ -84,7 +84,16 @@ const router = new Router({
         },
         { path: '/login', name: 'login', component: LoginPage, meta: { ifLoginRedirectTo: '/tasks' }},
         { path: '/register', component: RegisterPage },
-        { path: '/calendar', component: CalendarPage },
+        {
+            name:'calendar',
+            path: '/calendar',
+            component: CalendarPage,
+            meta: {
+                pageHeader: 'Kalender',
+                requiresLogin: true,
+                bottomMenuIndex: 2
+            }
+        },
         { path: '*', component: ErrorPage }
     ]
 })
@@ -113,7 +122,7 @@ router.beforeEach(function(to, from, next) {
 
 
         if (to.meta.bottomMenuIndex !== undefined && from.meta.bottomMenuIndex !== undefined) {
-            router.app.$root.transitionName = to.meta.bottomMenuIndex > from.meta.bottomMenuIndex ? 'page-right' : 'page-left'
+            router.app.$root.transitionName = to.meta.bottomMenuIndex < from.meta.bottomMenuIndex ? 'page-right' : 'page-left'
         }
     }
 
