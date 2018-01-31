@@ -41,12 +41,7 @@
     name: 'register-page',
     data(){
       return {
-        show: false,
         page: "Register",
-        options: [
-          {name: "Menüpunkt 1", path:""},
-          {name: "Menüpunkt 10", path:""}
-        ]
       }
 
     }

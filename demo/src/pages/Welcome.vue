@@ -25,12 +25,7 @@
     name: 'welcome-page',
     data(){
       return {
-        show: false,
         page: "Welcome",
-        options: [
-          {name: "Menüpunkt 1", path:""},
-          {name: "Menüpunkt 10", path:""}
-        ]
       }
 
     }
@@ -55,13 +50,11 @@
     border-radius: 5%;
     align-self: center;
 
-
     h1{
       margin-bottom: 0.3em;
     }
 
     p{
-
       padding: 0 2em 0 2em;
     }
 
@@ -83,7 +76,6 @@
     flex-direction: column;
     align-items: center;
     align-self: center;
-  //  margin: 0 4em 0 4em;
   }
 
   p{
@@ -100,7 +92,6 @@
     height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-
     border-top: 20px solid $grey;
     margin-bottom: 1em;
   }

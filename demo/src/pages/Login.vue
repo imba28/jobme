@@ -41,17 +41,7 @@ export default {
   name: 'login-page',
   data() {
     return {
-      show: false,
-      page: "Login",
-      options: [{
-          name: "Menüpunkt 1",
-          path: ""
-        },
-        {
-          name: "Menüpunkt 10",
-          path: ""
-        }
-      ]
+      page: "Login"
     }
   },
   methods: {
@@ -111,7 +101,6 @@ export default {
         content: "";
       }
     }
-
     margin-top: 1em;
   }
 
@@ -153,7 +142,6 @@ export default {
   }
 
   .icon-key::before, .icon-mail::before{
-   // color: $blue;
     font-size: 1.2em;
   }
 
