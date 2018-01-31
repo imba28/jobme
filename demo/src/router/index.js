@@ -15,12 +15,12 @@ import GroupAddPage from '@/pages/GroupAdd'
 import LoginPage from '@/pages/Login'
 import TestPage from '@/pages/Test'
 import WelcomePage from "@/pages/Welcome"
+import ErrorPage from "@/pages/Error"
 
 const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
     linkExactActiveClass: "active", // active class for *exact* links.
-    routes: [
-        {
+    routes: [{
             path: '/',
             component: WelcomePage,
             meta: {
@@ -33,6 +33,7 @@ const router = new Router({
             component: TasksPage,
             meta: {
                 requiresLogin: true,
+                bottomMenuIndex: 1
             }
         },
         {
@@ -50,7 +51,8 @@ const router = new Router({
             component: GroupsPage,
             meta: {
                 pageHeader: 'Gruppen',
-                requiresLogin: true
+                requiresLogin: true,
+                bottomMenuIndex: 0
             }
         },
         {
@@ -79,31 +81,54 @@ const router = new Router({
                 requiresLogin: true
             }
         },
-        { path: '/login', name: 'login', component: LoginPage, meta: { ifLoginRedirectTo: '/tasks' }},
-        { path: '/register', component: RegisterPage},
+        {
+            path: '/login',
+            name: 'login',
+            component: LoginPage,
+            meta: {
+                ifLoginRedirectTo: '/tasks'
+            }
+        },
+        {
+            path: '/register',
+            component: RegisterPage
+        },
+        {
+            path: '*',
+            component: ErrorPage
+        }
     ]
 })
 
 router.beforeEach(function(to, from, next) {
     if (to.meta) {
-        if(to.meta.requiresLogin) {
+        if (to.meta.requiresLogin) {
             if (!auth.isSignedIn()) {
-                router.push({ path: 'login' })
+                router.push({
+                    path: 'login'
+                })
                 router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
 
                 return;
             }
         }
-        if(to.meta.ifLoginRedirectTo) {
+        if (to.meta.ifLoginRedirectTo) {
             if (auth.isSignedIn()) {
                 console.log("REDIRECT TO " + to.meta.ifLoginRedirectTo)
-                router.push({path: to.meta.ifLoginRedirectTo})
+                router.push({
+                    path: to.meta.ifLoginRedirectTo
+                })
                 return;
             }
         }
+
+
+        if (to.meta.bottomMenuIndex !== undefined && from.meta.bottomMenuIndex !== undefined) {
+            router.app.$root.transitionName = to.meta.bottomMenuIndex > from.meta.bottomMenuIndex ? 'page-right' : 'page-left'
+        }
     }
 
-    if(typeof router.app.setPageHeader === 'function') {
+    if (typeof router.app.setPageHeader === 'function') {
         router.app.setPageHeader(to.meta.pageHeader || 'task-o-mat')
     }
 

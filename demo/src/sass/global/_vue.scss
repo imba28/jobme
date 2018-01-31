@@ -1,19 +1,46 @@
-.page-enter-active, .page-leave-active {
-  transition: transform 1s;
+.page-right-enter-active, .page-right-leave-active {
+  transition: opacity 500ms 500ms, transform 1s ease-in-out;
 }
 
-.page-enter-active {
+.page-right-enter-active {
   transform: translateX(0%);
 }
-.page-leave-active {
+.page-right-leave-active {
   transform: translateX(100%);
+  opacity: 0;
 }
 
-.page-enter{
+.page-right-enter{
   transform: translateX(-100%);
 }
 
-.page-enter, .page-leave-to {
+.page-right-enter, .page-right-leave-to {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+
+
+.page-left-enter-active, .page-left-leave-active {
+  transition: opacity 1s, transform 1s;
+}
+
+.page-left-enter-active {
+  transform: translateX(0%);
+}
+.page-left-leave-active {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.page-left-enter{
+  transform: translateX(100%);
+}
+
+.page-left-enter, .page-left-leave-to {
   position: absolute;
   top: 0;
   left: 0;

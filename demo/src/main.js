@@ -15,10 +15,13 @@ Vue.component('task-component', TaskComponent);
 new Vue({
     el: '#app',
     router,
+    props: {
+        transitionName: 'page-right'
+    },
     data: {
         show: '',
         isSignedIn: false,
-        user: null
+        user: null,
     },
     components: {
         App
