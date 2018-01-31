@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <mainmenu></mainmenu>
+    <div class="placeholders"></div>
     <div id="page">
       <notification ref="notification"/>
-      <transition name="page">
+      <transition :name="$root.transitionName">
         <router-view class="view"></router-view>
       </transition>
     </div>
+    <div class="placeholders"></div>
     <bottommenu v-if="$root.isSignedIn"></bottommenu>
   </div>
 </template>
@@ -30,20 +32,22 @@ export default {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 
   width: 100%;
+
+  .placeholders {
+    height: $bottom-menu-height;
+  }
+  .wrapper + .placeholders {
+    margin-bottom: 1em;
+  }
 }
 
 #page {
-  width: 85%;
   position: relative;
   margin: 0 auto;
-  margin-top: $top-menu-height;
-  margin-bottom: $bottom-menu-height;
-  padding-top: 2.2em;
-  padding-bottom: 2em;
+  padding: 0 2em;
 
   .view > h2:first-child {
     margin-top: 0;

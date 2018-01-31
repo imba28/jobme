@@ -46,6 +46,7 @@ button.btn {
   margin-top: 1.3em;
 
   li {
+    position: relative;
     list-style: none;
   }
 }
