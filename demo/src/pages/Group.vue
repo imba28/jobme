@@ -68,7 +68,6 @@
     methods: {
       leaveGroup: function() {
             request.fetch(`http://localhost:3000/groups/${this.$route.params.id}/users/${auth.getUID()}.json`, 'DELETE', { })
-                   .then(this.user = this.user.groups.filter(x => x.id === this.$route.params.id))
                    .then(router.push({
                       name: 'groups',
                     }));
