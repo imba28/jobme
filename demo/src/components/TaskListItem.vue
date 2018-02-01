@@ -111,11 +111,11 @@ export default {
     }
 
     .input__container.input__container--checkbox {
-      label {
-        display: flex;
-        align-items: center;
-        margin: 0;
+      display: flex;
+      align-items: center;
+      margin: 0 1em 0 0;
 
+      label {
         input {
           position: absolute;
         }
