@@ -45,7 +45,7 @@ export default {
   padding-top: 2.2em;
   padding-bottom: 2em;
 
-  .view > h2:first-child {
+  .view > h2 {
     margin-top: 0;
   }
 
