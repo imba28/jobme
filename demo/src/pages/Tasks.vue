@@ -19,8 +19,10 @@
 </template>
 
 <script>
+  import Vue from 'vue'
   import router from '@/router'
-  import TaskComponent from '@/components/Task'
+  import TaskComponent from '@/components/TaskListItem'
+  Vue.component('task-component', TaskComponent);
 
   import auth from '@/auth'
   import request from '@/lib/request'
