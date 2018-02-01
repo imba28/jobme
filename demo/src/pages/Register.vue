@@ -26,7 +26,7 @@
             <span class="icon-key"></span>
           </label>
         </div>
-        <button class="btn">Konto erstellen</button>
+        <button class="btn btn--default">Konto erstellen</button>
       </form>
     </div>
     <div>
