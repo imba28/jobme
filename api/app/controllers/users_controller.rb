@@ -57,7 +57,7 @@ class UsersController < ApplicationController
       if group.users.include?(@user) then
         respond_to do |format|
           format.html { redirect_to group_url, notice: 'User was successfully added to group.' }
-          format.json { render json: group, status: :no_content }
+          format.json { render json: group, status: :ok }
         end
       else
         group.users << @user
