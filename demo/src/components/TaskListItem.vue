@@ -1,11 +1,11 @@
 <template>
-<li v-bind:class="{ 'task--done': task.status }" class="list__item__wrapper task">
+<li v-bind:class="{ 'task--done': task.done == 1 }" class="list__item__wrapper task">
   <div class="task__info">
     <span class='input__container input__container--checkbox'>
-          <input :id="'task-' + task.id" type="checkbox" v-model="task.status" class="task__done input__container--hide-input input__radio">
+          <input :id="'task-' + task.id" type="checkbox" v-model="task.done" class="task__done input__container--hide-input input__radio" :checked="task.done == 1" v-on:change="toggleDone">
           <label :for="'task-' + task.id">
               <span class="icon-checkbox-checked"></span>
-              <span class="icon-checkbox-unchecked"></span>
+              <span class="icon-checkbox"></span>
           </label>
       </span>
     <router-link :to="{ name: 'task', params: { id: task.id }}">
@@ -40,20 +40,20 @@ export default {
 
       if (d.getUTCHours() == 0 && d.getUTCMinutes() == 0) return `${d.getDay()}. ${mo}`
       else return `${d.getDay()}. ${mo} / ${d.getHours()}:${d.getMinutes()}`
+    },
+    toggleDone() {
+      request.fetch(
+          `http://localhost:3000/users/${auth.getUID()}/tasks/${this.task.id}.json`,
+          'PUT', {
+            'task[done]': this.task.done ? 1 : 0
+          }
+        )
     }
   },
   watch: {
     task: {
       handler: function(newValue) {
-        request.fetch(
-            `http://localhost:3000/users/${auth.getUID()}/tasks/${this.task.id}.json`,
-            'PUT', {
-              'task[done]': this.task.status ? 1 : 0
-            }
-          )
-          .then(data => {
-            console.log(data);
-          });
+
       },
       deep: true
     }
@@ -69,6 +69,15 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+
+    &.task--done {
+        color: #aaa;
+
+        .task__description {
+            display: none;
+        }
+    }
 
     &::before {
       top: 0;
@@ -100,17 +109,21 @@ export default {
     .task__description {
         margin: 0;
     }
+
+    .input__container.input__container--checkbox {
+      label {
+        display: flex;
+        align-items: center;
+        margin: 0;
+
+        input {
+          position: absolute;
+        }
+      }
+    }
 }
 
 .badge {
     margin-bottom: 0.5em;
-}
-
-.task--done {
-    color: #aaa;
-
-    .task__description {
-        display: none;
-    }
 }
 </style>

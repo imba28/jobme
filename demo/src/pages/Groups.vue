@@ -9,6 +9,9 @@
           <div class="list__item fade-out">{{ group.name }}</div>
         </router-link>
       </li>
+      <li v-if="groups.length == 0">
+        Keine Gruppen gefunden.
+      </li>
     </ul>
     <router-link :to="{name: 'group_new' }" class="btn btn--default display--iblock">Neue Gruppe erstellen</router-link>
   </div>

@@ -1,3 +1,27 @@
+.textarea, .input {
+  font-family: $font-main;
+  padding: 1em;
+  border: 1px solid $grey;
+  @include border-radius($input-border-radius $input-border-radius $input-border-radius $input-border-radius);
+  @include transition(border 300ms ease);
+  position: relative;
+
+  &:focus {
+    border-color: $blue;
+    box-shadow: 0 0 0.25em rgba($black, 0.15) inset;
+  }
+
+  &:focus + label {
+    background: $blue;
+    border-color: $blue;
+    color: $white;
+  }
+}
+
+.textarea {
+  width: 100%;
+}
+
 .input__container {
   display: flex;
   align-items: center;
@@ -12,23 +36,7 @@
 
   .input {
     flex: 1 1;
-    font-family: $font-main;
-    padding: 1em;
-    border: 2px solid $grey;
     @include border-radius(0 $input-border-radius $input-border-radius 0);
-    @include transition(border 300ms ease);
-    position: relative;
-
-    &:focus {
-      border-color: $blue;
-      box-shadow: 0 0 0.25em rgba($black, 0.15) inset;
-    }
-
-    &:focus + label {
-      background: $blue;
-      border-color: $blue;
-      color: $white;
-    }
   }
 
   .btn:last-child,
@@ -87,14 +95,17 @@
   position: relative;
 
   span {
-    position: absolute;
-    left: -1px;
-    top: 1px;
     cursor: pointer;
     pointer-events: none;
     top: 3px;
     left: 0;
     color: $grey-darker;
+  }
+
+  span:first-child {
+    position: absolute;
+    left: -1px;
+    top: 1px;
   }
 
   .input__radio, .input__checkbox {
@@ -103,7 +114,7 @@
     cursor: pointer;
 
     + label {
-      padding-left: 0.25em;
+      position: relative;
       cursor: pointer;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
@@ -127,4 +138,14 @@
 
 .input__container--radio + .input__container--radio {
   margin-left: 1em;
+}
+
+.input__container--light {
+  .input {
+    border: 0;
+    border-left: 2px solid $blue;
+    background: rgba($black, 0.04);
+    box-shadow: none;
+    @include border-radius(0);
+  }
 }

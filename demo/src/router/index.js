@@ -9,6 +9,7 @@ import HomePage from '@/pages/Home'
 import TasksPage from '@/pages/Tasks'
 import RegisterPage from '@/pages/Register'
 import TaskAddPage from '@/pages/TaskAdd'
+import TaskPage from '@/pages/Task'
 import GroupsPage from '@/pages/Groups'
 import GroupPage from '@/pages/Group'
 import GroupNewPage from '@/pages/GroupNew'
@@ -45,6 +46,14 @@ const router = new Router({
             props: true,
             meta: {
                 requiresLogin: true
+            }
+        },
+        {
+            name: 'task',
+            path: '/tasks/:id',
+            component: TaskPage,
+            meta: {
+                requiresLogin: true,
             }
         },
         {
