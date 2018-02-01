@@ -16,18 +16,26 @@
     </div>
     <div class="action_button--container">
     <button class="btn btn--default" @click="createGroup()">Erstellen</button>
-    <button class="btn btn--red">Abbrechen</button>
+    <button class="btn btn--red" @click="abort()">Abbrechen</button>
     </div>
   </div>
 </template>
 
 <script>
+  import request from "@/lib/request"
+  import auth from '@/auth'
 
   export default {
     methods:{
       createGroup(){
         const groupName = this.$refs['group_name'].value
         console.log(groupName);
+
+        request.fetch("http://localhost:3000/groups.json","POST",{'group[name]':groupName ,'group[admin_id]' :auth.getUID() })
+        .then(data => {this.$router.push({path:"/groups"})})
+      },
+      abort(){
+        this.$router.push({path:"/groups"})
       }
     }
 
@@ -68,7 +76,9 @@
     .action_button--container{
       display: flex;
       flex-direction: column;
-      align-content: center;
+      align-content: stretch;
+      align-items: stretch;
+      justify-content: center;
       margin-top: 3em;
     }
   }
