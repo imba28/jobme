@@ -12,6 +12,7 @@ import TaskAddPage from '@/pages/TaskAdd'
 import GroupsPage from '@/pages/Groups'
 import GroupPage from '@/pages/Group'
 import GroupAddPage from '@/pages/GroupAdd'
+import MemberAddPage from '@/pages/MemberAdd'
 import LoginPage from '@/pages/Login'
 import TestPage from '@/pages/Test'
 import WelcomePage from "@/pages/Welcome"
@@ -69,6 +70,16 @@ const router = new Router({
             name: 'group_id',
             path: '/groups/:id',
             component: GroupPage,
+            props: true,
+            meta: {
+                pageHeader: 'Gruppen',
+                requiresLogin: true
+            }
+        },
+        {
+            name: 'member-add',
+            path: '/groups/:id/add',
+            component: MemberAddPage,
             props: true,
             meta: {
                 pageHeader: 'Gruppen',

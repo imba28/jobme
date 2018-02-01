@@ -1,7 +1,6 @@
 <template>
   <div>
     <h2 class="text--center text--left">Deine Gruppen</h2>
-    <router-link :to="{name: 'group-add' }" class="btn btn--default display--iblock">Neue Gruppe erstellen</router-link>
     <ul class="groups">
       <li v-for="group in groups" class="list__item__wrapper" :data-id="group.id">
         <router-link :to="{ name: 'group_id', params: { id: group.id }}">
@@ -9,6 +8,7 @@
         </router-link>
       </li>
     </ul>
+    <router-link :to="{name: 'group-add' }"><button class="btn btn--default btn--left">Neue Gruppe erstellen</button></router-link>
   </div>
 </template>
 
