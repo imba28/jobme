@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="input__container input__container--has-button input__container--reverse add-task">
-        <input ref="task_name" id="add_task" class="input" type="text" placeholder="Neue Aufgabe hinzufügen..."/>
-        <button class="btn btn--default" @click="createTask">
-          <i class="icon-plus"></i>
-        </button>
+    <div class="input__container input__container--has-button input__container--reverse">
+      <input ref="task_name" id="add_task" class="input" type="text" placeholder="Neue Aufgabe hinzufügen..."/>
+      <button class="input__label" id="email__label" for="email" @click="createTask">
+        <i class="icon-plus"></i>
+      </button>
     </div>
     <ul class="groups">
       <button v-for="group in groups" class="badge" v-on:click="changeGroup" :data-id="group.id">
