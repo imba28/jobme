@@ -1,0 +1,2 @@
+module InvitecodesHelper
+end
