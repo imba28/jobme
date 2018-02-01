@@ -19,7 +19,7 @@
   </div>
   <div class="inputgroup">
     <span class="label">Jedem Mitglied zuweisen?</span>
-    <button class="btn btn--default">TODO</button>
+    <input type="checkbox" ref="share" />
   </div>
   </div>
   <div class="inputgroup">
@@ -38,6 +38,7 @@
 
 <script>
 import request from '@/lib/request'
+import notification from '@/lib/notification'
 import auth from '@/auth'
 
 export default {
@@ -54,7 +55,8 @@ export default {
         group_id: this.$refs.group_id.value,
         user_id: auth.getUID(),
         name: this.$refs.name.value,
-        description: this.$refs.description.value
+        description: this.$refs.description.value,
+        share: this.$refs.share.value == 'on' ? 1 : 0,
       }
 
       const params = {}
@@ -64,8 +66,12 @@ export default {
 
       request.fetch(`http://localhost:3000/tasks.json`, 'POST', params)
         .then(task => {
-          console.log(task);
-        });
+          notification.success('Aufgabe wurde erstellt!')
+          this.$router.push({ name: 'tasks' })
+        })
+        .catch(err => {
+          console.error(err);
+        })
     }
   },
   created() {
