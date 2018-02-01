@@ -18,10 +18,9 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { render :show, location: @group }
       format.json { render json: @group.to_json(
-        :only => [:id, :name, :created_at, :updated_at],
         :include => {
-          :admin => {only: [:id, :name]},
-          :tasks => {only: [:id, :name, :description, :due_date, :created_at, :updated_at, :done]}
+          :admin => {},
+          :tasks => {}
         })
       }
     end
@@ -47,7 +46,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
+        format.json { render @group, status: :created }
       else
         format.html { render :new }
         format.json { render json: @group.errors, status: :unprocessable_entity }
