@@ -48,7 +48,7 @@ export default {
   margin: 0 auto;
   margin: 0 2em;
 
-  .view > h2 {
+  .view h2 {
     margin-top: 0;
   }
 
