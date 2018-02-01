@@ -65,6 +65,7 @@ export default {
       request.fetch(`http://localhost:3000/tasks.json`, 'POST', params)
         .then(task => {
           console.log(task);
+          this.$router.push({path:"/tasks"})
         });
     }
   },
