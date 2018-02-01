@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'groups#index'
 
+  resources :invitecodes
   resources :groups
   resources :tasks
 

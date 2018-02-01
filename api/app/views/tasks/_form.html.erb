@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :done %><br>
-    <%= form.select :done, Task.dones.keys %>
+    <%= form.text_field :done, id: :task_done %>
   </div>
 
   <div class="field">
