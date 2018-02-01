@@ -69,6 +69,6 @@ class InvitecodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invitecode_params
-      params.require(:invitecode).permit(:code, :group_id)
+      params.permit(:code, :group_id)
     end
 end
