@@ -233,6 +233,7 @@ h1 {
     button{
       background-color: $red;
       color: $white;
+      font-size: 125%;
     }
   }
 }

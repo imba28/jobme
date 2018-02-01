@@ -11,12 +11,12 @@ import RegisterPage from '@/pages/Register'
 import TaskAddPage from '@/pages/TaskAdd'
 import GroupsPage from '@/pages/Groups'
 import GroupPage from '@/pages/Group'
-import GroupAddPage from '@/pages/GroupAdd'
+import GroupNewPage from '@/pages/GroupNew'
 import LoginPage from '@/pages/Login'
 import TestPage from '@/pages/Test'
-import WelcomePage from "@/pages/Welcome"
-import ErrorPage from "@/pages/Error"
-import CalendarPage from "@/pages/Calendar"
+import WelcomePage from '@/pages/Welcome'
+import ErrorPage from '@/pages/Error'
+import CalendarPage from '@/pages/Calendar'
 
 const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
@@ -57,18 +57,19 @@ const router = new Router({
             }
         },
         {
-            name: 'group-add',
-            path: '/groups/add',
-            component: GroupAddPage,
+            name: 'group_id',
+            path: '/groups/:id',
+            component: GroupPage,
+            props: true,
             meta: {
                 pageHeader: 'Gruppen',
                 requiresLogin: true
             }
         },
         {
-            name: 'group_id',
-            path: '/groups/:id',
-            component: GroupPage,
+            name: 'group_new',
+            path: '/groups/new',
+            component: GroupNewPage,
             props: true,
             meta: {
                 pageHeader: 'Gruppen',
