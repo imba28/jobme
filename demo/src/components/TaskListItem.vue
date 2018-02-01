@@ -39,7 +39,7 @@ export default {
       const mo = getMonthName(d.getMonth());
 
       if (d.getUTCHours() == 0 && d.getUTCMinutes() == 0) return `${d.getDay()}. ${mo}`
-      else return `${d.getDay()}. ${mo} / ${d.getHours()}:${d.getMinutes()}`
+      else return `${d.getDate()}. ${mo} / ${d.getHours()}:${d.getMinutes()}`
     },
     toggleDone() {
       request.fetch(
@@ -111,11 +111,11 @@ export default {
     }
 
     .input__container.input__container--checkbox {
-      label {
-        display: flex;
-        align-items: center;
-        margin: 0;
+      display: flex;
+      align-items: center;
+      margin: 0 1em 0 0;
 
+      label {
         input {
           position: absolute;
         }
