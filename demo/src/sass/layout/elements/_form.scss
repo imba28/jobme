@@ -7,9 +7,11 @@
 
   .input, .btn, label {
     margin-top: 0!important;
+    min-width: 0;
   }
 
   .input {
+    flex: 1 1;
     font-family: $font-main;
     padding: 1em;
     border: 2px solid $grey;
