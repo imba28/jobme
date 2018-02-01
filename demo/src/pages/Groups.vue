@@ -8,6 +8,9 @@
           <div class="list__item fade-out">{{ group.name }}</div>
         </router-link>
       </li>
+      <li v-if="groups.length == 0">
+        Keine Gruppen gefunden.
+      </li>
     </ul>
   </div>
 </template>
