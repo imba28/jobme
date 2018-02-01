@@ -7,6 +7,7 @@ import router from './router'
 
 import '@/sass/template.scss'
 
+
 Vue.config.productionTip = true
 
 /* eslint-disable no-new */
@@ -32,3 +33,6 @@ new Vue({
         }
     }
 })
+
+
+Vue.use(VueTouch)
