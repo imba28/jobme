@@ -66,18 +66,12 @@ export default {
 
       request.fetch(`http://localhost:3000/tasks.json`, 'POST', params)
         .then(task => {
-<<<<<<< HEAD
           notification.success('Aufgabe wurde erstellt!')
           this.$router.push({ name: 'tasks' })
         })
         .catch(err => {
           console.error(err);
         })
-=======
-          console.log(task);
-          this.$router.push({path:"/tasks"})
-        });
->>>>>>> 14b8d8f7f1e1d800346e5915e12e33614f8599f9
     }
   },
   created() {
