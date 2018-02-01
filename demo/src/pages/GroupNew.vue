@@ -15,7 +15,7 @@
       <button class="btn btn--default" v-on:click=" "  >kopieren</button>
     </div>
     <div class="action_button--container">
-    <button class="btn btn--default">Erstellen</button>
+    <button class="btn btn--default" @click="createGroup()">Erstellen</button>
     <button class="btn btn--red">Abbrechen</button>
     </div>
   </div>
@@ -24,7 +24,12 @@
 <script>
 
   export default {
-
+    methods:{
+      createGroup(){
+        const groupName = this.$refs['group_name'].value
+        console.log(groupName);
+      }
+    }
 
   };
 
