@@ -19,7 +19,12 @@
   </div>
   <div class="inputgroup">
     <span class="label">Jedem Mitglied zuweisen?</span>
-    <input type="checkbox" ref="share" />
+    <div class="switch-wrapper">
+      <div class="switch">
+          <input type="checkbox" class="switch__checkbox" ref="share" id="share" checked="checked">
+          <label class="switch__label" for="share"></label>
+      </div>
+    </div>
   </div>
   </div>
   <div class="inputgroup">
@@ -63,7 +68,9 @@ export default {
         params[`task[${key}]`] = data[key]
       }
 
-      params['share'] = this.$refs.share.value == 'on' ? 1 : 0
+      params['share'] = this.$refs.share.checked ? 1 : 0
+
+      console.log(this.$refs.share)
 
       request.fetch(`http://localhost:3000/tasks.json`, 'POST', params)
         .then(task => {

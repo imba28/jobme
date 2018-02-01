@@ -36,8 +36,11 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        if(params[:share]) then
+        Rails.logger.warn params
+
+        if(params[:share] and params[:share] == '1') then
           @task.group.users.each do |user|
+            Rails.logger.warn user
             next if user.id == @task.user.id
             task_clone = @task.dup
             task_clone.user = user
