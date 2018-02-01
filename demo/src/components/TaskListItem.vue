@@ -5,7 +5,7 @@
           <input :id="'task-' + task.id" type="checkbox" v-model="task.status" class="task__done input__container--hide-input input__radio">
           <label :for="'task-' + task.id">
               <span class="icon-checkbox-checked"></span>
-              <span class="icon-checkbox-unchecked"></span>
+              <span class="icon-checkbox"></span>
           </label>
       </span>
     <router-link :to="{ name: 'task', params: { id: task.id }}">
@@ -70,6 +70,15 @@ export default {
     justify-content: space-between;
     align-items: center;
 
+
+    &.task--done {
+        color: #aaa;
+
+        .task__description {
+            display: none;
+        }
+    }
+
     &::before {
       top: 0;
     }
@@ -100,17 +109,21 @@ export default {
     .task__description {
         margin: 0;
     }
+
+    .input__container.input__container--checkbox {
+      label {
+        display: flex;
+        align-items: center;
+        margin: 0;
+
+        input {
+          position: absolute;
+        }
+      }
+    }
 }
 
 .badge {
     margin-bottom: 0.5em;
-}
-
-.task--done {
-    color: #aaa;
-
-    .task__description {
-        display: none;
-    }
 }
 </style>
