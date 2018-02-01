@@ -55,14 +55,15 @@ export default {
         group_id: this.$refs.group_id.value,
         user_id: auth.getUID(),
         name: this.$refs.name.value,
-        description: this.$refs.description.value,
-        share: this.$refs.share.value == 'on' ? 1 : 0,
+        description: this.$refs.description.value
       }
 
       const params = {}
       for(let key in data) {
         params[`task[${key}]`] = data[key]
       }
+
+      params['share'] = this.$refs.share.value == 'on' ? 1 : 0
 
       request.fetch(`http://localhost:3000/tasks.json`, 'POST', params)
         .then(task => {
