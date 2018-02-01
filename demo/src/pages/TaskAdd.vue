@@ -38,6 +38,8 @@
       <button class="btn btn--default btn--default--hover">Erstellen</button>
     </div>
   </div>
+
+  <div v-on:doubletap="t" style="height: 50px; background: pink;"></div>
 </form>
 </template>
 
@@ -55,6 +57,9 @@ export default {
     }
   },
   methods: {
+    t() {
+      console.log("TOUCH")
+    },
     onSubmit() {
       const data = {
         group_id: this.$refs.group_id.value,
