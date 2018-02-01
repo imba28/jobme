@@ -50,19 +50,19 @@
     border-radius: 5%;
     align-self: center;
 
-    h1{
-      margin-bottom: 0.3em;
-    }
+  h1{
+    margin-bottom: 0.3em;
+  }
 
-    p{
-      padding: 0 2em 0 2em;
-    }
+  p{
+    padding: 0 2em 0 2em;
+  }
 
-    button{
+  button{
     align-self: center;
     margin: 0.5em 0 0.5em 0em;
-    }
   }
+}
 
   .tom__container{
     height: 10em;

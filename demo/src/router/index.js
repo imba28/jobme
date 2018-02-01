@@ -12,12 +12,13 @@ import TaskAddPage from '@/pages/TaskAdd'
 import TaskPage from '@/pages/Task'
 import GroupsPage from '@/pages/Groups'
 import GroupPage from '@/pages/Group'
-import GroupAddPage from '@/pages/GroupAdd'
+import GroupNewPage from '@/pages/GroupNew'
+import MemberAddPage from '@/pages/MemberAdd'
 import LoginPage from '@/pages/Login'
 import TestPage from '@/pages/Test'
-import WelcomePage from "@/pages/Welcome"
-import ErrorPage from "@/pages/Error"
-import CalendarPage from "@/pages/Calendar"
+import WelcomePage from '@/pages/Welcome'
+import ErrorPage from '@/pages/Error'
+import CalendarPage from '@/pages/Calendar'
 
 const router = new Router({
     linkActiveClass: "active", // active class for non-exact links.
@@ -66,15 +67,6 @@ const router = new Router({
             }
         },
         {
-            name: 'group-add',
-            path: '/groups/add',
-            component: GroupAddPage,
-            meta: {
-                pageHeader: 'Gruppen',
-                requiresLogin: true
-            }
-        },
-        {
             name: 'group_id',
             path: '/groups/:id',
             component: GroupPage,
@@ -85,9 +77,29 @@ const router = new Router({
             }
         },
         {
+            name: 'group_new',
+            path: '/groups/new',
+            component: GroupNewPage,
+            props: true,
+            meta: {
+                pageHeader: 'Gruppen',
+                requiresLogin: true
+            }
+        },
+        {
             path: '/test',
             component: TestPage,
             meta: {
+                requiresLogin: true
+            }
+        },
+        {
+            name: 'member-add',
+            path: '/groups/:id/add',
+            component: MemberAddPage,
+            props: true,
+            meta: {
+                pageHeader: 'Gruppen',
                 requiresLogin: true
             }
         },

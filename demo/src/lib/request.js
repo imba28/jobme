@@ -3,7 +3,7 @@ import auth from '@/auth'
 export default {
     fetch(foo, method = 'GET', params = {}) {
         return new Promise((resolve, reject) => {
-            if (method == 'PUT' || method == 'PATCH') {
+            if (method == 'PUT' || method == 'PATCH' || method == 'DELETE') {
                 params['_method'] = method
                 method = 'POST'
             }
