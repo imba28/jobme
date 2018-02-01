@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :new, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -56,7 +57,7 @@ class UsersController < ApplicationController
       if group.users.include?(@user) then
         respond_to do |format|
           format.html { redirect_to group_url, notice: 'User was successfully added to group.' }
-          format.json { render json: group, status: :no_content }
+          format.json { render json: group, status: :ok }
         end
       else
         group.users << @user
@@ -107,7 +108,7 @@ class UsersController < ApplicationController
         group.users.delete(@user)
         respond_to do |format|
           format.html { redirect_to groups_url, notice: 'User was successfully remove from Group.' }
-          format.json { head :no_content }
+          format.json { render json: "{}", status: :ok }
         end
       else
         respond_to do |format|
@@ -132,6 +133,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password_digest)
+      params.require(:user).permit(:name, :password_digest, :password, :email)
     end
 end

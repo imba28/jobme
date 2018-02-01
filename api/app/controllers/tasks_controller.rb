@@ -1,13 +1,14 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
     if params[:user_id]
-      @tasks = Task.where(:user => User.find(params[:user_id]))
+      @tasks = Task.where('user_id = ? AND (done = ? OR (updated_at > ?))', params[:user_id], '0', DateTime.now.beginning_of_day).all
     else
-      @tasks = Task.all
+      @tasks = Task.where('done = ? OR (updated_at > ?)', 0, DateTime.now.beginning_of_day).all
     end
   end
 
@@ -35,7 +36,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        if(params[:share]) then
+        Rails.logger.warn params
+
+        if(task_params[:share] and task_params[:share] == '1') then
           @task.group.users.each do |user|
             next if user.id == @task.user.id
             task_clone = @task.dup
@@ -84,6 +87,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :description, :group_id, :user_id, :due_date, :done)
+      params.require(:task).permit(:name, :description, :group_id, :user_id, :due_date, :done, :share)
     end
 end

@@ -1,3 +1,27 @@
+.textarea, .input {
+  font-family: $font-main;
+  padding: 1em;
+  border: 1px solid $grey;
+  @include border-radius($input-border-radius $input-border-radius $input-border-radius $input-border-radius);
+  @include transition(border 300ms ease);
+  position: relative;
+
+  &:focus {
+    border-color: $blue;
+    box-shadow: 0 0 0.25em rgba($black, 0.15) inset;
+  }
+
+  &:focus + label {
+    background: $blue;
+    border-color: $blue;
+    color: $white;
+  }
+}
+
+.textarea {
+  width: 100%;
+}
+
 .input__container {
   display: flex;
   align-items: center;
@@ -5,29 +29,25 @@
   flex-direction: row-reverse;
   margin-bottom: 1em;
 
+  .input, .btn, label {
+    margin-top: 0!important;
+    min-width: 0;
+  }
+
   .input {
-    font-family: $font-main;
-    padding: 1em;
-    border: 2px solid $grey;
+    flex: 1 1;
     @include border-radius(0 $input-border-radius $input-border-radius 0);
-    @include transition(border 300ms ease);
-    position: relative;
-
-    &:focus {
-      border-color: $blue;
-      box-shadow: 0 0 0.25em rgba($black, 0.15) inset;
-    }
-
-    &:focus + label {
-      background: $blue;
-      border-color: $blue;
-      color: $white;
-    }
   }
 
   .btn:last-child,
   .input__label:last-child {
     @include border-radius($input-border-radius 0 0 $input-border-radius);
+  }
+
+  .btn:first-child,
+  .input__label:first-child {
+    border-left-width: 0;
+    @include border-radius(0 $input-border-radius $input-border-radius 0);
   }
 
   .input__label {
@@ -75,9 +95,6 @@
   position: relative;
 
   span {
-    position: absolute;
-    left: -1px;
-    top: 1px;
     cursor: pointer;
     pointer-events: none;
     top: 3px;
@@ -85,13 +102,20 @@
     color: $grey-darker;
   }
 
+  span:first-child {
+    position: absolute;
+    left: -1px;
+    top: 1px;
+  }
+
   .input__radio, .input__checkbox {
     position: relative;
-    opacity: 0;
+    /* opacity: 0;*/
+    display: none; /* TODO: Das könnte in manchen Browsern dazu führen, dass der label Trick nicht funktioniert. */
     cursor: pointer;
 
     + label {
-      padding-left: 0.25em;
+      position: relative;
       cursor: pointer;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
@@ -115,4 +139,14 @@
 
 .input__container--radio + .input__container--radio {
   margin-left: 1em;
+}
+
+.input__container--light {
+  .input {
+    border: 0;
+    border-left: 2px solid $blue;
+    background: rgba($black, 0.04);
+    box-shadow: none;
+    @include border-radius(0);
+  }
 }

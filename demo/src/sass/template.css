@@ -1,18 +1,20 @@
 /*
 Error: File to import not found or unreadable: global/normalize.
-        on line 3 of template.scss
+        on line 5 of template.scss
 
 1: // Attention: You need to restart the server when adding new files here
-2: 
-3: @import 'global/normalize';
-4: @import 'global/iconmoon';
-5: @import 'global/var';
-6: @import 'mixin';
-7: @import 'global/helper';
-8: @import 'global/global';
+2: // @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700,900');
+3: // @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,900');
+4: 
+5: @import 'global/normalize';
+6: @import 'global/iconmoon';
+7: @import 'global/var';
+8: @import 'mixin';
+9: @import 'global/vue';
+10: @import 'global/icons';
 
 Backtrace:
-template.scss:3
+template.scss:5
 C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/import_node.rb:67:in `rescue in import'
 C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/import_node.rb:45:in `import'
 C:/RailsInstaller/Ruby2.3.3/lib/ruby/gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -55,4 +57,4 @@ C:/RailsInstaller/Ruby2.3.3/bin/scss:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: global/normalize.\A         on line 3 of template.scss\A \A 1: // Attention: You need to restart the server when adding new files here\A 2: \A 3: @import 'global/normalize';\A 4: @import 'global/iconmoon';\A 5: @import 'global/var';\A 6: @import 'mixin';\A 7: @import 'global/helper';\A 8: @import 'global/global';"; }
+  content: "Error: File to import not found or unreadable: global/normalize.\A         on line 5 of template.scss\A \A 1: // Attention: You need to restart the server when adding new files here\A 2: // @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700,900');\A 3: // @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,900');\A 4: \A 5: @import 'global/normalize';\A 6: @import 'global/iconmoon';\A 7: @import 'global/var';\A 8: @import 'mixin';\A 9: @import 'global/vue';\A 10: @import 'global/icons';"; }

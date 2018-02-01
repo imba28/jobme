@@ -1,41 +1,57 @@
 <template>
   <div id="app">
-    <mainmenu/>
+    <mainmenu></mainmenu>
+    <div class="placeholders"></div>
     <div id="page">
-      <transition name="page">
+      <notification ref="notification"/>
+      <transition :name="$root.transitionName">
         <router-view class="view"></router-view>
       </transition>
     </div>
-    <bottommenu/>
+    <bottommenu v-if="$root.isSignedIn"></bottommenu>
   </div>
 </template>
 
 <script>
 import mainmenu from './components/MainMenu'
 import bottommenu from './components/BottomMenu'
+import notification from './components/Notifications'
 
 export default {
   name: 'App',
   components: {
     mainmenu,
-    bottommenu
+    bottommenu,
+    notification
   }
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 
   width: 100%;
+
+  .placeholders {
+    height: $bottom-menu-height;
+  }
+  .wrapper + .placeholders {
+    margin-bottom: 1em;
+  }
 }
 
 #page {
   position: relative;
+  margin: 0 auto;
+  margin: 0 2em;
+
+  .view h2 {
+    margin-top: 0;
+  }
+
   h1 {
     margin-top: 0;
   }

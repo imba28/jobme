@@ -26,6 +26,51 @@ $font_path: '~@/assets/fonts/';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-checkbox-checked:before {
+  content: "\e912";
+  color: #0091ea;
+}
+.icon-checkbox:before {
+  content: "\e913";
+  color: #0091ea;
+}
+.icon-archive:before {
+  content: "\e907";
+}
+.icon-check:before {
+  content: "\e908";
+}
+.icon-clock:before {
+  content: "\e909";
+}
+.icon-edit:before {
+  content: "\e90a";
+}
+.icon-eye:before {
+  content: "\e90b";
+}
+.icon-plus:before {
+  content: "\e90c";
+}
+.icon-settings:before {
+  content: "\e90d";
+}
+.icon-star:before {
+  content: "\e90e";
+}
+.icon-tom:before {
+  content: "\e90f";
+}
+.icon-trashcan:before {
+  content: "\e910";
+}
+.icon-upload:before {
+  content: "\e911";
+}
+.icon-group-light:before {
+  content: "\e903";
+  font-size: 0.9em;
+}
 .icon-calendar:before {
   content: "\e900";
 }
@@ -34,4 +79,14 @@ $font_path: '~@/assets/fonts/';
 }
 .icon-task:before {
   content: "\e902";
+  font-size: 1.2em;
+}
+.icon-key:before {
+  content: "\e904";
+}
+.icon-mail:before {
+  content: "\e905";
+}
+.icon-user:before {
+  content: "\e906";
 }

@@ -1,0 +1,48 @@
+.page-right-enter-active, .page-right-leave-active {
+  transition: opacity 300ms, transform 400ms ease-in-out;
+}
+
+.page-right-enter-active {
+  transform: translateX(0%);
+}
+.page-right-leave-active {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.page-right-enter{
+  transform: translateX(-100%);
+}
+
+.page-right-enter, .page-right-leave-to {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+
+
+.page-left-enter-active, .page-left-leave-active {
+  transition: opacity 300ms, transform 400ms ease-in-out;
+}
+
+.page-left-enter-active {
+  transform: translateX(0%);
+}
+.page-left-leave-active {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.page-left-enter{
+  transform: translateX(100%);
+}
+
+.page-left-enter, .page-left-leave-to {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
