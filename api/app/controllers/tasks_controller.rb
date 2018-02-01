@@ -38,9 +38,8 @@ class TasksController < ApplicationController
       if @task.save
         Rails.logger.warn params
 
-        if(params[:share] and params[:share] == '1') then
+        if(task_params[:share] and task_params[:share] == '1') then
           @task.group.users.each do |user|
-            Rails.logger.warn user
             next if user.id == @task.user.id
             task_clone = @task.dup
             task_clone.user = user
@@ -88,6 +87,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :description, :group_id, :user_id, :due_date, :done)
+      params.require(:task).permit(:name, :description, :group_id, :user_id, :due_date, :done, :share)
     end
 end

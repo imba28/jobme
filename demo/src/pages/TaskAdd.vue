@@ -60,15 +60,14 @@ export default {
         group_id: this.$refs.group_id.value,
         user_id: auth.getUID(),
         name: this.$refs.name.value,
-        description: this.$refs.description.value
+        description: this.$refs.description.value,
+        share: this.$refs.share.checked ? 1 : 0
       }
 
       const params = {}
       for(let key in data) {
         params[`task[${key}]`] = data[key]
       }
-
-      params['share'] = this.$refs.share.checked ? 1 : 0
 
       console.log(this.$refs.share)
 
