@@ -8,7 +8,7 @@
         </router-link>
       </li>
     </ul>
-    <router-link :to="{name: 'group-add' }"><button class="btn btn--default btn--left">Neue Gruppe erstellen</button></router-link>
+    <router-link :to="{name: 'group_new' }" class="btn btn--default display--iblock">Neue Gruppe erstellen</router-link>
   </div>
 </template>
 

@@ -15,8 +15,7 @@
     <nav v-if="show" id="side__nav">
       <ul>
         <li v-if="$root.isSignedIn">
-          Hallo {{ $root.user.name }}!
-          <button class="btn btn--red" @click="signOut">Logout</button>
+          <h3 id="greeting_user">Hallo {{ capitalizeFirstLetter($root.user.name) }}! </h3>
         </li>
         <li v-for="(option, index) in options">
           <router-link v-if="option.path" active-class="active" :to="option.path" @click.native="triggerBurger">
@@ -27,6 +26,9 @@
           </div>
         </li>
       </ul>
+      <div class="container_signOut">
+        <button class="btn btn--red" @click="signOut">Logout</button>
+      </div>
     </nav>
   </transition>
 </div>
@@ -85,7 +87,10 @@ export default {
     signOut: () => {
       auth.signOut()
       router.push( {path: "/login"} )
-    }
+    },
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+}
   },
   computed: {
     pageHeader: {
@@ -169,6 +174,15 @@ h1 {
         flex-flow: column;
         justify-content: space-around;
 
+        #greeting_user{
+            align-self: center;
+            text-align: center;
+            color: white;
+            margin-top: 0.5em;
+            margin-bottom: 0;
+           // padding-left: 2em;
+        }
+
         li {
             list-style: none;
             margin-bottom: 2em;
@@ -211,5 +225,16 @@ h1 {
             }
         }
     }
+  .container_signOut{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    button{
+      background-color: $red;
+      color: $white;
+      font-size: 125%;
+    }
+  }
 }
 </style>

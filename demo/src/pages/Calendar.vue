@@ -1,12 +1,12 @@
 <template>
-<div id="calendar_container">
-  <v-calendar
-    :attributes="attrs"
-    :theme-styles='themeStyles'
-  >
+  <div id="calendar_container">
+    <v-calendar
+     :attributes="attrs"
+     :theme-styles='themeStyles'
+    >
 
   </v-calendar>
-</div>
+  </div>
 </template>
 
 <script>
@@ -35,6 +35,7 @@ export default {
 
     }
   },
+
   created() {
     request.fetch(`http://localhost:3000/users/${auth.getUID()}/tasks.json`).then(tasks => {
       this.tasks = tasks;
@@ -67,15 +68,11 @@ export default {
 </script>
 
 <style lang='scss'>
+
   .view{
     display: flex;
     flex-direction: column;
     align-content: center;
   }
-
-  #calendar_container{
-
-  }
-
 
 </style>
