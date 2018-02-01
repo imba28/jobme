@@ -2,8 +2,8 @@
   <div>
     <div class="welcome--text__container">
       <h1>Hallo Ich bin Tom!</h1>
-      <p>Wie ich sehe bist du neu hier.<br>
-      Erstelle ein Konto um  den <br> task-o-mat nutzen zu können.
+      <p>Wie ich sehe, bist du neu hier.<br>
+      Erstelle ein Konto, um  den <br> task-o-mat nutzen zu können.
       </p>
       <button class="btn" >Jetzt registrieren</button>
     </div>

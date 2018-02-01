@@ -26,6 +26,14 @@ $font_path: '~@/assets/fonts/';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-checkbox-checked:before {
+  content: "\e912";
+  color: #0091ea;
+}
+.icon-checkbox:before {
+  content: "\e913";
+  color: #0091ea;
+}
 .icon-archive:before {
   content: "\e907";
 }

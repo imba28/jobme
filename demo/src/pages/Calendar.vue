@@ -10,8 +10,13 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import auth from '@/auth'
 import request from '@/lib/request'
+
+import VCalendar from 'v-calendar';
+import 'v-calendar/lib/v-calendar.min.css';
+Vue.use(VCalendar);
 
 export default {
   data() {

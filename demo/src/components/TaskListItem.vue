@@ -1,10 +1,18 @@
 <template>
-<li v-bind:class="{ 'task--done': task.status }" class="task">
+<li v-bind:class="{ 'task--done': task.status }" class="list__item__wrapper task">
   <div class="task__info">
-    <input type="checkbox" v-model="task.status" class="task__done">
-    <div class="task__title">
-      {{ task.name }}</h4>
-    </div>
+    <span class='input__container input__container--checkbox'>
+          <input :id="'task-' + task.id" type="checkbox" v-model="task.status" class="task__done input__container--hide-input input__radio">
+          <label :for="'task-' + task.id">
+              <span class="icon-checkbox-checked"></span>
+              <span class="icon-checkbox-unchecked"></span>
+          </label>
+      </span>
+    <router-link :to="{ name: 'task', params: { id: task.id }}">
+      <div class="task__title list__item fade-out">
+        {{ task.name }}</h4>
+      </div>
+    </router-link>
   </div>
   <!--<div class="task__description">
     {{ task.description }}
@@ -30,7 +38,7 @@ export default {
       const d = new Date(date);
       const mo = getMonthName(d.getMonth());
 
-      if(d.getUTCHours() == 0 && d.getUTCMinutes() == 0) return `${d.getDay()}. ${mo}`
+      if (d.getUTCHours() == 0 && d.getUTCMinutes() == 0) return `${d.getDay()}. ${mo}`
       else return `${d.getDay()}. ${mo} / ${d.getHours()}:${d.getMinutes()}`
     }
   },
@@ -55,23 +63,35 @@ export default {
 
 
 <style lang="scss">
-.task {
-    margin-bottom: 2em;
+.task.list__item__wrapper {
+    font-size: 1em;
+    position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    &::before {
+      top: 0;
+    }
 
     .task__info {
-      display: flex;
-      font-weight: 500;
+        display: flex;
+        font-weight: 500;
+        white-space: nowrap;
+
+        a, & {
+          overflow-x: hidden;
+          flex-grow: 1;
+        }
     }
 
     .task__done {
-        margin-right: .5em;
+        margin-right: 0.5em;
     }
 
     .task__duedate {
-      color: $grey-dark;
-      font-size: 0.8em;
+        color: $grey-dark;
+        font-size: 0.8em;
     }
     h4 {
         margin: 0 0 0.5em;

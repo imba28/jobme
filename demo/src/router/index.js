@@ -82,10 +82,20 @@ const router = new Router({
                 requiresLogin: true
             }
         },
-        { path: '/login', name: 'login', component: LoginPage, meta: { ifLoginRedirectTo: '/tasks' }},
-        { path: '/register', component: RegisterPage },
         {
-            name:'calendar',
+            path: '/login',
+            name: 'login',
+            component: LoginPage,
+            meta: {
+                ifLoginRedirectTo: '/tasks'
+            }
+        },
+        {
+            path: '/register',
+            component: RegisterPage
+        },
+        {
+            name: 'calendar',
             path: '/calendar',
             component: CalendarPage,
             meta: {
@@ -94,7 +104,10 @@ const router = new Router({
                 bottomMenuIndex: 2
             }
         },
-        { path: '*', component: ErrorPage }
+        {
+            path: '*',
+            component: ErrorPage
+        }
     ]
 })
 
@@ -103,7 +116,7 @@ router.beforeEach(function(to, from, next) {
         if (to.meta.requiresLogin) {
             if (!auth.isSignedIn()) {
                 router.push({
-                    path: 'login'
+                    name: 'login'
                 })
                 router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
 

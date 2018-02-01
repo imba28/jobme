@@ -2,17 +2,12 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import TaskComponent from './components/Task'
-import VCalendar from 'v-calendar';
-import 'v-calendar/lib/v-calendar.min.css';
 import auth from '@/auth'
 import router from './router'
 
 import '@/sass/template.scss'
 
 Vue.config.productionTip = true
-Vue.component('task-component', TaskComponent);
-Vue.use(VCalendar);
 
 /* eslint-disable no-new */
 new Vue({

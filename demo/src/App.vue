@@ -8,7 +8,6 @@
         <router-view class="view"></router-view>
       </transition>
     </div>
-    <div class="placeholders"></div>
     <bottommenu v-if="$root.isSignedIn"></bottommenu>
   </div>
 </template>
