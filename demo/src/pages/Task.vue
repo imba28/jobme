@@ -16,7 +16,7 @@
       <h4>Gruppe</h4>
       {{ group.name }}
       <p class="text--small">
-        Erstellt von {{ group.admin.name }}, am {{ renderDate(task.created_at) }} Uhr
+        Erstellt von {{ task.user.id == currentUserID() ? 'Dir' : task.user.name }}, am {{ renderDate(task.created_at) }} Uhr
       </p>
     </div>
     <div class="task__finished">
@@ -51,6 +51,9 @@ export default {
 
       if (d.getUTCHours() == 0 && d.getUTCMinutes() == 0) return `${d.getDay()}. ${mo}`
       else return `${d.getDate()}. ${mo} / ${d.getHours()}:${d.getMinutes()}`
+    },
+    currentUserID() {
+      return auth.getUID()
     },
     toggleDone() {
       request.fetch(
