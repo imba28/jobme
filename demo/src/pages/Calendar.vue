@@ -1,9 +1,11 @@
 <template>
-<div>
-  <h1>Kalender</h1>
-  <p>{{ attrs.dates }}</p>
+<div id="calendar_container">
+  <v-calendar
+    :attributes="attrs"
+    :theme-styles='themeStyles'
+  >
 
-  <v-calendar :attributes="attrs"></v-calendar>
+  </v-calendar>
 </div>
 </template>
 
@@ -13,21 +15,19 @@ import request from '@/lib/request'
 
 export default {
   data() {
+
     return {
-      attrs: [{
-        key: 'today',
-        dates: [],
-        highlight: {
-          backgroundColor: "#0091EA",
+      attrs: [],
+      themeStyles:{
+        wrapper:{
+          background: 'white',
+          borderRadius: "5px",
         },
-        contentStyle: {
-          color: '#fafafa',
+        header:{
+
         },
-        popover: {
-          label: "ToDo show Tasktitle + time"
-        }
-      }],
-      tasks: [],
+      }
+
     }
   },
   created() {
@@ -36,7 +36,19 @@ export default {
 
       for (let a of tasks) {
         if (a.due_date != undefined) {
-          this.attrs[0].dates.push(new Date(a.due_date));
+          let b = {
+            dates: new Date(a.due_date),
+            highlight: {
+              backgroundColor: "#0091EA",
+            },
+            contentStyle: {
+              color: '#fafafa',
+            },
+            popover: {
+              label: a.name
+            }
+        }
+        this.attrs.push(b);
         }
       }
     });
@@ -50,6 +62,15 @@ export default {
 </script>
 
 <style lang='scss'>
+  .view{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  #calendar_container{
+
+  }
 
 
 </style>
