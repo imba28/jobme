@@ -19,7 +19,12 @@
   </div>
   <div class="inputgroup">
     <span class="label">Jedem Mitglied zuweisen?</span>
-    <button class="btn btn--default">TODO</button>
+    <div class="switch-wrapper">
+      <div class="switch">
+          <input type="checkbox" class="switch__checkbox" ref="share" id="share" checked="checked">
+          <label class="switch__label" for="share"></label>
+      </div>
+    </div>
   </div>
   </div>
   <div class="inputgroup">
@@ -33,11 +38,14 @@
       <button class="btn btn--default btn--default--hover">Erstellen</button>
     </div>
   </div>
+
+  <div v-on:doubletap="t" style="height: 50px; background: pink;"></div>
 </form>
 </template>
 
 <script>
 import request from '@/lib/request'
+import notification from '@/lib/notification'
 import auth from '@/auth'
 
 export default {
@@ -49,12 +57,16 @@ export default {
     }
   },
   methods: {
+    t() {
+      console.log("TOUCH")
+    },
     onSubmit() {
       const data = {
         group_id: this.$refs.group_id.value,
         user_id: auth.getUID(),
         name: this.$refs.name.value,
-        description: this.$refs.description.value
+        description: this.$refs.description.value,
+        share: this.$refs.share.checked ? 1 : 0
       }
 
       const params = {}
@@ -62,11 +74,16 @@ export default {
         params[`task[${key}]`] = data[key]
       }
 
+      console.log(this.$refs.share)
+
       request.fetch(`http://localhost:3000/tasks.json`, 'POST', params)
         .then(task => {
-          console.log(task);
-          this.$router.push({path:"/tasks"})
-        });
+          notification.success('Aufgabe wurde erstellt!')
+          this.$router.push({ name: 'tasks' })
+        })
+        .catch(err => {
+          console.error(err);
+        })
     }
   },
   created() {

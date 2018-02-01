@@ -162,7 +162,7 @@ h1 {
     background-color: #0091EA;
     box-shadow: 0.25em 0 0.5em rgba(0,0,0,0.2);
 
-    position: absolute;
+    position: fixed;
     z-index: 101;
     height: 100%;
     width: 75%;

@@ -110,7 +110,8 @@
 
   .input__radio, .input__checkbox {
     position: relative;
-    opacity: 0;
+    /* opacity: 0;*/
+    display: none; /* TODO: Das könnte in manchen Browsern dazu führen, dass der label Trick nicht funktioniert. */
     cursor: pointer;
 
     + label {
