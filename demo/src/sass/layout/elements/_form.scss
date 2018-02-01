@@ -5,6 +5,10 @@
   flex-direction: row-reverse;
   margin-bottom: 1em;
 
+  .input, .btn, label {
+    margin-top: 0!important;
+  }
+
   .input {
     font-family: $font-main;
     padding: 1em;
@@ -23,12 +27,17 @@
       border-color: $blue;
       color: $white;
     }
-
   }
 
   .btn:last-child,
   .input__label:last-child {
     @include border-radius($input-border-radius 0 0 $input-border-radius);
+  }
+
+  .btn:first-child,
+  .input__label:first-child {
+    border-left-width: 0;
+    @include border-radius(0 $input-border-radius $input-border-radius 0);
   }
 
   .input__label {
