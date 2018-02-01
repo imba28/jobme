@@ -17,6 +17,8 @@ Group.create({name: 'Statistik', admin: User.find(3)})
 Group.create({name: 'Dummy Group', admin: User.find(4)})
 Group.create({name: 'A Group with a long name lalalalalala I think that is pretty annoying', admin: User.find(2)})
 
+Invitecode.create({code: 'secret', group: Group.find(2)})
+
 Group.find(1).users << User.find(1)
 Group.find(1).users << User.find(2)
 Group.find(1).users << User.find(3)

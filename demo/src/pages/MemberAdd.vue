@@ -35,7 +35,6 @@
       request.fetch(`http://localhost:3000/invitecodes.json`, 'POST', { code: random.secret(), group_id: this.$route.params.id })
               .then(code => {
                 this.invite.code = code.code;
-                console.log(this.invite.code);
       });
     }
   }
