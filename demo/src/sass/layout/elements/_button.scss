@@ -30,7 +30,7 @@
     @include linearGradientVertical(rgba($blue-dark,0.15), rgba($blue, 0.1));
   }
 
-  &:hover {
+  &:hover, &--hover {
     color: $white;
     background-color: $blue;
   }
