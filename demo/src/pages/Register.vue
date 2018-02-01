@@ -100,14 +100,13 @@
   #password__label, #username__label{
     padding-left: 23px;
     padding-right: 23px;
-
   }
 
   .registertext__container{
     margin-top: 3em;
 
-    p{
-      margin: 0 0 0.2em 0;
+  p{
+    margin: 0 0 0.2em 0;
     }
   }
 
@@ -116,7 +115,6 @@
   }
 
   .icon-key::before, .icon-mail::before{
-    // color: $blue;
     font-size: 1.2em;
   }
 
