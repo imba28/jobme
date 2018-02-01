@@ -7,27 +7,29 @@
       <img src="../assets/tom-logo-blue.svg" alt="Unser Robomaskottchen">
     </div>
     <div class="form__container">
-      <div class="input__container">
-        <input id="username" class="input" type="text" placeholder="Dein Username"/>
-        <label class="input__label" id="username__label" for="username">
-          <span class="icon-user"></span>
-        </label>
-      </div>
-      <div class="input__container">
-        <input id="email" class="input" type="text" placeholder="Deine Email"/>
-        <label class="input__label" id="email__label" for="email">
-          <span class="icon-mail"></span>
-        </label>
-      </div>
-      <div class="input__container">
-        <input id="password" class="input" type="password" placeholder="Dein Password"/>
-        <label class="input__label" id="password__label" for="password">
-          <span class="icon-key"></span>
-        </label>
-      </div>
+      <form v-on:submit.prevent="register">
+        <div class="input__container">
+          <input ref="username" id="username" class="input" type="text" placeholder="Dein Username"/>
+          <label class="input__label" id="username__label" for="username">
+            <span class="icon-user"></span>
+          </label>
+        </div>
+        <div class="input__container">
+          <input ref="email" id="email" class="input" type="text" placeholder="Deine Email"/>
+          <label class="input__label" id="email__label" for="email">
+            <span class="icon-mail"></span>
+          </label>
+        </div>
+        <div class="input__container">
+          <input ref="password" id="password" class="input" type="password" placeholder="Dein Password"/>
+          <label class="input__label" id="password__label" for="password">
+            <span class="icon-key"></span>
+          </label>
+        </div>
+        <button class="btn">Konto erstellen</button>
+      </form>
     </div>
     <div>
-      <button class="btn">Konto erstellen</button>
     </div>
     <div class="registertext__container">
       <p>Du hast schon ein Konto?</p>
@@ -37,8 +39,24 @@
 </template>
 
 <script>
+  import request from "@/lib/request"
+  import auth from '@/auth'
+
   export default {
+
     name: 'register-page',
+    methods: {
+      register() {
+        const username = this.$refs['username'].value
+        const email = this.$refs['email'].value
+        const password = this.$refs['password'].value
+
+        request.fetch("http://localhost:3000/users.json","POST",{'user[name]':username ,'user[email]':email ,'user[password]':password,'user[password]':password })
+          .then(data => {auth.signIn(email, password); this.$router.push({path:"/tasks"})})
+
+      }
+
+    },
     data(){
       return {
         page: "Register",

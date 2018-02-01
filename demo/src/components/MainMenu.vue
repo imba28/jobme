@@ -162,11 +162,15 @@ h1 {
     background-color: #0091EA;
     box-shadow: 0.25em 0 0.5em rgba(0,0,0,0.2);
 
-    position: absolute;
+    position: fixed;
     z-index: 101;
     height: 100%;
     width: 75%;
     top: $top-menu-height;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
 
     ul {
         padding: 0;
@@ -185,7 +189,7 @@ h1 {
 
         li {
             list-style: none;
-            margin-bottom: 2em;
+            margin-bottom: 1em;
             align-items: left;
             padding: 0 2em;
             text-align: left;
@@ -226,10 +230,9 @@ h1 {
         }
     }
   .container_signOut{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
 
+    align-self: center;
+    margin-bottom: 5em;
     button{
       background-color: $red;
       color: $white;
