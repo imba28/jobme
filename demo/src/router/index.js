@@ -57,16 +57,6 @@ const router = new Router({
             }
         },
         {
-            name: 'group_id',
-            path: '/groups/:id',
-            component: GroupPage,
-            props: true,
-            meta: {
-                pageHeader: 'Gruppen',
-                requiresLogin: true
-            }
-        },
-        {
             name: 'group_new',
             path: '/groups/new',
             component: GroupNewPage,
@@ -80,6 +70,16 @@ const router = new Router({
             path: '/test',
             component: TestPage,
             meta: {
+                requiresLogin: true
+            }
+        },
+        {
+            name: 'group_id',
+            path: '/groups/:id',
+            component: GroupPage,
+            props: true,
+            meta: {
+                pageHeader: 'Gruppen',
                 requiresLogin: true
             }
         },
