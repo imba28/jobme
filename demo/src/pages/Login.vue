@@ -135,7 +135,7 @@ export default {
 }
 
 .registertext__container {
-    margin-top: 3em;
+    margin-top: 2em;
 
     p {
         margin: 0 0 0.2em;

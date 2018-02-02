@@ -5,7 +5,7 @@
       <p>Wie ich sehe, bist du neu hier.<br>
       Erstelle ein Konto, um  den <br> task-o-mat nutzen zu können.
       </p>
-      <button class="btn" >Jetzt registrieren</button>
+      <button class="btn btn--default" >Jetzt registrieren</button>
     </div>
     <div class="arrow-down"></div>
    <div class="tom__container">
