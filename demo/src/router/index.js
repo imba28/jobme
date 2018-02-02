@@ -150,6 +150,9 @@ router.beforeEach(function(to, from, next) {
         if (to.meta.bottomMenuIndex !== undefined && from.meta.bottomMenuIndex !== undefined) {
             router.app.$root.transitionName = to.meta.bottomMenuIndex < from.meta.bottomMenuIndex ? 'page-right' : 'page-left'
         }
+        else {
+            router.app.$root.transitionName = 'page-right'
+        }
     }
 
     if (typeof router.app.setPageHeader === 'function') {
