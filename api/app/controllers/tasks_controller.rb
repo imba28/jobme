@@ -31,6 +31,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
+    @task.creator = current_user
+
     @task.group = Group.find(params[:group_id]) if params[:group_id]
     @task.user = User.find(params[:user_id]) if params[:user_id]
 

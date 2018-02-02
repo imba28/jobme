@@ -13,14 +13,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @users.to_json(
-        :only => [:id, :name, :created_at, :updated_at]
-        #,
-        #:include => {
-        #  :groups => {only: [:id, :name, :created_at, :updated_at]}
-        #}
-      )
-      }
+      format.json
     end
   end
 
@@ -29,12 +22,7 @@ class UsersController < ApplicationController
   def show
     respond_to do |format|
       format.html { render :show, location: @user }
-      format.json { render json: @user.to_json(
-        :only => [:id, :name, :created_at, :updated_at],
-        :include => {
-          :groups => {only: [:id, :name, :created_at, :updated_at]}
-        })
-      }
+      format.json
     end
   end
 
@@ -72,7 +60,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         if @user.save
           format.html { redirect_to @user, notice: 'User was successfully created.' }
-          format.json { render json: @user.to_json(:only => [:id, :name, :created_at, :updated_at]) }
+          format.json
 
         else
           format.html { render :new }

@@ -51,7 +51,6 @@
       <button class="btn btn--default btn--default--hover">Erstellen</button>
     </div>
   </div>
-
 </form>
 </template>
 
@@ -99,8 +98,6 @@ export default {
         params[`task[${key}]`] = data[key]
       }
 
-      console.log(params)
-
       request.fetch(`http://localhost:3000/tasks.json`, 'POST', params).then(task => {
         notification.success('Aufgabe wurde erstellt!')
         this.$router.push({name: 'tasks'})
@@ -110,11 +107,10 @@ export default {
     }
   },
   created() {
-    request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`)
-    .then(user => {
-      this.user = user;
-      this.groups = user.groups
-    })
+    request.fetch(`http://localhost:3000/users/${auth.getUID()}/groups.json`)
+      .then(groups => {
+        this.groups = groups
+      });
   }
 }
 </script>

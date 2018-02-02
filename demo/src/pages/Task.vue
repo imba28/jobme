@@ -2,6 +2,17 @@
 <div class="task__info">
   <h2 class="text--center text--left">{{ task.name }}</h2>
   <div class='input__container input__container--checkbox'>
+    <div class="task__creator">
+      <p class="text--small mt-0 mb-0">
+        Erstellt von
+        <i v-if="task.creator">
+          {{ task.creator.id == currentUserID() ? 'Dir' : task.creator.name }}
+        </i>
+        <i v-else>
+          gelöschter Benutzer
+        </i>, am {{ renderDate(task.created_at) }} Uhr
+      </p>
+    </div>
     <div class="task__description">
       <h4>Anmerkung</h4>
       <div>
@@ -15,9 +26,6 @@
     <div v-if="group.name" class="task__group">
       <h4>Gruppe</h4>
       {{ group.name }}
-      <p class="text--small">
-        Erstellt von {{ task.user.id == currentUserID() ? 'Dir' : task.user.name }}, am {{ renderDate(task.created_at) }} Uhr
-      </p>
     </div>
     <div class="task__finished">
       <h4>Erledigt</h4>
