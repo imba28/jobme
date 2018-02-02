@@ -3,11 +3,19 @@ import App from './App'
 import auth from '@/auth'
 import router from './router'
 
-//import Touch from 'vue-touch'
+import Vue2TouchEvents from 'vue2-touch-events'
 
 import '@/sass/template.scss'
 
 Vue.config.productionTip = true
+
+Vue.use(Vue2TouchEvents, {
+    disableClick: false,
+    touchClass: '',
+    tapTolerance: 10,
+    swipeTolerance: 30,
+    longTapTimeInterval: 400
+})
 
 /*Touch.registerCustomEvent('doubletap', {
     type: 'tap',

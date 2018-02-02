@@ -1,4 +1,5 @@
 <template>
+  <span v-touch:swipe="swipeHandler">
 <div>
   <h2 class="text--center text--left">Deine Gruppen</h2>
   <input id="invite-code" type="text" placeholder="Füge hier einen Beitrittscode ein">
@@ -15,6 +16,7 @@
   </ul>
   <router-link :to="{name: 'group_new' }" class="btn btn--default display--iblock">Neue Gruppe erstellen</router-link>
 </div>
+    </span>
 </template>
 
 <script>
@@ -44,18 +46,15 @@ export default {
             } else {
               // join the group
               request.fetch(`http://localhost:3000/groups/${inviteCode.group_id}/users.json`, 'POST', {
-                  id: auth.getUID()
+                id: auth.getUID()
+              }).then(() => { // reload data
+                request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`).then(user => {
+                  this.user = user;
                 })
-                .then(() => { // reload data
-                  request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`)
-                    .then(user => {
-                      this.user = user;
-                    })
-                  request.fetch(`http://localhost:3000/users/${auth.getUID()}/groups.json`)
-                    .then(groups => {
-                      this.groups = groups
-                    })
-                });
+                request.fetch(`http://localhost:3000/users/${auth.getUID()}/groups.json`).then(groups => {
+                  this.groups = groups
+                })
+              });
 
               // go to the group page
               this.$router.push({
@@ -64,12 +63,18 @@ export default {
 
               notification.success("Gruppe erfolgreich beigetreten");
             }
-          } else {
-            notification.error("Falscher Beitrittscode");
           }
-        });
-    }
-  },
+
+          });
+      },
+      swipeHandler (direction) {
+        if(direction == "right") {
+          this.$router.push({
+            path: "/tasks"
+          })
+        }
+      }
+    },
   created() {
     request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`)
       .then(user => {
