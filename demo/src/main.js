@@ -1,14 +1,10 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import auth from '@/auth'
 import router from './router'
 
 //import Touch from 'vue-touch'
-
 import '@/sass/template.scss'
-
 
 Vue.config.productionTip = true
 /*Touch.registerCustomEvent('doubletap', {
@@ -40,6 +36,5 @@ new Vue({
         }
     }
 })
-
 
 Vue.use(VueTouch)

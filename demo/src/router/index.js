@@ -15,7 +15,6 @@ import GroupPage from '@/pages/Group'
 import GroupNewPage from '@/pages/GroupNew'
 import MemberAddPage from '@/pages/MemberAdd'
 import LoginPage from '@/pages/Login'
-import TestPage from '@/pages/Test'
 import WelcomePage from '@/pages/Welcome'
 import ErrorPage from '@/pages/Error'
 import CalendarPage from '@/pages/Calendar'
@@ -83,13 +82,6 @@ const router = new Router({
             props: true,
             meta: {
                 pageHeader: 'Gruppen',
-                requiresLogin: true
-            }
-        },
-        {
-            path: '/test',
-            component: TestPage,
-            meta: {
                 requiresLogin: true
             }
         },
