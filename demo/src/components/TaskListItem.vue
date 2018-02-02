@@ -38,7 +38,7 @@ export default {
       const d = new Date(date);
       const mo = getMonthName(d.getMonth());
 
-      if (d.getUTCHours() == 0 && d.getUTCMinutes() == 0) return `${d.getDay()}. ${mo}`
+      if (d.getUTCHours() == 0 && d.getUTCMinutes() == 0) return `${d.getDate()}. ${mo}`
       else return `${d.getDate()}. ${mo} / ${d.getHours()}:${d.getMinutes()}`
     },
     toggleDone() {
