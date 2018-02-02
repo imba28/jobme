@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div v-on:doubletap="t" style="height: 50px; background: pink;"></div>
+  <div v-on:doubletap="t" style="height: 50px; background: pink;">Swipe me!</div>
 </form>
 </template>
 
@@ -87,9 +87,9 @@ export default {
     }
   },
   created() {
-    request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`)
-      .then(user => {
-        this.groups = user.groups
+    request.fetch(`http://localhost:3000/users/${auth.getUID()}/groups.json`)
+      .then(groups => {
+        this.groups = groups
       });
   }
 }
