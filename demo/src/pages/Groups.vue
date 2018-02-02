@@ -1,4 +1,5 @@
 <template>
+<span v-touch:swipe="swipeHandler">
   <div>
     <h2 class="text--center text--left">Deine Gruppen</h2>
     <input id="invite-code" type="text" placeholder="Füge hier einen Beitrittscode ein">
@@ -15,6 +16,7 @@
     </ul>
     <router-link :to="{name: 'group_new' }" class="btn btn--default display--iblock">Neue Gruppe erstellen</router-link>
   </div>
+</span>
 </template>
 
 <script>
@@ -63,6 +65,13 @@
               notification.error("Falscher Beitrittscode");
             }
           });
+      },
+      swipeHandler (direction) {
+        if(direction == "right") {
+          this.$router.push({
+            path: "/tasks"
+          })
+        }
       }
     },
     created() {

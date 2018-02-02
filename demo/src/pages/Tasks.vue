@@ -1,4 +1,5 @@
 <template>
+<span v-touch:swipe="swipeHandler">
   <div>
     <div class="input__container input__container--has-button input__container--reverse">
       <input ref="task_name" id="add_task" class="input" type="text" placeholder="Neue Aufgabe hinzufügen..."/>
@@ -16,6 +17,7 @@
       <span v-if="tasks.length === 0">Keine Tasks in dieser Gruppe!</span>
     </ul>
   </div>
+</span>
 </template>
 
 <script>
@@ -44,6 +46,18 @@
       changeGroup: function(e) {
         const groupId = parseInt(e.target.getAttribute('data-id'));
         this.tasks = this.tasks_all.filter(task => task.group_id === groupId );
+      },
+      swipeHandler (direction) {
+        if(direction == "right") {
+          this.$router.push({
+            path: "/calendar"
+          })
+        }
+        else{
+          this.$router.push({
+            path: "/groups"
+          })
+        }
       }
     },
     data() {
