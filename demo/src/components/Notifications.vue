@@ -19,7 +19,7 @@ export default {
   },
   props: {
     notes: {
-      default: () => [{
+      default: () => [/*{
           type: 'error',
           message: "Das ist eine Fehlermeldung!"
         },
@@ -34,7 +34,7 @@ export default {
         {
           type: 'info',
           message: "Das ist eine nützliche Information!"
-        }
+        }*/
       ],
       type: Array
     }
