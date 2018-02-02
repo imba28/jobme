@@ -1,21 +1,35 @@
 <template>
 <form v-on:submit.prevent="onSubmit">
-  <div class="input__container input__container--light">
-    <input id="ID" class="input" type="text" ref="name" :value="task_name" placeholder="Was ist zu tun?" />
-  </div>
   <div class="inputgroup">
     <span class="label">Fälligkeitsdatum</span>
     <div class="input__container">
-      <button type="button" class="btn btn--default">Uhrzeit <i class="icon-calendar"></i></button>
-      <button type="button" class="btn btn--default">Datum <i class="icon-calendar"></i></button>
+      <v-date-picker
+        mode='single'
+        v-model='selectedValue'
+        is-expanded>
+        <b-field :type='inputState.type' slot-scope='props'>
+          <b-input
+            id="date_input"
+            type='text'
+            ref="date"
+            :value='props.inputValue'
+            :placeholder='inputState.message'
+            @change.native='props.updateValue($event.target.value)'
+            expanded>
+          </b-input>
+        </b-field>
+      </v-date-picker>
     </div>
   </div>
+  <div class="input__container input__container--light">
+    <input id="ID" class="input" type="text" ref="name" :value="task_name" placeholder="Was ist zu tun?" />
+  </div>
+
   <div class="inputgroup">
     <span class="label">Gruppe</span>
     <select ref="group_id">
       <option v-for="group in groups" :value="group.id">{{ group.name }}</option>
     </select>
-  </div>
   </div>
   <div class="inputgroup">
     <span class="label">Jedem Mitglied zuweisen?</span>
@@ -25,7 +39,6 @@
           <label class="switch__label" for="share"></label>
       </div>
     </div>
-  </div>
   </div>
   <div class="inputgroup">
     <span class="label">Anmerkung</span>
@@ -39,7 +52,6 @@
     </div>
   </div>
 
-  <div v-on:doubletap="t" style="height: 50px; background: pink;"></div>
 </form>
 </template>
 
@@ -51,46 +63,58 @@ import auth from '@/auth'
 export default {
   name: 'task-add',
   props: ['task_name'],
-  data: () => {
+  data(){
     return {
-      groups: []
+      groups: [],
+      selectedValue: null,
     }
   },
-  methods: {
-    t() {
-      console.log("TOUCH")
+  computed: {
+    inputState() {
+      if (!this.selectedValue) {
+        return {
+          //  type: 'is-danger',
+          message: 'Date required.',
+        };
+      }
+      return {
+        type: 'is-primary',
+        message: '',
+      };
     },
+  },
+  methods: {
     onSubmit() {
       const data = {
         group_id: this.$refs.group_id.value,
         user_id: auth.getUID(),
         name: this.$refs.name.value,
         description: this.$refs.description.value,
-        share: this.$refs.share.checked ? 1 : 0
+        share: this.$refs.share.checked ? 1 : 0,
+        due_date: this.$refs.date.value
       }
 
       const params = {}
-      for(let key in data) {
+      for (let key in data) {
         params[`task[${key}]`] = data[key]
       }
 
-      console.log(this.$refs.share)
+      console.log(params)
 
-      request.fetch(`http://localhost:3000/tasks.json`, 'POST', params)
-        .then(task => {
-          notification.success('Aufgabe wurde erstellt!')
-          this.$router.push({ name: 'tasks' })
-        })
-        .catch(err => {
-          console.error(err);
-        })
+      request.fetch(`http://localhost:3000/tasks.json`, 'POST', params).then(task => {
+        notification.success('Aufgabe wurde erstellt!')
+        this.$router.push({name: 'tasks'})
+      }).catch(err => {
+        console.error(err);
+      })
     }
   },
   created() {
     request.fetch(`http://localhost:3000/users/${auth.getUID()}.json`)
-      .then(user => {
-        this.groups = user.groups
-      });
+    .then(user => {
+      this.user = user;
+      this.groups = user.groups
+    })
   }
 }
 </script>
@@ -122,5 +146,10 @@ export default {
         width: 50%;
       }
     }
+
+  #date_input{
+    border: 1.5px solid $blue;
+    border-radius: 12px;
+  }
 }
 </style>

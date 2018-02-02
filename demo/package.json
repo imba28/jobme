@@ -13,6 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "buefy": "^0.6.3",
     "clndr": "^1.4.7",
     "meteor-random": "0.0.3",
     "moment": "^2.20.1",
