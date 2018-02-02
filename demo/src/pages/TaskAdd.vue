@@ -3,21 +3,7 @@
   <div class="inputgroup">
     <span class="label">Fälligkeitsdatum</span>
     <div class="input__container">
-      <v-date-picker
-        mode='single'
-        v-model='selectedValue'
-        is-expanded>
-        <b-field :type='inputState.type' slot-scope='props'>
-          <b-input
-            id="date_input"
-            type='text'
-            ref="date"
-            :value='props.inputValue'
-            :placeholder='inputState.message'
-            @change.native='props.updateValue($event.target.value)'
-            expanded>
-          </b-input>
-        </b-field>
+      <v-date-picker v-model='selectedValue' show-caps>
       </v-date-picker>
     </div>
   </div>
@@ -35,8 +21,8 @@
     <span class="label">Jedem Mitglied zuweisen?</span>
     <div class="switch-wrapper">
       <div class="switch">
-          <input type="checkbox" class="switch__checkbox" ref="share" id="share" checked="checked">
-          <label class="switch__label" for="share"></label>
+        <input type="checkbox" class="switch__checkbox" ref="share" id="share" checked="checked">
+        <label class="switch__label" for="share"></label>
       </div>
     </div>
   </div>
@@ -55,14 +41,19 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import request from '@/lib/request'
 import notification from '@/lib/notification'
 import auth from '@/auth'
 
+import VCalendar from 'v-calendar';
+import 'v-calendar/lib/v-calendar.min.css';
+Vue.use(VCalendar);
+
 export default {
   name: 'task-add',
   props: ['task_name'],
-  data(){
+  data() {
     return {
       groups: [],
       selectedValue: null,
@@ -90,7 +81,7 @@ export default {
         name: this.$refs.name.value,
         description: this.$refs.description.value,
         share: this.$refs.share.checked ? 1 : 0,
-        due_date: this.$refs.date.value
+        due_date: this.selectedValue
       }
 
       const params = {}
@@ -100,7 +91,9 @@ export default {
 
       request.fetch(`http://localhost:3000/tasks.json`, 'POST', params).then(task => {
         notification.success('Aufgabe wurde erstellt!')
-        this.$router.push({name: 'tasks'})
+        this.$router.push({
+          name: 'tasks'
+        })
       }).catch(err => {
         console.error(err);
       })
@@ -136,16 +129,16 @@ export default {
     }
 
     .submit {
-      font-size: 1.25em;
+        font-size: 1.25em;
 
-      button {
-        width: 50%;
-      }
+        button {
+            width: 50%;
+        }
     }
 
-  #date_input{
-    border: 1.5px solid $blue;
-    border-radius: 12px;
-  }
+    #date_input {
+        border: 1.5px solid $blue;
+        border-radius: 12px;
+    }
 }
 </style>
