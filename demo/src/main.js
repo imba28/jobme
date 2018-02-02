@@ -2,16 +2,21 @@ import Vue from 'vue'
 import App from './App'
 import auth from '@/auth'
 import router from './router'
+import Buefy from 'buefy'
 
 //import Touch from 'vue-touch'
+
+import 'buefy/lib/buefy.css'
 import '@/sass/template.scss'
 
 Vue.config.productionTip = true
+Vue.use(Buefy);
 /*Touch.registerCustomEvent('doubletap', {
     type: 'tap',
     taps: 2
 })
 Vue.use(Touch)
+
 
 /* eslint-disable no-new */
 new Vue({
@@ -37,4 +42,3 @@ new Vue({
     }
 })
 
-Vue.use(VueTouch)
