@@ -23,4 +23,3 @@ test:
 production:
   url: <%= ENV["DATABASE_URL"] %>
   adapter: postgresql
-  host: localhost
