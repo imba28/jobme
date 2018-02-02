@@ -26,7 +26,9 @@
             <span class="icon-key"></span>
           </label>
         </div>
-        <button class="btn btn--default">Konto erstellen</button>
+        <div id="create_account--container">
+        <button class="btn btn--default" id="create_account--button">Konto erstellen</button>
+        </div>
       </form>
     </div>
     <div>
@@ -103,6 +105,16 @@
 
     margin-top: 1em;
     margin-bottom: 2em;
+
+    #create_account--container{
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+    }
+
+    #create_account--button{
+      align-self: center;
+    }
   }
 
 
@@ -122,6 +134,7 @@
 
   .registertext__container{
     margin-top: 3em;
+    align-self: center;
 
   p{
     margin: 0 0 0.2em 0;
