@@ -104,17 +104,18 @@ class UsersController < ApplicationController
     if params[:group_id] then
       group = Group.find(params[:group_id]);
 
-      if(group.admin_id != @user.id) then
-        group.users.delete(@user)
-        respond_to do |format|
-          format.html { redirect_to groups_url, notice: 'User was successfully remove from Group.' }
-          format.json { render json: "{}", status: :ok }
-        end
-      else
+      if(group.admin_id == @user.id && group.users.length > 1) then
         respond_to do |format|
           format.html { render  }
-          format.json { render json: '{"error": "Cannot remove admin from group"}', status: :unprocessable_entity }
+          format.json { render json: '{"error": "Du must zuerst deine Rechte an eine andere Person übertragen!"}', status: :unprocessable_entity }
         end
+        return
+      end
+
+      group.users.delete(@user)
+      respond_to do |format|
+        format.html { redirect_to groups_url, notice: 'User was successfully remove from Group.' }
+        format.json { render json: '{"message": "Du hast die Gruppe verlassen!"}', status: :ok }
       end
     else
       @user.destroy

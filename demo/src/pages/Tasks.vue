@@ -12,7 +12,7 @@
       </button>
     </ul>
     <ul>
-      <task-component :task="task" v-for="task in tasks"></task-component>
+      <task-component :task="task" v-for="task in tasks" v-bind:key="task.id"></task-component>
       <span v-if="tasks.length === 0">Keine Tasks in dieser Gruppe!</span>
     </ul>
   </div>

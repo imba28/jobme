@@ -15,7 +15,6 @@ import GroupPage from '@/pages/Group'
 import GroupNewPage from '@/pages/GroupNew'
 import MemberAddPage from '@/pages/MemberAdd'
 import LoginPage from '@/pages/Login'
-import TestPage from '@/pages/Test'
 import WelcomePage from '@/pages/Welcome'
 import ErrorPage from '@/pages/Error'
 import CalendarPage from '@/pages/Calendar'
@@ -87,13 +86,6 @@ const router = new Router({
             }
         },
         {
-            path: '/test',
-            component: TestPage,
-            meta: {
-                requiresLogin: true
-            }
-        },
-        {
             name: 'member-add',
             path: '/groups/:id/add',
             component: MemberAddPage,
@@ -157,6 +149,9 @@ router.beforeEach(function(to, from, next) {
 
         if (to.meta.bottomMenuIndex !== undefined && from.meta.bottomMenuIndex !== undefined) {
             router.app.$root.transitionName = to.meta.bottomMenuIndex < from.meta.bottomMenuIndex ? 'page-right' : 'page-left'
+        }
+        else {
+            router.app.$root.transitionName = 'page-right'
         }
     }
 
