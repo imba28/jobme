@@ -6,9 +6,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     if params[:user_id]
-      @tasks = Task.where(:user => User.find(params[:user_id]))
+      @tasks = Task.where('user_id = ? AND (done = ? OR (updated_at > ?))', params[:user_id], '0', DateTime.now.beginning_of_day).all
     else
-      @tasks = Task.all
+      @tasks = Task.where('done = ? OR (updated_at > ?)', 0, DateTime.now.beginning_of_day).all
     end
   end
 
