@@ -1,16 +1,15 @@
 <template>
 <form v-on:submit.prevent="onSubmit">
-  <div class="inputgroup">
-    <span class="label">Fälligkeitsdatum</span>
-    <div class="input__container">
-      <v-date-picker v-model='selectedValue' show-caps>
-      </v-date-picker>
-    </div>
-  </div>
   <div class="input__container input__container--light">
     <input id="ID" class="input" type="text" ref="name" :value="task_name" placeholder="Was ist zu tun?" />
   </div>
-
+  <div class="inputgroup">
+    <span class="label">Fälligkeitsdatum</span>
+    <div class="input__container">
+      <v-date-picker v-model='selectedValue' show-caps placeholder="Datum wählen">
+      </v-date-picker>
+    </div>
+  </div>
   <div class="inputgroup">
     <span class="label">Gruppe</span>
     <select ref="group_id">
