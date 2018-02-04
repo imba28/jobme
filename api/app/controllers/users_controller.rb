@@ -60,7 +60,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         if @user.save
           format.html { redirect_to @user, notice: 'User was successfully created.' }
-          format.json
+          format.json { render json: @user, status: :ok }
 
         else
           format.html { render :new }
