@@ -48,11 +48,6 @@ export default {
       options: [
         {
           icon: 'calendar',
-          name: "Home",
-          path: "/"
-        },
-        {
-          icon: 'calendar',
           name: "Tasks",
           path: "/tasks"
         },
@@ -60,11 +55,6 @@ export default {
           icon: 'calendar',
           name: "Gruppen",
           path: "/groups"
-        },
-        {
-          icon: 'calendar',
-          name: "Test",
-          path: "/test"
         },
         {
           icon: 'calendar',
