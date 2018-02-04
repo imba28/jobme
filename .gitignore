@@ -5,6 +5,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+.DS_Store
+
 # Runtime data
 pids
 *.pid
@@ -57,7 +59,6 @@ typings/
 # dotenv environment variables file
 .env
 
-#package.json + loc´k
+#package.json + locï¿½k
 package.json
 package-lock.json
-

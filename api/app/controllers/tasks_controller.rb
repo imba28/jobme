@@ -31,6 +31,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
+    @task.creator = current_user
+
     @task.group = Group.find(params[:group_id]) if params[:group_id]
     @task.user = User.find(params[:user_id]) if params[:user_id]
 
@@ -43,7 +45,9 @@ class TasksController < ApplicationController
             next if user.id == @task.user.id
             task_clone = @task.dup
             task_clone.user = user
-            task_clone.save
+            if task_clone.save then
+              TaskAddedMailer.notify(user, @task).deliver_later
+            end
           end
         end
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
