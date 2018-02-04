@@ -54,7 +54,13 @@
         const password = this.$refs['password'].value
 
         request.fetch("http://localhost:3000/users.json","POST",{'user[name]':username ,'user[email]':email ,'user[password]':password,'user[password]':password })
-          .then(data => {auth.signIn(email, password); this.$router.push({path:"/tasks"})})
+          .then(data => {
+            console.log("casd")
+            auth.signIn(email, password)
+            .then( () => {
+              this.$router.push({path:"/tasks"})
+            })
+          })
 
       }
 
