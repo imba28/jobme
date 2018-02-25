@@ -13,7 +13,3 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
-
-#package.json + loc´k
-package.json
-package-lock.json
