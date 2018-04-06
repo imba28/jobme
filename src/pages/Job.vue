@@ -18,13 +18,13 @@
           {{description}}
         </p>
         <div class="job__options button-group">
-          <button class="btn btn--red">
+          <button class="btn btn--red" v-on:click="nope">
             <i class="fa fa-times"></i>
           </button>
           <router-link :to="{ name: 'job-info', params: { name } }" class="btn btn--default">
             <i class="fa fa-info"></i>
           </router-link>
-          <button class="btn btn--green">
+          <button class="btn btn--green" v-on:click="save">
             <i class="fa fa-heart"></i>
           </button>
         </div>
@@ -34,6 +34,9 @@
   </template>
 
 <script>
+  import note from '@/lib/notification'
+  import router from '@/router'
+
   export default {
     name: 'job-page',
     props: ['name'],
@@ -41,6 +44,16 @@
       return {
         'image': 'http://via.placeholder.com/400x400',
         'description': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita.'
+      }
+    },
+    methods: {
+      nope() {
+        note.success('Job removed!')
+
+        router.push({name: 'job', params: {name: Math.random()}})
+      },
+      save() {
+        note.success('Job saved!')
       }
     }
   }
@@ -64,7 +77,7 @@
     &__options {
       display: flex;
 
-      button {
+      button, a {
         flex-basis: 33.33%;
       }
     }
