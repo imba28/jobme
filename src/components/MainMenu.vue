@@ -15,11 +15,11 @@
     <nav v-if="show" id="side__nav">
       <ul>
         <li v-if="$root.isSignedIn">
-          <h3 id="greeting_user">Hallo {{ capitalizeFirstLetter($root.user) }}! </h3>
+          <h3 id="greeting_user">Hello {{ capitalizeFirstLetter($root.user) }}! </h3>
         </li>
         <li v-for="(option, index) in options">
           <router-link v-if="option.path" active-class="active" :to="option.path" @click.native="triggerBurger">
-            <i v-bind:class="[`icon-${option.icon}`]"></i> {{ option.name }}
+            <i v-bind:class="[`fa fa-${option.icon}`]"></i> {{ option.name }}
           </router-link>
           <div v-else @click="option.onClick">
             <i v-bind:class="[`icon-${option.icon}`]"></i> {{ option.name }}
@@ -47,14 +47,19 @@ export default {
       page: 'working title',
       options: [
         {
-          icon: 'calendar',
-          name: "Entdecken",
-          path: "/start"
+          icon: 'user',
+          name: 'Profile',
+          path: '/profile'
         },
         {
-          icon: 'calendar',
-          name: "Gespeicherte Jobs",
-          path: "/saved-jobs"
+          icon: 'briefcase',
+          name: "Discover",
+          path: "/explore"
+        },
+        {
+          icon: 'heart',
+          name: "Saved",
+          path: "/saved"
         },
       ]
     }

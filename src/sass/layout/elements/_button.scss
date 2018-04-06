@@ -23,7 +23,7 @@
   float: right;
 }
 
-.btn--default {
+.btn--blue {
   color: $blue;
   background-color: transparent;
 
@@ -44,6 +44,28 @@
     font-size: 0.8em;
   }
 }
+
+.btn--default {
+  color: $grey-dark;
+  background-color: transparent;
+  border-color: $grey-dark;
+
+  &:focus {
+    @include linearGradientVertical(rgba($grey-dark, 0.15), rgba($grey, 0.1));
+  }
+  &:hover,
+  &--hover {
+    color: $white;
+    background-color: $grey;
+  }
+  &:active {
+    @include linearGradientVertical($grey-dark, $grey);
+  }
+  [class^='icon-'] {
+    font-size: 0.8em;
+  }
+}
+
 
 .btn--secondary {
   border-color: $grey-dark;
@@ -81,6 +103,24 @@
     @include linearGradientVertical($red-dark, $red);
   }
 }
+
+.btn--green {
+  border-color: $green;
+  color: $green;
+  background-color: inherit;
+  &:focus {
+    @include linearGradientVertical(darken($green, 0.15), darken($green, 0.1));
+  }
+  &:hover {
+    color: $white;
+    background: $green;
+  }
+  &:active {
+    @include linearGradientVertical(darken($green, 0.25), $green);
+  }
+}
+
+
 
 // switch
 .switch-wrapper {

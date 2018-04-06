@@ -10,6 +10,7 @@ import HomePage from '@/pages/Home'
 import ErrorPage from '@/pages/Error'
 import ProfilePage from '@/pages/Profile'
 import ExplorePage from '@/pages/Explore'
+import JobPage from '@/pages/Job'
 
 Vue.use(Router)
 
@@ -33,6 +34,12 @@ const router = new Router({
             name: 'explore',
             path: '/explore',
             component: ExplorePage
+        },
+        {
+            name: 'job',
+            path: '/jobs/:name',
+            component: JobPage,
+            props: true
         },
         {
             name: 'profile',

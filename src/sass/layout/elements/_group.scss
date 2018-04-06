@@ -1,0 +1,17 @@
+.button-group {
+  .btn, button {
+    @include border-radius(0);
+    border-left-width: 0;
+    border-right-width: 0;
+
+    &:first-child {
+      @include border-radius($input-border-radius 0 0 $input-border-radius);
+      border-width: 2px;
+    }
+
+    &:last-child {
+      @include border-radius(0 $input-border-radius $input-border-radius 0);
+      border-width: 2px;
+    }
+  }
+}
