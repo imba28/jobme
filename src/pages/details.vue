@@ -1,12 +1,14 @@
 <template>
   <div>
     <div>
-      <a href="http://localhost:8080/#/explore-childhood">
-        <div class="icon">
-          back-icon
-        </div>
-      </a>
-      <h1>
+      <div class="overlay">
+        <a href="http://localhost:8080/#/explore-childhood">
+          <div class="icon">
+            <i class="fas fa-chevron-left fa-2x"></i>
+          </div>
+        </a>
+      </div>
+      <h1 class="full-width">
         <img class="full-width" :src="cat.img" />
       </h1>
       <ul class="icons">

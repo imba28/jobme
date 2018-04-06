@@ -46,7 +46,7 @@ export default {
 
   .full-width {
     width: 100%;
-
+    padding: 0;
   }
 }
 
@@ -60,7 +60,21 @@ export default {
   }
 
   h1 {
-    margin-top: 0;
+    margin: 0 auto;
+    text-align:center;
+    padding: 0.5em;
   }
+
+  ul{
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .overlay {
+    position: absolute;
+    width: 100%;
+    background: rgba(255,255,255,0.7);
+  }
+
 }
 </style>
