@@ -7,7 +7,7 @@
       <li class="bottom-menu__list__item">
         <router-link :to="{ name: 'profile' }">
           <div class="bottom-menu__list__item__icon">
-            <span class="icon-user"></span>
+            <span class="fa fa-user-circle"></span>
           </div>
           <span class="bottom-menu__list__item__name">Profil</span>
         </router-link>
@@ -18,7 +18,7 @@
       <li class="bottom-menu__list__item">
         <router-link :to="{ name: 'explore' }">
           <div class="bottom-menu__list__item__icon">
-            <span class="icon-task"></span>
+            <span class="fa fa-briefcase"></span>
           </div>
           <span class="bottom-menu__list__item__name">Entdecken</span>
         </router-link>
@@ -28,7 +28,7 @@
       <li class="bottom-menu__list__item">
         <router-link :to="{ name: 'saved-jobs' }">
           <div class="bottom-menu__list__item__icon">
-            <span class="icon-calendar"></span>
+            <span class="fa fa-heart"></span>
           </div>
           <span class="bottom-menu__list__item__name">Jobs</span>
         </router-link>

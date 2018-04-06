@@ -70,12 +70,14 @@ article, section {
   font-weight: 500;
   text-align: left;
   overflow: hidden;
+  position: relative;
 
   &:before, &:last-child:after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
+    bottom: 0;
     width: 100%;
     background-color: #CCCCCC;
     height: 1px;

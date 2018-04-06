@@ -2,12 +2,9 @@ import Vue from 'vue'
 import App from './App'
 import auth from '@/auth'
 import router from './router'
-import hobbies from './json/hobbies.json'
 import Vue2TouchEvents from 'vue2-touch-events'
 
 import '@/sass/template.scss'
-
-console.log(hobbies)
 
 Vue.config.productionTip = true
 

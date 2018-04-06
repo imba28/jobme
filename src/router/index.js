@@ -49,6 +49,12 @@ const router = new Router({
 
         },
         {
+            name: 'job',
+            path: '/jobs/:name',
+            component: JobPage,
+            props: true
+        },
+        {
             name: 'profile',
             path: '/profile',
             component: ProfilePage
