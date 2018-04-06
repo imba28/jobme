@@ -40,14 +40,33 @@
     methods: {
       addHobby: function(chosenCat) {
         let el = document.getElementById(chosenCat)
+        let storedHobbies = {'hobbies': []}
+        let tickIcon = document.createElement("i");
+        tickIcon.className = 'far fa-check-circle fa-2x tick'
+        tickIcon.id = 'tick-'+chosenCat
+
+        if((sessionStorage.getItem('hobbies'))) {
+          storedHobbies = JSON.parse(sessionStorage.getItem('hobbies'))
+        }
+
+        console.info(storedHobbies)
+
         if(el.className.includes('added')) {
           console.info("REMOVE FROM LOCAL STORAGE IF IT IS THERE!")
           el.classList.remove('added')
+
+          $('#'+tickIcon.id).remove()
+          let index = storedHobbies.hobbies.indexOf(el.id)
+          storedHobbies.hobbies.splice(index,1)
         }
         else {
           console.info("ADD TO USERS LOCAL STORAGE!")
           el.classList.add('added')
+          el.insertAdjacentElement("afterend", tickIcon)
+          storedHobbies.hobbies.push(el.id)
         }
+        sessionStorage.setItem('hobbies', JSON.stringify(storedHobbies))
+
       }
     }
   }
@@ -70,6 +89,13 @@
       list-style: none;
       .inner {
         padding: 2em;
+
+        .tick {
+          position: absolute;
+          margin-left: -1.2rem;
+          margin-top: 3.5rem;
+          color: green;
+        }
 
         .icon {
           background: #ddd;
