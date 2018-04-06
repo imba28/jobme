@@ -1,27 +1,33 @@
 <template>
   <div>
     <div>
-      <h1>Now</h1>
+      <a href="http://localhost:8080/#/explore-childhood">
+        <div class="icon">
+          back-icon
+        </div>
+      </a>
+      <h1>Details</h1>
       <ul class="icons">
-        <li v-for="hobby in hobbies">
+        <li v-for="hobby in nature">
           <div class="inner">
             <div class="icon">
-              {{hobby.img}}
+              {{hobby}}
             </div>
           </div>
         </li>
-    </ul>
+      </ul>
     </div>
   </div>
   </template>
 
 <script>
-  import hobbies from '@/json/hobbies.json'
+  import nature from '@/json/nature.json'
   export default {
+    props: ['name'],
     name: 'start-page',
     data(){
       return {
-        hobbies: hobbies.category
+        hobbies: nature
       }
     }
   }
