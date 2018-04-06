@@ -1,81 +1,85 @@
 <template>
   <div>
     <div class="welcome--text__container">
-      <h1>Etwas ist schiefgelaufen!</h1>
-      <p>
-        Es ist ein unerwarteter Fehler aufgetreten.
-      </p>
-      <p>
-        Versuche die Seite neu zu laden oder melde dich bei <a href="mailto:help@taskomat.at">help@taskomat.at</a>
-      </p>
-      <button class="btn btn--default" @click="router.go(-1)">Zurück</button>
+      <h1>Fehler</h1>
     </div>
-    <div class="arrow-down"></div>
-   <div class="tom__container">
-      <img src="../assets/tom-full-body-destroyed.svg">
-   </div>
   </div>
   </template>
 
-<script>
-import router from '@/router'
-
-export default {
-  name: 'error-page'
-}
+<script
+  export default {
+    name: 'error-page',
+    data(){
+      return {
+        page: "Error",
+      }
+    }
+  }
 </script>
 
 <style lang="scss">
-.welcome--text__container {
+  .view{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height:100%;
+  }
+
+  .welcome--text__container{
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     background-color: $grey;
-    padding: 1em 1.5em;
+    padding: 0.8em;
     border-radius: 5%;
-    font-weight: 500;
-
-    h1 {
-        margin-bottom: 0.3em;
-        font-size: 1.25em;
-    }
-
-    p {
-      margin-bottom: 1em;
-    }
-
-    button {
-        align-self: center;
-        margin: 0.5em 0;
-    }
-}
-
-.tom__container {
-    width: 80%;
-    margin-top: 2em;
     align-self: center;
+
+  h1{
+    margin-bottom: 0.3em;
+  }
+
+  p{
+    padding: 0 2em 0 2em;
+  }
+
+  button{
+    align-self: center;
+    margin: 0.5em 0 0.5em 0em;
+  }
 }
 
-.login--info__container {
+  .tom__container{
+    height: 10em;
+    width: 10em;
+    margin-bottom: 5em;
+    align-self: center;
+  }
+
+  .login--info__container{
     display: flex;
     flex-direction: column;
     align-items: center;
     align-self: center;
-    //  margin: 0 4em 0 4em;
-}
+  }
 
-p {
-    margin: 0 0 0.3em;
-}
+  p{
+    margin: 0 0 0.3em 0;
+  }
 
-a {
+  a{
     text-decoration: underline;
-}
+  }
 
-.arrow-down {
+  .arrow-down {
+    align-self: center;
     width: 0;
     height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-
     border-top: 20px solid $grey;
-    margin: 0 auto;
-}
+    margin-bottom: 1em;
+  }
+
+
 </style>
