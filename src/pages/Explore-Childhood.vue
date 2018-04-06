@@ -5,7 +5,7 @@
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
-            <a :href="'http://localhost:8080/#/details/'+hobby.name">
+            <a :href="'http://localhost:8080/#/details?'+hobby.name">
                 <img class="circle" :src="hobby.img" />
             </a>
           </div>
