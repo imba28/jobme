@@ -1,23 +1,22 @@
 {
   "category":{
-    "sports":[
+    "sports":
       {
         "name":"sports",
         "img":"assets/icons/hobbies/img.png"
       }
-    ],
-    "nature":[
+    ,
+    "nature":
       {
         "name":"nature",
         "img":"assets/icons/hobbies/img.png"
       }
-    ],
-    "other":[
+    ,
+    "other":
       {
         "name":"unknown",
         "img":"assets/icons/hobbies/img.png"
       }
-    ]
   }
 
 }
