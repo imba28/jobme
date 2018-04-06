@@ -11,8 +11,7 @@ import ErrorPage from '@/pages/Error'
 import ProfilePage from '@/pages/Profile'
 import ExploreChildhoodPage from '@/pages/Explore-Childhood'
 import ExploreNowPage from '@/pages/Explore-Now'
-import DetailsPage1 from '@/pages/details_1'
-import DetailsPage2 from '@/pages/details_2'
+import DetailsPage from '@/pages/details'
 
 Vue.use(Router)
 
@@ -44,15 +43,9 @@ const router = new Router({
 
         },
         {
-            name: 'details1',
-            path: '/details/sports',
-            component: DetailsPage1
-
-        },
-        {
-            name: 'details2',
-            path: '/details/nature',
-            component: DetailsPage2
+            name: 'details',
+            path: '/details',
+            component: DetailsPage
 
         },
         {
