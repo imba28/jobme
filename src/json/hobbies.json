@@ -21,13 +21,26 @@
     "nature":
       {
         "name":"nature",
-        "img":"static/test1.jpeg"
+        "img":"static/test1.jpeg",
+        "types": {
+          "hiking": {
+            "id": "hiking",
+            "label": "Going hiking",
+            "img":"static/test2.jpeg"
+          },
+          "tourenskiing": {
+            "id": "tourenskiing",
+            "label": "Go tourenskiing",
+            "img":"static/test2.jpeg"
+          }
+        }
       }
     ,
-    "other":
+    "unknown":
       {
         "name":"unknown",
         "img":"static/test2.jpeg"
+
       }
   }
 
