@@ -36,7 +36,7 @@ export default {
   width: 100%;
 
   .placeholders {
-    height: $bottom-menu-height;
+    height: $top-menu-height;
   }
 
   .circle{
@@ -53,6 +53,7 @@ export default {
 #page {
   position: relative;
   margin: 0 auto;
+  padding-bottom: 1em;
 
   .view h2 {
     margin-top: 0;
