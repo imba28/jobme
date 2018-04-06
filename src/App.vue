@@ -55,6 +55,9 @@ export default {
   margin: 0 auto;
   padding-bottom: 1em;
 
+  .clickable {
+    cursor: pointer;
+  }
   .view h2 {
     margin-top: 0;
   }
@@ -74,6 +77,10 @@ export default {
     position: absolute;
     width: 100%;
     background: rgba(255,255,255,0.7);
+
+    .icon {
+      padding: 0.3em;
+    }
   }
 
 }

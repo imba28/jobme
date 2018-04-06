@@ -6,7 +6,7 @@
         <li v-for="hobby in hobbies">
           <div class="inner">
             <a :href="'http://localhost:8080/#/details?'+hobby.name">
-                <img class="circle" :src="hobby.img" />
+                <img :title="hobby.name" class="circle" :src="hobby.img" />
             </a>
           </div>
         </li>
@@ -14,7 +14,7 @@
     </div>
     <div>
       <a href="http://localhost:8080/#/explore-now">
-        <img class="next" src="/static/test.jpeg" />
+        <img title="Weiter" class="next" src="/static/test.jpeg" />
       </a>
     </div>
     </div>

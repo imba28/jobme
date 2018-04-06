@@ -6,10 +6,14 @@
         "img":"static/test.jpeg",
         "types": {
           "football": {
-            "img":"assets/icons/hobbies/football.png"
+            "id": "football",
+            "label": "Playing football",
+            "img":"static/test2.jpeg"
           },
           "golf": {
-            "img":"assets/icons/hobbies/golf.png"
+            "id": "golf",
+            "label": "Playing golf",
+            "img":"static/test2.jpeg"
           }
         }
       }
