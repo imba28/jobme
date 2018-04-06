@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1>Meine Kindheit</h1>
+      <h1>My childhood</h1>
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
@@ -34,15 +34,6 @@
 </script>
 
 <style lang="scss">
-  .next{
-    border-radius: 5%;
-    width: 20%;
-
-  }
-  .circle{
-    border-radius: 50%;
-    width: 80%;
-  }
   .icons {
     display: flex;
     flex-wrap: wrap;

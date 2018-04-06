@@ -36,13 +36,24 @@ export default {
   width: 100%;
 
   .placeholders {
-    height: $bottom-menu-height;
+    height: $top-menu-height;
+  }
+
+  .circle{
+    border-radius: 50%;
+    width: 80%;
+  }
+
+  .full-width {
+    width: 100%;
+
   }
 }
 
 #page {
   position: relative;
   margin: 0 auto;
+  padding-bottom: 1em;
 
   .view h2 {
     margin-top: 0;
