@@ -3,7 +3,7 @@
     "sports":
       {
         "name":"sports",
-        "img":"assets/icons/hobbies/img.png"
+        "img":"/static/test.jpeg"
       }
     ,
     "nature":
