@@ -6,8 +6,9 @@
           back-icon
         </div>
       </a>
-      <h1>Details</h1>
-
+      <h1>
+        <img class="full-width" :src="cat.img" />
+      </h1>
       <ul class="icons">
         <li v-for="cat in cats">
           <div class="inner">
@@ -31,7 +32,8 @@
       let cat = hash.split("?")[1]
 
       return {
-        cats: hobbies.category[cat].types
+        cats: hobbies.category[cat].types,
+        cat: hobbies.category[cat]
       }
 
     }

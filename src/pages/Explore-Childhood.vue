@@ -1,18 +1,17 @@
 <template>
   <div>
     <div>
-      <h1>Meine Kindheit</h1>
+      <h1>My childhood</h1>
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
             <a :href="'http://localhost:8080/#/details?'+hobby.name">
-              <div class="icon">
-                {{hobby.name}}
-              </div>
+                <img class="circle" :src="hobby.img" />
             </a>
           </div>
         </li>
     </ul>
+    </div>
     </div>
   </div>
   </template>
@@ -30,6 +29,10 @@
 </script>
 
 <style lang="scss">
+  .circle{
+    border-radius: 50%;
+    width: 80%;
+  }
   .icons {
     display: flex;
     flex-wrap: wrap;
