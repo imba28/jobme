@@ -1,0 +1,32 @@
+{
+  "category":{
+    "sports":[
+      {
+        "name":"football",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"tennis",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"golf",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"golf",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"golf",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"golf",
+        "img":"assets/icons/hobbies/img.png"
+      }
+
+    ]
+  }
+
+}

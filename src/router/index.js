@@ -9,8 +9,9 @@ import SavedJobsPage from '@/pages/Saved'
 import HomePage from '@/pages/Home'
 import ErrorPage from '@/pages/Error'
 import ProfilePage from '@/pages/Profile'
-import ExplorePage from '@/pages/Explore'
-import JobPage from '@/pages/Job'
+import ExploreChildhoodPage from '@/pages/Explore-Childhood'
+import ExploreNowPage from '@/pages/Explore-Now'
+import DetailsPage from '@/pages/details'
 
 Vue.use(Router)
 
@@ -31,9 +32,21 @@ const router = new Router({
             component: SavedJobsPage
         },
         {
-            name: 'explore',
-            path: '/explore',
-            component: ExplorePage
+            name: 'explore-childhood',
+            path: '/explore-childhood',
+            component: ExploreChildhoodPage
+        },
+        {
+            name: 'explore-now',
+            path: '/explore-now',
+            component: ExploreNowPage
+
+        },
+        {
+            name: 'details',
+            path: '/details',
+            component: DetailsPage
+
         },
         {
             name: 'job',

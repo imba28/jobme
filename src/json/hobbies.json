@@ -1,33 +1,22 @@
 {
   "category":{
-    "sports":[
+    "sports":
       {
-        "name":"football",
-        "img":"assets/icons/hobbies/img.png"
-      },
-      {
-        "name":"tennis",
-        "img":"assets/icons/hobbies/img.png"
-      },
-      {
-        "name":"golf",
+        "name":"sports",
         "img":"assets/icons/hobbies/img.png"
       }
-    ],
-    "nature":[
+    ,
+    "nature":
       {
-        "name":"summer",
-        "img":"assets/icons/hobbies/img.png"
-      },
-      {
-        "name":"winter",
-        "img":"assets/icons/hobbies/img.png"
-      },
-      {
-        "name":"spring",
+        "name":"nature",
         "img":"assets/icons/hobbies/img.png"
       }
-    ]
+    ,
+    "other":
+      {
+        "name":"unknown",
+        "img":"assets/icons/hobbies/img.png"
+      }
   }
 
 }
