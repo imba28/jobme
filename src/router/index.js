@@ -5,8 +5,10 @@ import auth from '@/auth'
 
 // Pages
 import LoginPage from '@/pages/Login'
+import SavedJobsPage from '@/pages/Saved'
 import HomePage from '@/pages/Home'
 import ErrorPage from '@/pages/Error'
+import ProfilePage from '@/pages/Profile'
 import ExplorePage from '@/pages/Explore'
 
 Vue.use(Router)
@@ -23,8 +25,19 @@ const router = new Router({
             component: LoginPage
         },
         {
+            name: 'saved-jobs',
+            path: '/saved',
+            component: SavedJobsPage
+        },
+        {
+            name: 'explore',
             path: '/explore',
             component: ExplorePage
+        },
+        {
+            name: 'profile',
+            path: '/profile',
+            component: ProfilePage
         },
         {
             path: '*',
