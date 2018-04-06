@@ -7,11 +7,12 @@
         </div>
       </a>
       <h1>Details</h1>
+
       <ul class="icons">
-        <li v-for="hobby in hobbies">
+        <li v-for="cat in cats">
           <div class="inner">
             <div class="icon">
-              {{hobby.img}}
+              {{cat.img}}
             </div>
           </div>
         </li>
@@ -26,11 +27,16 @@
     props: ['name'],
     name: 'start-page',
     data(){
+      let hash = window.location.hash
+      let cat = hash.split("?")[1]
+
       return {
-        hobbies: hobbies.category
+        cats: hobbies.category[cat].types
       }
+
     }
   }
+
 </script>
 
 <style lang="scss">
