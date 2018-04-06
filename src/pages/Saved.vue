@@ -1,6 +1,6 @@
 <template>
   <div class="saved">
-    <div>
+    <div class="padding">
       <h1>Saved</h1>
       <ul>
         <li v-for="(job, key) in jobs" class="list__item__wrapper">

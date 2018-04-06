@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import auth from '@/auth'
 
 // Pages
+import InfoPage from '@/pages/JobInfo'
 import LoginPage from '@/pages/Login'
 import SavedJobsPage from '@/pages/Saved'
 import HomePage from '@/pages/Home'
@@ -47,7 +48,12 @@ const router = new Router({
             name: 'details',
             path: '/details',
             component: DetailsPage
-
+        },
+        {
+            name: 'job-info',
+            path: '/jobs/:name/info',
+            component: InfoPage,
+            props: true
         },
         {
             name: 'job',
