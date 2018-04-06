@@ -3,7 +3,15 @@
     "sports":
       {
         "name":"sports",
-        "img":"/static/test.jpeg"
+        "img":"static/test.jpeg",
+        "types": {
+          "football": {
+            "img":"assets/icons/hobbies/football.png"
+          },
+          "golf": {
+            "img":"assets/icons/hobbies/golf.png"
+          }
+        }
       }
     ,
     "nature":

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <mainmenu></mainmenu>
     <div class="placeholders"></div>
     <div id="page">
@@ -8,7 +9,6 @@
         <router-view class="view"></router-view>
       </transition>
     </div>
-    <bottommenu v-if="$root.isSignedIn"></bottommenu>
   </div>
 </template>
 
@@ -38,15 +38,11 @@ export default {
   .placeholders {
     height: $bottom-menu-height;
   }
-  .wrapper + .placeholders {
-    margin-bottom: 1em;
-  }
 }
 
 #page {
   position: relative;
   margin: 0 auto;
-  margin: 0 2em;
 
   .view h2 {
     margin-top: 0;
