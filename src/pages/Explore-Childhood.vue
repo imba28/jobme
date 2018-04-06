@@ -29,10 +29,7 @@
 </script>
 
 <style lang="scss">
-  .circle{
-    border-radius: 50%;
-    width: 80%;
-  }
+
   .icons {
     display: flex;
     flex-wrap: wrap;

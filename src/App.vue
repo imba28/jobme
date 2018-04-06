@@ -38,6 +38,16 @@ export default {
   .placeholders {
     height: $bottom-menu-height;
   }
+
+  .circle{
+    border-radius: 50%;
+    width: 80%;
+  }
+
+  .full-width {
+    width: 100%;
+
+  }
 }
 
 #page {
