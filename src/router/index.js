@@ -7,7 +7,7 @@ import auth from '@/auth'
 import LoginPage from '@/pages/Login'
 import HomePage from '@/pages/Home'
 import ErrorPage from '@/pages/Error'
-import StartPage from '@/pages/Start'
+import ExplorePage from '@/pages/Explore'
 
 Vue.use(Router)
 
@@ -23,8 +23,8 @@ const router = new Router({
             component: LoginPage
         },
         {
-            path: '/start',
-            component: StartPage
+            path: '/explore',
+            component: ExplorePage
         },
         {
             path: '*',
@@ -65,7 +65,7 @@ router.beforeEach(function(to, from, next) {
     }
 
     if (typeof router.app.setPageHeader === 'function') {
-        router.app.setPageHeader(to.meta.pageHeader || 'task-o-mat')
+        router.app.setPageHeader(to.meta.pageHeader || 'working title')
     }
 
     next()

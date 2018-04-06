@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1>Start</h1>
+      <h1>Entdecken</h1>
       <ul class="icons">
         <li>
           <div class="inner">
