@@ -44,7 +44,7 @@ export default {
       auth.signIn(email, null)
         .then((user) => {
           router.push({
-            path: '/start'
+            path: '/explore'
           })
         })
     }

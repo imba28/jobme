@@ -1,60 +1,27 @@
 <template>
   <div>
     <div>
-      <h1>Entdecken</h1>
+      <h1>Meine Kindheit</h1>
       <ul class="icons">
-        <li>
+        <li v-for="hobby in hobbies">
           <div class="inner">
             <div class="icon">
-              fancy icon
+              {{hobby.img}}
             </div>
           </div>
         </li>
-        <li>
-          <div class="inner">
-            <div class="icon">
-              fancy icon
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="inner">
-            <div class="icon">
-              fancy icon
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="inner">
-            <div class="icon">
-              fancy icon
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="inner">
-            <div class="icon">
-              fancy icon
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="inner">
-            <div class="icon">
-              fancy icon
-            </div>
-          </div>
-        </li>
-      </ul>
+    </ul>
     </div>
   </div>
   </template>
 
-<script
+<script>
+  import hobbies from '@/json/hobbies.json'
   export default {
     name: 'start-page',
     data(){
       return {
+        hobbies: hobbies.category
       }
     }
   }
@@ -68,12 +35,12 @@
     align-items: center;
 
     li {
-      flex-basis: 25%;
+      flex-basis: 50%;
       flex-grow: 0;
       flex-shrink: 0;
       align-content: center;
       text-align: center;
-
+      list-style: none;
       .inner {
         padding: 2em;
 
