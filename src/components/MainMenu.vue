@@ -54,7 +54,7 @@ export default {
         {
           icon: 'briefcase',
           name: "Discover",
-          path: "/explore"
+          path: "/explore-childhood"
         },
         {
           icon: 'heart',

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="saved">
     <div>
       <h1>Saved</h1>
       <ul>
@@ -40,6 +40,8 @@
 </script>
 
 <style lang="scss">
+.saved {
+
   h3 {
     margin-top: 0!important;
     margin-bottom: .5em;
@@ -54,4 +56,5 @@
       position: relative;
     }
   }
+}
 </style>

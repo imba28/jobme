@@ -1,6 +1,12 @@
 <template>
   <div>
     <div class="job">
+      <div class="icon">
+        <a href="javascript:history.go(-1)">
+          <i class="fa fa-arrow-left"></i>
+        </a>
+      </div>
+      <div style="height: 1em"></div>
       <div class="job__image">
         <img :src="image">
       </div>
@@ -32,7 +38,7 @@
     data(){
       return {
         'image': 'http://via.placeholder.com/400x400',
-        'description': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+        'description': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita.'
       }
     }
   }
@@ -47,6 +53,10 @@
         margin: 0 auto;
         display: block;
       }
+    }
+
+    &__name {
+      margin-top: .75em!important;
     }
 
     &__options {
