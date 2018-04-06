@@ -1,0 +1,33 @@
+{
+  "category":{
+    "sports":[
+      {
+        "name":"football",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"tennis",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"golf",
+        "img":"assets/icons/hobbies/img.png"
+      }
+    ],
+    "nature":[
+      {
+        "name":"summer",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"winter",
+        "img":"assets/icons/hobbies/img.png"
+      },
+      {
+        "name":"spring",
+        "img":"assets/icons/hobbies/img.png"
+      }
+    ]
+  }
+
+}
