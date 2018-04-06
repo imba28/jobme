@@ -3,21 +3,12 @@
   <div class="title__container">
     <h1 class="login__title">Login</h1>
   </div>
-  <div class="logo__container">
-    <img src="../assets/tom-logo-blue.svg" alt="Unser Robomaskottchen">
-  </div>
   <div class="form__container">
     <form v-on:submit.prevent="signIn">
       <div class="input__container">
-        <input ref="email" id="email" class="input" type="text" placeholder="Deine Email" />
+        <input ref="user" id="email" class="input" type="text" placeholder="Wie lautet dein Name?" />
         <label class="input__label" id="email__label" for="email">
-            <span class="icon-mail"></span>
-          </label>
-      </div>
-      <div class="input__container">
-        <input ref="password" id="password" class="input" type="password" placeholder="Dein Password" />
-        <label class="input__label" id="password__label" for="password">
-            <span class="icon-key"></span>
+            <span class="icon-user"></span>
           </label>
       </div>
       <div class="text-center">
@@ -48,13 +39,12 @@ export default {
   },
   methods: {
     signIn() {
-      const email = this.$refs['email'].value
-      const password = this.$refs['password'].value
+      const email = this.$refs['user'].value
 
-      auth.signIn(email, password)
+      auth.signIn(email, null)
         .then((user) => {
           router.push({
-            path: '/tasks'
+            path: '/start'
           })
         })
     }

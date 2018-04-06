@@ -4,8 +4,10 @@ import Router from 'vue-router'
 import auth from '@/auth'
 
 // Pages
+import LoginPage from '@/pages/Login'
 import HomePage from '@/pages/Home'
 import ErrorPage from '@/pages/Error'
+import StartPage from '@/pages/Start'
 
 Vue.use(Router)
 
@@ -15,6 +17,14 @@ const router = new Router({
     routes: [{
             path: '/',
             component: HomePage
+        },
+        {
+            path: '/login',
+            component: LoginPage
+        },
+        {
+            path: '/start',
+            component: StartPage
         },
         {
             path: '*',
