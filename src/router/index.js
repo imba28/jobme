@@ -1,121 +1,43 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-Vue.use(Router)
 
+import Router from 'vue-router'
 import auth from '@/auth'
 
 // Pages
-import HomePage from '@/pages/Home'
-import TasksPage from '@/pages/Tasks'
-import RegisterPage from '@/pages/Register'
-import TaskAddPage from '@/pages/TaskAdd'
-import TaskPage from '@/pages/Task'
-import GroupsPage from '@/pages/Groups'
-import GroupPage from '@/pages/Group'
-import GroupNewPage from '@/pages/GroupNew'
-import MemberAddPage from '@/pages/MemberAdd'
 import LoginPage from '@/pages/Login'
-import WelcomePage from '@/pages/Welcome'
+import SavedJobsPage from '@/pages/Saved'
+import HomePage from '@/pages/Home'
 import ErrorPage from '@/pages/Error'
-import CalendarPage from '@/pages/Calendar'
+import ProfilePage from '@/pages/Profile'
+import ExplorePage from '@/pages/Explore'
+
+Vue.use(Router)
 
 const router = new Router({
-    linkActiveClass: "active", // active class for non-exact links.
-    linkExactActiveClass: "active", // active class for *exact* links.
+    linkActiveClass: 'active', // active class for non-exact links.
+    linkExactActiveClass: 'active', // active class for *exact* links.
     routes: [{
             path: '/',
-            component: WelcomePage,
-            meta: {
-                ifLoginRedirectTo: '/tasks'
-            }
-        },
-        {
-            name: 'tasks',
-            path: '/tasks',
-            component: TasksPage,
-            meta: {
-                requiresLogin: true,
-                bottomMenuIndex: 1
-            }
-        },
-        {
-            name: 'task-add',
-            path: '/tasks/add',
-            component: TaskAddPage,
-            props: true,
-            meta: {
-                requiresLogin: true
-            }
-        },
-        {
-            name: 'task',
-            path: '/tasks/:id',
-            component: TaskPage,
-            meta: {
-                requiresLogin: true,
-            }
-        },
-        {
-            name: 'groups',
-            path: '/groups',
-            component: GroupsPage,
-            meta: {
-                pageHeader: 'Gruppen',
-                requiresLogin: true,
-                bottomMenuIndex: 0
-            }
-        },
-        {
-            name: 'group_id',
-            path: '/groups/:id',
-            component: GroupPage,
-            props: true,
-            meta: {
-                pageHeader: 'Gruppen',
-                requiresLogin: true
-            }
-        },
-        {
-            name: 'group_new',
-            path: '/groups/new',
-            component: GroupNewPage,
-            props: true,
-            meta: {
-                pageHeader: 'Gruppen',
-                requiresLogin: true
-            }
-        },
-        {
-            name: 'member-add',
-            path: '/groups/:id/add',
-            component: MemberAddPage,
-            props: true,
-            meta: {
-                pageHeader: 'Gruppen',
-                requiresLogin: true
-            }
+            component: HomePage
         },
         {
             path: '/login',
-            name: 'login',
-            component: LoginPage,
-            meta: {
-                ifLoginRedirectTo: '/tasks'
-            }
+            component: LoginPage
         },
         {
-            path: '/register',
-            component: RegisterPage
+            name: 'saved-jobs',
+            path: '/saved',
+            component: SavedJobsPage
         },
         {
-            name: 'calendar',
-            path: '/calendar',
-            component: CalendarPage,
-            meta: {
-                pageHeader: 'Kalender',
-                requiresLogin: true,
-                bottomMenuIndex: 2
-            }
+            name: 'explore',
+            path: '/explore',
+            component: ExplorePage
+        },
+        {
+            name: 'profile',
+            path: '/profile',
+            component: ProfilePage
         },
         {
             path: '*',
@@ -138,7 +60,7 @@ router.beforeEach(function(to, from, next) {
         }
         if (to.meta.ifLoginRedirectTo) {
             if (auth.isSignedIn()) {
-                console.log("REDIRECT TO " + to.meta.ifLoginRedirectTo)
+                console.log('REDIRECT TO ' + to.meta.ifLoginRedirectTo)
                 router.push({
                     path: to.meta.ifLoginRedirectTo
                 })
@@ -156,7 +78,7 @@ router.beforeEach(function(to, from, next) {
     }
 
     if (typeof router.app.setPageHeader === 'function') {
-        router.app.setPageHeader(to.meta.pageHeader || 'task-o-mat')
+        router.app.setPageHeader(to.meta.pageHeader || 'working title')
     }
 
     next()

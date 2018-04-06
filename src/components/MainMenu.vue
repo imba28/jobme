@@ -15,7 +15,7 @@
     <nav v-if="show" id="side__nav">
       <ul>
         <li v-if="$root.isSignedIn">
-          <h3 id="greeting_user">Hallo {{ capitalizeFirstLetter($root.user.name) }}! </h3>
+          <h3 id="greeting_user">Hallo {{ capitalizeFirstLetter($root.user) }}! </h3>
         </li>
         <li v-for="(option, index) in options">
           <router-link v-if="option.path" active-class="active" :to="option.path" @click.native="triggerBurger">
@@ -44,23 +44,18 @@ export default {
     return {
       show: false,
       user: null,
-      page: 'task-o-mat',
+      page: 'working title',
       options: [
         {
           icon: 'calendar',
-          name: "Tasks",
-          path: "/tasks"
+          name: "Entdecken",
+          path: "/start"
         },
         {
           icon: 'calendar',
-          name: "Gruppen",
-          path: "/groups"
+          name: "Gespeicherte Jobs",
+          path: "/saved-jobs"
         },
-        {
-          icon: 'calendar',
-          name: 'Login',
-          path: '/login'
-        }
       ]
     }
   },
@@ -80,7 +75,7 @@ export default {
     },
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
-}
+    }
   },
   computed: {
     pageHeader: {

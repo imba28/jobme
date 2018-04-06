@@ -5,32 +5,32 @@
     <ul class="bottom-menu__list">
 
       <li class="bottom-menu__list__item">
-        <router-link :to="{ name: 'groups' }">
+        <router-link :to="{ name: 'profile' }">
           <div class="bottom-menu__list__item__icon">
-            <span class="icon-group-light"></span>
+            <span class="icon-user"></span>
           </div>
-          <span class="bottom-menu__list__item__name">Gruppen</span>
+          <span class="bottom-menu__list__item__name">Profil</span>
         </router-link>
       </li>
 
       <li class="vertical-line"></li>
 
       <li class="bottom-menu__list__item">
-        <router-link :to="{ name: 'tasks' }">
+        <router-link :to="{ name: 'explore' }">
           <div class="bottom-menu__list__item__icon">
             <span class="icon-task"></span>
           </div>
-          <span class="bottom-menu__list__item__name">Aufgaben</span>
+          <span class="bottom-menu__list__item__name">Entdecken</span>
         </router-link>
       </li>
 
       <li class="vertical-line"></li>
       <li class="bottom-menu__list__item">
-        <router-link :to="{ name: 'calendar' }">
+        <router-link :to="{ name: 'saved-jobs' }">
           <div class="bottom-menu__list__item__icon">
             <span class="icon-calendar"></span>
           </div>
-          <span class="bottom-menu__list__item__name">Kalender</span>
+          <span class="bottom-menu__list__item__name">Jobs</span>
         </router-link>
       </li>
     </ul>
