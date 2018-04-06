@@ -12,6 +12,11 @@
         </li>
     </ul>
     </div>
+    <div>
+      <a href="http://localhost:8080/#/explore-now">
+        <img class="next" src="/static/test.jpeg" />
+      </a>
+    </div>
     </div>
   </div>
   </template>
@@ -29,7 +34,6 @@
 </script>
 
 <style lang="scss">
-
   .icons {
     display: flex;
     flex-wrap: wrap;

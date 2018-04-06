@@ -6,13 +6,17 @@
         <li v-for="hobby in hobbies">
           <div class="inner">
             <a :href="'http://localhost:8080/#/details?'+hobby.name">
-              <div class="icon">
-                {{hobby.name}}
-              </div>
+                <img class="circle" :src="hobby.img" />
             </a>
           </div>
         </li>
     </ul>
+    </div>
+    <div>
+      <a href="http://localhost:8080/#/jobs/zahtechniker">
+        <img class="next" src="/static/test.jpeg" />
+      </a>
+    </div>
     </div>
   </div>
   </template>
@@ -30,6 +34,15 @@
 </script>
 
 <style lang="scss">
+  .next{
+    border-radius: 5%;
+    width: 20%;
+
+  }
+  .circle{
+    border-radius: 50%;
+    width: 80%;
+  }
   .icons {
     display: flex;
     flex-wrap: wrap;
