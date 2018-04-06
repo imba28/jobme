@@ -7,7 +7,7 @@
           <div class="inner">
             <a :href="'http://localhost:8080/#/details/'+hobby.name">
               <div class="icon">
-                {{hobby[0].name}}
+                {{hobby.name}}
               </div>
             </a>
           </div>

@@ -1,13 +1,15 @@
 <template>
   <div>
     <div>
-      <h1>Now</h1>
+      <h1>Meine Kindheit</h1>
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
-            <div class="icon">
-              {{hobby.img}}
-            </div>
+            <a :href="'http://localhost:8080/#/details/'+hobby.name">
+              <div class="icon">
+                {{hobby.name}}
+              </div>
+            </a>
           </div>
         </li>
     </ul>
