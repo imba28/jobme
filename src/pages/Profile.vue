@@ -30,8 +30,8 @@
   .buttons {
     button {
       display: block;
-      width: 50%;
-      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
       margin-bottom: 1em;
     }
   }

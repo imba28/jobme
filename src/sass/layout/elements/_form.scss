@@ -1,8 +1,8 @@
 .textarea, .input {
   font-family: $font-main;
   padding: 1em;
-  border: 1px solid $grey;
-  @include border-radius($input-border-radius $input-border-radius $input-border-radius $input-border-radius);
+  border: none;
+  border-bottom: 1px solid $grey;
   @include transition(border 300ms ease);
   position: relative;
 
@@ -34,25 +34,22 @@
     min-width: 0;
   }
 
-  .input {
-    flex: 1 1;
-    @include border-radius(0 $input-border-radius $input-border-radius 0);
+  label {
+    @include border-radius($input-border-radius 0 0 $input-border-radius);
+
   }
 
-  .btn:last-child,
-  .input__label:last-child {
-    @include border-radius($input-border-radius 0 0 $input-border-radius);
+  .input {
+    flex: 1 1;
   }
 
   .btn:first-child,
   .input__label:first-child {
     border-left-width: 0;
-    @include border-radius(0 $input-border-radius $input-border-radius 0);
   }
 
   .input__label {
-    border: 2px solid $grey;
-    border-right: none;
+    border: none;
     font-weight: 700;
     font-family: $font-special;
     @include transition(all 300ms ease);
@@ -76,7 +73,6 @@
   &.input__container--has-button .input {
     border-left-width: 2px;
     border-right-width: 0;
-    @include border-radius($input-border-radius 0 0 $input-border-radius);
   }
 
   .btn {
@@ -85,7 +81,6 @@
 
   .btn:last-child,
   .input__label:last-child {
-    @include border-radius(0 $input-border-radius $input-border-radius 0);
   }
 }
 

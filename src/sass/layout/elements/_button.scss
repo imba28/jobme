@@ -50,7 +50,8 @@
   background-color: transparent;
   border-color: $grey-dark;
 
-  &:focus {
+  &:focus,
+  &--focus {
     @include linearGradientVertical(rgba($grey-dark, 0.15), rgba($grey, 0.1));
   }
   &:hover,
