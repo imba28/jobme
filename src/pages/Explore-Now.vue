@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1>Now</h1>
+      <h1>Meine jetzigen Interessen</h1>
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
