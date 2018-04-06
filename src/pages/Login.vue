@@ -6,7 +6,7 @@
   <div class="form__container">
     <form v-on:submit.prevent="signIn">
       <div class="input__container">
-        <input ref="user" id="email" class="input" type="text" placeholder="Wie lautet dein Name?" />
+        <input ref="user" id="email" class="input" type="text" required="true" placeholder="Wie lautet dein Name?" />
         <label class="input__label" id="email__label" for="email">
             <span class="icon-user"></span>
           </label>
