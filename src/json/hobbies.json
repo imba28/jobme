@@ -3,7 +3,7 @@
     "sports":
       {
         "name":"sports",
-        "img":"static/test.jpeg",
+        "img":"static/Sport.svg",
         "types": {
           "football": {
             "id": "football",
@@ -21,7 +21,7 @@
     "nature":
       {
         "name":"nature",
-        "img":"static/test1.jpeg",
+        "img":"static/Natur.svg",
         "types": {
           "hiking": {
             "id": "hiking",
@@ -36,12 +36,36 @@
         }
       }
     ,
-    "unknown":
+    "science":
       {
-        "name":"unknown",
-        "img":"static/test2.jpeg"
+        "name":"science",
+        "img":"static/Forschen.svg"
 
-      }
+    },
+    "craft":
+      {
+        "name":"craft",
+        "img":"static/Handwerk.svg"
+
+    },
+    "indoor":
+      {
+        "name":"indoor",
+        "img":"static/Indoor.svg"
+
+    },
+    "creative":
+      {
+        "name":"creative",
+        "img":"static/Kreativ.svg"
+
+    },
+    "transport":
+      {
+        "name":"transport",
+        "img":"static/Transportation.svg"
+
+    }
   }
 
 }
