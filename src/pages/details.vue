@@ -2,7 +2,7 @@
   <div>
     <div>
       <div class="overlay">
-        <a href="#/explore-childhood">
+        <a onclick="window.history.back()">
           <div class="icon">
             <i class="fas fa-chevron-left fa-2x"></i>
           </div>
