@@ -43,6 +43,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    padding: 2em;
 
     li {
       flex-basis: 50%;
@@ -69,13 +70,12 @@
   }
 
   .explore-child {
-    background-position: 0 0;
+    background-color: #4dd0e1;
 
     .icons {
       justify-content: flex-end;
       flex-direction: column;
       width: 100%;
-      padding: 0 2em;
     }
 
     .icons > li {
@@ -87,10 +87,6 @@
         .inner {
           float: right;
         }
-      }
-
-      &:nth-child(1) {
-        padding-top: 350px;
       }
 
       .inner {

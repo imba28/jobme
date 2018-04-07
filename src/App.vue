@@ -61,7 +61,7 @@ export default {
   .forward{
     background-color: $blue;
     padding: 15px;
-    margin: 0 0;
+    margin: 2em 0 0;
     text-align: center;
   }
   .changeColor{

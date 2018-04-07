@@ -39,20 +39,12 @@
 </script>
 
 <style lang="scss">
-  .next{
-    border-radius: 5%;
-    width: 20%;
-
-  }
-  .circle{
-    border-radius: 50%;
-    width: 80%;
-  }
   .icons {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    padding: 2em;
 
     li {
       flex-basis: 50%;
@@ -77,4 +69,31 @@
       }
     }
   }
+
+  .explore-now {
+    background-color: #2c0f2a;
+    .icons {
+      justify-content: flex-end;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .icons > li {
+      align-self: flex-start;
+
+      &:nth-child(2n) {
+        align-self: flex-end;
+
+        .inner {
+          float: right;
+        }
+      }
+
+      .inner {
+        width: 60%;
+        padding: 0 2em;
+      }
+    }
+  }
+
 </style>
