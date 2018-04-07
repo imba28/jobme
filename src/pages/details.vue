@@ -13,8 +13,8 @@
       </h1>
       <ul class="icons">
         <li v-for="cat in cats">
-          <div class="inner">
-            <img :id="cat.id" :title="cat.label" class="circle clickable" v-on:click="addHobby(cat.id)" :src="cat.img" />
+          <div class="details-div">
+            <img :id="cat.id" :title="cat.label" class="circle-details clickable" v-on:click="addHobby(cat.id)" :src="cat.img" />
           </div>
         </li>
       </ul>

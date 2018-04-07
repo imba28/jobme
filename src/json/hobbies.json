@@ -8,16 +8,35 @@
           "football": {
             "id": "football",
             "label": "Playing football",
-            "img":"static/test2.jpeg"
+            "img":"static/Fußball.svg"
           },
-          "golf": {
-            "id": "golf",
-            "label": "Playing golf",
-            "img":"static/test2.jpeg"
+          "bike": {
+            "id": "bike",
+            "label": "riding bike",
+            "img":"static/Radfahren.svg"
+          },
+          "horse": {
+            "id": "horse",
+            "label": "horse riding",
+            "img":"static/Reiten.svg"
+          },
+          "swimming": {
+            "id": "swimming",
+            "label": "swimming",
+            "img":"static/Schwimmen.svg"
+          },
+          "ski": {
+            "id": "ski",
+            "label": "sking",
+            "img":"static/Ski.svg"
+          },
+          "tennis": {
+            "id": "tennis",
+            "label": "playing",
+            "img":"static/Tennis.svg"
           }
         }
-      }
-    ,
+      },
     "nature":
       {
         "name":"nature",
@@ -26,27 +45,108 @@
           "hiking": {
             "id": "hiking",
             "label": "Going hiking",
-            "img":"static/test2.jpeg"
+            "img":"static/Berg.svg"
           },
-          "tourenskiing": {
-            "id": "tourenskiing",
-            "label": "Go tourenskiing",
-            "img":"static/test2.jpeg"
+          "binoculars": {
+            "id": "binoculars",
+            "label": "Go binoculars",
+            "img":"static/Fernglas.svg"
+          },
+          "dog": {
+            "id": "dog",
+            "label": "have a dog",
+            "img":"static/Hund.svg"
+          },
+          "plants": {
+            "id": "plants",
+            "label": "have plants",
+            "img":"static/Pflanzen.svg"
+          },
+          "water": {
+            "id": "water",
+            "label": "water",
+            "img":"static/Wasser.svg"
+          },
+          "tent": {
+            "id": "tent",
+            "label": "like camping",
+            "img":"static/Zelten.svg"
           }
         }
-      }
-    ,
+      },
     "science":
       {
         "name":"science",
-        "img":"static/Forschen.svg"
-
-    },
+        "img":"static/Forschen.svg",
+        "types": {
+          "biology": {
+            "id": "biology",
+            "label": "liking biology",
+            "img":"static/Biologie.svg"
+          },
+          "chemistry": {
+            "id": "chemistry",
+            "label": "liking chemistry",
+            "img":"static/Chemie.svg"
+          },
+          "mechanics": {
+            "id": "mechanics",
+            "label": "liking mechanics",
+            "img":"static/Mechanik.svg"
+          },
+          "medicine": {
+            "id": "medicine",
+            "label": "liking medicine",
+            "img":"static/Medizin.svg"
+          },
+          "physics": {
+            "id": "physics",
+            "label": "liking physics",
+            "img":"static/Physik.svg"
+          },
+          "technology": {
+            "id": "technology",
+            "label": "liking technology",
+            "img":"static/Technik.svg"
+          }
+        }
+      },
     "craft":
       {
         "name":"craft",
-        "img":"static/Handwerk.svg"
-
+        "img":"static/Handwerk.svg",
+        "types": {
+          "painter": {
+            "id": "painter",
+            "label": "liking painting",
+            "img":"static/Farbrolle.svg"
+          },
+          "nähmaschine": {
+            "id": "nähmaschine",
+            "label": "liking nähmaschine",
+            "img":"static/Naehmaschine.svg"
+          },
+          "saw": {
+            "id": "saw",
+            "label": "liking saw",
+            "img":"static/Saege.svg"
+          },
+          "screw": {
+            "id": "screw",
+            "label": "liking screwing",
+            "img":"static/Schrauben.svg"
+          },
+          "spaten": {
+            "id": "spaten",
+            "label": "liking spating",
+            "img":"static/Spaten.svg"
+          },
+          "stecker": {
+            "id": "spaten",
+            "label": "liking stecken",
+            "img":"static/Stecker.svg"
+          }
+        }
     },
     "indoor":
       {
