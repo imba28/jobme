@@ -1,7 +1,7 @@
 <template>
   <div class="explore-child">
     <div>
-      <h1>My childhood</h1>
+      <h1>What did you love to do as a kid?</h1>
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
