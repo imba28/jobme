@@ -3,7 +3,7 @@
     <v-touch @swipeleft="nope" @swiperight="save">
     <div class="job" ref="container">
       <div class="job__image">
-        <img :src="image">
+        <img :src="job.image">
       </div>
       <div class="padding">
         <div class="icon">
@@ -13,10 +13,10 @@
           </a>
         </div>
         <h1 class="job__name">
-          Jobs <i class="fa fa-angle-double-right"></i> {{name}}
+          Jobs <i class="fa fa-angle-double-right"></i> {{job.name}}
         </h1>
         <p class="job__description">
-          {{description}}
+          {{job.description}}
         </p>
         <div class="job__options button-group">
           <button class="btn btn--red" v-on:click="nope">
@@ -39,26 +39,37 @@
   import note from '@/lib/notification'
   import router from '@/router'
   import $ from 'jquery'
+  import jobs from '@/json/jobs'
 
   export default {
     name: 'job-page',
     props: ['name'],
     data(){
       return {
-        'image': 'http://via.placeholder.com/400x400',
-        'description': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita.'
+        'job': {}
       }
     },
     methods: {
       nope() {
-        note.success('Job removed!', 750)
+        const idx = jobs.indexOf(this.job);
 
-        router.push({name: 'job', params: {name: Math.random(), bottomMenuIndex: 1}})
+        if(idx > 0) {
+          note.success('Job saved!', 750)
+          router.push({name: 'job', params: {name: jobs[idx-1].slug, bottomMenuIndex: 1}})
+        }
       },
       save() {
-        note.success('Job saved!', 750)
-        router.push({name: 'job', params: {name: Math.random(), bottomMenuIndex: -1}})
+        const idx = jobs.indexOf(this.job);
+
+        if(idx < jobs.length -1 ) {
+          note.success('Job removed!', 750)
+          router.push({name: 'job', params: {name: jobs[idx+1].slug, bottomMenuIndex: -1}})
+        }
       }
+    },
+    created() {
+      this.job = jobs.find((item) => item.slug === this.name)
+
     }
   }
 </script>

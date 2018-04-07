@@ -80,8 +80,8 @@ export default {
         box-shadow: 0.5em 0 0 lighten($blue-light, 30%) inset, 0 0 1em rgba($black, 0.1);
 
         &.success {
-            background: $green;
-            box-shadow: 0.5em 0 0 darken($green, 5%) inset, 0 0 1em rgba($black, 0.1);
+            background: $success;
+            box-shadow: 0.5em 0 0 darken($success, 5%) inset, 0 0 1em rgba($black, 0.1);
         }
 
         &.error {
