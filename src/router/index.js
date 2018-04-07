@@ -100,7 +100,7 @@ router.beforeEach(function(to, from, next) {
     }
 
     if (typeof router.app.setPageHeader === 'function') {
-        router.app.setPageHeader(to.meta.pageHeader || 'jobMe')
+        router.app.setPageHeader(to.meta.pageHeader || 'JOBme')
     }
 
     next()
