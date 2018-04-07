@@ -1,6 +1,5 @@
 .btn {
   cursor: pointer;
-  @include border-radius($input-border-radius);
   margin-top: 1em;
   text-align: center;
   font-family: $font-special;
