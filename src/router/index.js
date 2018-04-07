@@ -105,7 +105,7 @@ router.beforeEach(function(to, from, next) {
     }
 
     if (typeof router.app.setPageHeader === 'function') {
-        router.app.setPageHeader(to.meta.pageHeader || 'working title')
+        router.app.setPageHeader(to.meta.pageHeader || 'jobMe')
     }
 
     next()
