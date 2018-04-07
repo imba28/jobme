@@ -4,8 +4,8 @@
       <h1>Saved</h1>
       <ul>
         <li v-for="(job, key) in jobs" class="list__item__wrapper">
-          <h3>{{job}}</h3>
-          <router-link :to="{ name: 'job', params: { name: job }}">
+          <h3>{{job.name}}</h3>
+          <router-link :to="{ name: 'job', params: { name: job.slug }}">
             more
           </router-link>
           <a href="#" v-on:click="remove(key)">delete</a>
@@ -17,17 +17,13 @@
 
 <script>
   import notification from '@/lib/notification'
+  import jobs from '@/json/jobs'
 
   export default {
     name: 'saved-jobs-page',
     data(){
       return {
-        'jobs': [
-          'Zahntechniker',
-          'Mechatroniker',
-          'Steuerberater',
-          'Notar'
-        ]
+        jobs
       }
     },
     methods: {
