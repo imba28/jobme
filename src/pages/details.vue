@@ -38,6 +38,7 @@
 
     },
     methods: {
+      //TODO: write onload method that ticks all details which are in local storage
       addHobby: function(chosenCat) {
         let el = document.getElementById(chosenCat)
         let storedHobbies = {'hobbies': []}
@@ -51,20 +52,21 @@
 
         console.info(storedHobbies)
 
-        if(el.className.includes('added')) {
-          console.info("REMOVE FROM LOCAL STORAGE IF IT IS THERE!")
+        if((el.className.includes('added'))||storedHobbies.hobbies.includes(el.id)) {
+          // remove it!
           el.classList.remove('added')
-
           $('#'+tickIcon.id).remove()
           let index = storedHobbies.hobbies.indexOf(el.id)
           storedHobbies.hobbies.splice(index,1)
         }
         else {
-          console.info("ADD TO USERS LOCAL STORAGE!")
+          // add it!
           el.classList.add('added')
           el.insertAdjacentElement("afterend", tickIcon)
           storedHobbies.hobbies.push(el.id)
         }
+
+        // finally update sessionStorage
         sessionStorage.setItem('hobbies', JSON.stringify(storedHobbies))
 
       }
