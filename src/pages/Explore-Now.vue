@@ -5,7 +5,7 @@
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
-            <a :href="'details?'+hobby.name">
+            <a :href="'#/details?'+hobby.name">
                 <img class="circle" :src="hobby.img" />
             </a>
           </div>
@@ -30,6 +30,10 @@
       return {
         hobbies: hobbies.category
       }
+    },
+    created() {
+        //Scrolls to top when view is displayed
+        window.scrollTo(0, 0);
     }
   }
 </script>
