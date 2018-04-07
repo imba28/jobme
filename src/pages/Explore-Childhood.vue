@@ -29,6 +29,10 @@
       return {
         hobbies: hobbies.category
       }
+    },
+    created() {
+        //Scrolls to top when view is displayed
+        window.scrollTo(0, 0);
     }
   }
 </script>
