@@ -4,7 +4,7 @@
       {
         "name":"sports",
         "img":"static/Sport.svg",
-        "imgWhite":"static/Forschen_white.svg",
+        "imgWhite":"static/Sport_white.svg",
         "types": {
           "football": {
             "id": "football",
@@ -42,7 +42,7 @@
       {
         "name":"nature",
         "img":"static/Natur.svg",
-        "imgWhite":"static/Sport.svg",
+        "imgWhite":"static/Natur_white.svg",
         "types": {
           "hiking": {
             "id": "hiking",
@@ -80,7 +80,7 @@
       {
         "name":"science",
         "img":"static/Forschen.svg",
-        "imgWhite":"static/Sport.svg",
+        "imgWhite":"static/Forschen_white.svg",
         "types": {
           "biology": {
             "id": "biology",
@@ -118,7 +118,7 @@
       {
         "name":"craft",
         "img":"static/Handwerk.svg",
-        "imgWhite":"static/Sport.svg",
+        "imgWhite":"static/Handwerk_white.svg",
         "types": {
           "painter": {
             "id": "painter",
@@ -156,21 +156,21 @@
       {
         "name":"indoor",
         "img":"static/Indoor.svg",
-        "imgWhite":"static/Sport.svg"
+        "imgWhite":"static/Indoor_white.svg"
 
     },
     "creative":
       {
         "name":"creative",
         "img":"static/Kreativ.svg",
-        "imgWhite":"static/Sport.svg"
+        "imgWhite":"static/Kreativ_white.svg"
 
     },
     "transport":
       {
         "name":"transport",
         "img":"static/Transportation.svg",
-        "imgWhite":"static/Sport.svg"
+        "imgWhite":"static/Transportation_white.svg"
 
     }
   }
