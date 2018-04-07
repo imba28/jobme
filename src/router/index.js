@@ -99,10 +99,6 @@ router.beforeEach(function(to, from, next) {
         router.app.$root.transitionName = toIdx <= 0 ? 'page-right' : 'page-left'
     }
 
-    if (typeof router.app.setPageHeader === 'function') {
-        router.app.setPageHeader(to.meta.pageHeader || 'JOBme')
-    }
-
     next()
 })
 

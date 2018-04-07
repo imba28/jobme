@@ -8,7 +8,7 @@
     </span>
   </button>
     <h1 class="header__title">
-    {{ this.pageHeader }}
+    <span v-html="pageHeader"></span>
   </h1>
   </header>
   <transition name="fade" v-if="$root.isSignedIn">
@@ -44,7 +44,7 @@ export default {
     return {
       show: false,
       user: null,
-      page: 'JOBme',
+      page: 'JOB<span style="color:#76dcdc;font-weight:700;">me</span>',
       options: [
         {
           icon: 'user',
