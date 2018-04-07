@@ -17,6 +17,31 @@ body {
     min-height: 100vh;
 
     font-weight: 300;
+
+    .explore-child {
+      h1 {
+        color: $grey;
+      }
+      background-image: url('/static/background-explore-child.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-position: bottom;
+
+    }
+
+    .explore-now {
+      h1 {
+        color: $grey;
+      }
+      background-image: url('/static/background-explore-now.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-position: bottom;
+
+    }
+
 }
 
 a {

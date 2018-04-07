@@ -41,12 +41,13 @@ export default {
 
   .circle{
     border-radius: 50%;
+    background-color: $white;
     width: 80%;
     border: 1px solid;
   }
 
   .forward{
-    background-color: $forward-background;
+    background-color: $blue;
     padding: 15px;
     margin: 0 0;
     text-align: center;
@@ -62,7 +63,7 @@ export default {
 #page {
   position: relative;
   margin: 0 auto;
-  height:100%;
+  max-height:100%;
 
   .clickable {
     cursor: pointer;

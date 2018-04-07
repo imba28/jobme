@@ -20,7 +20,7 @@
           </div>
           <div class="text-center pt-1">
             <div>
-              <button id="sub" type="submit" class="btn btn--default display--center" style="position: absolute; bottom: 5em; width:100%; box-sizing:border-box; left:0;">Login</button>
+              <button id="sub" type="submit" class="btn btn--default display--center" style="bottom: 5em; width:80%; box-sizing:border-box; left:0;">Login</button>
             </div>
           </div>
         </form>

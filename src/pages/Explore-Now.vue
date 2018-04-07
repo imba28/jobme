@@ -1,5 +1,5 @@
 <template>
-  <div id="Nowadays">
+  <div class="explore-now">
     <div>
       <h1>Nowadays</h1>
       <ul class="icons">
