@@ -5,7 +5,7 @@
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
-            <a :href="'http://localhost:8080/#/details?'+hobby.name">
+            <a :href="'#/details?'+hobby.name">
                 <img :title="hobby.name" class="circle" :src="hobby.img" />
             </a>
           </div>
@@ -13,7 +13,7 @@
     </ul>
     </div>
     <div>
-      <a href="http://localhost:8080/#/explore-now">
+      <a href="#/explore-now">
         <img title="Weiter" class="next" src="/static/test.jpeg" />
       </a>
     </div>

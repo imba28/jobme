@@ -2,7 +2,7 @@
   <div>
     <div>
       <div class="overlay">
-        <a href="http://localhost:8080/#/explore-childhood">
+        <a href="#/explore-childhood">
           <div class="icon">
             <i class="fas fa-chevron-left fa-2x"></i>
           </div>
