@@ -5,8 +5,8 @@
         <h1>JOB<span>me</span></h1>
       </div>
       <div class="button-group">
-        <button class="btn btn--secondary btn--default--focus">Sign up</button>
-        <button class="btn btn--default">Sign in</button>
+        <button class="btn btn--secondary btn--default">Sign up</button>
+        <button class="btn btn--default--focus">Sign in</button>
       </div>
     </div>
     <div class="login--info__container">
@@ -20,7 +20,7 @@
           </div>
           <div class="text-center pt-1">
             <div>
-              <button type="submit" class="btn btn--default display--center display--block" style="width: 100%; box-sizing: border-box;">Login</button>
+              <button type="submit" class="btn btn--default display--center" style="position: absolute; bottom: 5em; width:100%; box-sizing:border-box;">Login</button>
             </div>
           </div>
         </form>
@@ -101,8 +101,12 @@
         align-self: center;
         border-radius: 0;
         border: none;
+
       }
+
+
     }
+
   }
 
 </style>

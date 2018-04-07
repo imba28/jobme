@@ -53,7 +53,7 @@ export default {
 #page {
   position: relative;
   margin: 0 auto;
-  padding-bottom: 1em;
+  height:100%;
 
   .clickable {
     cursor: pointer;
