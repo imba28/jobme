@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Nunito|Open+Sans|Quicksand');
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -9,7 +9,7 @@ a, button, input, textarea {
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: $white;
     font-size: 1em;
 
@@ -29,7 +29,8 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
   margin-top: 2em;
 }
 

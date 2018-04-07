@@ -2,7 +2,7 @@
   <div class="welcome">
     <div class="container">
       <div class="image">
-        <img src="http://via.placeholder.com/400x400">
+        <h1>JOB<span>me</span></h1>
       </div>
       <div class="button-group">
         <button class="btn btn--secondary btn--default--focus">Sign up</button>
@@ -58,6 +58,7 @@
 
 <style lang="scss">
   .welcome {
+    height: 100%;
     .input__container {
       margin-top: 1em;
     }
@@ -75,15 +76,20 @@
         }
       }
 
-      .image img {
+      .image {
+        display: flex;
         width: 100%;
         max-width: 400px;
+        height: 200px;
         margin: 0 auto;
         background: #ddd;
       }
 
       h1 {
         margin-bottom: 0.3em;
+        span {
+          font-weight: bolder;
+        }
       }
 
       p {
@@ -91,8 +97,10 @@
       }
 
       button {
+        margin: 0;
         align-self: center;
-        margin: 0.5em 0 0.5em 0em;
+        border-radius: 0;
+        border: none;
       }
     }
   }

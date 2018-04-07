@@ -6,7 +6,7 @@
     <div id="page">
       <notification ref="notification"/>
       <transition :name="$root.transitionName">
-        <router-view class="view"></router-view>
+        <router-view class="view" :key="$route.path"></router-view>
       </transition>
     </div>
   </div>

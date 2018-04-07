@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="job">
+    <v-touch @swipeleft="nope" @swiperight="save">
+    <div class="job" ref="container">
       <div class="job__image">
         <img :src="image">
       </div>
@@ -30,12 +31,14 @@
         </div>
       </div>
     </div>
+  </v-touch>
   </div>
   </template>
 
 <script>
   import note from '@/lib/notification'
   import router from '@/router'
+  import $ from 'jquery'
 
   export default {
     name: 'job-page',
@@ -48,12 +51,13 @@
     },
     methods: {
       nope() {
-        note.success('Job removed!')
+        note.success('Job removed!', 750)
 
-        router.push({name: 'job', params: {name: Math.random()}})
+        router.push({name: 'job', params: {name: Math.random(), bottomMenuIndex: 1}})
       },
       save() {
-        note.success('Job saved!')
+        note.success('Job saved!', 750)
+        router.push({name: 'job', params: {name: Math.random(), bottomMenuIndex: -1}})
       }
     }
   }

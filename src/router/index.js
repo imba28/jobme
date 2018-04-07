@@ -95,17 +95,12 @@ router.beforeEach(function(to, from, next) {
             }
         }
 
-
-        if (to.meta.bottomMenuIndex !== undefined && from.meta.bottomMenuIndex !== undefined) {
-            router.app.$root.transitionName = to.meta.bottomMenuIndex < from.meta.bottomMenuIndex ? 'page-right' : 'page-left'
-        }
-        else {
-            router.app.$root.transitionName = 'page-right'
-        }
+        const toIdx = to.params.bottomMenuIndex ? to.params.bottomMenuIndex : 0;
+        router.app.$root.transitionName = toIdx <= 0 ? 'page-right' : 'page-left'
     }
 
     if (typeof router.app.setPageHeader === 'function') {
-        router.app.setPageHeader(to.meta.pageHeader || 'working title')
+        router.app.setPageHeader(to.meta.pageHeader || 'jobMe')
     }
 
     next()
