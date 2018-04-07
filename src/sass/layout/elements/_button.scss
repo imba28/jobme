@@ -46,8 +46,7 @@
 
 .btn--default {
   color: $grey-dark;
-  background-color: transparent;
-  border-color: $grey-dark;
+  background-color: $blue;
 
   &:focus,
   &--focus {
@@ -148,7 +147,6 @@
     display: block;
     cursor: pointer;
     height: 27px;
-    border-radius: 20px;
     background-color: rgba($blue, 0.4);
     transition: background-color 0.3s ease;
 }
