@@ -19,7 +19,6 @@ Vue.use(Vue2TouchEvents, {
 
 Vue.use(Touch)
 
-
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
