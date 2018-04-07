@@ -1,7 +1,7 @@
 <template>
   <div class="explore-now">
     <div>
-      <h1>Nowadays</h1>
+      <h1>What do you love to do now?</h1>
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
