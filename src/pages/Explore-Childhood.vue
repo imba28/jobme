@@ -6,35 +6,35 @@
         <li v-for="hobby in hobbies">
           <div class="inner">
             <a :href="'#/details?'+hobby.name">
-                <img :title="hobby.name" class="circle" :src="hobby.img" />
+              <img :title="hobby.name" class="circle" :src="hobby.img" />
             </a>
           </div>
         </li>
-    </ul>
+      </ul>
     </div>
     <div class="forward">
       <a href="http://localhost:8080/#/explore-now">
-        <i style="color:white"class="fas fa-arrow-right fa-2x" ></i>
+        <i style="color:white" class="fas fa-arrow-right fa-2x"></i>
       </a>
     </div>
-    </div>
   </div>
-  </template>
+</template>
 
 <script>
   import hobbies from '@/json/hobbies.json'
   export default {
     name: 'start-page',
-    data(){
+    data() {
       return {
         hobbies: hobbies.category
       }
     },
     created() {
-        //Scrolls to top when view is displayed
-        window.scrollTo(0, 0);
+      //Scrolls to top when view is displayed
+      window.scrollTo(0, 0);
     }
   }
+
 </script>
 
 <style lang="scss">
@@ -67,4 +67,37 @@
       }
     }
   }
+
+  .explore-child {
+    background-position: 0 0;
+
+    .icons {
+      justify-content: flex-end;
+      flex-direction: column;
+      width: 100%;
+      padding: 0 2em;
+    }
+
+    .icons > li {
+      align-self: flex-start;
+
+      &:nth-child(2n) {
+        align-self: flex-end;
+
+        .inner {
+          float: right;
+        }
+      }
+
+      &:nth-child(1) {
+        padding-top: 350px;
+      }
+
+      .inner {
+        width: 60%;
+        padding: 0 2em;
+      }
+    }
+  }
+
 </style>
