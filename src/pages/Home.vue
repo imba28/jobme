@@ -20,7 +20,7 @@
           </div>
           <div class="text-center pt-1">
             <div>
-              <button type="submit" class="btn btn--default display--center" style="position: absolute; bottom: 5em; width:100%; box-sizing:border-box;">Login</button>
+              <button id="sub" type="submit" class="btn btn--default display--center" style="position: absolute; bottom: 5em; width:100%; box-sizing:border-box; left:0;">Login</button>
             </div>
           </div>
         </form>
@@ -91,7 +91,6 @@
           font-weight: bolder;
         }
       }
-
       p {
         padding: 0 2em 0 2em;
       }
@@ -103,7 +102,6 @@
         border: none;
 
       }
-
 
     }
 
