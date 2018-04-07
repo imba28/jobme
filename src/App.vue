@@ -38,7 +38,19 @@ export default {
   .placeholders {
     height: $top-menu-height;
   }
+  .details-div{
+    padding-bottom: 80px;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
 
+  }
+  .circle-details{
+    border-radius: 50%;
+    width: 40%;
+    border: 1px solid;
+  }
   .circle{
     border-radius: 50%;
     width: 80%;
