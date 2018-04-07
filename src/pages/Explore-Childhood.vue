@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="explore-child">
     <div>
       <h1>My childhood</h1>
       <ul class="icons">

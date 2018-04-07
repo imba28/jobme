@@ -38,15 +38,28 @@ export default {
   .placeholders {
     height: $top-menu-height;
   }
+  .details-div{
+    padding-bottom: 80px;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
 
+  }
+  .circle-details{
+    border-radius: 50%;
+    width: 40%;
+    border: 1px solid;
+  }
   .circle{
     border-radius: 50%;
+    background-color: $white;
     width: 80%;
     border: 1px solid;
   }
 
   .forward{
-    background-color: $forward-background;
+    background-color: $blue;
     padding: 15px;
     margin: 0 0;
     text-align: center;
@@ -62,7 +75,7 @@ export default {
 #page {
   position: relative;
   margin: 0 auto;
-  height:100%;
+  max-height:100%;
 
   .clickable {
     cursor: pointer;
