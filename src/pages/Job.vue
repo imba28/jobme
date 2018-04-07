@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-touch @swipeleft="nope" @swiperight="save">
     <div class="job">
       <div class="job__image">
         <img :src="image">
@@ -30,6 +31,7 @@
         </div>
       </div>
     </div>
+  </v-touch>
   </div>
   </template>
 
@@ -47,6 +49,9 @@
       }
     },
     methods: {
+      swipeLeft() {
+        alert()
+      },
       nope() {
         note.success('Job removed!')
 
