@@ -54,6 +54,7 @@
       height: 3px;
       border: none;
       background: $green;
+      margin-bottom: .5em;
     }
 
     &__image {
@@ -71,6 +72,7 @@
       padding-left: 0!important;
       text-align: left!important;
       margin-top: .5em!important;
+      padding-bottom: .25em!important;
     }
 
     &__options {
@@ -87,7 +89,14 @@
 
       li {
         flex-basis: 50%;
-        padding: 1em;
+
+        &:nth-child(2n) {
+          padding-left: .5em;
+        }
+
+        &:nth-child(2n + 1) {
+          padding-right: .5em;
+        }
         list-style: none;
 
         img {
@@ -96,8 +105,14 @@
       }
     }
 
+    &__description {
+      line-height: 1.7;
+    }
+
     h3 {
       font-weight: 700;
+      font-size: 1.1em;
+      margin: 1em 0;
     }
   }
 </style>

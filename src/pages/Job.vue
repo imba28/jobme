@@ -81,6 +81,7 @@
       height: 3px;
       border: none;
       background: $green;
+      margin-bottom: .5em;
     }
 
     &__image {
@@ -93,7 +94,16 @@
     }
 
     &__name {
+      text-transform: uppercase;
+      font-weight: 700;
+      padding-left: 0!important;
+      text-align: left!important;
       margin-top: .5em!important;
+      padding-bottom: .25em!important;
+    }
+
+    &__description {
+      line-height: 1.7;
     }
 
     &__options {
