@@ -12,9 +12,9 @@
         </li>
     </ul>
     </div>
-    <div>
-      <a href="#/explore-now">
-        <img title="Weiter" class="next" src="/static/test.jpeg" />
+    <div class="forward">
+      <a href="http://localhost:8080/#/explore-now">
+        <i style="color:white"class="fas fa-arrow-right fa-2x" ></i>
       </a>
     </div>
     </div>
