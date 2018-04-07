@@ -65,7 +65,7 @@
 
     }
     .container {
-
+      width: 100%;
       .button-group {
         display: flex;
 
