@@ -9,7 +9,7 @@
         </a>
       </div>
       <h1 class="full-width">
-        <img class="full-width" :src="cat.img" />
+        <img style="" class="full-width" :src="cat.imgWhite" />
       </h1>
       <ul class="icons">
         <li v-for="cat in cats">

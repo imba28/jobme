@@ -64,11 +64,17 @@ export default {
     margin: 0 0;
     text-align: center;
   }
-
+  .changeColor{
+    fill: red;
+    stroke: red;
+    color: red;
+  }
   .full-width {
+    background-color: $grey;
     width: 100%;
     height: 40vh;
     padding: 0;
+    margin-bottom: 30px;
   }
 }
 
@@ -98,8 +104,7 @@ export default {
   .overlay {
     position: absolute;
     width: 100%;
-    background: rgba(255,255,255,0.7);
-
+    background: $black-light;
     .icon {
       padding: 0.3em;
     }
