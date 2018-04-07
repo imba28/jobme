@@ -15,8 +15,8 @@
           {{job.name}}
         </h1>
         <hr class="hr">
-        <p>
-          {{job.description}}
+        <p class="job__description">
+          {{job.extended}}
         </p>
         <h3>Related Companies</h3>
         <ul class="job__companies">
@@ -64,6 +64,10 @@
         margin: 0 auto;
         display: block;
       }
+    }
+
+    &__description {
+      line-height: 1.75;
     }
 
     &__name {
