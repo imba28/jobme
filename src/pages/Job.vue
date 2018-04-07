@@ -13,19 +13,20 @@
           </a>
         </div>
         <h1 class="job__name">
-          Jobs <i class="fa fa-angle-double-right"></i> {{job.name}}
+          {{job.name}}
         </h1>
+        <hr class="hr">
         <p class="job__description">
           {{job.description}}
         </p>
         <div class="job__options button-group">
-          <button class="btn btn--red" v-on:click="nope">
+          <button class="btn btn--red" v-on:click="save">
             <i class="fa fa-times"></i>
           </button>
           <router-link :to="{ name: 'job-info', params: { name } }" class="btn btn--default">
             <i class="fa fa-info"></i>
           </router-link>
-          <button class="btn btn--green" v-on:click="save">
+          <button class="btn btn--green" v-on:click="nope">
             <i class="fa fa-heart"></i>
           </button>
         </div>
@@ -69,13 +70,20 @@
     },
     created() {
       this.job = jobs.find((item) => item.slug === this.name)
-
     }
   }
 </script>
 
 <style lang="scss">
   .job {
+
+    .hr {
+      height: 3px;
+      border: none;
+      background: $green;
+      margin-bottom: .5em;
+    }
+
     &__image {
       img {
         max-width: 400px;
@@ -86,7 +94,16 @@
     }
 
     &__name {
+      text-transform: uppercase;
+      font-weight: 700;
+      padding-left: 0!important;
+      text-align: left!important;
       margin-top: .5em!important;
+      padding-bottom: .25em!important;
+    }
+
+    &__description {
+      line-height: 1.7;
     }
 
     &__options {

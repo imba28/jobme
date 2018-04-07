@@ -74,6 +74,7 @@ export default {
 #page {
   position: relative;
   margin: 0 auto;
+  height:100%;
 
   .clickable {
     cursor: pointer;

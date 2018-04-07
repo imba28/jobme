@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="job">
-      <div class="job__image" id="asd"></div>
+      <div class="job__image" id="asd">
+        <img :src="job.imageInfo">
+      </div>
       <div class="padding">
       <div class="icon">
         <div style="height: .5em"></div>
@@ -10,15 +12,16 @@
         </a>
       </div>
         <h1 class="job__name">
-          Jobs <i class="fa fa-angle-double-right"></i> {{name}}
+          {{job.name}}
         </h1>
+        <hr class="hr">
         <p>
-          lalalal
+          {{job.description}}
         </p>
-        <h3>Employers</h3>
-        <ul>
+        <h3>Related Companies</h3>
+        <ul class="job__companies">
           <li v-for="(a, key) in employers">
-            Employer {{key+1}}
+            <img src="http://via.placeholder.com/150x80">
           </li>
         </ul>
       </div>
@@ -27,26 +30,33 @@
   </template>
 
 <script>
-  import sphereImage from '@/lib/360degree'
+  //import sphereImage from '@/lib/360degree'
+  import jobs from '@/json/jobs'
 
   export default {
     name: 'job-info-page',
     props: ['name'],
     data(){
       return {
-        'employers': new Array(5),
-        'image': 'http://via.placeholder.com/400x400',
-        'description': 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita.'
+        'job': {},
+        'employers': new Array(2),
       }
     },
     mounted() {
-      sphereImage.start(document.getElementById('asd'))
+      this.job = jobs.find((item) => item.slug === this.name)
     }
   }
 </script>
 
 <style lang="scss">
   .job {
+    .hr {
+      height: 3px;
+      border: none;
+      background: $green;
+      margin-bottom: .5em;
+    }
+
     &__image {
       img {
         max-width: 400px;
@@ -57,7 +67,12 @@
     }
 
     &__name {
+      text-transform: uppercase;
+      font-weight: 700;
+      padding-left: 0!important;
+      text-align: left!important;
       margin-top: .5em!important;
+      padding-bottom: .25em!important;
     }
 
     &__options {
@@ -66,6 +81,38 @@
       button {
         flex-basis: 33.33%;
       }
+    }
+
+    &__companies {
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        flex-basis: 50%;
+
+        &:nth-child(2n) {
+          padding-left: .5em;
+        }
+
+        &:nth-child(2n + 1) {
+          padding-right: .5em;
+        }
+        list-style: none;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    &__description {
+      line-height: 1.7;
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: 1.1em;
+      margin: 1em 0;
     }
   }
 </style>
