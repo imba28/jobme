@@ -69,7 +69,6 @@
     },
     created() {
       this.job = jobs.find((item) => item.slug === this.name)
-
     }
   }
 </script>

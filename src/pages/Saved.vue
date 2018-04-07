@@ -17,7 +17,9 @@
 
 <script>
   import notification from '@/lib/notification'
-  import jobs from '@/json/jobs'
+  import jobsJson from '@/json/jobs'
+
+  const jobs = jobsJson.reverse()
 
   export default {
     name: 'saved-jobs-page',
