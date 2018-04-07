@@ -2,7 +2,7 @@
   <div class="welcome">
     <div class="container">
       <div class="image">
-        <h1>JOB<span>me</span></h1>
+        <h1>Welcome to JOB<span>me</span></h1>
       </div>
       <div class="button-group">
         <button class="btn btn--secondary btn--default">Sign up</button>
@@ -14,13 +14,13 @@
         <form v-on:submit.prevent="signIn">
           <div class="input__container">
             <input ref="user" id="email" class="input" type="text" required="true" placeholder="What's your name?" />
-            <label class="input__label" id="email__label" for="email">
+            <label style="border-radius:0;" class="input__label" id="email__label" for="email">
               <span class="icon-user"></span>
             </label>
           </div>
           <div class="text-center pt-1">
             <div>
-              <button id="sub" type="submit" class="btn btn--default display--center" style="bottom: 5em; width:80%; box-sizing:border-box; left:0;">Login</button>
+              <button id="sub" type="submit" class="btn btn--default display--center" style="display: block; bottom: 5em; width:80%; box-sizing:border-box;">Login</button>
             </div>
           </div>
         </form>
@@ -60,7 +60,9 @@
   .welcome {
     height: 100%;
     .input__container {
-      margin-top: 1em;
+      margin-top: 0;
+      padding: 1em 1em 5em;
+
     }
     .container {
 
@@ -82,13 +84,16 @@
         max-width: 400px;
         height: 200px;
         margin: 0 auto;
-        background: #ddd;
+        background: $black;
+        color: $grey;
       }
 
       h1 {
         margin-bottom: 0.3em;
+
         span {
           font-weight: bolder;
+          color: $grey;
         }
       }
       p {
