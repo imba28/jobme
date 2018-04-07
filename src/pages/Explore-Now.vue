@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="Nowadays">
     <div>
       <h1>Nowadays</h1>
       <ul class="icons">
@@ -13,9 +13,10 @@
     </ul>
     </div>
     <div>
-      <a href="#/jobs/zahtechniker">
-        <img class="next" src="/static/test.jpeg" />
-      </a>
+      <div class="forward">
+        <a href="#/jobs/zahntechniker">
+          <i style="color:white"class="fas fa-arrow-right fa-2x" ></i>
+        </a>
     </div>
     </div>
   </div>

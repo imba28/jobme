@@ -44,7 +44,7 @@ export default {
     return {
       show: false,
       user: null,
-      page: 'working title',
+      page: 'jobMe',
       options: [
         {
           icon: 'user',

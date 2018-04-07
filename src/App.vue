@@ -6,7 +6,7 @@
     <div id="page">
       <notification ref="notification"/>
       <transition :name="$root.transitionName">
-        <router-view class="view"></router-view>
+        <router-view class="view" :key="$route.path"></router-view>
       </transition>
     </div>
   </div>
@@ -42,10 +42,19 @@ export default {
   .circle{
     border-radius: 50%;
     width: 80%;
+    border: 1px solid;
+  }
+
+  .forward{
+    background-color: $forward-background;
+    padding: 15px;
+    margin: 0 0;
+    text-align: center;
   }
 
   .full-width {
     width: 100%;
+    height: 40vh;
     padding: 0;
   }
 }
