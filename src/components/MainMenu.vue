@@ -76,7 +76,7 @@ export default {
     },
     signOut: () => {
       auth.signOut()
-      router.push( {path: "/login"} )
+      router.push( {path: "/"} )
     },
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -149,7 +149,7 @@ h1 {
 }
 
 #side__nav {
-    background-color: #0091EA;
+    background-color: $black;
     box-shadow: 0.25em 0 0.5em rgba(0,0,0,0.2);
 
     position: fixed;
