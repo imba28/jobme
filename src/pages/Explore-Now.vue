@@ -14,7 +14,7 @@
     </div>
     <div>
       <div class="forward">
-        <a href="#/jobs/zahntechniker">
+        <a href="#/jobs/j1">
           <i style="color:white"class="fas fa-arrow-right fa-2x" ></i>
         </a>
     </div>
