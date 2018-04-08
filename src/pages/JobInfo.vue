@@ -2,7 +2,6 @@
   <div>
     <div class="job">
       <div class="job__image" id="asd">
-        <img :src="job.imageInfo">
       </div>
       <div class="padding">
       <div class="icon">
@@ -32,6 +31,7 @@
 <script>
   //import sphereImage from '@/lib/360degree'
   import jobs from '@/json/jobs'
+  import sphereImage from '@/lib/360degree'
 
   export default {
     name: 'job-info-page',
@@ -44,6 +44,7 @@
     },
     mounted() {
       this.job = jobs.find((item) => item.slug === this.name)
+      sphereImage.start(document.getElementById('asd'))
     }
   }
 </script>
