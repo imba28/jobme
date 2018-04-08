@@ -60,7 +60,7 @@ export default {
 <style lang="scss">
 #notifications {
     position: fixed;
-    top: 0;
+    top: 60px;
     left: 0;
     width: 100%;
     padding: 0;
