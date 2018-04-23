@@ -10,8 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423103831) do
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20180423114834) do
 
+=======
+ActiveRecord::Schema.define(version: 20180423105841) do
+>>>>>>> 7c05c8ead7c39e3424d5df68987268513cc83564
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "icon_url"
@@ -20,21 +24,19 @@ ActiveRecord::Schema.define(version: 20180423103831) do
     t.integer "chilhood"
   end
 
-  create_table "job_subcategory_joins", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "subcategory_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_subcategory_joins_on_job_id"
-    t.index ["subcategory_id"], name: "index_job_subcategory_joins_on_subcategory_id"
-  end
-
   create_table "jobs", force: :cascade do |t|
     t.string "name"
     t.text "gif_url"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs_subcategories", id: false, force: :cascade do |t|
+    t.integer "job_id", null: false
+    t.integer "subcategory_id", null: false
+    t.index ["job_id", "subcategory_id"], name: "index_jobs_subcategories_on_job_id_and_subcategory_id"
+    t.index ["subcategory_id", "job_id"], name: "index_jobs_subcategories_on_subcategory_id_and_job_id"
   end
 
   create_table "subcategories", force: :cascade do |t|
@@ -53,6 +55,9 @@ ActiveRecord::Schema.define(version: 20180423103831) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "provider"
+    t.string "uid"
+    t.string "avatar_url"
     t.index ["job_id"], name: "index_users_on_job_id"
   end
 

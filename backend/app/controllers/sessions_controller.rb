@@ -6,10 +6,9 @@ class SessionsController < ApplicationController
 
   # login post request
   def create
-    params = login_params
-    user = User.find_by(name: params[:name])
+    user = User.find_or_create_with_omniauth(request.env['omniauth.auth'])
 
-    if user && user.authenticate(params[:password])
+    if user
       reset_session
       session[:user_id] = user.id
       redirect_to root_path, notice: "welcome back #{user.name}!"

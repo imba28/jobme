@@ -4,20 +4,48 @@
     <title>Backend</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <% if is_signed_in %>
-        Hallo <%= get_current_user.name %> !
-        <%= link_to "log out", logout_path %>
-      <% else %>
-        <%= link_to "log in", login_path %>
-        | <%= link_to "register", new_user_path %>
-      <% end %>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Fixed navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <%= link_to "Users", :users %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Jobs", :jobs %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Categories", :categories %>
+            </li>
+          </ul>
+        </div>
+        <div class="text-light">
+          <% if is_signed_in %>
+            <img style="max-height: 5em" src="<%= get_current_user.avatar_url %>" alt="avatar">
+            Hallo <%= get_current_user.to_s %> !
+            <%= link_to "log out", logout_path %>
+          <% else %>
+            log in with <%= link_to "github", "/auth/github" %>
+            | <%= link_to "register", new_user_path %>
+          <% end %>
+        </div>
+      </nav>
     </header>
-    <%= yield %>
+    <main role="main" class="container">
+      <%= yield %>
+    </main>
   </body>
 </html>
