@@ -17,18 +17,21 @@
   </div>
 
   <div class="field">
-    <%= form.label :icon_url %>
-    <%= form.text_area :icon_url, id: :subcategory_icon_url %>
+    <%= form.label :icon %><br>
+    <%= form.file_field :icon %>
+    <% if form.object.icon? %>
+      <%= image_tag form.object.icon %>
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image %> 
+    <% end %>
   </div>
 
 
   <% @categories.each do |cat| -%>
 
     <%= fields_for 'cat[]' , cat do |cat_field| -%>
-      <%= cat.name %>
-      <%= cat_field.check_box :id %>
-      <br>
-
+      <%= form.radio_button("cat", cat.id) %>
+      <%= form.label(cat.name) %>
     <% end -%>
 
   <% end -%>

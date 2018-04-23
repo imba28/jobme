@@ -26,6 +26,7 @@ class SubcategoriesController < ApplicationController
   # POST /subcategories.json
   def create
     @subcategory = Subcategory.new(subcategory_params)
+    @subcategory.category = Category.find(params.require(:subcategory)[:cat])
 
     respond_to do |format|
       if @subcategory.save
@@ -71,6 +72,6 @@ class SubcategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subcategory_params
-      params.require(:subcategory).permit(:name, :icon_url, :category_id)
+      params.require(:subcategory).permit(:name, :icon)
     end
 end
