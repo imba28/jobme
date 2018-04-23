@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-  belongs_to :job
+  has_secure_password
+  validates_confirmation_of :password
 end
