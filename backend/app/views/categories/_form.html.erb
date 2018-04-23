@@ -27,8 +27,10 @@
   </div>
   
   <div class="field">
-    <%= form.label :childhood %>
-    <%= form.number_field :chilhood, id: :category_chilhood %>
+    <%= form.label :childhood do %>
+      <%= form.check_box :chilhood, id: :category_chilhood %>
+      Is category childhood?
+    <% end %>
   </div>
 
   <div class="actions">
