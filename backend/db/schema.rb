@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180423093422) do
+=======
+ActiveRecord::Schema.define(version: 20180423103831) do
+>>>>>>> 608bc971de34b5ee7cd5e71b3e90d44860d578bd
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "icon_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "chilhood"
   end
 
   create_table "job_subcategory_joins", force: :cascade do |t|
