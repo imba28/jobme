@@ -1,13 +1,14 @@
 class Category < ApplicationRecord
     has_many :subcategories
 
-    mount_uploader :icon_url, ImageIconUploader
+    mount_uploader :icon, ImageIconUploader
 
-    validates_processing_of :icon_url
+    validates_processing_of :icon
     validate :image_size_validation
 
     private 
         def image_size_validation
-                errors[:icon_url] << "should be less than 500KB" if icon_url.size > 0.5.megabytes 
+            puts "yes"
+            errors[:icon] << "should be less than 500KB" if icon.size > 0.5.megabytes 
         end
 end

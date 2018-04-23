@@ -16,7 +16,7 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><img src="<%= category.icon_url.url %>" style="max-width: 5em;"></td>
+        <td><img src="<%= category.icon %>" style="max-width: 5em;"></td>
         <td><%= category.chilhood %></td>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>

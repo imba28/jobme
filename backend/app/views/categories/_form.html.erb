@@ -17,10 +17,10 @@
   </div>
 
   <div class="field">
-    <%= form.label :icon_url %><br>
-    <%= form.file_field :icon_url %>
-    <% if form.object.icon_url? %>
-      <%= image_tag form.object.icon_url %>
+    <%= form.label :icon %><br>
+    <%= form.file_field :icon %>
+    <% if form.object.icon? %>
+      <%= image_tag form.object.icon %>
       <%= form.label :remove_image %>
       <%= form.check_box :remove_image %> 
     <% end %>
