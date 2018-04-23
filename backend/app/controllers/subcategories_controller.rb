@@ -14,6 +14,7 @@ class SubcategoriesController < ApplicationController
 
   # GET /subcategories/new
   def new
+    @cate = Category.all
     @subcategory = Subcategory.new
   end
 

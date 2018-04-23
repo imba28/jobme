@@ -14,6 +14,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
+    @sub = Subcategory.all
     @job = Job.new
   end
 
