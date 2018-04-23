@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180423093422) do
-=======
-ActiveRecord::Schema.define(version: 20180423103831) do
->>>>>>> 608bc971de34b5ee7cd5e71b3e90d44860d578bd
+ActiveRecord::Schema.define(version: 20180423114834) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -24,21 +20,19 @@ ActiveRecord::Schema.define(version: 20180423103831) do
     t.integer "chilhood"
   end
 
-  create_table "job_subcategory_joins", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "subcategory_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_subcategory_joins_on_job_id"
-    t.index ["subcategory_id"], name: "index_job_subcategory_joins_on_subcategory_id"
-  end
-
   create_table "jobs", force: :cascade do |t|
     t.string "name"
     t.text "gif_url"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs_subcategories", id: false, force: :cascade do |t|
+    t.integer "job_id", null: false
+    t.integer "subcategory_id", null: false
+    t.index ["job_id", "subcategory_id"], name: "index_jobs_subcategories_on_job_id_and_subcategory_id"
+    t.index ["subcategory_id", "job_id"], name: "index_jobs_subcategories_on_subcategory_id_and_job_id"
   end
 
   create_table "subcategories", force: :cascade do |t|
