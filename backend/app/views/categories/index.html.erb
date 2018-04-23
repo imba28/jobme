@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Icon url</th>
+      <th>Icon</th>
       <th>Childhood</th>
       <th colspan="4"></th>
     </tr>
@@ -16,7 +16,7 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= category.icon_url %></td>
+        <td><img src="<%= category.icon %>" style="max-width: 5em;"></td>
         <td><%= category.chilhood %></td>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
