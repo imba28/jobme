@@ -1,8 +1,11 @@
-# Hackathon 2018
+# Hackathon 2018, MMP2B
 
 ## Build Setup
 
 ``` bash
+# for node 9 users
+nvm install 8 && nvm use 8
+
 # install dependencies
 npm install
 
