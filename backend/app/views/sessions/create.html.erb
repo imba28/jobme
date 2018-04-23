@@ -1,0 +1,9 @@
+<h1>Registrieren</h1>
+
+<%= form_tag login_path do |f| %>
+  Name: <%= text_field_tag :name %>
+  Password: <%= password_field_tag :password %>
+  Password bestätigen: <%= password_field_tag :password_confirmation %>
+
+  <%= submit_tag 'Registrieren' %>
+<% end %>
