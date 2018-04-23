@@ -29,9 +29,9 @@
 
 <% @sub.each do |sub| -%>
 
-  <%= fields_for 'sub[]' , sub do |sub_field| -%>
+  <%= fields_for 'sub' , sub do |sub_field| -%>
     <%= sub.name %>
-    <%= sub_field.check_box :id %>
+    <%= check_box_tag "sub[]", sub.id %>
     <br>
 
   <% end -%>

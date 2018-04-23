@@ -20,6 +20,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/1/edit
   def edit
+    @sub = Subcategory.all
   end
 
   # POST /jobs
@@ -27,6 +28,11 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
 
+    if params[:sub] then
+      params[:sub].each do |id|
+        @job.subcategories << Subcategory.find(id)
+      end
+    end 
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
@@ -41,6 +47,15 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
+    if params[:sub] then
+      params[:sub].each do |id|
+        sub = Subcategory.find(id)
+        if !@job.subcategories.include?(sub) then
+          @job.subcategories << sub
+        end
+      end
+    end 
+
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
@@ -70,6 +85,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:name, :gif_url, :description, :subcategories)
+      params.require(:job).permit(:name, :gif_url, :description)
     end
 end
