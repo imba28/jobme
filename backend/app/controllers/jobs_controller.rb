@@ -14,6 +14,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
+    @sub = Subcategory.all
     @job = Job.new
   end
 
@@ -69,6 +70,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:name, :gif_url, :description)
+      params.require(:job).permit(:name, :gif_url, :description, :subcategories)
     end
 end

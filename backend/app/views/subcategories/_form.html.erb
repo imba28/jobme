@@ -26,6 +26,17 @@
     <%= form.text_field :category_id, id: :subcategory_category_id %>
   </div>
 
+  <% @cate.each do |cat| -%>
+
+    <%= fields_for 'cat[]' , cat do |cat_field| -%>
+      <%= cat.name %>
+      <%= cat_field.check_box :id %>
+      <br>
+
+    <% end -%>
+
+  <% end -%>
+
   <div class="actions">
     <%= form.submit %>
   </div>
