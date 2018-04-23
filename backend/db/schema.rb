@@ -10,12 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180423114834) do
 
-=======
-ActiveRecord::Schema.define(version: 20180423105841) do
->>>>>>> 7c05c8ead7c39e3424d5df68987268513cc83564
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "icon_url"
