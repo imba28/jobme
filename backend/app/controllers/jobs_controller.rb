@@ -5,9 +5,6 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
-
-
-    puts @job.to_yaml
   end
 
   # GET /jobs/1
