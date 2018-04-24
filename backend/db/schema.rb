@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(version: 20180424075104) do
     t.integer "chilhood"
   end
 
-  create_table "job_subcategory_joins", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "subcategory_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_subcategory_joins_on_job_id"
-    t.index ["subcategory_id"], name: "index_job_subcategory_joins_on_subcategory_id"
-  end
-
   create_table "jobs", force: :cascade do |t|
     t.string "name"
     t.text "image"
