@@ -42,7 +42,6 @@
     },
     methods: {
       isChecked(category) {
-        console.log("CHECK", category.id, this.checkedIcons.includes(category.id))
         return this.checkedIcons.includes(category.id)
       },
       clickIcon(category) {
@@ -54,14 +53,8 @@
           this.checkedIcons.push(category.id)
         }
 
-
-        this.cats.forEach(item => {
-          console.log("checked", item.id, item.isChecked)
-        })
-
         sessionStorage.setItem('hobbies', JSON.stringify(this.checkedIcons))
         this.$forceUpdate()
-
       }
     },
     created() {
@@ -71,7 +64,6 @@
 
       service(`categories/${this.hobby_id}/subcategory`)
       .then(subs => {
-        console.log(subs)
         this.cats = subs
       })
     },

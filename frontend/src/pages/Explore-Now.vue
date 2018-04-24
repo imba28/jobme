@@ -14,7 +14,7 @@
     </div>
     <div>
       <div class="forward">
-        <a href="#/jobs/j1">
+        <a href="javascript:void(0)" v-on:click="calcJobs">
           <i style="color:white"class="fas fa-arrow-right fa-2x" ></i>
         </a>
     </div>
@@ -31,6 +31,17 @@
     data(){
       return {
         hobbies: []
+      }
+    },
+    methods: {
+      calcJobs() {
+        const checkedSubcategories = JSON.parse(sessionStorage.getItem('hobbies'))
+        service('job', {
+          method: 'POST',
+          data: {
+            inCategory: checkedSubcategories
+          }
+        })
       }
     },
     created() {
