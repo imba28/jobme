@@ -26,7 +26,7 @@ class SubcategoriesController < ApplicationController
   # POST /subcategories.json
   def create
     @subcategory = Subcategory.new(subcategory_params)
-    @subcategory.category = Category.find(params.require(:subcategory)[:cat])
+    # @subcategory.category = Category.find(params.require(:subcategory)[:cat])
 
     respond_to do |format|
       if @subcategory.save
@@ -67,11 +67,12 @@ class SubcategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subcategory
+      @categories = Category.all
       @subcategory = Subcategory.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subcategory_params
-      params.require(:subcategory).permit(:name, :icon)
+      params.require(:subcategory).permit(:name, :icon, :category_id)
     end
 end
