@@ -5,6 +5,9 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+
+
+    puts @job.to_yaml
   end
 
   # GET /jobs/1
@@ -48,11 +51,9 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1.json
   def update
     if params[:sub] then
+      @job.subcategories.clear
       params[:sub].each do |id|
-        sub = Subcategory.find(id)
-        if !@job.subcategories.include?(sub) then
-          @job.subcategories << sub
-        end
+        @job.subcategories << Subcategory.find(id)
       end
     end 
 
