@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_confirmation: 'test')
 
 Category.create(name: 'sport', icon: 'sport.url', chilhood: '1')
 Category.create(name: 'natrue', icon: 'nature.url', chilhood: '1')
