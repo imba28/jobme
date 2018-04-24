@@ -4,7 +4,11 @@ class SubcategoriesController < ApplicationController
   # GET /subcategories
   # GET /subcategories.json
   def index
-    @subcategories = Subcategory.all
+    if params[:category_id] 
+      @subcategories = Category.find(params[:category_id]).subcategories
+    else
+      @subcategories = Subcategory.all
+    end
   end
 
   # GET /subcategories/1
