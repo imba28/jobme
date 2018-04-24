@@ -36,7 +36,7 @@
     methods: {
       calcJobs() {
         const checkedSubcategories = JSON.parse(sessionStorage.getItem('hobbies'))
-        service('job', {
+        service('matching', {
           method: 'POST',
           data: {
             inCategory: checkedSubcategories

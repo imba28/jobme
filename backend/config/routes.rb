@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post 'matchings', to: 'matching#match'
+  get 'matchings', to: 'matching#match'
+
   # login
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
