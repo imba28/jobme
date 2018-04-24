@@ -6,13 +6,27 @@
 </p>
 
 <p>
-  <strong>Gif url:</strong>
-  <%= @job.gif_url %>
+  <strong>Image:</strong>
+  <%= image_tag @job.image %>
+</p>
+
+<p>
+  <strong>Image Preview:</strong>
+  <%= @job.image_preview %>
 </p>
 
 <p>
   <strong>Description:</strong>
   <%= @job.description %>
+</p>
+
+<p>
+  <strong>in Kategorien:</strong>
+  <ul>
+  <% @job.subcategories.each do |sub| %>
+    <li><%= sub.name %></li>
+  <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |

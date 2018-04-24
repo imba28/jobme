@@ -28,13 +28,20 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use github auth for login
+# Use github auth or facebook auth for login
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-facebook'
+
+# Store Api keys in this gem
+gem 'figaro'
 
 # image upload
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
+
+# sets cross site headers
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

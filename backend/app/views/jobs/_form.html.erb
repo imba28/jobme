@@ -17,8 +17,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :gif_url %>
-    <%= form.text_area :gif_url, id: :job_gif_url %>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+    <% if form.object.image? %>
+      <%= image_tag form.object.image %>
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image %> 
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_preview %>
+    <%= form.text_area :image_preview, id: :image_preview %>
   </div>
 
   <div class="field">
@@ -26,16 +36,12 @@
     <%= form.text_area :description, id: :job_description %>
   </div>
 
-
 <% @sub.each do |sub| -%>
-
-  <%= fields_for 'sub[]' , sub do |sub_field| -%>
+  <%= fields_for 'sub' , sub do |sub_field| -%>
     <%= sub.name %>
-    <%= sub_field.check_box :id %>
+    <%= check_box_tag "sub[]", sub.id, job.subcategories.include?(sub) %>
     <br>
-
   <% end -%>
-
 <% end -%>
 
   <div class="actions">
