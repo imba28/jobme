@@ -16,7 +16,7 @@
     <% @subcategories.each do |subcategory| %>
       <tr>
         <td><%= subcategory.name %></td>
-        <td><%= subcategory.icon_url %></td>
+        <td><%= subcategory.icon %></td>
         <td><%= subcategory.category %></td>
         <td><%= link_to 'Show', subcategory %></td>
         <td><%= link_to 'Edit', edit_subcategory_path(subcategory) %></td>

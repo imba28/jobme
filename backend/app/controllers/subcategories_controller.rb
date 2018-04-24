@@ -26,12 +26,14 @@ class SubcategoriesController < ApplicationController
   # POST /subcategories.json
   def create
     @subcategory = Subcategory.new(subcategory_params)
+    @subcategory.category = Category.find(params.require(:subcategory)[:cat])
 
     respond_to do |format|
       if @subcategory.save
         format.html { redirect_to @subcategory, notice: 'Subcategory was successfully created.' }
         format.json { render :show, status: :created, location: @subcategory }
       else
+        @categories = Category.all
         format.html { render :new }
         format.json { render json: @subcategory.errors, status: :unprocessable_entity }
       end
@@ -70,6 +72,6 @@ class SubcategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subcategory_params
-      params.require(:subcategory).permit(:name, :icon_url, :category_id)
+      params.require(:subcategory).permit(:name, :icon)
     end
 end
