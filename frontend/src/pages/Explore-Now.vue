@@ -5,9 +5,9 @@
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
-            <a :href="'#/details?'+hobby.name">
-                <img class="circle" :src="hobby.img" />
-            </a>
+            <router-link :to="{ name: 'details', params: {category: hobby, hobby_id: hobby.id} }">
+              <img :title="hobby.name" class="circle" :src="hobby.icon" />
+            </router-link>
           </div>
         </li>
     </ul>
@@ -39,8 +39,7 @@
         this.hobbies = categories
       })
         //Scrolls to top when view is displayed
-        window.scrollTo(0, 0);
-
+      window.scrollTo(0, 0);
     }
   }
 </script>
