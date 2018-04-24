@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-touch @swipeleft="nope" @swiperight="save">
-    <div class="job" ref="container">
+    <div v-if="job" class="job" ref="container">
       <div class="job__image">
         <img :src="job.image">
       </div>
@@ -40,36 +40,42 @@
   import note from '@/lib/notification'
   import router from '@/router'
   import $ from 'jquery'
-  import jobs from '@/json/jobs'
 
   export default {
     name: 'job-page',
     props: ['name'],
     data(){
       return {
-        'job': {}
+        'job': {},
+        'jobs': []
       }
     },
     methods: {
       nope() {
-        const idx = jobs.indexOf(this.job);
+        const idx = this.jobs.indexOf(this.job);
 
         if(idx > 0) {
           note.success('Job saved!', 750)
-          router.push({name: 'job', params: {name: jobs[idx-1].slug, bottomMenuIndex: 1}})
+          router.push({name: 'job', params: {name: this.jobs[idx-1].id, bottomMenuIndex: 1}})
         }
       },
       save() {
-        const idx = jobs.indexOf(this.job);
-
-        if(idx < jobs.length -1 ) {
+        const idx = this.jobs.indexOf(this.job);
+        console.log(idx)
+        if(idx < this.jobs.length -1 ) {
           note.success('Job removed!', 750)
-          router.push({name: 'job', params: {name: jobs[idx+1].slug, bottomMenuIndex: -1}})
+          router.push({name: 'job', params: {name: this.jobs[idx+1].id, bottomMenuIndex: -1}})
         }
       }
     },
     created() {
-      this.job = jobs.find((item) => item.slug === this.name)
+      this.jobs = this.$store.state.myJobs
+      this.job = this.jobs.find(item => item.id == this.name)
+      if (!this.job) {
+        router.push({
+          path: '/error'
+        })
+      }
     }
   }
 </script>
