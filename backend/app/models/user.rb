@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  #has_secure_password
-  #validates_confirmation_of :password
+  has_secure_password
+  validates_confirmation_of :password
 
   def self.find_or_create_with_omniauth auth
     user = User.find_or_create_by!(
@@ -14,7 +14,6 @@ class User < ApplicationRecord
 
     user
   end
-
 
   def to_s
     username = "#{uid}@#{provider}"

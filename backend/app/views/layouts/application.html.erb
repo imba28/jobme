@@ -34,12 +34,11 @@
         </div>
         <div class="text-light">
           <% if is_signed_in %>
-            <img style="max-height: 5em" src="<%= get_current_user.avatar_url %>" alt="avatar">
             Hallo <%= get_current_user.to_s %> !
             <%= link_to "log out", logout_path %>
           <% else %>
-            log in with <%= link_to "github", "/auth/github" %>
-            | <%= link_to "register", new_user_path %>
+            Log in with <%= link_to "facebook", "/auth/facebook" %>
+            or <%= link_to "Local", login_path %> | <%= link_to "register", new_user_path %>
           <% end %>
         </div>
       </nav>

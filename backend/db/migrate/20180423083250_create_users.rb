@@ -5,7 +5,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.text :pwd
       t.references :job, foreign_key: true
-
+      t.string :provider
+      t.string :uid
+      
       t.timestamps
     end
   end
