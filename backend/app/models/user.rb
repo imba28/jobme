@@ -6,7 +6,9 @@ class User < ApplicationRecord
   def self.find_or_create_with_omniauth auth
     user = User.find_or_create_by!(
         provider: auth['provider'],
-        uid: auth['uid']
+        uid: auth['uid'],
+        password: SecureRandom.urlsafe_base64
+
     )
     user.name = auth.info.nickname
     user.avatar_url = auth.info.image
