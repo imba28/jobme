@@ -17,8 +17,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :gif_url %>
-    <%= form.text_area :gif_url, id: :job_gif_url %>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+    <% if form.object.image? %>
+      <%= image_tag form.object.image %>
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image %> 
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_preview %>
+    <%= form.text_area :image_preview, id: :image_preview %>
   </div>
 
   <div class="field">

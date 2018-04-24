@@ -1,1 +1,1 @@
-json.extract! job, :id, :name, :gif_url, :description, :created_at, :updated_at
+json.extract! job, :id, :name, :image_preview, :image, :description, :created_at, :updated_at

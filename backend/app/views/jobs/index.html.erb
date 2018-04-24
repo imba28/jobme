@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Gif url</th>
+      <th>Image</th>
       <th>Description</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +16,7 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.name %></td>
-        <td><%= job.gif_url %></td>
+        <td><img src="<%= job.image %>" style="max-width: 5em;"></td>
         <td><%= job.description %></td>
         <td>
           <% job.subcategories.first(5).each do |sub| %>
