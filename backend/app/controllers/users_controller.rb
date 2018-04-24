@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
 
   # GET /users
   # GET /users.json
   def index
-    authenticate_user!
+    authenticate_admin!
     @jobs = Job.all
     @users = User.all
   end
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
   end
 
   # GET /users/new
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    authenti
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -64,7 +66,7 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+    private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -74,4 +76,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+  
 end

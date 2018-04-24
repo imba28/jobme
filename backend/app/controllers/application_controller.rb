@@ -28,14 +28,21 @@ class ApplicationController < ActionController::Base
     @current_user
   end
 
-  def authenticate_user!
+  def authenticate_admin!
     if !is_admin?
       redirect_to login_path, notice: 'You need to log in as admin.'
+    end
+  end
+
+  def authenticate_user!
+    if !is_signed_in
+      redirect_to login_path, notice: 'Please log in first.'
     end
   end
 
   helper_method :get_current_user
   helper_method :is_signed_in
   helper_method :is_admin?
+  helper_method :authenticate_admin!
   helper_method :authenticate_user!
 end
