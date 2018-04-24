@@ -4,10 +4,6 @@
       <div class="image">
         <h1>Welcome to JOB<span>me</span></h1>
       </div>
-      <div class="button-group">
-        <button class="btn btn--secondary btn--default">Sign up</button>
-        <button class="btn btn--default--focus">Sign in</button>
-      </div>
     </div>
     <div class="login--info__container">
       <div class="form__container">

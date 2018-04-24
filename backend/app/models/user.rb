@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
-  validates_confirmation_of :password
-  validates_uniqueness_of :name, :email
+  validates_confirmation_of :password, :on => :create
+  validates_uniqueness_of :name, :email, :on => :create
 
   def self.find_or_create_with_omniauth auth
     user = User.find_or_create_by!(
