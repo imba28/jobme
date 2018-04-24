@@ -5,7 +5,21 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    JobsAlgo()
+    @jobs = []
+    @allJobs = Job.all
+    for v in @arrJob do
+      begin
+        output = ''
+        job = @allJobs.find(v[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        output = nil
+      end
+      if output
+        puts job
+        @jobs.push(job)
+      end
+    end
   end
 
   # GET /jobs/1
@@ -85,5 +99,70 @@ class JobsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
       params.require(:job).permit(:name, :image, :image_preview, :description)
+    end
+
+    def getValue
+      params = ActionController::Parameters.new({
+        sub: {
+          number:[1, 5]
+        }
+
+      })
+      @value = params.require(:sub).permit(number: [])      
+    end
+
+    def JobsAlgo
+      @arrJob = []
+      getValue()
+      @value = @value.fetch(:number)
+      for v in @value do
+        matchingJobs(v)
+      end
+      @arrJob = @arrJob.sort()
+      weightJobs()
+      for j in @arrJob do
+        puts j
+      end
+    end
+
+    def matchingJobs(idx)
+      jobs = Job.all
+      subcate = Subcategory.find(idx)
+      for job in jobs do
+        begin
+          output = ''
+          id = job.subcategories.find(subcate.id).id
+        rescue ActiveRecord::RecordNotFound => e
+          output = nil
+        end
+        if output
+          @arrJob.push(job.id)
+        end
+      end
+    end
+    
+    def weightJobs
+      @result = []
+      str = @arrJob[0]
+      num = 0
+      for v in @arrJob do
+        if v.eql?(str)
+          num += 1
+        else
+          x = {
+            id:  str,
+            weight: num
+          }
+          @result.push(x)
+          str = v
+          num = 1
+        end
+      end
+      x = {
+        id:  str,
+        weight: num
+      }
+      @result.push(x)
+      @arrJob = @result.sort {|a,b| b[:weight] <=> a[:weight]}
     end
 end
