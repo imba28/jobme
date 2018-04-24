@@ -25,6 +25,7 @@
 <script>
   //import hobbies from '@/json/hobbies.json'
   import service from '@/lib/service'
+  import router from '@/router'
 
   export default {
     name: 'start-page',
@@ -41,6 +42,16 @@
           data: {
             inCategory: checkedSubcategories
           }
+        })
+        .then(jobs => {
+          this.$store.commit('setJobs', jobs)
+
+          router.push({
+            name: 'job',
+            params: {
+              name: jobs[0].id
+            }
+          })
         })
       }
     },
