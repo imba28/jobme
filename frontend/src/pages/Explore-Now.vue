@@ -23,17 +23,24 @@
   </template>
 
 <script>
-  import hobbies from '@/json/hobbies.json'
+  //import hobbies from '@/json/hobbies.json'
+  import service from '@/lib/service'
+
   export default {
     name: 'start-page',
     data(){
       return {
-        hobbies: hobbies.category
+        hobbies: []
       }
     },
     created() {
+      service('category')
+      .then(categories => {
+        this.hobbies = categories
+      })
         //Scrolls to top when view is displayed
         window.scrollTo(0, 0);
+
     }
   }
 </script>
