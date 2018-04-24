@@ -30,8 +30,8 @@
   <% @categories.each do |cat| -%>
 
     <%= fields_for 'cat[]' , cat do |cat_field| -%>
-      <%= form.radio_button("cat", cat.id) %>
-      <%= form.label(cat.name) %>
+      <%= radio_button_tag("subcategory[category_id]", cat.id, subcategory.category == cat) %>
+      <%= form.label cat.name %>
     <% end -%>
 
   <% end -%>
