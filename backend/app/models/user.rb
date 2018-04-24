@@ -14,14 +14,13 @@ class User < ApplicationRecord
         password: auth.credentials.token,
         password_confirmation: auth.credentials.token
       })
-      user
     else 
       user = User.find_by(
         provider: auth['provider'],
         uid: auth['uid']
       )
-      user
     end
+    user
   end
 
   def to_s
