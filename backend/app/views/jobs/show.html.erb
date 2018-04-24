@@ -15,5 +15,14 @@
   <%= @job.description %>
 </p>
 
+<p>
+  <strong>in Kategorien:</strong>
+  <ul>
+  <% @job.subcategories.each do |sub| %>
+    <li><%= sub.name %></li>
+  <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>

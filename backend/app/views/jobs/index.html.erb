@@ -18,7 +18,11 @@
         <td><%= job.name %></td>
         <td><%= job.gif_url %></td>
         <td><%= job.description %></td>
-        <td><%= job.subcategories %></td>
+        <td>
+          <% job.subcategories.first(5).each do |sub| %>
+          <%= %"#{sub.name}, " %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', job %></td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
