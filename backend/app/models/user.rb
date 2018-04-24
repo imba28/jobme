@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :name, :email, :on => :create  
   
   def self.find_or_create_with_omniauth auth
-    if(!User.find_by(uid: auth['uid']))
+    if !User.find_by(uid: auth['uid'])
       user = User.create({
         uid: auth['uid'],
         provider: auth['provider'],
