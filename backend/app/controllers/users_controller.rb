@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    authenticate_user!
     @jobs = Job.all
     @users = User.all
   end
