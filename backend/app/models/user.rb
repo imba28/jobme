@@ -9,10 +9,8 @@ class User < ApplicationRecord
         uid: auth['uid']
     )
     user.name = auth.info.name
-
-    puts auth.credentials.token
-    user.password = auth.credentials.token
-    user.password_confirmation = auth.credentials.token
+    user.password = auth['uid']
+    user.password_confirmation = auth['uid']
     user.email = auth.info.email
     user.avatar_url = auth.info.image
     user.save
