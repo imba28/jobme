@@ -13,9 +13,9 @@
       </ul>
     </div>
     <div class="forward">
-      <a href="http://localhost:8080/#/explore-now">
+      <router-link :to="{ name: 'explore-now' }">
         <i style="color:white" class="fas fa-arrow-right fa-2x"></i>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
