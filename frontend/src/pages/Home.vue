@@ -7,19 +7,16 @@
     </div>
     <div class="login--info__container">
       <div class="form__container">
-        <form v-on:submit.prevent="signIn">
-          <div class="input__container">
-            <input ref="user" id="email" class="input" type="text" required="true" placeholder="What's your name?" />
-            <label style="border-radius:0;" class="input__label" id="email__label" for="email">
-              <span class="icon-user"></span>
-            </label>
+        <div class="text-center pt-1">
+          <div>
+            <a href="https://jobme.herokuapp.com/login" target="_blank">
+              <button id="sub" type="submit"
+              class="btn btn--default display--center"
+              style="display: block; bottom: 5em; width:80%;
+              box-sizing:border-box;">Login</button>
+            </a>
           </div>
-          <div class="text-center pt-1">
-            <div>
-              <button id="sub" type="submit" class="btn btn--default display--center" style="display: block; bottom: 5em; width:80%; box-sizing:border-box;">Login</button>
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>

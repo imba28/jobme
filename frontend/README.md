@@ -18,6 +18,10 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
+# deploy to surge.sh
+# hint: this command runs build first
+npm run deploy
+
 # run unit tests
 npm run unit
 
