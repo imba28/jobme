@@ -17,7 +17,7 @@
         </h1>
         <hr class="hr">
         <p class="job__description">
-          {{job.description}}
+          {{job.description | truncat(250)}}
         </p>
         <div class="job__options button-group">
           <button class="btn btn--red" v-on:click="nope">
