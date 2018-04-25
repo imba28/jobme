@@ -20,13 +20,13 @@
           {{job.description}}
         </p>
         <div class="job__options button-group">
-          <button class="btn btn--red" v-on:click="yes">
+          <button class="btn btn--red" v-on:click="nope">
             <i class="fa fa-times"></i>
           </button>
           <router-link :to="{ name: 'job-info', params: { name } }" class="btn btn--default">
             <i class="fa fa-info"></i>
           </router-link>
-          <button class="btn btn--green" v-on:click="nope">
+          <button class="btn btn--green" v-on:click="yes">
             <i class="fa fa-heart"></i>
           </button>
         </div>
@@ -69,10 +69,16 @@
         }
       },
       nope() {
-        this.swipe(() => note.success('Job removed!', 750), 1)
+        this.swipe(() => {
+          note.success('Job removed!', 750)
+          this.$store.commit('dislikeJob', this.job)
+        }, 1)
       },
       yes() {
-        this.swipe(() => note.success('Job saved!', 750), -1)
+        this.swipe(() => {
+          note.success('Job saved!', 750)
+          this.$store.commit('likeJob', this.job)
+        }, -1)
       }
     },
     created() {

@@ -5,12 +5,23 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:  {
-        myJobs: [],
+        myJobs: [], // vorgeschlagene Jobs
+        savedJobs: [], // Jobs, die mir gefallen haben
         checkedIcons: []
     },
     mutations: {
         setMyJobs(state, jobs) {
             state.myJobs = jobs
+        },
+        likeJob(state, job) {
+            if (!state.savedJobs.includes(job)) {
+                state.savedJobs.push(job)
+            }
+        },
+        dislikeJob(state, job) {
+            if (state.savedJobs.includes(job)) {
+                state.savedJobs.splice(state.savedJobs.indexOf(job), 1)
+            }
         },
         checkIcon(state, category) {
             if (state.checkedIcons.includes(category.id)) {
