@@ -33,17 +33,15 @@ export default {
     router.app.$root.user = null
   },
   signIn (user, password) {
-    $.ajax({
-      type: 'post',
-      url: 'https://jobme.herokuapp.com/login',
-      data: {user: user, password: password},
-      dataType: 'json',
-      success: function (m) {
-        notification.success(m)
+    fetch('http://localhost:3000/user_token', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
       },
-      error: function (e) {
-        console.error(e.responseText)
-      }
+      body: JSON.stringify({'auth': {'name': user, 'password': password}})
+
+    }).then(function (response) {
+      console.info(response)
     })
 
     /* return new Promise((resolve, reject) => {
@@ -62,5 +60,5 @@ export default {
         notification.error(err.message);
         reject(err.message);
       }) */
-  }
+    }
 }

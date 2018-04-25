@@ -15,7 +15,7 @@
         </h1>
         <hr class="hr">
         <p class="job__description">
-          {{job.extended}}
+          {{job.description}}
         </p>
         <h3>Related Companies</h3>
         <ul class="job__companies">
@@ -29,8 +29,6 @@
   </template>
 
 <script>
-  //import sphereImage from '@/lib/360degree'
-  import jobs from '@/json/jobs'
   import sphereImage from '@/lib/360degree'
 
   export default {
@@ -43,7 +41,7 @@
       }
     },
     mounted() {
-      this.job = jobs.find((item) => item.slug === this.name)
+      this.job = this.$store.state.savedJobs.find(job => job.id == this.name)
       sphereImage.start(document.getElementById('asd'))
     }
   }

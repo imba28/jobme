@@ -44,13 +44,14 @@
           }
         })
         .then(jobs => {
-          this.$store.commit('setJobs', jobs)
-
-          router.push({
-            name: 'job',
-            params: {
-              name: jobs[0].id
-            }
+          this.$store.dispatch('setJobs', jobs)
+          .then(() => {
+            router.push({
+              name: 'job',
+              params: {
+                name: jobs[0].id
+              }
+            })
           })
         })
       }

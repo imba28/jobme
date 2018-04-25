@@ -1,15 +1,26 @@
 <template>
   <div class="saved">
     <div class="padding">
-      <h1>Saved</h1>
+      <h1>Saved jobs</h1>
       <ul>
         <li v-for="(job, key) in jobs" class="list__item__wrapper">
-          <h3>{{job.name}}</h3>
-          <router-link :to="{ name: 'job', params: { name: job.slug }}">
-            more
-          </router-link>
-          <a href="#" v-on:click="remove(key)">delete</a>
+          <img v-if="job.image" :src="job.image" alt="preview image">
+          <div>
+            <h3>{{job.name}}</h3>
+            <router-link :to="{ name: 'job-info', params: { name: job.id }}">
+              more
+            </router-link>
+            <a href="#" v-on:click="remove(key)">delete</a>
+          </div>
         </li>
+        <div v-if="jobs.length == 0">
+          Oh no, it seems like you haven't saved any jobs yet!<br>
+          You should
+          <router-link :to="{ name: 'explore-childhood'}">
+            add
+          </router-link>
+          some <i class="far fa-smile fa-2x"></i>
+        </div>
       </ul>
     </div>
   </div>
@@ -17,27 +28,24 @@
 
 <script>
   import notification from '@/lib/notification'
-  import jobsJson from '@/json/jobs'
-
-  const jobs = jobsJson.reverse()
 
   export default {
     name: 'saved-jobs-page',
     data(){
       return {
-        jobs
+        jobs: this.$store.state.savedJobs
       }
     },
     methods: {
-      remove(id) {
-        this.jobs.splice(id, 1)
-        notification.success('successfully deleted!', 1000)
+      remove(idx) {
+        this.$store.commit('dislikeJob', this.jobs[idx])
+        notification.success('Job was successfully deleted!', 1000)
       }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .saved {
 
   h3 {
@@ -51,7 +59,16 @@
 
     li {
       margin: 1em 0;
+      padding-bottom: 1em;
       position: relative;
+      display: flex;
+
+      img {
+        max-width: 3em;
+        align-self: center;
+        box-shadow: .25em .25em 1em rgba(0,0,0,0.1);
+        margin-right: 1em;
+      }
     }
   }
 }

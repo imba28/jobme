@@ -45,8 +45,8 @@
     },
     methods: {
       signIn() {
-        const name = $('#email').value
-        const pwd = $('#pwd').value
+        const name = $('#email').val()
+        const pwd = $('#pwd').val()
 
         auth.signIn(name, pwd)
           .then((user) => {
