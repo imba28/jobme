@@ -36,7 +36,7 @@
     },
     methods: {
       calcJobs() {
-        const checkedSubcategories = JSON.parse(sessionStorage.getItem('hobbies'))
+        const checkedSubcategories = this.$store.state.checkedIcons
         service('matching', {
           method: 'POST',
           data: {
@@ -49,7 +49,7 @@
             router.push({
               name: 'job',
               params: {
-                name: jobs[0].id
+                name: jobs[0].idg
               }
             })
           })

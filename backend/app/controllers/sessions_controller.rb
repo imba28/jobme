@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+<<<<<<< HEAD
+  #skip_before_action :verify_authenticity_token
 
+=======
+  skip_before_action :verify_authenticity_token
+>>>>>>> 772b9b80179188d9a622ca4353a98d9a058a8bb3
   # login form
   def new
 
@@ -24,10 +28,16 @@ class SessionsController < ApplicationController
       user = User.find_by(name: par[:name])
       if user && user.authenticate(par[:password])
         session[:user_id] = user.id
-        
-        respond_to do |format|
-          format.html { redirect_to root_path, notice: 'Logged in!' }
-          format.json { render json: { user: user, auth_token: 'tokenLmaslkdmlknsdnsdln' }, status: :ok }
+        if user.name != 'admin'
+          respond_to do |format|
+            format.html {redirect_to "https://jobme.surge.sh"}
+            format.json { render json: { user: user, auth_token: 'tokenLmaslkdmlknsdnsdln' }, status: :ok }
+          end
+        else 
+          respond_to do |format|
+            format.html {redirect_to root_path, notice: 'Welcome, admin!'}
+            format.json { render json: { user: user, auth_token: 'tokenLmaslkdmlknsdnsdln' }, status: :ok }
+          end
         end
       else
         respond_to do |format|

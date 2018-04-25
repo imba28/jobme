@@ -33,6 +33,9 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
 
+gem 'jwt'
+gem 'knock'
+
 # Store Api keys in this gem
 gem 'figaro'
 
