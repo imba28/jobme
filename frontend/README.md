@@ -1,8 +1,11 @@
-# Hackathon 2018
+# Hackathon 2018, MMP2B
 
 ## Build Setup
 
 ``` bash
+# for node 9 users
+nvm install 8 && nvm use 8
+
 # install dependencies
 npm install
 
@@ -14,6 +17,10 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+
+# deploy to surge.sh
+# hint: this command runs build first
+npm run deploy
 
 # run unit tests
 npm run unit

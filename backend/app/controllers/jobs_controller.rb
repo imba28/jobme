@@ -1,5 +1,8 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :is_admin?, only: [:new, :edit, :create, :update, :destroy]
+  before_action :check_format, only: [:index, :show]
 
   # GET /jobs
   # GET /jobs.json
@@ -114,4 +117,6 @@ class JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:name, :image, :image_preview, :description)
     end
+
+    
 end

@@ -8,12 +8,12 @@ class SessionsController < ApplicationController
 
   # login post request
   def create
+    reset_session
     # IF OMNIAUTH IS USED
     if request.env['omniauth.auth']
       user = User.find_or_create_with_omniauth(request.env['omniauth.auth'])
       if user
-        reset_session
-        session[:user_id] = user.id
+        session[:user_id] = user.uid
         redirect_to root_path, notice: "Welcome back #{user.name}!"
       else
         redirect_to login_path, alert: 'login failed'

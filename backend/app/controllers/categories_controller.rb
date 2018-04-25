@@ -1,9 +1,17 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  #before_action :authenticate_user!
+  before_action :is_admin?, only: [:new, :edit, :create, :update, :destroy]
+  before_action :check_format, only: [:index, :show]
+
 
   # GET /categories
   # GET /categories.json
   def index
+    #getValue()
+    #puts @value
+    #@categories = Category.where(:chilhood => @value)
+    #puts @categories
     @categories = Category.all
   end
 
@@ -70,5 +78,9 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :icon, :chilhood)
+    end
+
+    def getValue
+      @value = params.require(:Category)
     end
 end

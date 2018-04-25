@@ -1,12 +1,13 @@
 {
-  "name": "task-o-mat",
+  "name": "jobme",
   "version": "1.0.0",
-  "description": "Ein Hausaufgaben Verwaltungssystem",
-  "author": "Moritz Lang, Jonas Bücker, Lukas Gruber",
+  "description": "Find your perfect career joice",
+  "author": "Lukas Gruber, Stefan Elsenhuber, Lukas Kern",
   "private": true,
   "scripts": {
     "dev": "cross-env webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
+    "deploy": "npm run build && surge dist",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",

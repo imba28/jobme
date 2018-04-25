@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
+  before_action :check_format, only: [:show]
 
   # GET /users
   # GET /users.json
@@ -11,6 +13,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if !is_admin?
+      respond_to do |format|
+        format.json {render :show}
+      end
+    end
   end
 
   # GET /users/new
@@ -62,7 +69,7 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+    private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -72,4 +79,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+  
 end
