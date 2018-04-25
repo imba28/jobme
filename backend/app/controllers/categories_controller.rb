@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :check_format, only: [:index, :show]
+
 
   # GET /categories
   # GET /categories.json

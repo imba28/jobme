@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:edit, :update, :destroy]
-
+  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
+  before_action :check_format, only: [:show]
+  
   # GET /users
   # GET /users.json
   def index
@@ -12,7 +13,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
+    if !is_admin?
+      respond_to do |format|
+        format.json {render :show}
+      end
+    end
   end
 
   # GET /users/new

@@ -40,9 +40,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # ref: https://www.joshfry.me/blog/2016/07/21/ruby-on-rails-respond-to-json-only/
+  def check_format
+    redirect_to root_url, notice: 'You need to log in as admin.' unless params[:format] == 'json' || request.headers["Accept"] =~ /json/
+  end
+
   helper_method :get_current_user
   helper_method :is_signed_in
   helper_method :is_admin?
   helper_method :authenticate_admin!
   helper_method :authenticate_user!
+  helper_method :check_format
 end
