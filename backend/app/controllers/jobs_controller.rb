@@ -18,7 +18,6 @@ class JobsController < ApplicationController
         output = nil
       end
       if output
-        puts job
         @jobs.push(job)
       end
     end
@@ -106,9 +105,8 @@ class JobsController < ApplicationController
     def getValue
       params = ActionController::Parameters.new({
         sub: {
-          number:[1, 5]
+          number:[1, 3, 4]
         }
-
       })
       @value = params.require(:sub).permit(number: [])      
     end
@@ -122,9 +120,6 @@ class JobsController < ApplicationController
       end
       @arrJob = @arrJob.sort()
       weightJobs()
-      for j in @arrJob do
-        puts j
-      end
     end
 
     def matchingJobs(idx)
