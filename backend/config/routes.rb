@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   post 'matchings', to: 'matching#match'
   get 'matchings', to: 'matching#match'
 
+  # childhood Category
+  get 'childhoods', to: 'childhoods#index'
+  get 'nows', to: 'nows#index'
+
+
+
   # login
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

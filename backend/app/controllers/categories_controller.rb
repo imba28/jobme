@@ -8,10 +8,6 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    #getValue()
-    #puts @value
-    #@categories = Category.where(:chilhood => @value)
-    #puts @categories
     @categories = Category.all
   end
 
@@ -80,7 +76,4 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:name, :icon, :chilhood)
     end
 
-    def getValue
-      @value = params.require(:Category)
-    end
 end
