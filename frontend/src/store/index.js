@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersistence from 'vuex-persist'
+import service from '@/lib/service'
 
 Vue.use(Vuex)
 
@@ -21,11 +22,23 @@ export default new Vuex.Store({
         likeJob(state, job) {
             if (!state.savedJobs.find(item => item.id == job.id)) {
                 state.savedJobs.push(job)
+
+                service('users/1/jobs', {
+                    method: 'post',
+                    data: {
+                        job_id: job.id
+                    }
+                })
             }
         },
         dislikeJob(state, job) {
             if (state.savedJobs.find(item => item.id == job.id)) {
                 state.savedJobs.splice(state.savedJobs.indexOf(job), 1)
+
+                service('users/1/jobs/' + job.id, {
+                    method: 'DELETE',
+                    rawName: true
+                })
             }
         },
         checkIcon(state, category) {
