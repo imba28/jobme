@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="welcome--text__container">
+    <div class="container">
       <h1>You have seen it all!</h1>
       <p>
         Head back to
@@ -18,3 +18,9 @@
     name: 'out-of-jobs-page'
   }
 </script>
+
+<style lang="scss" scoped>
+  .container p {
+    padding: 0 2em;
+  }
+</style>
