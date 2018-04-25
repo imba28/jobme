@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
+  before_action :is_admin?, only: [:index, :edit, :update, :destroy]
   before_action :check_format, only: [:show]
-  
+
   # GET /users
   # GET /users.json
   def index
