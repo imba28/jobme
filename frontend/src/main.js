@@ -4,10 +4,9 @@ import auth from '@/auth'
 import router from './router'
 import Touch from 'vue-touch'
 import Vue2TouchEvents from 'vue2-touch-events'
+import store from '@/store'
 
-import '@/sass/template.scss'
-
-Vue.config.productionTip = true
+Vue.use(Touch)
 
 Vue.use(Vue2TouchEvents, {
     disableClick: false,
@@ -17,8 +16,9 @@ Vue.use(Vue2TouchEvents, {
     longTapTimeInterval: 400
 })
 
-Vue.use(Touch)
+Vue.config.productionTip = true
 
+import '@/sass/template.scss'
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
@@ -40,5 +40,6 @@ new Vue({
             router.app.user = auth.getUser()
             router.app.isSignedIn = true
         }
-    }
+    },
+    store
 })

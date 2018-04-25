@@ -46,8 +46,9 @@ const router = new Router({
         },
         {
             name: 'details',
-            path: '/details',
-            component: DetailsPage
+            path: '/details/:hobby_id',
+            component: DetailsPage,
+            props: true
         },
         {
             name: 'job-info',

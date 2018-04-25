@@ -5,16 +5,16 @@
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
-            <a :href="'#/details?'+hobby.name">
-                <img class="circle" :src="hobby.img" />
-            </a>
+            <router-link :to="{ name: 'details', params: {category: hobby, hobby_id: hobby.id} }">
+              <img :title="hobby.name" class="circle" :src="hobby.icon" />
+            </router-link>
           </div>
         </li>
     </ul>
     </div>
     <div>
       <div class="forward">
-        <a href="#/jobs/j1">
+        <a href="javascript:void(0)" v-on:click="calcJobs">
           <i style="color:white"class="fas fa-arrow-right fa-2x" ></i>
         </a>
     </div>
@@ -23,17 +23,45 @@
   </template>
 
 <script>
-  import hobbies from '@/json/hobbies.json'
+  //import hobbies from '@/json/hobbies.json'
+  import service from '@/lib/service'
+  import router from '@/router'
+
   export default {
     name: 'start-page',
     data(){
       return {
-        hobbies: hobbies.category
+        hobbies: []
+      }
+    },
+    methods: {
+      calcJobs() {
+        const checkedSubcategories = JSON.parse(sessionStorage.getItem('hobbies'))
+        service('matching', {
+          method: 'POST',
+          data: {
+            inCategory: checkedSubcategories
+          }
+        })
+        .then(jobs => {
+          this.$store.commit('setJobs', jobs)
+
+          router.push({
+            name: 'job',
+            params: {
+              name: jobs[0].id
+            }
+          })
+        })
       }
     },
     created() {
+      service('category')
+      .then(categories => {
+        this.hobbies = categories
+      })
         //Scrolls to top when view is displayed
-        window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
     }
   }
 </script>
