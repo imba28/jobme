@@ -5,7 +5,7 @@
       <ul>
         <li v-for="(job, key) in jobs" class="list__item__wrapper">
           <h3>{{job.name}}</h3>
-          <router-link :to="{ name: 'job', params: { name: job.slug }}">
+          <router-link :to="{ name: 'job-info', params: { name: job.id }}">
             more
           </router-link>
           <a href="#" v-on:click="remove(key)">delete</a>
@@ -17,20 +17,17 @@
 
 <script>
   import notification from '@/lib/notification'
-  import jobsJson from '@/json/jobs'
-
-  const jobs = jobsJson.reverse()
 
   export default {
     name: 'saved-jobs-page',
     data(){
       return {
-        jobs
+        jobs: this.$store.state.savedJobs
       }
     },
     methods: {
-      remove(id) {
-        this.jobs.splice(id, 1)
+      remove(idx) {
+        this.$store.commit('dislikeJob', this.jobs[idx])
         notification.success('successfully deleted!', 1000)
       }
     }
