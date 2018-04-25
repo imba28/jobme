@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   # login form
   def new
 
@@ -22,9 +24,16 @@ class SessionsController < ApplicationController
       user = User.find_by(name: par[:name])
       if user && user.authenticate(par[:password])
         session[:user_id] = user.id
-        redirect_to root_path, notice: 'Logged in'
+        
+        respond_to do |format|
+          format.html { redirect_to root_path, notice: 'Logged in!' }
+          format.json { render json: { user: user, auth_token: 'tokenLmaslkdmlknsdnsdln' }, status: :ok }
+        end
       else
-        redirect_to login_path, alert: 'Log in failed'
+        respond_to do |format|
+          format.html { redirect_to login_path, alert: 'Log in failed' }
+          format.json { render json: {}, status: :unauthorized }
+        end
       end
     end
   end
