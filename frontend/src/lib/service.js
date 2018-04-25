@@ -1,8 +1,8 @@
 import config from '@/../config/app'
 import pluralize from 'pluralize'
 
-export default function service(name, {format = 'json', data = {}, method = 'GET'} = {}) {
-    const namePlural = pluralize(name)
+export default function service(name, {format = 'json', data = {}, method = 'GET', rawName = false} = {}) {
+    const namePlural = rawName ? name : pluralize(name)
     const requestOptions = {}
     requestOptions.method = method;
 
