@@ -48,8 +48,8 @@ Category.create(name: 'indoor', icon: 'indoor.url', chilhood: '0')
 
 #add Job image 
 path = '/public/uploads/job/image/'
-img = File.open(File.join(Rails.root, path + 'jedi.gif'))
-@job1.update(image: img)
+# img = File.open(File.join(Rails.root, path + 'jedi.gif'))
+# @job1.update(image: img)
 
 # FacharbeiterIn Bienenwirtschaft
 @job1.subcategories << @sub9
