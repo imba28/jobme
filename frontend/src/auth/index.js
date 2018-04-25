@@ -1,53 +1,66 @@
 import notification from '@/lib/notification'
 import router from '@/router'
 
-let user = null;
+let user = null
 
 const local_token = sessionStorage.getItem('auth_token')
 const local_user = sessionStorage.getItem('user')
 
-if(local_user) {
-    user = local_user
+if (local_user) {
+  user = local_user
 }
 
 export default {
-    isSignedIn() {
-        return local_user !== null
-    },
-    getUser() {
-        return user
-    },
-    getUID() {
-        if(user) return 1
-        return null
-    },
-    getAuthToken() {
-        return "pleasedontsteal"
-    },
-    signOut() {
-        user = null
+  isSignedIn () {
+    return local_user !== null
+  },
+  getUser () {
+    return user
+  },
+  getUID () {
+    if (user) return 1
+    return null
+  },
+  getAuthToken () {
+    return 'pleasedontsteal'
+  },
+  signOut () {
+    user = null
 
-        sessionStorage.removeItem('user')
+    sessionStorage.removeItem('user')
 
-        router.app.$root.isSignedIn = false
-        router.app.$root.user = null
-    },
-    signIn(user, password) {
-        return new Promise((resolve, reject) => {
-            user = user
+    router.app.$root.isSignedIn = false
+    router.app.$root.user = null
+  },
+  signIn (user, password) {
+    $.ajax({
+      type: 'POST',
+      url: 'https://jobme.herokuapp.com/login',
+      data: {user: user, password: password},
+      dataType: 'json',
+      success: function (m) {
+        notification.success(m)
+      },
+      error: function (e) {
+        console.error(e.responseText)
+      }
+    })
 
-            notification.success(`Willkommen ${user}!`);
+    /* return new Promise((resolve, reject) => {
+      user = user
 
-            sessionStorage.setItem('user', user)
+      notification.success(`Willkommen ${user}!`);
 
-            router.app.$root.isSignedIn = true
-            router.app.$root.user = user
+      sessionStorage.setItem('user', user)
 
-            resolve(user)
-        })
-        .catch(err => {
-            notification.error(err.message);
-            reject(err.message);
-        })
-    }
+      router.app.$root.isSignedIn = true
+      router.app.$root.user = user
+
+      resolve(user)
+    })
+      .catch(err => {
+        notification.error(err.message);
+        reject(err.message);
+      }) */
+  }
 }

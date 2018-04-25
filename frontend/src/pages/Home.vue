@@ -7,16 +7,26 @@
     </div>
     <div class="login--info__container">
       <div class="form__container">
-        <div class="text-center pt-1">
-          <div>
-            <a href="https://jobme.herokuapp.com/login" target="_blank">
-              <button id="sub" type="submit"
-              class="btn btn--default display--center"
-              style="display: block; bottom: 5em; width:80%;
-              box-sizing:border-box;">Login</button>
-            </a>
+        <form v-on:submit.prevent="signIn">
+          <div class="input__container">
+            <input ref="user" id="email" class="input" type="text" required="true" placeholder="What's your name?" />
+            <label style="border-radius:0;" class="input__label" id="email__label" for="email">
+              <span class="icon-user"></span>
+            </label>
           </div>
-        </div>
+          <div class="input__container">
+            <input ref="pwd" id="pwd" class="input" type="password" placeholder="Your password" required="true" />
+            <label style="border-radius:0;" class="input__label" id="pwd__label" for="pwd">
+              <span class="icon-key"></span>
+            </label>
+          </div>
+          <div class="text-center pt-1">
+            <div class="input__container">
+              <button id="sub" type="submit" class="btn btn--default display--center" style="display: block; bottom: 5em; width:100%; box-sizing:border-box;">Login</button>
+            </div>
+            <a href="https://jobme.herokuapp.com/users/new">New to JOBme?</a>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -35,9 +45,10 @@
     },
     methods: {
       signIn() {
-        const email = this.$refs['user'].value
+        const name = $('#email').value
+        const pwd = $('#pwd').value
 
-        auth.signIn(email, null)
+        auth.signIn(name, pwd)
           .then((user) => {
             router.push({
               path: '/explore-childhood'
@@ -52,9 +63,20 @@
 <style lang="scss">
   .welcome {
     height: 100%;
+    .text-center {
+      text-align: center;
+    }
+
+    a {
+        color: $grey;
+        &:hover {
+          text-decoration: underline;
+        }
+    }
+
     .input__container {
-      margin-top: 0;
-      padding: 1em 1em 5em;
+      margin: 0;
+      padding: 1em 1em;
 
     }
     .container {
