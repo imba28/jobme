@@ -1,7 +1,7 @@
 <template>
 <div class="wrapper">
   <header class="header">
-    <button v-if="$root.isSignedIn" id="menu-burger" class="hamburger hamburger--collapse" type="button" v-on:click="triggerBurger">
+    <button ref="burger" v-if="$root.isSignedIn" id="menu-burger" class="hamburger hamburger--collapse" type="button" v-on:click="triggerBurger">
     <span class="hamburger-box">
       <span class="hamburger-inner">
       </span>
@@ -65,17 +65,14 @@ export default {
     }
   },
   methods: {
-    triggerBurger: function(event) {
-      if (document.getElementById("menu-burger").className == "hamburger hamburger--collapse") {
-        document.getElementById("menu-burger").className += " is-active"
-        this.show = !this.show
-      } else {
-        document.getElementById("menu-burger").className = "hamburger hamburger--collapse"
-        this.show = !this.show
-      }
+    triggerBurger() {
+      console.log(this)
+      this.$refs['burger'].classList.toggle('is-active')
+      this.show = !this.show
     },
-    signOut: () => {
+    signOut() {
       auth.signOut()
+      this.triggerBurger()
       router.push( {path: "/"} )
     },
     capitalizeFirstLetter(string) {
