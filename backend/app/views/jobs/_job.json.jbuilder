@@ -4,6 +4,11 @@ if job.image.url
 else 
     json.image nil
 end
-#json.match @arrJob 
+if job.image_preview
+    json.image_preview asset_url(job.image.to_s)
+else 
+    json.image_preview nil
+end
+
 
 json.url job_url(job, format: :json)
