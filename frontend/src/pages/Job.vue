@@ -70,7 +70,7 @@
       },
       nope() {
         this.swipe(() => {
-          note.success('Job removed!', 750)
+          //note.success('Job removed!', 750)
           this.$store.commit('dislikeJob', this.job)
         }, 1)
       },

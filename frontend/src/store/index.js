@@ -19,12 +19,12 @@ export default new Vuex.Store({
             state.myJobs = jobs
         },
         likeJob(state, job) {
-            if (!state.savedJobs.includes(job)) {
+            if (!state.savedJobs.find(item => item.id == job.id)) {
                 state.savedJobs.push(job)
             }
         },
         dislikeJob(state, job) {
-            if (state.savedJobs.includes(job)) {
+            if (state.savedJobs.find(item => item.id == job.id)) {
                 state.savedJobs.splice(state.savedJobs.indexOf(job), 1)
             }
         },

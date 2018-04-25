@@ -5,7 +5,7 @@
       <ul>
         <li v-for="(job, key) in jobs" class="list__item__wrapper">
           <h3>{{job.name}}</h3>
-          <router-link :to="{ name: 'job', params: { name: job.id }}">
+          <router-link :to="{ name: 'job-info', params: { name: job.id }}">
             more
           </router-link>
           <a href="#" v-on:click="remove(key)">delete</a>
