@@ -34,7 +34,7 @@ export default {
   },
   signIn (user, password) {
     $.ajax({
-      type: 'POST',
+      type: 'post',
       url: 'https://jobme.herokuapp.com/login',
       data: {user: user, password: password},
       dataType: 'json',

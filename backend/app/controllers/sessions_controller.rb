@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
       user = User.find_by(name: par[:name])
       if user && user.authenticate(par[:password])
         session[:user_id] = user.id
-        #redirect_to root_path, notice: 'Logged in'
         if user.name != 'admin'
           redirect_to "https://jobme.surge.sh"
         else 
