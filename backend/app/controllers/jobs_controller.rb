@@ -7,20 +7,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    JobsAlgo()
-    @jobs = []
-    @allJobs = Job.all
-    for v in @arrJob do
-      begin
-        output = ''
-        job = @allJobs.find(v[:id])
-      rescue ActiveRecord::RecordNotFound => e
-        output = nil
-      end
-      if output
-        @jobs.push(job)
-      end
-    end
+    @jobs = Job.all
   end
 
   # GET /jobs/1
@@ -102,64 +89,5 @@ class JobsController < ApplicationController
       params.require(:job).permit(:name, :image, :image_preview, :description)
     end
 
-    def getValue
-      params = ActionController::Parameters.new({
-        sub: {
-          number:[1, 3, 4]
-        }
-      })
-      @value = params.require(:sub).permit(number: [])      
-    end
-
-    def JobsAlgo
-      @arrJob = []
-      getValue()
-      @value = @value.fetch(:number)
-      for v in @value do
-        matchingJobs(v)
-      end
-      @arrJob = @arrJob.sort()
-      weightJobs()
-    end
-
-    def matchingJobs(idx)
-      jobs = Job.all
-      subcate = Subcategory.find(idx)
-      for job in jobs do
-        begin
-          output = ''
-          id = job.subcategories.find(subcate.id).id
-        rescue ActiveRecord::RecordNotFound => e
-          output = nil
-        end
-        if output
-          @arrJob.push(job.id)
-        end
-      end
-    end
     
-    def weightJobs
-      @result = []
-      str = @arrJob[0]
-      num = 0
-      for v in @arrJob do
-        if v.eql?(str)
-          num += 1
-        else
-          x = {
-            id:  str,
-            weight: num
-          }
-          @result.push(x)
-          str = v
-          num = 1
-        end
-      end
-      x = {
-        id:  str,
-        weight: num
-      }
-      @result.push(x)
-      @arrJob = @result.sort {|a,b| b[:weight] <=> a[:weight]}
-    end
 end

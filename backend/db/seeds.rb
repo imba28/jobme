@@ -8,12 +8,12 @@
 
 User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_confirmation: 'test')
 
-Category.create(name: 'sport', icon: 'sport.url', chilhood: '1')
-Category.create(name: 'natrue', icon: 'nature.url', chilhood: '1')
-Category.create(name: 'crative', icon: 'creative.url', chilhood: '1')
-Category.create(name: 'transportation', icon: 'transportation.url', chilhood: '0')
-Category.create(name: 'craft', icon: 'worker.url', chilhood: '0')
-Category.create(name: 'indoor', icon: 'indoor.url', chilhood: '0')
+@cate1 = Category.create(name: 'sport', icon: 'Sport.svg', chilhood: '1')
+@cate2 = Category.create(name: 'natrue', icon: 'Natur.svg', chilhood: '1')
+@cate3 = Category.create(name: 'crative', icon: 'Krativ', chilhood: '1')
+@cate4 = Category.create(name: 'transportation', icon: 'Transportation', chilhood: '0')
+@cate5 = Category.create(name: 'craft', icon: 'Craft.svg', chilhood: '0')
+@cate6 = Category.create(name: 'indoor', icon: 'Indoor.svg', chilhood: '0')
 
 #@sub1 = Subcategory.create(name: 'football', icon: 'football.url', category_id: '1')
 
@@ -32,7 +32,7 @@ Category.create(name: 'indoor', icon: 'indoor.url', chilhood: '0')
 @sub17 = Subcategory.create(name: 'water', icon: 'water.url', category_id: '2')
 @sub18 = Subcategory.create(name: 'camping', icon: 'camping.url', category_id: '2')
 # sport
-@sub19 = Subcategory.create(name: 'football', icon: 'football.url', category_id: '1')
+@sub19 = Subcategory.create(name: 'football', icon: 'Fußball.svg', category_id: '1')
 @sub20 = Subcategory.create(name: 'cycle', icon: 'cycle.url', category_id: '1')
 @sub21 = Subcategory.create(name: 'ride', icon: 'ride.url', category_id: '1')
 @sub22 = Subcategory.create(name: 'swim', icon: 'swim.url', category_id: '1')
@@ -48,14 +48,75 @@ Category.create(name: 'indoor', icon: 'indoor.url', chilhood: '0')
 
 #add Job image 
 #path = '/public/uploads/job/image/'
-path = '/app/assets/images/'
+pathJob = '/app/assets/images/job/'
 
-img = File.open(File.join(Rails.root, path + 'jedi.gif'))
+
+
+img = File.open(File.join(Rails.root, pathJob + 'jedi.gif'))
 @job1.update(image: img, image_preview: img)
 
-img = File.open(File.join(Rails.root, path + 'ski-head.png'))
+img = File.open(File.join(Rails.root, pathJob + 'ski-head.png'))
 @job2.update(image: img, image_preview: img)
 
+# add category img
+pathCate = '/app/assets/images/category/'
+img = File.open(File.join(Rails.root, pathCate + 'Sport.svg'))
+@cate1.update(icon: img)
+img = File.open(File.join(Rails.root, pathCate + 'Natur.svg'))
+@cate2.update(icon: img)
+img = File.open(File.join(Rails.root, pathCate + 'Kreativ.svg'))
+@cate3.update(icon: img)
+img = File.open(File.join(Rails.root, pathCate + 'Transportation.svg'))
+@cate4.update(icon: img)
+img = File.open(File.join(Rails.root, pathCate + 'Craft.svg'))
+@cate5.update(icon: img)
+img = File.open(File.join(Rails.root, pathCate + 'Indoor.svg'))
+@cate6.update(icon: img)
+
+# add subcategory craft img 
+pathSub = '/app/assets/images/subcategory/craft/'
+img = File.open(File.join(Rails.root, pathSub + 'Farbrolle.svg'))
+@sub7.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Nähmaschine.svg'))
+@sub8.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Säge.svg'))
+@sub9.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Schrauben.svg'))
+@sub10.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Spaten.svg'))
+@sub11.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Stecker.svg'))
+@sub12.update(icon: img)
+
+# add subcategory nature img 
+pathSub = '/app/assets/images/subcategory/natur/'
+img = File.open(File.join(Rails.root, pathSub + 'Berg.svg'))
+@sub13.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Fernglas.svg'))
+@sub14.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Hund.svg'))
+@sub15.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Pflanzen.svg'))
+@sub16.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Wasser.svg'))
+@sub17.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Zelten.svg'))
+@sub18.update(icon: img)
+
+# add subcategory sport img 
+pathSub = '/app/assets/images/subcategory/sport/'
+img = File.open(File.join(Rails.root, pathSub + 'Fußball.svg'))
+@sub19.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Radfahren.svg'))
+@sub20.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Reiten.svg'))
+@sub21.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Schwimmen.svg'))
+@sub22.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Ski.svg'))
+@sub23.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'Tennis.svg'))
+@sub24.update(icon: img)
 # FacharbeiterIn Bienenwirtschaft
 @job1.subcategories << @sub9
 @job1.subcategories << @sub10
