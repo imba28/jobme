@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import service from '@/lib/service'
+  import service from '@/lib/service'
 
   export default {
     name: 'start-page',

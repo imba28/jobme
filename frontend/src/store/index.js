@@ -5,11 +5,26 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:  {
-        myJobs: []
+        myJobs: [],
+        checkedIcons: []
     },
     mutations: {
-        setJobs(state, jobs) {
+        setMyJobs(state, jobs) {
             state.myJobs = jobs
+        },
+        checkIcon(state, category) {
+            if (state.checkedIcons.includes(category.id)) {
+                category.isChecked = false;
+                state.checkedIcons.splice(state.checkedIcons.indexOf(category.id), 1)
+            } else {
+                category.isChecked = true;
+                state.checkedIcons.push(category.id)
+            }
         }
+    },
+    actions: {
+        setJobs({ commit }, jobs) {
+            commit('setMyJobs', jobs)
+        },
     }
 })
