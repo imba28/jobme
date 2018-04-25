@@ -8,6 +8,10 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    #getValue()
+    #puts @value
+    #@categories = Category.where(:chilhood => @value)
+    #puts @categories
     @categories = Category.all
   end
 
@@ -74,5 +78,9 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :icon, :chilhood)
+    end
+
+    def getValue
+      @value = params.require(:Category)
     end
 end
