@@ -15,7 +15,7 @@
         <li v-for="cat in cats" v-on:click="clickIcon(cat)">
           <div class="details-div">
             <img :id="cat.id" :title="cat.label" class="circle-details clickable" :src="cat.icon" />
-            <span v-show="isChecked(cat)">
+            <span v-show="cat.isChecked">
               <i class="far fa-check-circle fa-2x tick"></i>
             </span>
           </div>
@@ -32,8 +32,7 @@
     props: ['category', 'hobby_id'],
     name: 'start-page',
     data(){
-      const checkedIcons = sessionStorage.getItem('hobbies') ?
-          JSON.parse(sessionStorage.getItem('hobbies')) : []
+      const checkedIcons = this.$store.state.checkedIcons
 
       return {
         checkedIcons,
@@ -41,20 +40,9 @@
       }
     },
     methods: {
-      isChecked(category) {
-        return this.checkedIcons.includes(category.id)
-      },
       clickIcon(category) {
-        if (this.isChecked(category)) {
-          category.isChecked = false;
-          this.checkedIcons.splice(this.checkedIcons.indexOf(category.id), 1)
-        } else {
-          category.isChecked = true;
-          this.checkedIcons.push(category.id)
-        }
-
-        sessionStorage.setItem('hobbies', JSON.stringify(this.checkedIcons))
-        this.$forceUpdate()
+        this.$store.commit('checkIcon', category)
+        this.$forceUpdate() // naja
       }
     },
     created() {
@@ -64,6 +52,11 @@
 
       service(`categories/${this.hobby_id}/subcategory`)
       .then(subs => {
+        subs.forEach(category => {
+          if (this.$store.state.checkedIcons.includes(category.id)) {
+            category.isChecked = true
+          }
+        })
         this.cats = subs
       })
     },

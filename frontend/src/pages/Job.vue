@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-touch @swipeleft="nope" @swiperight="save">
+    <v-touch @swipeleft="nope" @swiperight="yes">
     <div v-if="job" class="job" ref="container">
       <div class="job__image">
         <img :src="job.image">
@@ -17,16 +17,16 @@
         </h1>
         <hr class="hr">
         <p class="job__description">
-          {{job.description}}
+          {{job.description | truncat(250)}}
         </p>
         <div class="job__options button-group">
-          <button class="btn btn--red" v-on:click="save">
+          <button class="btn btn--red" v-on:click="nope">
             <i class="fa fa-times"></i>
           </button>
           <router-link :to="{ name: 'job-info', params: { name } }" class="btn btn--default">
             <i class="fa fa-info"></i>
           </router-link>
-          <button class="btn btn--green" v-on:click="nope">
+          <button class="btn btn--green" v-on:click="yes">
             <i class="fa fa-heart"></i>
           </button>
         </div>
@@ -39,7 +39,6 @@
 <script>
   import note from '@/lib/notification'
   import router from '@/router'
-  import $ from 'jquery'
 
   export default {
     name: 'job-page',
@@ -51,21 +50,35 @@
       }
     },
     methods: {
-      nope() {
+      swipe(func = () => {}, direction) {
         const idx = this.jobs.indexOf(this.job);
 
-        if(idx > 0) {
-          note.success('Job saved!', 750)
-          router.push({name: 'job', params: {name: this.jobs[idx-1].id, bottomMenuIndex: 1}})
+        if(idx + 1 < this.jobs.length) {
+          func()
+          router.push({
+            name: 'job',
+            params: {
+              name: this.jobs[idx + 1].id,
+              bottomMenuIndex: direction
+            }
+          })
+        } else {
+          router.push({
+            name: 'run-out-of-jobs'
+          })
         }
       },
-      save() {
-        const idx = this.jobs.indexOf(this.job);
-        console.log(idx)
-        if(idx < this.jobs.length -1 ) {
-          note.success('Job removed!', 750)
-          router.push({name: 'job', params: {name: this.jobs[idx+1].id, bottomMenuIndex: -1}})
-        }
+      nope() {
+        this.swipe(() => {
+          //note.success('Job removed!', 750)
+          this.$store.commit('dislikeJob', this.job)
+        }, 1)
+      },
+      yes() {
+        this.swipe(() => {
+          note.success('Job saved!', 750)
+          this.$store.commit('likeJob', this.job)
+        }, -1)
       }
     },
     created() {
@@ -80,7 +93,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .job {
 
     .hr {
@@ -114,6 +127,7 @@
 
     &__options {
       display: flex;
+      padding-bottom: 1em;
 
       button, a {
         flex-basis: 33.33%;

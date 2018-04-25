@@ -5,14 +5,19 @@
       <div class="padding">
         <h1>My profile</h1>
         <p>
-          <strong>Name</strong>: {{user}}
+          Hello
+          <strong>
+            {{user}}
+          </strong>!
         </p>
         <div class="buttons">
           <router-link :to="{ name: 'saved-jobs' }">
-            <button class="btn btn--default"><i class="fa fa-heart-o"></i> Jobs</button>
+            <button class="btn btn--default">
+              Jobs you liked
+              <i class="fa fa-heart"></i> ({{ savedJobsCount }})
+            </button>
           </router-link>
           <button class="btn btn--default">Edit</button>
-          <button class="btn btn--default">Reset</button>
         </div>
       </div>
     </div>
@@ -27,6 +32,11 @@
     data(){
       return {
         user: auth.getUser()
+      }
+    },
+    computed: {
+      savedJobsCount: function(){
+        return this.$store.state.savedJobs.length
       }
     }
   }

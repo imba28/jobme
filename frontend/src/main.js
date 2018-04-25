@@ -1,10 +1,16 @@
 import Vue from 'vue'
+import vueHelper from '@/lib/vue-filter'
+import Touch from 'vue-touch'
+import Vue2TouchEvents from 'vue2-touch-events'
 import App from './App'
 import auth from '@/auth'
 import router from './router'
-import Touch from 'vue-touch'
-import Vue2TouchEvents from 'vue2-touch-events'
 import store from '@/store'
+
+Object.keys(vueHelper).forEach((name) => {
+    console.log(name, vueHelper[name])
+    Vue.filter(name, vueHelper[name])
+})
 
 Vue.use(Touch)
 

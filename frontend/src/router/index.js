@@ -14,6 +14,7 @@ import JobPage from '@/pages/Job'
 import ExploreChildhoodPage from '@/pages/Explore-Childhood'
 import ExploreNowPage from '@/pages/Explore-Now'
 import DetailsPage from '@/pages/details'
+import OutOfJobsPage from '@/pages/OutOfJobs'
 
 Vue.use(Router)
 
@@ -42,7 +43,11 @@ const router = new Router({
             name: 'explore-now',
             path: '/explore-now',
             component: ExploreNowPage
-
+        },
+        {
+            name: 'run-out-of-jobs',
+            path: '/no-jobs/',
+            component: OutOfJobsPage,
         },
         {
             name: 'details',
