@@ -93,7 +93,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .job {
 
     .hr {
@@ -127,6 +127,7 @@
 
     &__options {
       display: flex;
+      padding-bottom: 1em;
 
       button, a {
         flex-basis: 33.33%;
