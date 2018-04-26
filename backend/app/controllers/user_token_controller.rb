@@ -6,7 +6,17 @@ class UserTokenController < SessionsController
             user = User.where(:name => login_params[:name]).first
 
             if user && user.authenticate(login_params[:password])
-                render json: { user: user, auth_token: JsonWebToken.encode({user_id: user.id}) }, status: :ok
+                render json: { 
+                    user: {
+                        id: user.id,
+                        name: user.name,
+                        avatar_url: view_context.asset_url(user.avatar_url)
+                    },
+                    auth_token: JsonWebToken.encode({
+                        user_id: user.id
+                    })
+                },
+                status: :ok
                 return
             end
         end
