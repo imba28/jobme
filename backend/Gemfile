@@ -35,6 +35,7 @@ gem 'omniauth-facebook'
 
 gem 'jwt'
 gem 'knock'
+gem 'active_model_serializers'
 
 # Store Api keys in this gem
 gem 'figaro'
