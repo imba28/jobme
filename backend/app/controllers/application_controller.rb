@@ -1,22 +1,27 @@
 class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
 
-  include Knock::Authenticable
-
   def is_signed_in
-    if session[:user_id] && User.exists?(session[:user_id])
-      user = User.find session[:user_id]
+    if authentication_id 
+      user = User.find authentication_id
+      
       if user
         @current_user = user
         return true
       end
     end
+
     return false
   end
 
   def is_admin?
-    if session[:user_id] && User.exists?(session[:user_id])
-      user = User.find session[:user_id]
+    unless !@current_user 
+      return @current_user.name == 'admin'
+    end
+    
+    user_id = authentication_id
+    if user_id 
+      user = User.find user_id
       if user.name == 'admin'
         @current_user = user
         return true
@@ -55,4 +60,28 @@ class ApplicationController < ActionController::Base
   helper_method :authenticate_admin!
   helper_method :authenticate_user!
   helper_method :check_format
+
+  private
+    def authentication_id
+      if session[:user_id]
+        return session[:user_id]
+      end
+      if user_id_in_token?
+        return auth_token[:user_id]
+      end
+    end
+
+    def http_token
+        @http_token ||= if request.headers['Authorization'].present?
+            request.headers['Authorization'].split(' ').last
+        end
+    end
+
+    def auth_token
+        @auth_token ||= JsonWebToken.decode(http_token)
+    end
+
+    def user_id_in_token?
+        http_token && auth_token && auth_token[:user_id].to_i
+    end  
 end

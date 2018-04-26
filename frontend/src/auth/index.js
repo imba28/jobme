@@ -1,64 +1,47 @@
-import notification from '@/lib/notification'
 import router from '@/router'
-
-let user = null
-
-const local_token = sessionStorage.getItem('auth_token')
-const local_user = sessionStorage.getItem('user')
-
-if (local_user) {
-  user = local_user
-}
+import store from '@/store'
 
 export default {
-  isSignedIn () {
-    return local_user !== null
+  isSignedIn() {
+    return store.state.user !== null
   },
-  getUser () {
-    return user
+  getUser() {
+    return store.state.user
   },
-  getUID () {
-    if (user) return 1
+  getUID() {
+    if (store.state.user) return store.state.user.id
     return null
   },
-  getAuthToken () {
-    return 'pleasedontsteal'
+  getAuthToken() {
+    return store.state.auth_token
   },
-  signOut () {
-    user = null
-
-    sessionStorage.removeItem('user')
-
-    router.app.$root.isSignedIn = false
-    router.app.$root.user = null
+  signOut() {
+    store.commit('setUser', null)
+    store.commit('setAuthToken', null)
   },
-  signIn (user, password) {
-    fetch('http://localhost:3000/user_token', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({'auth': {'name': user, 'password': password}})
+  signIn(user, password) {
+    return new Promise((resolve, reject) => {
+      fetch('http://localhost:3000/user_token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'name': user,
+            'password': password
+        })
+      })
+      .then(async function(response) {
+        const json = await response.json()
+        if (response.status < 200 || response.status >= 300) {
+          reject(json)
+        }
 
-    }).then(function (response) {
-      console.info(response)
+        store.commit('setUser', json.user)
+        store.commit('setAuthToken', json.auth_token)
+
+        resolve(json)
+      })
     })
-
-    /* return new Promise((resolve, reject) => {
-      user = user
-
-      notification.success(`Willkommen ${user}!`);
-
-      sessionStorage.setItem('user', user)
-
-      router.app.$root.isSignedIn = true
-      router.app.$root.user = user
-
-      resolve(user)
-    })
-      .catch(err => {
-        notification.error(err.message);
-        reject(err.message);
-      }) */
-    }
+  }
 }
