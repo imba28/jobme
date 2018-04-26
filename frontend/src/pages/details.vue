@@ -9,15 +9,19 @@
         </a>
       </div>
       <h1 class="full-width">
-        <img class="full-width" :src="category.icon" />
+        <img :src="category.icon" />
+        <h2 class="title">{{category.name}}</h2>
       </h1>
       <ul class="icons" ref="icons">
         <li v-for="cat in cats" v-on:click="clickIcon(cat)">
           <div class="details-div">
-            <img :id="cat.id" :title="cat.label" class="circle-details clickable" :src="cat.icon" />
-            <span v-show="cat.isChecked">
-              <i class="far fa-check-circle fa-2x tick"></i>
-            </span>
+            <div class="container">
+              <img :id="cat.id" :title="cat.name" class="circle-details clickable" :src="cat.icon" />
+              <span v-show="cat.isChecked">
+                <i class="tick far fa-check-circle fa-2x"></i>
+              </span>
+            </div>
+            <h3 class="subtitle">{{cat.name}}</h3>
           </div>
         </li>
       </ul>
@@ -49,7 +53,6 @@
       if (!this.category) {
         service('category', {id: this.hobby_id})
       }
-
       service(`categories/${this.hobby_id}/subcategory`)
       .then(subs => {
         subs.forEach(category => {
@@ -59,7 +62,7 @@
         })
         this.cats = subs
       })
-    },
+    }
   }
 </script>
 
@@ -77,15 +80,14 @@
       align-content: center;
       text-align: center;
       list-style: none;
+
+      .tick {
+        position: absolute;
+        margin-top: 3.5rem;
+        color: $grey;
+      }
       .inner {
         padding: 2em;
-
-        .tick {
-          position: absolute;
-          margin-left: -1.2rem;
-          margin-top: 3.5rem;
-          color: green;
-        }
 
         .icon {
           background: #ddd;

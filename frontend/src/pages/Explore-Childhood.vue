@@ -1,7 +1,7 @@
 <template>
   <div class="explore-child">
     <div>
-      <h1>What did you love to do as a kid?</h1>
+      <h1>Was hast du als Kind gerne gemacht?</h1>
       <ul class="icons">
         <li v-for="hobby in hobbies">
           <div class="inner">
@@ -76,7 +76,6 @@
 
   .explore-child {
     background-color: #4dd0e1;
-
     .icons {
       justify-content: flex-end;
       flex-direction: column;
