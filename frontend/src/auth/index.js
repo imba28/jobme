@@ -1,5 +1,6 @@
 import router from '@/router'
 import store from '@/store'
+import config from '@/../config/app'
 
 export default {
   isSignedIn() {
@@ -21,7 +22,7 @@ export default {
   },
   signIn(user, password) {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3000/user_token', {
+      fetch(config.api.host + '/user_token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
