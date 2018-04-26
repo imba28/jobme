@@ -21,7 +21,7 @@
         <h3>Related Companies</h3>
         <ul class="job__companies">
           <li v-for="(a, key) in employers">
-            <img src="http://via.placeholder.com/150x80">
+            <img src="https://jobme.herokuapp.com/system/uploads/company/company.jpg">
           </li>
         </ul>
       </div>
