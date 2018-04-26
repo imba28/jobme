@@ -21,7 +21,7 @@ export default {
   },
   signIn(user, password) {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3000/user_token', {
+      fetch('https://jobme.herokuapp.com/user_token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

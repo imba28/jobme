@@ -76,15 +76,18 @@ export default {
   .full-width {
     border: $grey solid 10px;
     width: 100%;
-    height: 40vh;
-    padding: 1em 0;
+    height: 300px;
+    padding: 1.9em 0;
     margin-bottom: 30px;
+
     img {
-      width: 200px;
+      height: 100%;
+      width: 100%;
     }
     .title {
       background: $grey;
       color: $white;
+      width: 100%;
     }
   }
 }
