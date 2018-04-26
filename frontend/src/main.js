@@ -12,6 +12,9 @@ Object.keys(vueHelper).forEach((name) => {
     Vue.filter(name, vueHelper[name])
 })
 
+Touch.config.swipe = {
+  direction: 'horizontal'
+}
 Vue.use(Touch)
 
 Vue.use(Vue2TouchEvents, {
