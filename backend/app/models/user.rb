@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :jobs
 
+  mount_uploader :avatar_url, ImageIconUploader
+
   validates_confirmation_of :password, :on => :create
   validates_uniqueness_of :name, :email, :on => :create  
   

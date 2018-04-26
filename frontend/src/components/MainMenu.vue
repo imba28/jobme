@@ -1,7 +1,7 @@
 <template>
 <div class="wrapper">
   <header class="header">
-    <button ref="burger" v-if="$root.isSignedIn" id="menu-burger" class="hamburger hamburger--collapse" type="button" v-on:click="triggerBurger">
+    <button ref="burger" v-if="isSignedIn" id="menu-burger" class="hamburger hamburger--collapse" type="button" v-on:click="triggerBurger">
     <span class="hamburger-box">
       <span class="hamburger-inner">
       </span>
@@ -11,11 +11,11 @@
     <span v-html="pageHeader"></span>
   </h1>
   </header>
-  <transition name="fade" v-if="$root.isSignedIn">
+  <transition name="fade" v-if="isSignedIn">
     <nav v-if="show" id="side__nav">
       <ul>
-        <li v-if="$root.isSignedIn">
-          <h3 id="greeting_user">Hello {{ capitalizeFirstLetter($root.user) }}! </h3>
+        <li>
+          <h3 id="greeting_user">Hello {{ capitalizeFirstLetter(user.name) }}! </h3>
         </li>
         <li v-for="(option, index) in options">
           <router-link v-if="option.path" active-class="active" :to="option.path" @click.native="triggerBurger">
@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       show: false,
-      user: null,
+      user: this.$store.state.user,
       page: 'JOB<span style="color:#76dcdc;font-weight:700;">me</span>',
       options: [
         {
@@ -66,7 +66,6 @@ export default {
   },
   methods: {
     triggerBurger() {
-      console.log(this)
       this.$refs['burger'].classList.toggle('is-active')
       this.show = !this.show
     },
@@ -89,7 +88,7 @@ export default {
       }
     },
     isSignedIn: {
-      get: () => this.$root.isSignedIn
+      get: function(){ return this.$store.state.auth_token !== null }
     }
   },
   created() {

@@ -1,13 +1,14 @@
 <template>
   <div>
     <div>
-      <div style="background: url(https://i.ytimg.com/vi/q5qV_TPLwzw/maxresdefault.jpg);background-size: cover; height: 200px;"></div>
+      <div v-bind:style="{backgroundImage: `url(${avatarUrl})`, height: '200px', backgroundSize: 'cover'}">
+      </div>
       <div class="padding">
         <h1>My profile</h1>
         <p>
           Hello
           <strong>
-            {{user}}
+            {{user.name}}
           </strong>!
         </p>
         <div class="buttons">
@@ -17,7 +18,7 @@
               <i class="fa fa-heart"></i> ({{ savedJobsCount }})
             </button>
           </router-link>
-          <button class="btn btn--default">Edit</button>
+          <!--<button class="btn btn--default">Edit</button>-->
         </div>
       </div>
     </div>
@@ -37,6 +38,9 @@
     computed: {
       savedJobsCount: function(){
         return this.$store.state.savedJobs.length
+      },
+      avatarUrl: function() {
+        return this.user.avatar_url ? this.user.avatar_url : 'https://i.ytimg.com/vi/q5qV_TPLwzw/maxresdefault.jpg'
       }
     }
   }

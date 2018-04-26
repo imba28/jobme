@@ -49,7 +49,7 @@
             router.push({
               name: 'job',
               params: {
-                name: jobs[0].idg
+                name: jobs[0].id
               }
             })
           })
