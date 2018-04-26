@@ -30,7 +30,7 @@ User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_conf
 @sub15 = Subcategory.create(name: 'Tiere', icon: 'animals.url', category_id: '2')
 @sub16 = Subcategory.create(name: 'Pflanzen', icon: 'plant.url', category_id: '2')
 @sub17 = Subcategory.create(name: 'Wasser', icon: 'water.url', category_id: '2')
-@sub18 = Subcategory.create(name: 'Caping', icon: 'camping.url', category_id: '2')
+@sub18 = Subcategory.create(name: 'Camping', icon: 'camping.url', category_id: '2')
 # sport
 @sub19 = Subcategory.create(name: 'Fußball', icon: 'Fußball.svg', category_id: '1')
 @sub20 = Subcategory.create(name: 'Fahrrad', icon: 'cycle.url', category_id: '1')
@@ -38,6 +38,28 @@ User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_conf
 @sub22 = Subcategory.create(name: 'Schwimmen', icon: 'swim.url', category_id: '1')
 @sub23 = Subcategory.create(name: 'Skifahren', icon: 'ski.url', category_id: '1')
 @sub24 = Subcategory.create(name: 'Tennis', icon: 'tennis.url', category_id: '1')
+# creative
+@sub25 = Subcategory.create(name: 'Singen', icon: 'karaoke.svg', category_id: '3')
+@sub26 = Subcategory.create(name: 'Musik hören', icon: 'musik.url', category_id: '3')
+@sub27 = Subcategory.create(name: 'Malen', icon: 'malen.url', category_id: '3')
+@sub28 = Subcategory.create(name: 'Fotografieren', icon: 'Fotografieren.url', category_id: '3')
+@sub29 = Subcategory.create(name: 'Musik spielen', icon: 'mspielen.url', category_id: '3')
+#@sub30 = Subcategory.create(name: 'Tennis', icon: 'tennis.url', category_id: '3')
+# indoor
+@sub31 = Subcategory.create(name: 'Zocken', icon: 'zocken.svg', category_id: '6')
+@sub32 = Subcategory.create(name: 'Computer', icon: 'computer.url', category_id: '6')
+@sub33 = Subcategory.create(name: 'Karten spielen', icon: 'karten.url', category_id: '6')
+@sub34 = Subcategory.create(name: 'kochen', icon: 'kochen.url', category_id: '6')
+@sub35 = Subcategory.create(name: 'Fernsehen', icon: 'mspielen.url', category_id: '6')
+#@sub36 = Subcategory.create(name: 'Tennis', icon: 'tennis.url', category_id: '3')
+# transportation
+@sub37 = Subcategory.create(name: 'Fahrrad', icon: 'Fahrrad.svg', category_id: '4')
+@sub38 = Subcategory.create(name: 'Boot', icon: 'Boot.url', category_id: '4')
+@sub39 = Subcategory.create(name: 'Bus', icon: 'Bus.url', category_id: '4')
+@sub40 = Subcategory.create(name: 'Auto', icon: 'Auto.url', category_id: '4')
+@sub41 = Subcategory.create(name: 'Flugzeug', icon: 'Flugzeug.url', category_id: '4')
+@sub42 = Subcategory.create(name: 'Zug', icon: 'Zug.url', category_id: '4')
+
 
 @job1 = Job.create(name: 'FacharbeiterIn Bienenwirtschaft', image: 'jedi.gif', description: 'FacharbeiterInnen Bienenwirtschaft züchten und betreuen Bienenvölker zur Honig- und Wachsgewinnung. Die wichtigsten Erzeugnisse sind Honigprodukte, Bienenwachs, Blütenpollen,  Propolis (Bienenkittharz) oder  Gelee Royal (Futtersaft für Bienenköniginnen). Sie züchten Bienenvölker für den Eigenbedarf oder Verkauf, erzeugen aber auch transportable Bienenkörbe und Wabenrahmen: Die verschiedenen Tätigkeiten der FacharbeiterInnen Bienenwirtschaft richten sich stark nach der jeweiligen Jahreszeit. FacharbeiterInnen Bienenwirtschaft arbeiten häufig in landwirtschaftlichen Familienbetrieben mit angeschlossener Imkerei, sie stehen in Kontakt mit BerufskollegInnen, LieferantInnen und KundInnen.')
 @job2 = Job.create(name: 'HohlglasveredlerIn - Glasmalerei', image: 'ski-head.png', description: 'HohlglasveredlerInnen im Bereich Glasmalerei bemalen und restaurieren Glasfenster von Kirchen, Festhallen und öffentlichen Gebäuden. Sie stellen auch Ornamente aus buntem Glas her, bemalen  Flachglas (z. B. Glastafeln) und Hohlglas (z. B. Trinkgläser) und erzeugen Glasmosaike aus nichttransparenten Glassteinen. HohlglasveredlerInnen arbeiten händisch mit Pinseln oder maschinell mit Siebdruckmaschinen oder Spritzanlagen. Sie arbeiten gemeinsam mit ihren KollegInnen und Vorgesetzten in Werkstatträumen (z. B. Ätzraum, Spritzkabine).')
@@ -50,11 +72,20 @@ User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_conf
 #path = '/public/uploads/job/image/'
 pathJob = '/app/assets/images/job/'
 
-img = File.open(File.join(Rails.root, pathJob + 'jedi.gif'))
+img = File.open(File.join(Rails.root, pathJob + 'bee.gif'))
 @job1.update(image: img, image_preview: img)
 
-img = File.open(File.join(Rails.root, pathJob + 'ski-head.png'))
+img = File.open(File.join(Rails.root, pathJob + 'glasmalerei.gif'))
 @job2.update(image: img, image_preview: img)
+
+img = File.open(File.join(Rails.root, pathJob + 'klavier.gif'))
+@job3.update(image: img, image_preview: img)
+
+img = File.open(File.join(Rails.root, pathJob + 'metal.gif'))
+@job4.update(image: img, image_preview: img)
+
+img = File.open(File.join(Rails.root, pathJob + 'banker.gif'))
+@job5.update(image: img, image_preview: img)
 
 # add category img
 pathCate = '/app/assets/images/category/'
@@ -115,6 +146,52 @@ img = File.open(File.join(Rails.root, pathSub + 'Ski.svg'))
 @sub23.update(icon: img)
 img = File.open(File.join(Rails.root, pathSub + 'Tennis.svg'))
 @sub24.update(icon: img)
+
+# add subcategory creative img 
+pathSub = '/app/assets/images/subcategory/creative/'
+img = File.open(File.join(Rails.root, pathSub + 'karaoke.svg'))
+@sub25.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'music-player.svg'))
+@sub26.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'paint-palette.svg'))
+@sub27.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'photo-camera.svg'))
+@sub28.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'guitar.svg'))
+@sub29.update(icon: img)
+#img = File.open(File.join(Rails.root, pathSub + 'empty.svg'))
+#@sub30.update(icon: img)
+
+# add subcategory indoor img 
+pathSub = '/app/assets/images/subcategory/indoor/'
+img = File.open(File.join(Rails.root, pathSub + 'gamepad.svg'))
+@sub31.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'laptop.svg'))
+@sub32.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'playing-cards.svg'))
+@sub33.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'stove.svg'))
+@sub34.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'tv.svg'))
+@sub35.update(icon: img)
+#img = File.open(File.join(Rails.root, pathSub + 'empty.svg'))
+#@sub36.update(icon: img)
+
+
+# add subcategory transportation img 
+pathSub = '/app/assets/images/subcategory/transportation/'
+img = File.open(File.join(Rails.root, pathSub + 'bicycle.svg'))
+@sub37.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'boat.svg'))
+@sub38.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'bus.svg'))
+@sub39.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'car.svg'))
+@sub40.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'plane.svg'))
+@sub41.update(icon: img)
+img = File.open(File.join(Rails.root, pathSub + 'train.svg'))
+@sub42.update(icon: img)
 
 # FacharbeiterIn Bienenwirtschaft
 @job1.subcategories << @sub9
