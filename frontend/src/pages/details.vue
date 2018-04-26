@@ -84,7 +84,7 @@
       .tick {
         position: absolute;
         margin-top: 3.5rem;
-        color: $grey;
+        color: $success;
       }
       .inner {
         padding: 2em;
