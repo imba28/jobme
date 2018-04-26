@@ -8,7 +8,6 @@ class Job < ApplicationRecord
 
     private 
         def image_size_validation
-            puts "hello there"
             errors[:image] << "should be less than 1MB" if image.size > 1.megabytes 
         end
 end

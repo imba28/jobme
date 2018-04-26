@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="welcome--text__container">
-      <h1>Fehler</h1>
+      <h1>Leider ist etwas schief gelaufen.</h1>
     </div>
   </div>
   </template>
