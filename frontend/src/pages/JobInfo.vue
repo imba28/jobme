@@ -41,7 +41,7 @@
       }
     },
     mounted() {
-      this.job = this.$store.state.savedJobs.find(job => job.id == this.name)
+      this.job = this.$store.state.myJobs.find(job => job.id == this.name)
       sphereImage.start(document.getElementById('asd'))
     }
   }
