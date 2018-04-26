@@ -18,7 +18,7 @@
         <p class="job__description">
           {{job.description}}
         </p>
-        <h3>Related Companies</h3>
+        <h3>Relevante Unternehmen</h3>
         <ul class="job__companies">
           <li v-for="(a, key) in employers">
             <img src="https://jobme.herokuapp.com/system/uploads/company/company.jpg">
