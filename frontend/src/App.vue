@@ -45,6 +45,10 @@ export default {
     padding-left: 0;
     padding-right: 0;
     margin: 0;
+    .subtitle {
+      padding: 0;
+      margin: 0 auto;
+    }
 
   }
   .circle-details{
@@ -71,11 +75,18 @@ export default {
     color: red;
   }
   .full-width {
-    background-color: $grey;
+    border: $grey solid 10px;
     width: 100%;
     height: 40vh;
-    padding: 0;
+    padding: 1em 0;
     margin-bottom: 30px;
+    img {
+      width: 200px;
+    }
+    .title {
+      background: $grey;
+      color: $white;
+    }
   }
 }
 
@@ -94,7 +105,7 @@ export default {
   h1 {
     margin: 0 auto;
     text-align:center;
-    padding: 0.5em;
+    padding: 1em;
   }
 
   ul{
@@ -103,7 +114,7 @@ export default {
   }
 
   .overlay {
-    position: absolute;
+    position: fixed;
     width: 100%;
     background: $black-light;
     .icon {

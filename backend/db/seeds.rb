@@ -8,36 +8,36 @@
 
 User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_confirmation: 'test')
 
-@cate1 = Category.create(name: 'sport', icon: 'Sport.svg', chilhood: '1')
-@cate2 = Category.create(name: 'natrue', icon: 'Natur.svg', chilhood: '1')
-@cate3 = Category.create(name: 'crative', icon: 'Krativ', chilhood: '1')
-@cate4 = Category.create(name: 'transportation', icon: 'Transportation', chilhood: '0')
-@cate5 = Category.create(name: 'craft', icon: 'Craft.svg', chilhood: '0')
-@cate6 = Category.create(name: 'indoor', icon: 'Indoor.svg', chilhood: '0')
+@cate1 = Category.create(name: 'Sport', icon: 'Sport.svg', chilhood: '1')
+@cate2 = Category.create(name: 'Natur', icon: 'Natur.svg', chilhood: '1')
+@cate3 = Category.create(name: 'Kreativität', icon: 'Kreativ.svg', chilhood: '1')
+@cate4 = Category.create(name: 'Transport', icon: 'Transportation.svg', chilhood: '0')
+@cate5 = Category.create(name: 'Handwerk', icon: 'Craft.svg', chilhood: '0')
+@cate6 = Category.create(name: 'Indoor', icon: 'Indoor.svg', chilhood: '0')
 
 #@sub1 = Subcategory.create(name: 'football', icon: 'football.url', category_id: '1')
 
 # craft
-@sub7 = Subcategory.create(name: 'paint', icon: 'paint.url', category_id: '5')
-@sub8 = Subcategory.create(name: 'sewing machine', icon: 'sewing machine.url', category_id: '5')
-@sub9 = Subcategory.create(name: 'saw', icon: 'saw.url', category_id: '5')
-@sub10 = Subcategory.create(name: 'screw', icon: 'screw.url', category_id: '5')
-@sub11 = Subcategory.create(name: 'dig', icon: 'dig.url', category_id: '5')
-@sub12 = Subcategory.create(name: 'electric', icon: 'electric.url', category_id: '5')
+@sub7 = Subcategory.create(name: 'Malen', icon: 'paint.url', category_id: '5')
+@sub8 = Subcategory.create(name: 'Nähen', icon: 'sewing machine.url', category_id: '5')
+@sub9 = Subcategory.create(name: 'Sägen', icon: 'saw.url', category_id: '5')
+@sub10 = Subcategory.create(name: 'Schrauben', icon: 'screw.url', category_id: '5')
+@sub11 = Subcategory.create(name: 'Graben', icon: 'dig.url', category_id: '5')
+@sub12 = Subcategory.create(name: 'Elektrik', icon: 'electric.url', category_id: '5')
 # nature
-@sub13 = Subcategory.create(name: 'hill', icon: 'hill.url', category_id: '2')
-@sub14 = Subcategory.create(name: 'explore', icon: 'explore.url', category_id: '2')
-@sub15 = Subcategory.create(name: 'animals', icon: 'animals.url', category_id: '2')
-@sub16 = Subcategory.create(name: 'plant', icon: 'plant.url', category_id: '2')
-@sub17 = Subcategory.create(name: 'water', icon: 'water.url', category_id: '2')
-@sub18 = Subcategory.create(name: 'camping', icon: 'camping.url', category_id: '2')
+@sub13 = Subcategory.create(name: 'Bergsteigen', icon: 'hill.url', category_id: '2')
+@sub14 = Subcategory.create(name: 'Erkunden', icon: 'explore.url', category_id: '2')
+@sub15 = Subcategory.create(name: 'Tiere', icon: 'animals.url', category_id: '2')
+@sub16 = Subcategory.create(name: 'Pflanzen', icon: 'plant.url', category_id: '2')
+@sub17 = Subcategory.create(name: 'Wasser', icon: 'water.url', category_id: '2')
+@sub18 = Subcategory.create(name: 'Caping', icon: 'camping.url', category_id: '2')
 # sport
-@sub19 = Subcategory.create(name: 'football', icon: 'Fußball.svg', category_id: '1')
-@sub20 = Subcategory.create(name: 'cycle', icon: 'cycle.url', category_id: '1')
-@sub21 = Subcategory.create(name: 'ride', icon: 'ride.url', category_id: '1')
-@sub22 = Subcategory.create(name: 'swim', icon: 'swim.url', category_id: '1')
-@sub23 = Subcategory.create(name: 'ski', icon: 'ski.url', category_id: '1')
-@sub24 = Subcategory.create(name: 'tennis', icon: 'tennis.url', category_id: '1')
+@sub19 = Subcategory.create(name: 'Fußball', icon: 'Fußball.svg', category_id: '1')
+@sub20 = Subcategory.create(name: 'Fahrrad', icon: 'cycle.url', category_id: '1')
+@sub21 = Subcategory.create(name: 'Reiten', icon: 'ride.url', category_id: '1')
+@sub22 = Subcategory.create(name: 'Schwimmen', icon: 'swim.url', category_id: '1')
+@sub23 = Subcategory.create(name: 'Skifahren', icon: 'ski.url', category_id: '1')
+@sub24 = Subcategory.create(name: 'Tennis', icon: 'tennis.url', category_id: '1')
 
 @job1 = Job.create(name: 'FacharbeiterIn Bienenwirtschaft', image: 'jedi.gif', description: 'FacharbeiterInnen Bienenwirtschaft züchten und betreuen Bienenvölker zur Honig- und Wachsgewinnung. Die wichtigsten Erzeugnisse sind Honigprodukte, Bienenwachs, Blütenpollen,  Propolis (Bienenkittharz) oder  Gelee Royal (Futtersaft für Bienenköniginnen). Sie züchten Bienenvölker für den Eigenbedarf oder Verkauf, erzeugen aber auch transportable Bienenkörbe und Wabenrahmen: Die verschiedenen Tätigkeiten der FacharbeiterInnen Bienenwirtschaft richten sich stark nach der jeweiligen Jahreszeit. FacharbeiterInnen Bienenwirtschaft arbeiten häufig in landwirtschaftlichen Familienbetrieben mit angeschlossener Imkerei, sie stehen in Kontakt mit BerufskollegInnen, LieferantInnen und KundInnen.')
 @job2 = Job.create(name: 'HohlglasveredlerIn - Glasmalerei', image: 'ski-head.png', description: 'HohlglasveredlerInnen im Bereich Glasmalerei bemalen und restaurieren Glasfenster von Kirchen, Festhallen und öffentlichen Gebäuden. Sie stellen auch Ornamente aus buntem Glas her, bemalen  Flachglas (z. B. Glastafeln) und Hohlglas (z. B. Trinkgläser) und erzeugen Glasmosaike aus nichttransparenten Glassteinen. HohlglasveredlerInnen arbeiten händisch mit Pinseln oder maschinell mit Siebdruckmaschinen oder Spritzanlagen. Sie arbeiten gemeinsam mit ihren KollegInnen und Vorgesetzten in Werkstatträumen (z. B. Ätzraum, Spritzkabine).')
@@ -49,8 +49,6 @@ User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_conf
 #add Job image 
 #path = '/public/uploads/job/image/'
 pathJob = '/app/assets/images/job/'
-
-
 
 img = File.open(File.join(Rails.root, pathJob + 'jedi.gif'))
 @job1.update(image: img, image_preview: img)
@@ -118,6 +116,7 @@ img = File.open(File.join(Rails.root, pathSub + 'Ski.svg'))
 @sub23.update(icon: img)
 img = File.open(File.join(Rails.root, pathSub + 'Tennis.svg'))
 @sub24.update(icon: img)
+
 # FacharbeiterIn Bienenwirtschaft
 @job1.subcategories << @sub9
 @job1.subcategories << @sub10
@@ -129,14 +128,11 @@ img = File.open(File.join(Rails.root, pathSub + 'Tennis.svg'))
 @job2.subcategories << @sub23
 @job2.subcategories << @sub21
 
-
-
 # HohlglasveredlerIn - Glasmalerei
 @job2.subcategories << @sub7
 @job2.subcategories << @sub21
 @job2.subcategories << @sub20
 # ??????
-
 
 # Klavierbau
 @job3.subcategories << @sub9
@@ -146,7 +142,6 @@ img = File.open(File.join(Rails.root, pathSub + 'Tennis.svg'))
 @job3.subcategories << @sub21
 @job3.subcategories << @sub20
 # ?????
-
 
 # Metallbearbeitung
 @job4.subcategories << @sub9
