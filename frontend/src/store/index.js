@@ -13,7 +13,9 @@ export default new Vuex.Store({
     state:  {
         myJobs: [], // vorgeschlagene Jobs
         savedJobs: [], // Jobs, die mir gefallen haben
-        checkedIcons: []
+        checkedIcons: [],
+        user: {},
+        auth_token: null
     },
     mutations: {
         setMyJobs(state, jobs) {
@@ -49,6 +51,15 @@ export default new Vuex.Store({
                 category.isChecked = true;
                 state.checkedIcons.push(category.id)
             }
+        },
+        setUser(state, user) {
+          state.user = user
+        },
+        setAuthToken(state, token) {
+          state.auth_token = token
+        },
+        setLikedJobs(state, jobs) {
+          state.savedJobs = jobs
         }
     },
     actions: {
