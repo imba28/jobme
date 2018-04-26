@@ -108,6 +108,8 @@
     }
 
     &__name {
+      word-wrap: break-word;
+      hyphens: auto;
       text-transform: uppercase;
       font-weight: 700;
       padding-left: 0!important;

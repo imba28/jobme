@@ -2,20 +2,20 @@
   <div class="welcome">
     <div class="container">
       <div class="image">
-        <h1>Welcome to JOB<span>me</span></h1>
+        <h1>Finde deinen Traumberuf &#x1f680;</h1>
       </div>
     </div>
     <div class="login--info__container">
       <div class="form__container">
         <form v-on:submit.prevent="signIn">
           <div class="input__container">
-            <input ref="user" id="email" class="input" type="text" required="true" placeholder="What's your name?" />
+            <input ref="user" id="email" class="input" type="text" required="true" placeholder="Wie ist dein Name?" />
             <label style="border-radius:0;" class="input__label" id="email__label" for="email">
               <span class="icon-user"></span>
             </label>
           </div>
           <div class="input__container">
-            <input ref="pwd" id="pwd" class="input" type="password" placeholder="Your password" required="true" />
+            <input ref="pwd" id="pwd" class="input" type="password" placeholder="Dein Passwort" required="true" />
             <label style="border-radius:0;" class="input__label" id="pwd__label" for="pwd">
               <span class="icon-key"></span>
             </label>
@@ -24,7 +24,7 @@
             <div class="input__container">
               <button id="sub" type="submit" class="btn btn--default display--center" style="display: block; bottom: 5em; width:100%; box-sizing:border-box;">Login</button>
             </div>
-            <a href="https://jobme.herokuapp.com/users/new">New to JOBme?</a>
+            <a href="https://jobme.herokuapp.com/users/new">Neu bei JOBme?</a>
           </div>
         </form>
       </div>

@@ -1,16 +1,16 @@
 <template>
   <div class="saved">
     <div class="padding">
-      <h1>Saved jobs</h1>
+      <h1>Deine Treffer</h1>
       <ul>
         <li v-for="(job, key) in jobs" class="list__item__wrapper">
           <img v-if="job.image" :src="job.image" alt="preview image">
           <div>
             <h3>{{job.name}}</h3>
             <router-link :to="{ name: 'job-info', params: { name: job.id }}">
-              more
-            </router-link>
-            <a href="#" v-on:click="remove(key)">delete</a>
+              mehr...
+            </router-link> |
+            <a href="#" v-on:click="remove(key)">löschen</a>
           </div>
         </li>
         <div v-if="jobs.length == 0">
