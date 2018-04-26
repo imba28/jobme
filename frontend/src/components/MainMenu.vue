@@ -7,15 +7,17 @@
       </span>
     </span>
   </button>
-    <h1 class="header__title">
-    <span v-html="pageHeader"></span>
-  </h1>
+    <a href="/">
+      <h1 class="header__title">
+        <span v-html="pageHeader"></span>
+      </h1>
+    </a>
   </header>
   <transition name="fade" v-if="isSignedIn">
     <nav v-if="show" id="side__nav">
       <ul>
         <li>
-          <h3 id="greeting_user">Hello {{ capitalizeFirstLetter(user.name) }}! </h3>
+          <h3 id="greeting_user">Hallo {{ capitalizeFirstLetter(user.name) }}! </h3>
         </li>
         <li v-for="(option, index) in options">
           <router-link v-if="option.path" active-class="active" :to="option.path" @click.native="triggerBurger">
@@ -48,17 +50,17 @@ export default {
       options: [
         {
           icon: 'user',
-          name: 'Profile',
+          name: 'Profil',
           path: '/profile'
         },
         {
           icon: 'briefcase',
-          name: "Discover",
+          name: "Entdecke",
           path: "/explore-childhood"
         },
         {
           icon: 'heart',
-          name: "Saved",
+          name: "Treffer",
           path: "/saved"
         },
       ]

@@ -4,9 +4,9 @@
       <div v-bind:style="{backgroundImage: `url(${avatarUrl})`, height: '200px', backgroundSize: 'cover'}">
       </div>
       <div class="padding">
-        <h1>My profile</h1>
+        <h1>Profil</h1>
         <p>
-          Hello
+          Hallo
           <strong>
             {{user.name}}
           </strong>!
@@ -14,7 +14,7 @@
         <div class="buttons">
           <router-link :to="{ name: 'saved-jobs' }">
             <button class="btn btn--default">
-              Jobs you liked
+              Dir gefällt
               <i class="fa fa-heart"></i> ({{ savedJobsCount }})
             </button>
           </router-link>
