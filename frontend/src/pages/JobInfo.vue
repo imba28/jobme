@@ -1,15 +1,16 @@
 <template>
   <div>
+    <div class="overlay">
+      <a onclick="window.history.back()">
+        <div class="icon">
+          <i class="fas fa-chevron-left fa-2x"></i>
+        </div>
+      </a>
+    </div>
     <div class="job">
       <div class="job__image" id="asd">
       </div>
       <div class="padding">
-      <div class="icon">
-        <div style="height: .5em"></div>
-        <a href="javascript:history.go(-1)">
-          <i class="fa fa-arrow-left"></i> back
-        </a>
-      </div>
         <h1 class="job__name">
           {{job.name}}
         </h1>
