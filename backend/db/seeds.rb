@@ -56,6 +56,7 @@ img = File.open(File.join(Rails.root, pathJob + 'jedi.gif'))
 @job1.update(image: img, image_preview: img)
 
 img = File.open(File.join(Rails.root, pathJob + 'ski-head.png'))
+#img = ImageIconUploader.store_dir('ski-head.png')
 @job2.update(image: img, image_preview: img)
 
 # add category img
