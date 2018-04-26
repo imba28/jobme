@@ -5,7 +5,6 @@ import auth from '@/auth'
 
 // Pages
 import InfoPage from '@/pages/JobInfo'
-import LoginPage from '@/pages/Login'
 import SavedJobsPage from '@/pages/Saved'
 import HomePage from '@/pages/Home'
 import ErrorPage from '@/pages/Error'
@@ -24,10 +23,6 @@ const router = new Router({
     routes: [{
             path: '/',
             component: HomePage
-        },
-        {
-            path: '/login',
-            component: LoginPage
         },
         {
             name: 'saved-jobs',
