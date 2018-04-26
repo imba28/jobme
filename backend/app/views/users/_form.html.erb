@@ -31,6 +31,17 @@
     <%= form.password_field :password_confirmation, id: :password_confirmation %>
   </div>
 
+
+  <div class="field">
+    <%= form.label :avatar_url %><br>
+    <%= form.file_field :avatar_url %>
+    <% if form.object.avatar_url? %>
+      <%= image_tag form.object.avatar_url %>
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image %> 
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

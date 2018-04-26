@@ -29,6 +29,7 @@
 <script>
 import auth from '@/auth'
 import router from '@/router'
+import notification from '@/lib/notification'
 
 export default {
   name: 'login-page',
@@ -39,13 +40,18 @@ export default {
   },
   methods: {
     signIn() {
-      const email = this.$refs['user'].value
+      const name = this.$refs['user'].value
+      const password = this.$refs['password'].value
 
-      auth.signIn(email, null)
+      auth.signIn(name, password)
         .then((user) => {
-          router.push({
+          console.log(user)
+          /*router.push({
             path: '/explore-childhood'
-          })
+          })*/
+        })
+        .catch(e => {
+          console.log("error", e)
         })
     }
   }

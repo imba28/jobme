@@ -35,6 +35,8 @@
 <script>
   import auth from '@/auth'
   import router from '@/router'
+  import service from '@/lib/service'
+  import notification from '@/lib/notification'
 
   export default {
     name: 'welcome-page',
@@ -45,15 +47,26 @@
     },
     methods: {
       signIn() {
-        const name = $('#email').val()
-        const pwd = $('#pwd').val()
+        const name = this.$refs['user'].value
+        const pwd = this.$refs['pwd'].value
 
         auth.signIn(name, pwd)
-          .then((user) => {
+          .then((json) => {
+            this.$store.commit('setUser', json.user)
+            this.$store.commit('setAuthToken', json.auth_token)
+
+            service(`users/${json.user.id}/jobs`)
+            .then(jobs => {
+              this.$store.commit('setLikedJobs', jobs)
+            })
+
+            notification.success(`Hello ${json.user.name}`)
+
             router.push({
               path: '/explore-childhood'
             })
           })
+          .catch(err => notification.error(err.error))
       }
     }
   }
