@@ -31,7 +31,7 @@
       }
     },
     created() {
-      service('category')
+      service('childhood')
       .then(categories => {
         this.hobbies = categories
       })
