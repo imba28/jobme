@@ -1,10 +1,6 @@
 class SessionsController < ApplicationController
-<<<<<<< HEAD
   #skip_before_action :verify_authenticity_token
 
-=======
-  skip_before_action :verify_authenticity_token
->>>>>>> 772b9b80179188d9a622ca4353a98d9a058a8bb3
   # login form
   def new
 
