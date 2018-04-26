@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <v-touch @swipeleft="nope" @swiperight="yes">
     <div v-if="job" class="job" ref="container">
@@ -6,12 +7,7 @@
         <img :src="job.image">
       </div>
       <div class="padding">
-        <div class="icon">
-          <div style="height: .5em"></div>
-          <a href="javascript:history.go(-1)">
-            <i class="fa fa-arrow-left"></i> back
-          </a>
-        </div>
+
         <h1 class="job__name">
           {{job.name}}
         </h1>
