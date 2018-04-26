@@ -24,7 +24,7 @@ class MatchingController < ApplicationController
     begin
       @value = params.require(:inCategory)
     rescue ActionController::ParameterMissing => e
-      @value = Random.rand(15).to_s + ',1,10'
+      @value = '29'
       puts @value
     end
   end

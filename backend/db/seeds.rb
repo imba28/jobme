@@ -14,6 +14,7 @@ User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_conf
 @cate4 = Category.create(name: 'Transport', icon: 'Transportation.svg', chilhood: '0')
 @cate5 = Category.create(name: 'Handwerk', icon: 'Craft.svg', chilhood: '0')
 @cate6 = Category.create(name: 'Indoor', icon: 'Indoor.svg', chilhood: '0')
+@cate0 = Category.create(name: 'superman', icon: '', chilhood: '-1')
 
 #@sub1 = Subcategory.create(name: 'football', icon: 'football.url', category_id: '1')
 
@@ -51,7 +52,7 @@ User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_conf
 @sub33 = Subcategory.create(name: 'Karten spielen', icon: 'karten.url', category_id: '6')
 @sub34 = Subcategory.create(name: 'kochen', icon: 'kochen.url', category_id: '6')
 @sub35 = Subcategory.create(name: 'Fernsehen', icon: 'mspielen.url', category_id: '6')
-#@sub36 = Subcategory.create(name: 'Tennis', icon: 'tennis.url', category_id: '3')
+@sub36 = Subcategory.create(name: 'superman', icon: 'tennis.url', category_id: '7')
 # transportation
 @sub37 = Subcategory.create(name: 'Fahrrad', icon: 'Fahrrad.svg', category_id: '4')
 @sub38 = Subcategory.create(name: 'Boot', icon: 'Boot.url', category_id: '4')
@@ -69,6 +70,7 @@ User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_conf
 @job4 = Job.create(name: 'Metallbearbeitung', image: 'hello.gif4', description: 'MetallbearbeiterInnen sind mit der handwerksmäßigen und maschinellen/industriellen Herstellung und Montage von Einzelteilen, Komponenten und Baugruppen aus Metall befasst. Zu diesem Zweck bearbeiten sie verschiedene Metalle und Metallbleche wie z. B. Eisen, Stahl, Aluminium und stellen daraus verschiedene Werkstücke wie Rohre, Stangen, Geländer und Verstrebungen, Baukonstruktionen, Maschinenteile und Gerüstteile her. Bei ihrer Arbeit setzen sie metallbearbeitende Verfahren wie z. B. Feilen, Bohren, Schweißen, Drehen, Nieten, Wärmebehandeln und Löten ein.
     MetallbearbeiterInnen arbeiten in Werkstätten und Werkhallen von Industrie- und Gewerbebetrieben; sie arbeiten eigenständig sowie im Team mit BerufskollegInnen, Vorgesetzten und verschiedenen Fach- und Hilfskräften zusammen.')
 @job5 = Job.create(name: 'Bankkaufmann/-frau', image: 'hello.gif5', description: 'Bankkaufleute informieren und betreuen Bankkundinnen und -kunden bei ihren Geldgeschäften. Sie beraten die Kundinnen und Kunden über Kontoführung, Kreditaufnahme und informieren sie über verschiedene Anlagemöglichkeiten. Sie bearbeiten alle Vorgänge, die mit dem Zahlungsverkehr zu tun haben. Die Buchführung und Kostenrechnung erledigen sie mittels EDV-Datenbanksystemen. Bankkaufleute arbeiten am Schalter von Banken oder in Büroräumen im Backoffice sowohl eigenständig als auch gemeinsam mit Kolleginnen und Kollegen und Expertinnen und Experten anderer Abteilungen.')
+@job6 = Job.create(name: 'Superman', image: 'hello.gif5', description: 'Du bist Superman :)')
 
 #add Job image 
 #path = '/public/uploads/job/image/'
@@ -88,6 +90,9 @@ img = File.open(File.join(Rails.root, pathJob + 'metal.gif'))
 
 img = File.open(File.join(Rails.root, pathJob + 'banker.gif'))
 @job5.update(image: img, image_preview: img)
+
+img = File.open(File.join(Rails.root, pathJob + 'superman.gif'))
+@job6.update(image: img, image_preview: img)
 
 # add category img
 pathCate = '/app/assets/images/category/'
@@ -203,14 +208,15 @@ img = File.open(File.join(Rails.root, pathSub + 'train.svg'))
 @job1.subcategories << @sub14
 @job1.subcategories << @sub15
 @job1.subcategories << @sub16
-@job2.subcategories << @sub23
-@job2.subcategories << @sub21
 
 # HohlglasveredlerIn - Glasmalerei
 @job2.subcategories << @sub7
 @job2.subcategories << @sub21
 @job2.subcategories << @sub20
-# ??????
+@job2.subcategories << @sub23
+@job5.subcategories << @sub35
+@job5.subcategories << @sub33
+@job5.subcategories << @sub37
 
 # Klavierbau
 @job3.subcategories << @sub9
@@ -219,7 +225,8 @@ img = File.open(File.join(Rails.root, pathSub + 'train.svg'))
 @job3.subcategories << @sub14
 @job3.subcategories << @sub21
 @job3.subcategories << @sub20
-# ?????
+@job3.subcategories << @sub29
+@job3.subcategories << @sub26
 
 # Metallbearbeitung
 @job4.subcategories << @sub9
@@ -228,6 +235,9 @@ img = File.open(File.join(Rails.root, pathSub + 'train.svg'))
 @job4.subcategories << @sub18
 @job4.subcategories << @sub19
 @job4.subcategories << @sub20
+@job4.subcategories << @sub39
+@job4.subcategories << @sub40
+@job4.subcategories << @sub42
 
 
 # Bankkaufmann/-frau
@@ -237,3 +247,9 @@ img = File.open(File.join(Rails.root, pathSub + 'train.svg'))
 @job5.subcategories << @sub22
 @job5.subcategories << @sub23
 @job5.subcategories << @sub24
+@job5.subcategories << @sub32
+@job5.subcategories << @sub35
+
+#funny superman :)
+@job6.subcategories << @sub36
+
