@@ -68,6 +68,10 @@
 </script>
 
 <style lang="scss">
+  .forward a {
+    display: block;
+  }
+
   .icons {
     display: flex;
     flex-wrap: wrap;
