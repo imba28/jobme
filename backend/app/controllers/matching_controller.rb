@@ -9,7 +9,7 @@ class MatchingController < ApplicationController
         output = ''
         job = @allJobs.find(v[:id])
       rescue ActiveRecord::RecordNotFound => e
-        output = nil
+        output = Job.find(6)
       end
       if output
         @matches.push(job)
