@@ -1,14 +1,41 @@
 <template>
   <div class="about">
     <div class="padding">
-      <h1>Über JOBme</h1>
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-interval="10000" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
+            <h1>Hallo, wir sind JOBme!</h1>
+            <h4>Lukas Kern, Stefan Elsenhuber,
+              Lukas Gruber, Wolfgang Robert Hausch,
+              Maria Anna Sewald, Emad Abaskhairoun FAWZI,
+              Anna Braunegger, Richard Mahlmann und Anneli Eddy.</h4>
             <img class="d-block w-100" src="https://jobme.herokuapp.com/system/uploads/jobme/jobmeTEAM.jpeg" alt="First slide">
           </div>
+
           <div class="carousel-item">
-            <img class="d-block w-100" src="" alt="Second slide">
+            <h1>Unsere Vision</h1>
+            <h3 class="container">
+              JOBme hilft jungen Menschen, ihren Traum-Lehrberuf anhand ihrer persönlichen Interessen zu finden.
+            </h3>
+          </div>
+          <div class="carousel-item">
+            <h1>Ressourcen</h1>
+            <h3 class="container">
+              <a href="http://www.freepik.com/">
+              Icons designed by Freepik.
+              </a><br>
+              <a href="https://giphy.com/">
+              Animated pictures by Giphy.
+              </a><br>
+              <a href="https://www.bic.at/">
+              Jobs & Descriptions by Wirtschaftskammer Österreich.
+              </a>
+            </h3>
           </div>
 
         </div>
@@ -25,46 +52,15 @@
   </div>
   </template>
 
-<script>
-  import notification from '@/lib/notification'
-
-  export default {
-
-    data(){
-      return {
-      }
-    },
-    methods: {
-
-    }
-  }
-</script>
-
 <style lang="scss" scoped>
-.saved {
-
-  h3 {
-    margin-top: 0!important;
-    margin-bottom: .5em;
+  h4 {
+    margin-top: 0;
+    margin-bottom: 2em;
   }
-
-  ul {
-    margin-top: 1em;
-    padding: 0;
-
-    li {
-      margin: 1em 0;
-      padding-bottom: 1em;
-      position: relative;
-      display: flex;
-
-      img {
-        max-width: 3em;
-        align-self: center;
-        box-shadow: .25em .25em 1em rgba(0,0,0,0.1);
-        margin-right: 1em;
-      }
+  a {
+    color: $grey;
+    &:hover {
+      color: $blue;
     }
   }
-}
 </style>
