@@ -4,13 +4,16 @@
       <h1>Deine Treffer</h1>
       <ul>
         <li v-for="(job, key) in jobs" class="list__item__wrapper">
-          <img v-if="job.image" :src="job.image" alt="preview image">
+          <router-link :to="{ name: 'job-info', params: { name: job.id }}">
+            <img v-if="job.image" :src="job.image" alt="preview image">
+          </router-link>
           <div>
-            <h3>{{job.name}}</h3>
             <router-link :to="{ name: 'job-info', params: { name: job.id }}">
-              mehr...
-            </router-link> |
-            <a href="#" v-on:click="remove(key)">löschen</a>
+              <h3>{{job.name}}</h3>
+            </router-link>
+            <small>
+              <a href="#" v-on:click="remove(key)">löschen</a>
+            </small>
           </div>
         </li>
         <div v-if="jobs.length == 0">
@@ -62,6 +65,11 @@
       padding-bottom: 1em;
       position: relative;
       display: flex;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
 
       img {
         max-width: 3em;
