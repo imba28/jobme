@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <mainmenu></mainmenu>
+    <mainmenu v-if="$store.state.auth_token"></mainmenu>
     <div class="placeholders"></div>
     <div id="page">
       <notification ref="notification"/>
@@ -37,6 +37,7 @@ export default {
 
   .placeholders {
     height: $top-menu-height;
+    background: $black;
   }
   .details-div{
     padding-bottom: 80px;

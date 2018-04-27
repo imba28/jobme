@@ -1,47 +1,48 @@
 import router from '@/router'
 import store from '@/store'
+import config from '@/../config/app'
 
 export default {
-  isSignedIn() {
+  isSignedIn () {
     return store.state.user !== null
   },
-  getUser() {
+  getUser () {
     return store.state.user
   },
-  getUID() {
+  getUID () {
     if (store.state.user) return store.state.user.id
     return null
   },
-  getAuthToken() {
+  getAuthToken () {
     return store.state.auth_token
   },
-  signOut() {
+  signOut () {
     store.commit('setUser', null)
     store.commit('setAuthToken', null)
   },
-  signIn(user, password) {
+  signIn (user, password) {
     return new Promise((resolve, reject) => {
-      fetch('https://jobme.herokuapp.com/user_token', {
+      fetch(config.api.host + '/user_token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            'name': user,
-            'password': password
+          'name': user,
+          'password': password
         })
       })
-      .then(async function(response) {
-        const json = await response.json()
-        if (response.status < 200 || response.status >= 300) {
-          reject(json)
-        }
+        .then(async function (response) {
+          const json = await response.json()
+          if (response.status < 200 || response.status >= 300) {
+            reject(json)
+          }
 
-        store.commit('setUser', json.user)
-        store.commit('setAuthToken', json.auth_token)
+          store.commit('setUser', json.user)
+          store.commit('setAuthToken', json.auth_token)
 
-        resolve(json)
-      })
+          resolve(json)
+        })
     })
   }
 }

@@ -18,7 +18,7 @@
         <p class="job__description">
           {{job.description}}
         </p>
-        <h3>Related Companies</h3>
+        <h3>Relevante Unternehmen</h3>
         <ul class="job__companies">
           <li v-for="(a, key) in employers">
             <img src="https://jobme.herokuapp.com/system/uploads/company/company.jpg">
@@ -42,13 +42,13 @@
       }
     },
     mounted() {
-      this.job = this.$store.state.savedJobs.find(job => job.id == this.name)
+      this.job = this.$store.state.myJobs.concat(this.$store.state.savedJobs).find(job => job.id == this.name)
       sphereImage.start(document.getElementById('asd'))
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .job {
     .hr {
       height: 3px;
@@ -77,8 +77,10 @@
       font-weight: 700;
       padding-left: 0!important;
       text-align: left!important;
-      margin-top: .5em!important;
+      padding-top: .5em!important;
+      margin-top: 0!important;
       padding-bottom: .25em!important;
+      word-wrap: break-word;
     }
 
     &__options {

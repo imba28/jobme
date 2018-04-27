@@ -91,7 +91,6 @@
 
 <style lang="scss" scoped>
   .job {
-
     .hr {
       height: 3px;
       border: none;
@@ -115,8 +114,10 @@
       font-weight: 700;
       padding-left: 0!important;
       text-align: left!important;
-      margin-top: .5em!important;
+      padding-top: .5em!important;
+      margin-top: 0!important;
       padding-bottom: .25em!important;
+      word-wrap: break-word;
     }
 
     &__description {
