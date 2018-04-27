@@ -36,9 +36,9 @@ export default new Vuex.Store({
       })
     },
     dislikeJob(state, job) {
-      job = state.savedJobs.find(item => item.id == job.id)
-      if (job) {
-        state.savedJobs.splice(state.savedJobs.indexOf(job), 1)
+      let local_job = state.savedJobs.find(item => item.id == job.id)
+      if (local_job) {
+        state.savedJobs.splice(state.savedJobs.indexOf(local_job), 1)
       }
       service('users/1/jobs/' + job.id, {
         method: 'DELETE',
