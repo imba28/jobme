@@ -7,11 +7,11 @@
       </span>
     </span>
   </button>
-    <a href="/">
+    <router-link :to="{name: 'home'}">
       <h1 class="header__title">
         <span v-html="pageHeader"></span>
       </h1>
-    </a>
+    </router-link>
   </header>
   <transition name="fade" v-if="isSignedIn">
     <nav v-if="show" id="side__nav">
