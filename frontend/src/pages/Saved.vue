@@ -27,7 +27,7 @@
       </ul>
     </div>
   </div>
-  </template>
+</template>
 
 <script>
   import notification from '@/lib/notification'

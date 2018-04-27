@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  </template>
+</template>
 
 <script>
   import auth from '@/auth'

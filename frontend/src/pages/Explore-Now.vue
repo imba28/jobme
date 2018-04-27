@@ -20,8 +20,7 @@
     </div>
     </div>
   </div>
-  </template>
-
+</template>
 <script>
   //import hobbies from '@/json/hobbies.json'
   import service from '@/lib/service'

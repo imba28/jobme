@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-  </template>
+</template>
 
 <script>
   import sphereImage from '@/lib/360degree'

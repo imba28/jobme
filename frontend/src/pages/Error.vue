@@ -4,7 +4,7 @@
       <h1>Leider ist etwas schief gelaufen.</h1>
     </div>
   </div>
-  </template>
+</template>
 
 <script>
   export default {
