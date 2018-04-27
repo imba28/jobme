@@ -4,7 +4,7 @@ import config from '@/../config/app'
 
 export default {
   isSignedIn () {
-    return store.state.user !== null
+    return store.state.auth_token !== null
   },
   getUser () {
     return store.state.user

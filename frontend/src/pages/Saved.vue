@@ -4,27 +4,30 @@
       <h1>Deine Treffer</h1>
       <ul>
         <li v-for="(job, key) in jobs" class="list__item__wrapper">
-          <img v-if="job.image" :src="job.image" alt="preview image">
+          <router-link :to="{ name: 'job-info', params: { name: job.id }}">
+            <img v-if="job.image" :src="job.image" alt="preview image">
+          </router-link>
           <div>
-            <h3>{{job.name}}</h3>
             <router-link :to="{ name: 'job-info', params: { name: job.id }}">
-              mehr...
-            </router-link> |
-            <a href="#" v-on:click="remove(key)">löschen</a>
+              <h3>{{job.name}}</h3>
+            </router-link>
+            <small>
+              <a href="#" v-on:click="remove(key)">löschen</a>
+            </small>
           </div>
         </li>
         <div v-if="jobs.length == 0">
-          Oh no, it seems like you haven't saved any jobs yet!<br>
-          You should
+          Oh nein, es sieht aus aus, als ob du noch keine Berufe gefunden hast!<br>
+          Du solltest sofort beginnen, einige zu
           <router-link :to="{ name: 'explore-childhood'}">
-            add
+            suchen
           </router-link>
-          some <i class="far fa-smile fa-2x"></i>
+          <i class="far fa-smile fa-2x"></i>
         </div>
       </ul>
     </div>
   </div>
-  </template>
+</template>
 
 <script>
   import notification from '@/lib/notification'
@@ -39,7 +42,7 @@
     methods: {
       remove(idx) {
         this.$store.commit('dislikeJob', this.jobs[idx])
-        notification.success('Job was successfully deleted!', 1000)
+        notification.success('Beruf wurde erfolgreich aus deiner Liste entfernt!', 1000)
       }
     }
   }
@@ -62,6 +65,11 @@
       padding-bottom: 1em;
       position: relative;
       display: flex;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
 
       img {
         max-width: 3em;

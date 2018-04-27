@@ -1,36 +1,35 @@
 <template>
-
   <div>
     <v-touch @swipeleft="nope" @swiperight="yes">
-    <div v-if="job" class="job" ref="container">
-      <div class="job__image">
-        <img :src="job.image">
-      </div>
-      <div class="padding">
+      <div v-if="job" class="job" ref="container">
+        <div class="job__image">
+          <img :src="job.image">
+        </div>
+        <div class="padding">
 
-        <h1 class="job__name">
-          {{job.name}}
-        </h1>
-        <hr class="hr">
-        <p class="job__description">
-          {{job.description | truncat(250)}}
-        </p>
-        <div class="job__options button-group">
-          <button class="btn btn--red" v-on:click="nope">
-            <i class="fa fa-times"></i>
-          </button>
-          <router-link :to="{ name: 'job-info', params: { name } }" class="btn btn--default">
-            <i class="fa fa-info"></i>
-          </router-link>
-          <button class="btn btn--green" v-on:click="yes">
-            <i class="fa fa-heart"></i>
-          </button>
+          <h1 class="job__name">
+            {{job.name}}
+          </h1>
+          <hr class="hr">
+          <p class="job__description">
+            {{job.description | truncat(250)}}
+          </p>
+          <div class="job__options button-group">
+            <button class="btn btn--red" v-on:click="nope">
+              <i class="fa fa-times"></i>
+            </button>
+            <router-link :to="{ name: 'job-info', params: { name } }" class="btn btn--default">
+              <i class="fa fa-info"></i>
+            </router-link>
+            <button class="btn btn--green" v-on:click="yes">
+              <i class="fa fa-heart"></i>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </v-touch>
+    </v-touch>
   </div>
-  </template>
+</template>
 
 <script>
   import note from '@/lib/notification'
@@ -48,9 +47,9 @@
     methods: {
       swipe(func = () => {}, direction) {
         const idx = this.jobs.indexOf(this.job);
+        func()
 
-        if(idx + 1 < this.jobs.length) {
-          func()
+        if (this.jobs[idx + 1]) {
           router.push({
             name: 'job',
             params: {
@@ -66,13 +65,12 @@
       },
       nope() {
         this.swipe(() => {
-          //note.success('Job removed!', 750)
           this.$store.commit('dislikeJob', this.job)
         }, 1)
       },
       yes() {
         this.swipe(() => {
-          note.success('Job saved!', 750)
+          note.success('Beruf wurde gespeichert!', 750)
           this.$store.commit('likeJob', this.job)
         }, -1)
       }

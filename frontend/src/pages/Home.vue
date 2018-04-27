@@ -60,7 +60,7 @@
               this.$store.commit('setLikedJobs', jobs)
             })
 
-            notification.success(`Hello ${json.user.name}`)
+            notification.success(`Hallo ${json.user.name}`)
 
             router.push({
               path: '/explore-childhood'

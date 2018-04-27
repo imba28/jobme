@@ -20,8 +20,7 @@
     </div>
     </div>
   </div>
-  </template>
-
+</template>
 <script>
   //import hobbies from '@/json/hobbies.json'
   import service from '@/lib/service'
@@ -68,6 +67,10 @@
 </script>
 
 <style lang="scss">
+  .forward a {
+    display: block;
+  }
+
   .icons {
     display: flex;
     flex-wrap: wrap;
