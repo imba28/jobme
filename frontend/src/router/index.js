@@ -23,22 +23,34 @@ const router = new Router({
     routes: [{
             name: 'home',
             path: '/',
-            component: HomePage
+            component: HomePage,
+            meta: {
+              ifLoginRedirectTo: 'explore-childhood'
+            }
         },
         {
             name: 'saved-jobs',
             path: '/saved',
-            component: SavedJobsPage
+            component: SavedJobsPage,
+            meta: {
+              requiresLogin: true
+            }
         },
         {
             name: 'explore-childhood',
             path: '/explore-childhood',
-            component: ExploreChildhoodPage
+            component: ExploreChildhoodPage,
+            meta: {
+              requiresLogin: true
+            }
         },
         {
             name: 'explore-now',
             path: '/explore-now',
-            component: ExploreNowPage
+            component: ExploreNowPage,
+            meta: {
+              requiresLogin: true
+            }
         },
         {
             name: 'run-out-of-jobs',
@@ -49,7 +61,10 @@ const router = new Router({
             name: 'details',
             path: '/details/:hobby_id',
             component: DetailsPage,
-            props: true
+            props: true,
+            meta: {
+              requiresLogin: true
+            }
         },
         {
             name: 'job-info',
@@ -61,12 +76,18 @@ const router = new Router({
             name: 'job',
             path: '/jobs/:name',
             component: JobPage,
-            props: true
+            props: true,
+            meta: {
+              requiresLogin: true
+            }
         },
         {
             name: 'profile',
             path: '/profile',
-            component: ProfilePage
+            component: ProfilePage,
+            meta: {
+              requiresLogin: true
+            }
         },
         {
             path: '*',
@@ -80,7 +101,7 @@ router.beforeEach(function(to, from, next) {
         if (to.meta.requiresLogin) {
             if (!auth.isSignedIn()) {
                 router.push({
-                    name: 'login'
+                    name: 'home'
                 })
                 router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
 
