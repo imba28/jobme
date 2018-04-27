@@ -49,7 +49,7 @@
         const idx = this.jobs.indexOf(this.job);
         func()
 
-        if(idx + 1 < this.jobs.length) {
+        if (this.jobs[idx + 1]) {
           router.push({
             name: 'job',
             params: {
@@ -65,7 +65,6 @@
       },
       nope() {
         this.swipe(() => {
-          //note.success('Job removed!', 750)
           this.$store.commit('dislikeJob', this.job)
         }, 1)
       },

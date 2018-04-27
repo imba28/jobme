@@ -14,7 +14,7 @@
         <div class="buttons">
           <router-link :to="{ name: 'saved-jobs' }">
             <button class="btn btn--default">
-              Dir gefällt
+              Deine Treffer
               <i class="fa fa-heart"></i> ({{ savedJobsCount }})
             </button>
           </router-link>
