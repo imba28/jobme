@@ -1,10 +1,10 @@
 class MatchingController < ApplicationController
 
   def match
-    JobsAlgo()
+    arrJob = JobsAlgo()
     @matches = []
     @allJobs = Job.all
-    for v in @arrJob do
+    for v in arrJob do
       begin
         output = ''
         job = @allJobs.find(v[:id])
@@ -19,21 +19,19 @@ class MatchingController < ApplicationController
 
   def getValue
     begin
-      @value = params.require(:inCategory)
+      return params.require(:inCategory)
     rescue ActionController::ParameterMissing => e
-      @value = '29,29'
+      return '29,29'
     end
   end
 
   def JobsAlgo
     @arrJob = []
-    getValue()
-    @value = @value.split(',')
-    for v in @value do
+    value = getValue().split(',')
+    for v in value do
       matchingJobs(v)
     end
-    @arrJob = @arrJob.sort()
-    weightJobs()
+    return weightJobs(@arrJob.sort())
   end
 
   def matchingJobs(idx)
@@ -52,11 +50,11 @@ class MatchingController < ApplicationController
     end
   end
   
-  def weightJobs
-    @result = []
-    str = @arrJob[0]
+  def weightJobs(arrJob)
+    result = []
+    str = arrJob[0]
     num = 0
-    for v in @arrJob do
+    for v in arrJob do
       if v.eql?(str)
         num += 1
       else
@@ -65,7 +63,7 @@ class MatchingController < ApplicationController
           weight: num
         }
         if x[:weight].to_i >= 2
-          @result.push(x)
+          result.push(x)
         end
         str = v
         num = 1
@@ -76,8 +74,8 @@ class MatchingController < ApplicationController
       weight: num
     }
     if x[:weight].to_i >= 2
-      @result.push(x)
+      result.push(x)
     end
-    @arrJob = @result.sort {|a,b| b[:weight] <=> a[:weight]}
+    return result.sort {|a,b| b[:weight] <=> a[:weight]}
   end
 end
