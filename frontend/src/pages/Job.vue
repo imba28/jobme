@@ -48,9 +48,9 @@
     methods: {
       swipe(func = () => {}, direction) {
         const idx = this.jobs.indexOf(this.job);
+        func()
 
         if(idx + 1 < this.jobs.length) {
-          func()
           router.push({
             name: 'job',
             params: {
