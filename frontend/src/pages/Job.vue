@@ -72,7 +72,7 @@
       },
       yes() {
         this.swipe(() => {
-          note.success('Job saved!', 750)
+          note.success('Beruf wurde gespeichert!', 750)
           this.$store.commit('likeJob', this.job)
         }, -1)
       }

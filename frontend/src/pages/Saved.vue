@@ -14,12 +14,12 @@
           </div>
         </li>
         <div v-if="jobs.length == 0">
-          Oh no, it seems like you haven't saved any jobs yet!<br>
-          You should
+          Oh nein, es sieht aus aus, als ob du noch keine Berufe gefunden hast!<br>
+          Du solltest sofort beginnen, einige zu
           <router-link :to="{ name: 'explore-childhood'}">
-            add
+            suchen
           </router-link>
-          some <i class="far fa-smile fa-2x"></i>
+          <i class="far fa-smile fa-2x"></i>
         </div>
       </ul>
     </div>
@@ -39,7 +39,7 @@
     methods: {
       remove(idx) {
         this.$store.commit('dislikeJob', this.jobs[idx])
-        notification.success('Job was successfully deleted!', 1000)
+        notification.success('Beruf wurde erfolgreich aus deiner Liste entfernt!', 1000)
       }
     }
   }
