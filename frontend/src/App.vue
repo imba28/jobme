@@ -34,7 +34,9 @@ export default {
   color: #2c3e50;
 
   width: 100%;
-
+  .icon {
+    color: #ddd;
+  }
   .placeholders {
     height: $top-menu-height;
     background: $black;
@@ -78,7 +80,7 @@ export default {
     border: $grey solid 10px;
     width: 100%;
     height: 300px;
-    padding: 1.9em 0;
+    padding: 1em 0;
     margin-bottom: 30px;
 
     img {

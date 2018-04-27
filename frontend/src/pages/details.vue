@@ -25,6 +25,10 @@
           </div>
         </li>
       </ul>
+          <div class="forward">
+
+        <i style="color:white" onclick="window.history.back()" class="fas fa-arrow-left fa-2x"></i>
+    </div>
     </div>
   </div>
 </template>
@@ -87,6 +91,7 @@
         padding: 2em;
 
         .icon {
+          color: #ddd;
           background: #ddd;
           border-radius: 50%;
 
