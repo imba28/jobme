@@ -4,12 +4,15 @@ class MatchingController < ApplicationController
     arrJob = JobsAlgo()
     @matches = []
     @allJobs = Job.all
+    if !arrJob
+      arrJob = Job.find(6)
+    end
     for v in arrJob do
       begin
         output = ''
         job = @allJobs.find(v[:id])
       rescue ActiveRecord::RecordNotFound => e
-        output = Job.find(6)
+        output = nil
       end
       if output
         @matches.push(job)
@@ -62,7 +65,7 @@ class MatchingController < ApplicationController
           id:  str,
           weight: num
         }
-        if x[:weight].to_i >= 2
+        if x[:weight].to_i >= 1
           result.push(x)
         end
         str = v
@@ -73,7 +76,7 @@ class MatchingController < ApplicationController
       id:  str,
       weight: num
     }
-    if x[:weight].to_i >= 2
+    if x[:weight].to_i >= 1
       result.push(x)
     end
     return result.sort {|a,b| b[:weight] <=> a[:weight]}
