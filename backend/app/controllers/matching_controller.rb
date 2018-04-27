@@ -4,8 +4,8 @@ class MatchingController < ApplicationController
     arrJob = JobsAlgo()
     @matches = []
     @allJobs = Job.all
-    if !arrJob
-      arrJob = Job.find(6)
+    if arrJob.empty?
+      arrJob.push(Job.find(6))
     end
     for v in arrJob do
       begin
@@ -24,7 +24,7 @@ class MatchingController < ApplicationController
     begin
       return params.require(:inCategory)
     rescue ActionController::ParameterMissing => e
-      return '29,29'
+      return '29'
     end
   end
 
@@ -65,7 +65,7 @@ class MatchingController < ApplicationController
           id:  str,
           weight: num
         }
-        if x[:weight].to_i >= 1
+        if x[:weight].to_i >= 2
           result.push(x)
         end
         str = v
@@ -76,7 +76,7 @@ class MatchingController < ApplicationController
       id:  str,
       weight: num
     }
-    if x[:weight].to_i >= 1
+    if x[:weight].to_i >= 2
       result.push(x)
     end
     return result.sort {|a,b| b[:weight] <=> a[:weight]}
