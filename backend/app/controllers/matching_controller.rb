@@ -1,8 +1,5 @@
 class MatchingController < ApplicationController
-  #skip_before_action :verify_authenticity_token
-  
-  # tinder match logik :-)
-  # TODO
+
   def match
     JobsAlgo()
     @matches = []
@@ -24,8 +21,7 @@ class MatchingController < ApplicationController
     begin
       @value = params.require(:inCategory)
     rescue ActionController::ParameterMissing => e
-      @value = '29'
-      puts @value
+      @value = '29,29'
     end
   end
 
@@ -68,7 +64,9 @@ class MatchingController < ApplicationController
           id:  str,
           weight: num
         }
-        @result.push(x)
+        if x[:weight].to_i >= 2
+          @result.push(x)
+        end
         str = v
         num = 1
       end
@@ -77,7 +75,9 @@ class MatchingController < ApplicationController
       id:  str,
       weight: num
     }
-    @result.push(x)
+    if x[:weight].to_i >= 2
+      @result.push(x)
+    end
     @arrJob = @result.sort {|a,b| b[:weight] <=> a[:weight]}
   end
 end
