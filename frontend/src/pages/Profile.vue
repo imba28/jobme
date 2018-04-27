@@ -40,7 +40,7 @@
         return this.$store.state.savedJobs.length
       },
       avatarUrl: function() {
-        return this.user.avatar_url ? this.user.avatar_url : 'https://i.ytimg.com/vi/q5qV_TPLwzw/maxresdefault.jpg'
+        return this.user.avatar_url ? this.user.avatar_url : 'https://media3.giphy.com/media/Nx0rz3jtxtEre/giphy.gif'
       }
     }
   }
