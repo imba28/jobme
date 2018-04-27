@@ -50,9 +50,6 @@
       }
     },
     created() {
-      if (!this.category) {
-        service('category', {id: this.hobby_id})
-      }
       service(`categories/${this.hobby_id}/subcategory`)
       .then(subs => {
         subs.forEach(category => {
