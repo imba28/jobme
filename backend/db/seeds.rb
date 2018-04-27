@@ -71,6 +71,8 @@ User.create(name: 'admin', email: 'hallo@ggg.at',password: 'test', password_conf
     MetallbearbeiterInnen arbeiten in Werkstätten und Werkhallen von Industrie- und Gewerbebetrieben; sie arbeiten eigenständig sowie im Team mit BerufskollegInnen, Vorgesetzten und verschiedenen Fach- und Hilfskräften zusammen.')
 @job5 = Job.create(name: 'Bankkaufmann/-frau', image: 'hello.gif5', description: 'Bankkaufleute informieren und betreuen Bankkundinnen und -kunden bei ihren Geldgeschäften. Sie beraten die Kundinnen und Kunden über Kontoführung, Kreditaufnahme und informieren sie über verschiedene Anlagemöglichkeiten. Sie bearbeiten alle Vorgänge, die mit dem Zahlungsverkehr zu tun haben. Die Buchführung und Kostenrechnung erledigen sie mittels EDV-Datenbanksystemen. Bankkaufleute arbeiten am Schalter von Banken oder in Büroräumen im Backoffice sowohl eigenständig als auch gemeinsam mit Kolleginnen und Kollegen und Expertinnen und Experten anderer Abteilungen.')
 @job6 = Job.create(name: 'Superman', image: 'hello.gif5', description: 'Du bist Superman :)')
+@job7 = Job.create(name: 'Bekleidungsgestaltung', image: 'hello.gif5', description: 'Modisch sind BekleidungsgestalterInnen immer up to date. Ob Hosen, Röcke, Blusen, Mäntel, sie fertigen jedes Kleidungsstück, Wäsche, Hüte und diverse Pelz- und Lederbekleidung von A-Z. Sie nehmen Maß an den KundInnen, zeichnen Schnittmuster, berechnen den Stoff- und Materialbedarf, schneiden die Teile zu, heften und nähen sie. Sie verarbeiten Materialien aller Art (z. B. Wollstoffe, Seidenstoffe, Leinen, Leder, Filz, Pelze). Außerdem führen sie Änderungsarbeiten und Reparaturen durch und beraten die KundInnen.
+BekleidungsgestalterInnen arbeiten in Werkstätten und Ateliers von Textilbetrieben (z. B. Maß- und Änderungsschneidereien) und in Produktionshallen der Textilindustrie. Sie haben Kontakt zu ihren KundInnen, zu Berufskolleginnen und -kollegen und zu unterschiedlichen Fachkräften aus den Bereichen Design, Produktion, Verkauf usw.')
 
 #add Job image 
 #path = '/public/uploads/job/image/'
@@ -78,21 +80,18 @@ pathJob = '/app/assets/images/job/'
 
 img = File.open(File.join(Rails.root, pathJob + 'bee.gif'))
 @job1.update(image: img, image_preview: img)
-
 img = File.open(File.join(Rails.root, pathJob + 'glasmalerei.gif'))
 @job2.update(image: img, image_preview: img)
-
 img = File.open(File.join(Rails.root, pathJob + 'klavier.gif'))
 @job3.update(image: img, image_preview: img)
-
 img = File.open(File.join(Rails.root, pathJob + 'metal.gif'))
 @job4.update(image: img, image_preview: img)
-
 img = File.open(File.join(Rails.root, pathJob + 'banker.gif'))
 @job5.update(image: img, image_preview: img)
-
 img = File.open(File.join(Rails.root, pathJob + 'superman.gif'))
 @job6.update(image: img, image_preview: img)
+img = File.open(File.join(Rails.root, pathJob + 'gestaltung.gif'))
+@job7.update(image: img, image_preview: img)
 
 # add category img
 pathCate = '/app/assets/images/category/'
@@ -253,3 +252,14 @@ img = File.open(File.join(Rails.root, pathSub + 'train.svg'))
 #funny superman :)
 @job6.subcategories << @sub36
 
+# Bekleidungsgestaltung
+@job7.subcategories << @sub8
+@job7.subcategories << @sub11
+@job7.subcategories << @sub12
+@job7.subcategories << @sub17
+@job7.subcategories << @sub25
+@job7.subcategories << @sub26
+@job7.subcategories << @sub28
+@job7.subcategories << @sub31
+@job7.subcategories << @sub38
+@job7.subcategories << @sub41
