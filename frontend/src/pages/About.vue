@@ -20,7 +20,7 @@
           <div class="carousel-item">
             <h1>Unsere Vision</h1>
             <h3 class="container">
-              JOBme hilft jungen Menschen, ihren Traum-Lehrberuf anhand ihrer persönlichen Interessen zu finden. >>>
+              JOBme hilft jungen Menschen, ihren Traum-Lehrberuf anhand ihrer persönlichen Interessen zu finden.
             </h3>
           </div>
           <div class="carousel-item">
