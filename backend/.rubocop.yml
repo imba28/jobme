@@ -1,0 +1,12 @@
+LineLength:
+  Max: 10000
+MethodLength:
+   Max: 15
+AllCops:
+  TargetRubyVersion: 2.3.3
+  Exclude:
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+    - 'bin/*'
+Documentation:
+  Enabled: false
