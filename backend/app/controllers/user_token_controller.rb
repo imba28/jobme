@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserTokenController < SessionsController
   def create
     reset_session
@@ -5,7 +7,7 @@ class UserTokenController < SessionsController
     if login_params[:name]
       user = User.where(name: login_params[:name]).first
 
-      if user && user.authenticate(login_params[:password])
+      if user&.authenticate(login_params[:password])
         render json: {
           user: {
             id: user.id,

@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  icon_url: MyText
+  icon: MyText
   category: one
 
 two:
   name: MyString
-  icon_url: MyText
+  icon: MyText
   category: two

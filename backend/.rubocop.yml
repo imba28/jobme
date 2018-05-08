@@ -1,7 +1,7 @@
 LineLength:
   Max: 10000
 MethodLength:
-   Max: 15
+   Max: 30
 AllCops:
   TargetRubyVersion: 2.3.3
   Exclude:

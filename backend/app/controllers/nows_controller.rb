@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NowsController < ApplicationController
   before_action :set_now, only: %i[show edit update destroy]
 

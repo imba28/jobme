@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.extract! category, :id, :name, :created_at, :updated_at
 if category.icon.url
   json.icon asset_url(category.icon.to_s)

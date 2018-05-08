@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   before_action :authenticate_admin!, only: %i[index edit update destroy]
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    unless is_admin?
+    unless admin?
       respond_to do |format|
         format.json { render :show }
       end

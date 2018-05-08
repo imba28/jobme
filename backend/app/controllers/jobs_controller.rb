@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class JobsController < ApplicationController
   before_action :set_job, only: %i[show edit update destroy]
   before_action :authenticate_user!
-  before_action :is_admin?, only: %i[new edit create update destroy]
+  before_action :admin?, only: %i[new edit create update destroy]
   before_action :check_format, only: %i[index show]
 
   # GET /jobs
@@ -46,10 +48,8 @@ class JobsController < ApplicationController
       @job = Job.new(job_params)
     end
 
-    if params[:sub]
-      params[:sub].each do |id|
-        @job.subcategories << Subcategory.find(id)
-      end
+    params[:sub]&.each do |id|
+      @job.subcategories << Subcategory.find(id)
     end
 
     respond_to do |format|

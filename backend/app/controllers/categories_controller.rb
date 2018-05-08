@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
   before_action :authenticate_user!
-  before_action :is_admin?, only: %i[new edit create update destroy]
+  before_action :admin?, only: %i[new edit create update destroy]
   before_action :check_format, only: %i[index show]
 
   # GET /categories
