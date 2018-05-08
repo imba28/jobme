@@ -14,6 +14,7 @@ import ExploreChildhoodPage from '@/pages/Explore-Childhood'
 import ExploreNowPage from '@/pages/Explore-Now'
 import DetailsPage from '@/pages/details'
 import OutOfJobsPage from '@/pages/OutOfJobs'
+import AboutPage from '@/pages/About'
 
 Vue.use(Router)
 
@@ -21,78 +22,83 @@ const router = new Router({
   linkActiveClass: 'active', // active class for non-exact links.
   linkExactActiveClass: 'active', // active class for *exact* links.
   routes: [{
-      name: 'home',
-      path: '/',
-      component: HomePage,
-      meta: {
-        ifLoginRedirectTo: 'explore-childhood'
-      }
-    },
-    {
-      name: 'saved-jobs',
-      path: '/saved',
-      component: SavedJobsPage,
-      meta: {
-        requiresLogin: true
-      }
-    },
-    {
-      name: 'explore-childhood',
-      path: '/explore-childhood',
-      component: ExploreChildhoodPage,
-      meta: {
-        requiresLogin: true
-      }
-    },
-    {
-      name: 'explore-now',
-      path: '/explore-now',
-      component: ExploreNowPage,
-      meta: {
-        requiresLogin: true
-      }
-    },
-    {
-      name: 'run-out-of-jobs',
-      path: '/no-jobs/',
-      component: OutOfJobsPage,
-    },
-    {
-      name: 'details',
-      path: '/details/:hobby_id',
-      component: DetailsPage,
-      props: true,
-      meta: {
-        requiresLogin: true
-      }
-    },
-    {
-      name: 'job-info',
-      path: '/jobs/:name/info',
-      component: InfoPage,
-      props: true
-    },
-    {
-      name: 'job',
-      path: '/jobs/:name',
-      component: JobPage,
-      props: true,
-      meta: {
-        requiresLogin: true
-      }
-    },
-    {
-      name: 'profile',
-      path: '/profile',
-      component: ProfilePage,
-      meta: {
-        requiresLogin: true
-      }
-    },
-    {
-      path: '*',
-      component: ErrorPage
+    name: 'home',
+    path: '/',
+    component: HomePage,
+    meta: {
+      ifLoginRedirectTo: 'explore-childhood'
     }
+  },
+  {
+    name: 'saved-jobs',
+    path: '/saved',
+    component: SavedJobsPage,
+    meta: {
+      requiresLogin: true
+    }
+  },
+  {
+    name: 'explore-childhood',
+    path: '/explore-childhood',
+    component: ExploreChildhoodPage,
+    meta: {
+      requiresLogin: true
+    }
+  },
+  {
+    name: 'explore-now',
+    path: '/explore-now',
+    component: ExploreNowPage,
+    meta: {
+      requiresLogin: true
+    }
+  },
+  {
+    name: 'about',
+    path: '/about/',
+    component: AboutPage
+  },
+  {
+    name: 'run-out-of-jobs',
+    path: '/no-jobs/',
+    component: OutOfJobsPage
+  },
+  {
+    name: 'details',
+    path: '/details/:hobby_id',
+    component: DetailsPage,
+    props: true,
+    meta: {
+      requiresLogin: true
+    }
+  },
+  {
+    name: 'job-info',
+    path: '/jobs/:name/info',
+    component: InfoPage,
+    props: true
+  },
+  {
+    name: 'job',
+    path: '/jobs/:name',
+    component: JobPage,
+    props: true,
+    meta: {
+      requiresLogin: true
+    }
+  },
+  {
+    name: 'profile',
+    path: '/profile',
+    component: ProfilePage,
+    meta: {
+      requiresLogin: true
+    }
+  },
+  {
+    path: '*',
+    component: ErrorPage
+  }
   ]
 })
 
@@ -105,7 +111,7 @@ router.beforeEach(function (to, from, next) {
         })
         router.app.addNotification('Für diese Aktion musst du dich einloggen!', 'error')
 
-        return;
+        return
       }
     }
     if (to.meta.ifLoginRedirectTo) {
@@ -114,11 +120,11 @@ router.beforeEach(function (to, from, next) {
         router.push({
           path: to.meta.ifLoginRedirectTo
         })
-        return;
+        return
       }
     }
 
-    const toIdx = to.params.bottomMenuIndex ? to.params.bottomMenuIndex : 0;
+    const toIdx = to.params.bottomMenuIndex ? to.params.bottomMenuIndex : 0
     router.app.$root.transitionName = toIdx <= 0 ? 'page-right' : 'page-left'
   }
 

@@ -63,6 +63,11 @@ export default {
           name: "Treffer",
           path: "/saved"
         },
+        {
+          icon: 'info',
+          name: "About",
+          path: "/about"
+        }
       ]
     }
   },

@@ -1,6 +1,6 @@
 class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :is_admin?, only: [:new, :edit, :create, :update, :destroy]
   before_action :check_format, only: [:index, :show]
 
