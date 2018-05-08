@@ -2,14 +2,14 @@ class User < ApplicationRecord
   has_secure_password
   has_and_belongs_to_many :jobs
   mount_uploader :avatar_url, ImageIconUploader
-  validates_confirmation_of :password, :on => :create
-  validates_uniqueness_of :name, :email, :on => :create  
-  validates :name, :email, presence: {message: "can't be blank!"}
-  
-  def self.find_or_create_with_omniauth auth
+  validates_confirmation_of :password, on: :create
+  validates_uniqueness_of :name, :email, on: :create
+  validates :name, :email, presence: { message: "can't be blank!" }
+
+  def self.find_or_create_with_omniauth(auth)
     if !User.find_by(provider: auth['provider'],
-      uid: auth['uid'])
-      user = User.create({
+                     uid: auth['uid'])
+      user = User.create(
         uid: auth['uid'],
         provider: auth['provider'],
         name: auth.info.name,
@@ -17,9 +17,9 @@ class User < ApplicationRecord
         avatar_url: auth.info.image,
         password: auth.credentials.token,
         password_confirmation: auth.credentials.token
-      })
+      )
       user
-    else 
+    else
       user = User.find_by(
         provider: auth['provider'],
         uid: auth['uid']
@@ -30,9 +30,7 @@ class User < ApplicationRecord
 
   def to_s
     username = "#{uid}@#{provider}"
-    if name
-      username = name
-    end
+    username = name if name
     username
   end
 end

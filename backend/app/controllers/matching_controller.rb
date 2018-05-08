@@ -7,7 +7,7 @@ class MatchingController < ApplicationController
     if arrJob.empty?
       arrJob.push(Job.find(6))
     end
-    for v in arrJob do
+    arrJob.each do |v|
       begin
         output = ''
         job = @allJobs.find(v[:id])
@@ -52,12 +52,12 @@ class MatchingController < ApplicationController
       end
     end
   end
-  
+
   def weightJobs(arrJob)
     result = []
     str = arrJob[0]
     num = 0
-    for v in arrJob do
+    arrJob.each do |v|
       if v.eql?(str)
         num += 1
       else

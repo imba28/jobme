@@ -4,8 +4,8 @@ class JsonWebToken
   end
 
   def self.decode(token)
-    return HashWithIndifferentAccess.new(JWT.decode(token, Rails.application.secrets.secret_key_base)[0])
-  rescue
+    HashWithIndifferentAccess.new(JWT.decode(token, Rails.application.secrets.secret_key_base)[0])
+  rescue StandardError
     nil
   end
 end

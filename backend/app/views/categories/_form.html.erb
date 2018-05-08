@@ -22,10 +22,10 @@
     <% if form.object.icon? %>
       <%= image_tag form.object.icon %>
       <%= form.label :remove_image %>
-      <%= form.check_box :remove_image %> 
+      <%= form.check_box :remove_image %>
     <% end %>
   </div>
-  
+
   <div class="field">
     <%= form.label :childhood do %>
       <%= form.check_box :chilhood, id: :category_chilhood %>

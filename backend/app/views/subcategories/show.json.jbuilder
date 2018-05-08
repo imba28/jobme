@@ -1,1 +1,1 @@
-json.partial! "subcategories/subcategory", subcategory: @subcategory
+json.partial! 'subcategories/subcategory', subcategory: @subcategory

@@ -1,13 +1,13 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: %i[show edit update destroy]
   before_action :authenticate_user!
-  before_action :is_admin?, only: [:new, :edit, :create, :update, :destroy]
-  before_action :check_format, only: [:index, :show]
+  before_action :is_admin?, only: %i[new edit create update destroy]
+  before_action :check_format, only: %i[index show]
 
   # GET /jobs
   # GET /jobs.json
   def index
-    if params[:user_id] 
+    if params[:user_id]
       @user = User.find(params[:user_id])
       @jobs = @user.jobs
     else
@@ -17,17 +17,14 @@ class JobsController < ApplicationController
 
   # GET /jobs/1
   # GET /jobs/1.json
-  def show
-  end
+  def show; end
 
   # GET /jobs/new
   def new
     @sub = Subcategory.all
     @job = Job.new
 
-    if params[:user_id] 
-      @user = User.find(params[:user_id])
-    end
+    @user = User.find(params[:user_id]) if params[:user_id]
   end
 
   # GET /jobs/1/edit
@@ -38,24 +35,22 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    if params[:user_id] 
+    if params[:user_id]
       if params[:job_id]
         @job = Job.find(params[:job_id]) # add existing job to user job collection
       end
 
       @user = User.find(params[:user_id])
-      if !@user.jobs.include? @job
-        @user.jobs << @job
-      end
-    else 
+      @user.jobs << @job unless @user.jobs.include? @job
+    else
       @job = Job.new(job_params)
     end
 
-    if params[:sub] then
+    if params[:sub]
       params[:sub].each do |id|
         @job.subcategories << Subcategory.find(id)
       end
-    end 
+    end
 
     respond_to do |format|
       if @job.save
@@ -71,12 +66,12 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
-    if params[:sub] then
+    if params[:sub]
       @job.subcategories.clear
       params[:sub].each do |id|
         @job.subcategories << Subcategory.find(id)
       end
-    end 
+    end
 
     respond_to do |format|
       if @job.update(job_params)
@@ -105,18 +100,15 @@ class JobsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_job
-      @job = Job.find(params[:id])
-      if params[:user_id]
-        @user = User.find(params[:user_id])
-      end
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def job_params
-      params.require(:job).permit(:name, :image, :image_preview, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_job
+    @job = Job.find(params[:id])
+    @user = User.find(params[:user_id]) if params[:user_id]
+  end
 
-    
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def job_params
+    params.require(:job).permit(:name, :image, :image_preview, :description)
+  end
 end
