@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -11,11 +13,11 @@ module Backend
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.assets.enabled = false
-    
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :patch, :delete, :options]
+        resource '*', headers: :any, methods: %i[get post patch delete options]
       end
     end
 

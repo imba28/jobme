@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  gif_url: MyText
+  image: MyText
   description: MyText
 
 two:
   name: MyString
-  gif_url: MyText
+  image: MyText
   description: MyText

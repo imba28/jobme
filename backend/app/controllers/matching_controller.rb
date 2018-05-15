@@ -1,63 +1,56 @@
-class MatchingController < ApplicationController
+# frozen_string_literal: true
 
+class MatchingController < ApplicationController
   def match
-    arrJob = JobsAlgo()
+    arr_job = jobs_algo
     @matches = []
-    @allJobs = Job.all
-    if arrJob.empty?
-      arrJob.push(Job.find(6))
-    end
-    for v in arrJob do
+    @all_jobs = Job.all
+    arr_job.push(Job.find(6)) if arr_job.empty?
+    arr_job.each do |v|
       begin
         output = ''
-        job = @allJobs.find(v[:id])
-      rescue ActiveRecord::RecordNotFound => e
+        job = @all_jobs.find(v[:id])
+      rescue ActiveRecord::RecordNotFound
         output = nil
       end
-      if output
-        @matches.push(job)
-      end
+      @matches.push(job) if output
     end
   end
 
-  def getValue
-    begin
-      return params.require(:inCategory)
-    rescue ActionController::ParameterMissing => e
-      return '29'
-    end
+  def values
+    params.require(:inCategory)
+  rescue ActionController::ParameterMissing
+    '29'
   end
 
-  def JobsAlgo
-    @arrJob = []
-    value = getValue().split(',')
-    for v in value do
-      matchingJobs(v)
+  def jobs_algo
+    @arr_job = []
+    value = values.split(',')
+    value.each do |v|
+      matching_jobs(v)
     end
-    return weightJobs(@arrJob.sort())
+    weight_jobs(@arr_job.sort)
   end
 
-  def matchingJobs(idx)
+  def matching_jobs(idx)
     jobs = Job.all
     subcate = Subcategory.find(idx)
-    for job in jobs do
+    jobs.each do |job|
       begin
         output = ''
-        id = job.subcategories.find(subcate.id).id
-      rescue ActiveRecord::RecordNotFound => e
+        job.subcategories.find(subcate.id).id
+      rescue ActiveRecord::RecordNotFound
         output = nil
       end
-      if output
-        @arrJob.push(job.id)
-      end
+      @arr_job.push(job.id) if output
     end
   end
-  
-  def weightJobs(arrJob)
+
+  def weight_jobs(arr_job)
     result = []
-    str = arrJob[0]
+    str = arr_job[0]
     num = 0
-    for v in arrJob do
+    arr_job.each do |v|
       if v.eql?(str)
         num += 1
       else
@@ -65,9 +58,7 @@ class MatchingController < ApplicationController
           id:  str,
           weight: num
         }
-        if x[:weight].to_i >= 2
-          result.push(x)
-        end
+        result.push(x) if x[:weight].to_i >= 2
         str = v
         num = 1
       end
@@ -76,9 +67,7 @@ class MatchingController < ApplicationController
       id:  str,
       weight: num
     }
-    if x[:weight].to_i >= 2
-      result.push(x)
-    end
-    return result.sort {|a,b| b[:weight] <=> a[:weight]}
+    result.push(x) if x[:weight].to_i >= 2
+    result.sort { |a, b| b[:weight] <=> a[:weight] }
   end
 end

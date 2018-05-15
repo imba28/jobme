@@ -10,66 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425124512) do
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.text "icon"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "chilhood"
+ActiveRecord::Schema.define(version: 20_180_425_124_512) do
+  create_table 'categories', force: :cascade do |t|
+    t.string 'name'
+    t.text 'icon'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'chilhood'
   end
 
-  create_table "job_subcategory_joins", force: :cascade do |t|
-    t.integer "job_id"
-    t.integer "subcategory_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_subcategory_joins_on_job_id"
-    t.index ["subcategory_id"], name: "index_job_subcategory_joins_on_subcategory_id"
+  create_table 'job_subcategory_joins', force: :cascade do |t|
+    t.integer 'job_id'
+    t.integer 'subcategory_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['job_id'], name: 'index_job_subcategory_joins_on_job_id'
+    t.index ['subcategory_id'], name: 'index_job_subcategory_joins_on_subcategory_id'
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.string "name"
-    t.text "image"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image_preview"
+  create_table 'jobs', force: :cascade do |t|
+    t.string 'name'
+    t.text 'image'
+    t.text 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'image_preview'
   end
 
-  create_table "jobs_subcategories", id: false, force: :cascade do |t|
-    t.integer "job_id", null: false
-    t.integer "subcategory_id", null: false
-    t.index ["job_id", "subcategory_id"], name: "index_jobs_subcategories_on_job_id_and_subcategory_id"
-    t.index ["subcategory_id", "job_id"], name: "index_jobs_subcategories_on_subcategory_id_and_job_id"
+  create_table 'jobs_subcategories', id: false, force: :cascade do |t|
+    t.integer 'job_id', null: false
+    t.integer 'subcategory_id', null: false
+    t.index %w[job_id subcategory_id], name: 'index_jobs_subcategories_on_job_id_and_subcategory_id'
+    t.index %w[subcategory_id job_id], name: 'index_jobs_subcategories_on_subcategory_id_and_job_id'
   end
 
-  create_table "jobs_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "job_id", null: false
-    t.index ["job_id", "user_id"], name: "index_jobs_users_on_job_id_and_user_id"
-    t.index ["user_id", "job_id"], name: "index_jobs_users_on_user_id_and_job_id"
+  create_table 'jobs_users', id: false, force: :cascade do |t|
+    t.integer 'user_id', null: false
+    t.integer 'job_id', null: false
+    t.index %w[job_id user_id], name: 'index_jobs_users_on_job_id_and_user_id'
+    t.index %w[user_id job_id], name: 'index_jobs_users_on_user_id_and_job_id'
   end
 
-  create_table "subcategories", force: :cascade do |t|
-    t.string "name"
-    t.text "icon"
-    t.integer "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_subcategories_on_category_id"
+  create_table 'subcategories', force: :cascade do |t|
+    t.string 'name'
+    t.text 'icon'
+    t.integer 'category_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['category_id'], name: 'index_subcategories_on_category_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "provider"
-    t.string "uid"
-    t.string "avatar_url"
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'email'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'password_digest'
+    t.string 'provider'
+    t.string 'uid'
+    t.string 'avatar_url'
   end
-
 end

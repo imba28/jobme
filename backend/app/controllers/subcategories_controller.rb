@@ -1,24 +1,24 @@
-class SubcategoriesController < ApplicationController
-  before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  before_action :is_admin?, only: [:new, :edit, :create, :update, :destroy]
-  before_action :check_format, only: [:index, :show]
+# frozen_string_literal: true
 
+class SubcategoriesController < ApplicationController
+  before_action :set_subcategory, only: %i[show edit update destroy]
+  before_action :authenticate_user!
+  before_action :admin?, only: %i[new edit create update destroy]
+  before_action :check_format, only: %i[index show]
 
   # GET /subcategories
   # GET /subcategories.json
   def index
-    if params[:category_id] 
-      @subcategories = Category.find(params[:category_id]).subcategories
-    else
-      @subcategories = Subcategory.all
-    end
+    @subcategories = if params[:category_id]
+                       Category.find(params[:category_id]).subcategories
+                     else
+                       Subcategory.all
+                     end
   end
 
   # GET /subcategories/1
   # GET /subcategories/1.json
-  def show
-  end
+  def show; end
 
   # GET /subcategories/new
   def new
@@ -27,8 +27,7 @@ class SubcategoriesController < ApplicationController
   end
 
   # GET /subcategories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /subcategories
   # POST /subcategories.json
@@ -73,14 +72,15 @@ class SubcategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_subcategory
-      @categories = Category.all
-      @subcategory = Subcategory.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def subcategory_params
-      params.require(:subcategory).permit(:name, :icon, :category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_subcategory
+    @categories = Category.all
+    @subcategory = Subcategory.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def subcategory_params
+    params.require(:subcategory).permit(:name, :icon, :category_id)
+  end
 end

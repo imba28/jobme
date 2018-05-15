@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 class ChildhoodsController < ApplicationController
-  before_action :set_childhood, only: [:show, :edit, :update, :destroy]
+  before_action :set_childhood, only: %i[show edit update destroy]
 
   # GET /childhoods
   # GET /childhoods.json
   def index
-    @childhoods = Category.all.where(:chilhood => '1')
+    @childhoods = Category.all.where(chilhood: '1')
   end
 
   # GET /childhoods/1
   # GET /childhoods/1.json
-  def show
-  end
+  def show; end
 
   # GET /childhoods/new
   def new
@@ -18,8 +19,7 @@ class ChildhoodsController < ApplicationController
   end
 
   # GET /childhoods/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /childhoods
   # POST /childhoods.json
@@ -62,13 +62,14 @@ class ChildhoodsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_childhood
-      @childhood = Childhood.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def childhood_params
-      params.fetch(:childhood, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_childhood
+    @childhood = Childhood.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def childhood_params
+    params.fetch(:childhood, {})
+  end
 end

@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  icon_url: MyText
+  icon: MyText
 
 two:
   name: MyString
-  icon_url: MyText
+  icon: MyText

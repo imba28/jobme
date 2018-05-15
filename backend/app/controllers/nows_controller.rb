@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 class NowsController < ApplicationController
-  before_action :set_now, only: [:show, :edit, :update, :destroy]
+  before_action :set_now, only: %i[show edit update destroy]
 
   # GET /nows
   # GET /nows.json
   def index
-    @nows = Category.all.where(:chilhood => '0')
+    @nows = Category.all.where(chilhood: '0')
   end
 
   # GET /nows/1
   # GET /nows/1.json
-  def show
-  end
+  def show; end
 
   # GET /nows/new
   def new
@@ -18,8 +19,7 @@ class NowsController < ApplicationController
   end
 
   # GET /nows/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /nows
   # POST /nows.json
@@ -62,13 +62,14 @@ class NowsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_now
-      @now = Now.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def now_params
-      params.fetch(:now, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_now
+    @now = Now.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def now_params
+    params.fetch(:now, {})
+  end
 end
