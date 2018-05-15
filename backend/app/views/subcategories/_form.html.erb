@@ -27,7 +27,7 @@
   </div>
 
 
-  <% @categories.each do |cat| -%>
+  <% categories.each do |cat| -%>
 
     <%= fields_for 'cat[]' , cat do |cat_field| -%>
       <%= radio_button_tag("subcategory[category_id]", cat.id, subcategory.category == cat) %>
