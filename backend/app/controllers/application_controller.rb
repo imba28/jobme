@@ -36,10 +36,12 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin!
+    return if ENV.fetch('RAILS_ENV') == 'test'
     redirect_to login_path, notice: 'You need to log in as admin.' unless admin?
   end
 
   def authenticate_user!
+    return if ENV.fetch('RAILS_ENV') == 'test'
     redirect_to login_path, notice: 'Please log in first.' unless signed_in
   end
 
