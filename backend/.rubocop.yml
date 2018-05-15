@@ -10,3 +10,9 @@ AllCops:
     - 'bin/*'
 Documentation:
   Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+
+# guardClause check doesn't make sense in our context
+Style/GuardClause:
+  Enabled: false
