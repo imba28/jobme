@@ -3,6 +3,8 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
+  after_action :send_headers
+
   def signed_in
     if authentication_id
       user = User.find authentication_id
@@ -60,6 +62,14 @@ class ApplicationController < ActionController::Base
   helper_method :check_format
 
   private
+
+  def send_headers 
+    if request.ssl?
+      response.headers['Strict-Transport-Security'] = "max-age=31536000; includeSubDomains"
+    end
+
+    response.set_header('Referrer-Policy', 'no-referrer')
+  end
 
   def authentication_id
     return session[:user_id] if session[:user_id]
