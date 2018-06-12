@@ -4,7 +4,9 @@ class SessionsController < ApplicationController
   # skip_before_action :verify_authenticity_token
 
   # login form
-  def new; end
+  def new
+    
+  end
 
   # login post request
   def create
@@ -16,18 +18,15 @@ class SessionsController < ApplicationController
       if user.name != 'admin'
         respond_to do |format|
           format.html { redirect_to 'https://jobme.surge.sh' }
-          format.json { render json: { user: user, auth_token: 'tokenLmaslkdmlknsdnsdln' }, status: :ok }
         end
       else
         respond_to do |format|
           format.html { redirect_to root_path, notice: 'Welcome, admin!' }
-          format.json { render json: { user: user, auth_token: 'tokenLmaslkdmlknsdnsdln' }, status: :ok }
         end
       end
     else
       respond_to do |format|
-        format.html { redirect_to login_path, alert: 'Log in failed' }
-        format.json { render json: {}, status: :unauthorized }
+        format.html { render :new, alert: 'Log in failed' }
       end
     end
   end
@@ -40,7 +39,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def login_params
-    params.permit(:name, :password)
-  end
+    def login_params
+      params.permit(:name, :password)
+    end
 end
