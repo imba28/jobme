@@ -26,3 +26,6 @@
 /public/uploads
 # Ignore application configuration
 /config/application.yml
+
+# we don't want to have refactor reports in repo
+rails_best_practices_output.html

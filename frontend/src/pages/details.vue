@@ -27,7 +27,7 @@
       </ul>
           <div class="forward">
 
-        <i style="color:white" onclick="window.history.back()" class="fas fa-arrow-left fa-2x"></i>
+        <i style="color:white" onclick="window.history.back()" class="fas fa-arrow-right fa-2x"></i>
     </div>
     </div>
   </div>

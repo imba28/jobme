@@ -12,3 +12,12 @@ B) API Key storage
 
 ## Start
 `rails server`
+
+## Refactor
+```bash
+# rubocop
+rubocop .
+
+# rails_best_practices html output
+rails_best_practices -f html .
+```
